@@ -1,0 +1,29 @@
+/* prefers-reduced-motion: site-wide overrides
+   Loaded as a standalone CSS file (not processed by Tailwind v4)
+   so the @media rule survives the build. */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-layer {
+    transform: none !important;
+  }
+
+  .style-float,
+  .style-cloud,
+  [style*="animationDuration: 0s"] {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .ambient-reduced-fallback {
+    opacity: 1 !important;
+  }
+}

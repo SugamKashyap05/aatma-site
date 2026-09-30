@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  --color-green-deep: #1a3c2a;
+  --color-green-mid: #2d5a3d;
+  --color-green-light: #3d7a54;
+  --color-gold: #c9a84c;
+  --color-gold-light: #e0c878;
+  --color-cream: #f5f0e8;
+  --color-cream-dark: #e8e0d0;
+  --color-charcoal: #1a1a1a;
+  --color-text: #2a2a2a;
+  --color-text-mute: #5a5a5a;
+  --color-border: #d4c9b0;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-assamese: "Noto Sans Assamese", serif;
+}
+@media (prefers-reduced-motion: reduce) {
+  *
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+
+  /* Neutralize hero parallax layer transforms */
+  .hero-layer
+    transform: none !important;
+
+  /* Neutralize ambient motion layers */
+  .style-float,
+  .style-cloud,
+  [style*="animationDuration: 0s"]
+    animation: none !important;
+    transform: none !important;
+
+  /* Static fallback background for reduced-motion ambient */
+  .ambient-reduced-fallback
+    opacity: 1 !important;
+}
+
+/* ---- Ambient Motion Keyframes (section-level fog/clouds) ---- */
+
+/* Fog: slow horizontal drift, gently bobbing */
+@keyframes float-fog {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(4%) translateY(-1.5%);
+  }
+  50% {
+    transform: translateX(8%) translateY(0);
+  }
+  75% {
+    transform: translateX(4%) translateY(1.5%);
+  }
+}
+
+/* Clouds: slower, more pronounced drift with vertical bob */
+@keyframes float-cloud {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+  33% {
+    transform: translateX(6%) translateY(-2%) scale(1.02);
+  }
+  66% {
+    transform: translateX(12%) translateY(1%) scale(0.98);
+  }
+}
+
+/* Particles: slow upward drift with slight horizontal sway */
+@keyframes float-particle {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-8%) translateX(2%);
+  }
+}
+
+.style-float {
+  animation-name: float-fog;
+}
+
+.style-cloud {
+  animation-name: float-cloud;
+}
+
+/* Tiny specks inside particleLayer use inline animation-name via style prop */
+[style*="animation-name: float-particle"] {
+  /* set by inline style in particleLayer */
+}
+
+/* ---- prefers-reduced-motion: site-wide ---- */
+/* Tailwind v4 preserves raw CSS at the end of the processed file.
+   Put the reduced-motion media query here so it survives the build. */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Neutralize hero parallax layer transforms */
+  .hero-layer {
+    transform: none !important;
+  }
+
+  /* Neutralize ambient motion layers (fog/clouds/particles) */
+  .style-float,
+  .style-cloud,
+  [style*="animationDuration: 0s"] {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Static fallback background for reduced-motion ambient */
+  .ambient-reduced-fallback {
+    opacity: 1 !important;
+  }
+}
+
+/* ---- Global card hover effects ---- */
+.card-hover {
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(201, 168, 76, 0.15);
+  border-color: rgba(201, 168, 76, 0.4);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ---- Scroll reveal base states ---- */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-24px);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(24px);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.reveal-fade {
+  opacity: 0;
+}
+
+/* ---- Timeline connector line animation ---- */
+.timeline-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 100ms linear;
+}
+
+/* ---- Section divider gradient ---- */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 168, 76, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+/* ---- No scrollbar utility ---- */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
