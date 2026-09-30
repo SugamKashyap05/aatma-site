@@ -19,6 +19,18 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
     "sourceKB": 12853,
     "variants": [
       {
+        "w": 640,
+        "webp": "bg-640.webp",
+        "avif": "bg-640.avif",
+        "webpKB": 10
+      },
+      {
+        "w": 1280,
+        "webp": "bg-1280.webp",
+        "avif": "bg-1280.avif",
+        "webpKB": 30
+      },
+      {
         "w": 1920,
         "webp": "bg-1920.webp",
         "avif": "bg-1920.avif",
@@ -39,6 +51,18 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
     "sourceWxH": "3365x2236",
     "sourceKB": 2578,
     "variants": [
+      {
+        "w": 640,
+        "webp": "fog-7-640.webp",
+        "avif": "fog-7-640.avif",
+        "webpKB": 52
+      },
+      {
+        "w": 1280,
+        "webp": "fog-7-1280.webp",
+        "avif": "fog-7-1280.avif",
+        "webpKB": 171
+      },
       {
         "w": 1900,
         "webp": "fog-7-1900.webp",
@@ -61,10 +85,22 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
     "sourceKB": 2188,
     "variants": [
       {
+        "w": 640,
+        "webp": "mountain-10-640.webp",
+        "avif": "mountain-10-640.avif",
+        "webpKB": 57
+      },
+      {
         "w": 1200,
         "webp": "mountain-10-1200.webp",
         "avif": "mountain-10-1200.avif",
         "webpKB": 179
+      },
+      {
+        "w": 1280,
+        "webp": "mountain-10-1280.webp",
+        "avif": "mountain-10-1280.avif",
+        "webpKB": 201
       },
       {
         "w": 1837,
@@ -81,6 +117,18 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
     "sourceWxH": "3305x1139",
     "sourceKB": 1523,
     "variants": [
+      {
+        "w": 640,
+        "webp": "fog-6-640.webp",
+        "avif": "fog-6-640.avif",
+        "webpKB": 42
+      },
+      {
+        "w": 1280,
+        "webp": "fog-6-1280.webp",
+        "avif": "fog-6-1280.avif",
+        "webpKB": 149
+      },
       {
         "w": 2200,
         "webp": "fog-6-2200.webp",
@@ -103,10 +151,22 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
     "sourceKB": 1799,
     "variants": [
       {
+        "w": 640,
+        "webp": "mountain-9-640.webp",
+        "avif": "mountain-9-640.avif",
+        "webpKB": 86
+      },
+      {
         "w": 670,
         "webp": "mountain-9-670.webp",
         "avif": "mountain-9-670.avif",
         "webpKB": 92
+      },
+      {
+        "w": 1280,
+        "webp": "mountain-9-1280.webp",
+        "avif": "mountain-9-1280.avif",
+        "webpKB": 262
       },
       {
         "w": 1340,
@@ -123,6 +183,12 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
     "sourceWxH": "819x827",
     "sourceKB": 238,
     "variants": [
+      {
+        "w": 640,
+        "webp": "fog-5-640.webp",
+        "avif": "fog-5-640.avif",
+        "webpKB": 125
+      },
       {
         "w": 650,
         "webp": "fog-5-650.webp",
@@ -144,6 +210,12 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
     "sourceWxH": "951x1108",
     "sourceKB": 955,
     "variants": [
+      {
+        "w": 640,
+        "webp": "mountain-7-640.webp",
+        "avif": "mountain-7-640.avif",
+        "webpKB": 103
+      },
       {
         "w": 738,
         "webp": "mountain-7-738.webp",
@@ -172,6 +244,12 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
         "webpKB": 58
       },
       {
+        "w": 640,
+        "webp": "mountain-6-640.webp",
+        "avif": "mountain-6-640.avif",
+        "webpKB": 120
+      },
+      {
         "w": 719,
         "webp": "mountain-6-719.webp",
         "avif": "mountain-6-719.avif",
@@ -193,6 +271,12 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
         "webpKB": 87
       },
       {
+        "w": 640,
+        "webp": "fog-4-640.webp",
+        "avif": "fog-4-640.avif",
+        "webpKB": 99
+      },
+      {
         "w": 1030,
         "webp": "fog-4-1030.webp",
         "avif": "fog-4-1030.avif",
@@ -207,6 +291,12 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
     "sourceWxH": "1100x920",
     "sourceKB": 1569,
     "variants": [
+      {
+        "w": 640,
+        "webp": "mountain-5-640.webp",
+        "avif": "mountain-5-640.avif",
+        "webpKB": 103
+      },
       {
         "w": 725,
         "webp": "mountain-5-725.webp",
@@ -229,6 +319,18 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
     "sourceKB": 804,
     "variants": [
       {
+        "w": 640,
+        "webp": "fog-3-640.webp",
+        "avif": "fog-3-640.avif",
+        "webpKB": 40
+      },
+      {
+        "w": 1280,
+        "webp": "fog-3-1280.webp",
+        "avif": "fog-3-1280.avif",
+        "webpKB": 129
+      },
+      {
         "w": 1600,
         "webp": "fog-3-1600.webp",
         "avif": "fog-3-1600.avif",
@@ -250,10 +352,22 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
     "sourceKB": 1669,
     "variants": [
       {
+        "w": 640,
+        "webp": "mountain-4-640.webp",
+        "avif": "mountain-4-640.avif",
+        "webpKB": 91
+      },
+      {
         "w": 1100,
         "webp": "mountain-4-1100.webp",
         "avif": "mountain-4-1100.avif",
         "webpKB": 240
+      },
+      {
+        "w": 1280,
+        "webp": "mountain-4-1280.webp",
+        "avif": "mountain-4-1280.avif",
+        "webpKB": 312
       },
       {
         "w": 1393,
@@ -277,6 +391,12 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
         "webpKB": 165
       },
       {
+        "w": 640,
+        "webp": "mountain-3-640.webp",
+        "avif": "mountain-3-640.avif",
+        "webpKB": 169
+      },
+      {
         "w": 819,
         "webp": "mountain-3-819.webp",
         "avif": "mountain-3-819.avif",
@@ -292,10 +412,22 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
     "sourceKB": 1020,
     "variants": [
       {
+        "w": 640,
+        "webp": "fog-2-640.webp",
+        "avif": "fog-2-640.avif",
+        "webpKB": 34
+      },
+      {
         "w": 1100,
         "webp": "fog-2-1100.webp",
         "avif": "fog-2-1100.avif",
         "webpKB": 90
+      },
+      {
+        "w": 1280,
+        "webp": "fog-2-1280.webp",
+        "avif": "fog-2-1280.avif",
+        "webpKB": 118
       },
       {
         "w": 2200,
@@ -312,6 +444,12 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
     "sourceWxH": "1209x1274",
     "sourceKB": 1954,
     "variants": [
+      {
+        "w": 640,
+        "webp": "mountain-2-640.webp",
+        "avif": "mountain-2-640.avif",
+        "webpKB": 114
+      },
       {
         "w": 800,
         "webp": "mountain-2-800.webp",
@@ -334,6 +472,12 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
     "sourceKB": 2491,
     "variants": [
       {
+        "w": 640,
+        "webp": "mountain-1-640.webp",
+        "avif": "mountain-1-640.avif",
+        "webpKB": 204
+      },
+      {
         "w": 954,
         "webp": "mountain-1-954.webp",
         "avif": "mountain-1-954.avif",
@@ -348,6 +492,18 @@ export const HERO_LAYER_META: HeroLayerMeta[] = [
     "sourceWxH": "2787x1357",
     "sourceKB": 2234,
     "variants": [
+      {
+        "w": 640,
+        "webp": "fog-1-640.webp",
+        "avif": "fog-1-640.avif",
+        "webpKB": 44
+      },
+      {
+        "w": 1280,
+        "webp": "fog-1-1280.webp",
+        "avif": "fog-1-1280.avif",
+        "webpKB": 149
+      },
       {
         "w": 1900,
         "webp": "fog-1-1900.webp",

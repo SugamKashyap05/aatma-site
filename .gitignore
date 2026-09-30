@@ -28,3 +28,6 @@ dist-ssr
 # because the CI build consumes them directly.
 scripts/.hero-cache/
 scripts/.optimize.log
+
+# Phase 1 hero: regenerated variant logs
+scripts/.opt*.log

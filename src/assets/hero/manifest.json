@@ -7,16 +7,22 @@
     "sourceKB": 12853,
     "variants": [
       {
+        "w": 640,
+        "webp": "bg-640.webp",
+        "avif": "bg-640.avif",
+        "webpKB": 9
+      },
+      {
+        "w": 1280,
+        "webp": "bg-1280.webp",
+        "avif": "bg-1280.avif",
+        "webpKB": 27
+      },
+      {
         "w": 1920,
         "webp": "bg-1920.webp",
         "avif": "bg-1920.avif",
-        "webpKB": 59
-      },
-      {
-        "w": 3840,
-        "webp": "bg-3840.webp",
-        "avif": "bg-3840.avif",
-        "webpKB": 175
+        "webpKB": 52
       }
     ]
   },
@@ -28,16 +34,28 @@
     "sourceKB": 2578,
     "variants": [
       {
+        "w": 640,
+        "webp": "fog-7-640.webp",
+        "avif": "fog-7-640.avif",
+        "webpKB": 52
+      },
+      {
+        "w": 1280,
+        "webp": "fog-7-1280.webp",
+        "avif": "fog-7-1280.avif",
+        "webpKB": 170
+      },
+      {
         "w": 1900,
         "webp": "fog-7-1900.webp",
         "avif": "fog-7-1900.avif",
-        "webpKB": 349
+        "webpKB": 346
       },
       {
-        "w": 3365,
-        "webp": "fog-7-3365.webp",
-        "avif": "fog-7-3365.avif",
-        "webpKB": 915
+        "w": 1920,
+        "webp": "fog-7-1920.webp",
+        "avif": "fog-7-1920.avif",
+        "webpKB": 354
       }
     ]
   },
@@ -49,16 +67,28 @@
     "sourceKB": 2188,
     "variants": [
       {
+        "w": 640,
+        "webp": "mountain-10-640.webp",
+        "avif": "mountain-10-640.avif",
+        "webpKB": 55
+      },
+      {
         "w": 1200,
         "webp": "mountain-10-1200.webp",
         "avif": "mountain-10-1200.avif",
-        "webpKB": 179
+        "webpKB": 172
+      },
+      {
+        "w": 1280,
+        "webp": "mountain-10-1280.webp",
+        "avif": "mountain-10-1280.avif",
+        "webpKB": 193
       },
       {
         "w": 1837,
         "webp": "mountain-10-1837.webp",
         "avif": "mountain-10-1837.avif",
-        "webpKB": 371
+        "webpKB": 358
       }
     ]
   },
@@ -70,16 +100,22 @@
     "sourceKB": 1523,
     "variants": [
       {
-        "w": 2200,
-        "webp": "fog-6-2200.webp",
-        "avif": "fog-6-2200.avif",
-        "webpKB": 406
+        "w": 640,
+        "webp": "fog-6-640.webp",
+        "avif": "fog-6-640.avif",
+        "webpKB": 42
       },
       {
-        "w": 3305,
-        "webp": "fog-6-3305.webp",
-        "avif": "fog-6-3305.avif",
-        "webpKB": 838
+        "w": 1280,
+        "webp": "fog-6-1280.webp",
+        "avif": "fog-6-1280.avif",
+        "webpKB": 149
+      },
+      {
+        "w": 1920,
+        "webp": "fog-6-1920.webp",
+        "avif": "fog-6-1920.avif",
+        "webpKB": 316
       }
     ]
   },
@@ -91,16 +127,28 @@
     "sourceKB": 1799,
     "variants": [
       {
+        "w": 640,
+        "webp": "mountain-9-640.webp",
+        "avif": "mountain-9-640.avif",
+        "webpKB": 81
+      },
+      {
         "w": 670,
         "webp": "mountain-9-670.webp",
         "avif": "mountain-9-670.avif",
-        "webpKB": 92
+        "webpKB": 86
+      },
+      {
+        "w": 1280,
+        "webp": "mountain-9-1280.webp",
+        "avif": "mountain-9-1280.avif",
+        "webpKB": 246
       },
       {
         "w": 1340,
         "webp": "mountain-9-1340.webp",
         "avif": "mountain-9-1340.avif",
-        "webpKB": 280
+        "webpKB": 263
       }
     ]
   },
@@ -112,10 +160,16 @@
     "sourceKB": 238,
     "variants": [
       {
+        "w": 640,
+        "webp": "fog-5-640.webp",
+        "avif": "fog-5-640.avif",
+        "webpKB": 123
+      },
+      {
         "w": 650,
         "webp": "fog-5-650.webp",
         "avif": "fog-5-650.avif",
-        "webpKB": 128
+        "webpKB": 126
       },
       {
         "w": 819,
@@ -133,16 +187,22 @@
     "sourceKB": 955,
     "variants": [
       {
+        "w": 640,
+        "webp": "mountain-7-640.webp",
+        "avif": "mountain-7-640.avif",
+        "webpKB": 97
+      },
+      {
         "w": 738,
         "webp": "mountain-7-738.webp",
         "avif": "mountain-7-738.avif",
-        "webpKB": 129
+        "webpKB": 122
       },
       {
         "w": 951,
         "webp": "mountain-7-951.webp",
         "avif": "mountain-7-951.avif",
-        "webpKB": 168
+        "webpKB": 162
       }
     ]
   },
@@ -157,13 +217,19 @@
         "w": 408,
         "webp": "mountain-6-408.webp",
         "avif": "mountain-6-408.avif",
-        "webpKB": 58
+        "webpKB": 54
+      },
+      {
+        "w": 640,
+        "webp": "mountain-6-640.webp",
+        "avif": "mountain-6-640.avif",
+        "webpKB": 111
       },
       {
         "w": 719,
         "webp": "mountain-6-719.webp",
         "avif": "mountain-6-719.avif",
-        "webpKB": 114
+        "webpKB": 108
       }
     ]
   },
@@ -178,7 +244,13 @@
         "w": 590,
         "webp": "fog-4-590.webp",
         "avif": "fog-4-590.avif",
-        "webpKB": 87
+        "webpKB": 86
+      },
+      {
+        "w": 640,
+        "webp": "fog-4-640.webp",
+        "avif": "fog-4-640.avif",
+        "webpKB": 98
       },
       {
         "w": 1030,
@@ -196,16 +268,22 @@
     "sourceKB": 1569,
     "variants": [
       {
+        "w": 640,
+        "webp": "mountain-5-640.webp",
+        "avif": "mountain-5-640.avif",
+        "webpKB": 96
+      },
+      {
         "w": 725,
         "webp": "mountain-5-725.webp",
         "avif": "mountain-5-725.avif",
-        "webpKB": 130
+        "webpKB": 120
       },
       {
         "w": 1100,
         "webp": "mountain-5-1100.webp",
         "avif": "mountain-5-1100.avif",
-        "webpKB": 247
+        "webpKB": 227
       }
     ]
   },
@@ -217,16 +295,28 @@
     "sourceKB": 804,
     "variants": [
       {
+        "w": 640,
+        "webp": "fog-3-640.webp",
+        "avif": "fog-3-640.avif",
+        "webpKB": 39
+      },
+      {
+        "w": 1280,
+        "webp": "fog-3-1280.webp",
+        "avif": "fog-3-1280.avif",
+        "webpKB": 126
+      },
+      {
         "w": 1600,
         "webp": "fog-3-1600.webp",
         "avif": "fog-3-1600.avif",
-        "webpKB": 193
+        "webpKB": 189
       },
       {
-        "w": 2755,
-        "webp": "fog-3-2755.webp",
-        "avif": "fog-3-2755.avif",
-        "webpKB": 389
+        "w": 1920,
+        "webp": "fog-3-1920.webp",
+        "avif": "fog-3-1920.avif",
+        "webpKB": 261
       }
     ]
   },
@@ -238,16 +328,28 @@
     "sourceKB": 1669,
     "variants": [
       {
+        "w": 640,
+        "webp": "mountain-4-640.webp",
+        "avif": "mountain-4-640.avif",
+        "webpKB": 85
+      },
+      {
         "w": 1100,
         "webp": "mountain-4-1100.webp",
         "avif": "mountain-4-1100.avif",
-        "webpKB": 240
+        "webpKB": 225
+      },
+      {
+        "w": 1280,
+        "webp": "mountain-4-1280.webp",
+        "avif": "mountain-4-1280.avif",
+        "webpKB": 292
       },
       {
         "w": 1393,
         "webp": "mountain-4-1393.webp",
         "avif": "mountain-4-1393.avif",
-        "webpKB": 320
+        "webpKB": 302
       }
     ]
   },
@@ -262,13 +364,19 @@
         "w": 630,
         "webp": "mountain-3-630.webp",
         "avif": "mountain-3-630.avif",
-        "webpKB": 165
+        "webpKB": 150
+      },
+      {
+        "w": 640,
+        "webp": "mountain-3-640.webp",
+        "avif": "mountain-3-640.avif",
+        "webpKB": 153
       },
       {
         "w": 819,
         "webp": "mountain-3-819.webp",
         "avif": "mountain-3-819.avif",
-        "webpKB": 189
+        "webpKB": 167
       }
     ]
   },
@@ -280,16 +388,28 @@
     "sourceKB": 1020,
     "variants": [
       {
+        "w": 640,
+        "webp": "fog-2-640.webp",
+        "avif": "fog-2-640.avif",
+        "webpKB": 33
+      },
+      {
         "w": 1100,
         "webp": "fog-2-1100.webp",
         "avif": "fog-2-1100.avif",
-        "webpKB": 90
+        "webpKB": 88
       },
       {
-        "w": 2200,
-        "webp": "fog-2-2200.webp",
-        "avif": "fog-2-2200.avif",
-        "webpKB": 311
+        "w": 1280,
+        "webp": "fog-2-1280.webp",
+        "avif": "fog-2-1280.avif",
+        "webpKB": 115
+      },
+      {
+        "w": 1920,
+        "webp": "fog-2-1920.webp",
+        "avif": "fog-2-1920.avif",
+        "webpKB": 242
       }
     ]
   },
@@ -301,16 +421,22 @@
     "sourceKB": 1954,
     "variants": [
       {
+        "w": 640,
+        "webp": "mountain-2-640.webp",
+        "avif": "mountain-2-640.avif",
+        "webpKB": 106
+      },
+      {
         "w": 800,
         "webp": "mountain-2-800.webp",
         "avif": "mountain-2-800.avif",
-        "webpKB": 173
+        "webpKB": 161
       },
       {
         "w": 1209,
         "webp": "mountain-2-1209.webp",
         "avif": "mountain-2-1209.avif",
-        "webpKB": 310
+        "webpKB": 290
       }
     ]
   },
@@ -322,10 +448,16 @@
     "sourceKB": 2491,
     "variants": [
       {
+        "w": 640,
+        "webp": "mountain-1-640.webp",
+        "avif": "mountain-1-640.avif",
+        "webpKB": 187
+      },
+      {
         "w": 954,
         "webp": "mountain-1-954.webp",
         "avif": "mountain-1-954.avif",
-        "webpKB": 355
+        "webpKB": 323
       }
     ]
   },
@@ -337,16 +469,28 @@
     "sourceKB": 2234,
     "variants": [
       {
+        "w": 640,
+        "webp": "fog-1-640.webp",
+        "avif": "fog-1-640.avif",
+        "webpKB": 44
+      },
+      {
+        "w": 1280,
+        "webp": "fog-1-1280.webp",
+        "avif": "fog-1-1280.avif",
+        "webpKB": 147
+      },
+      {
         "w": 1900,
         "webp": "fog-1-1900.webp",
         "avif": "fog-1-1900.avif",
-        "webpKB": 305
+        "webpKB": 301
       },
       {
-        "w": 2787,
-        "webp": "fog-1-2787.webp",
-        "avif": "fog-1-2787.avif",
-        "webpKB": 510
+        "w": 1920,
+        "webp": "fog-1-1920.webp",
+        "avif": "fog-1-1920.avif",
+        "webpKB": 306
       }
     ]
   }

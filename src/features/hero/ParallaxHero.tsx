@@ -43,84 +43,84 @@ const layerSpec: Omit<ParallaxLayer, "image">[] = [
   {
     alt: "fog-7", speedX: 0.27, speedY: 0.32, speedZ: 0, rotation: 0, distance: 850,
     zIndex: 2, initialTop: "calc(50% - 100px)", initialLeft: "calc(50% + 300px)", width: "1900px",
-    sizes: "(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1900px",
+    sizes: "(max-width: 640px) 100vw, (max-width: 1280px) 100vw, 1900px",
   },
   {
     alt: "mountain-10", speedX: 0.095, speedY: 0.005, speedZ: 0, rotation: 0, distance: 1110,
     zIndex: 3, initialTop: "calc(50% + 169px)", initialLeft: "calc(50% + 330px)", width: "1200px",
-    sizes: "(max-width: 640px) 640px, 1200px",
+    sizes: "(max-width: 640px) 100vw, 1200px",
   },
   {
     alt: "fog-6", speedX: 0.25, speedY: 0.28, speedZ: 0, rotation: 0, distance: 1400,
     zIndex: 4, initialTop: "calc(50% + 285px)", initialLeft: "calc(50%)", width: "2200px",
-    sizes: "(max-width: 640px) 640px, 1600px",
+    sizes: "(max-width: 640px) 100vw, 1600px",
     className: "opacity-30",
   },
   {
     alt: "mountain-9", speedX: 0.125, speedY: 0.155, speedZ: 0.15, rotation: 0.02, distance: 1700,
     zIndex: 51, initialTop: "calc(50% + 313px)", initialLeft: "calc(50% - 557px)", width: "670px",
-    sizes: "(max-width: 640px) 640px, 670px",
+    sizes: "(max-width: 640px) 100vw, 670px",
   },
   {
     alt: "fog-5", speedX: 0.16, speedY: 0.105, speedZ: 0, rotation: 0, distance: 1900,
     zIndex: 7, initialTop: "calc(50% + 360px)", initialLeft: "calc(50% + 40px)", width: "650px",
-    sizes: "(max-width: 640px) 640px, 650px",
+    sizes: "(max-width: 640px) 100vw, 650px",
   },
   {
     alt: "mountain-7", speedX: 0.1, speedY: 0.1, speedZ: 0, rotation: 0.09, distance: 2000,
     zIndex: 19, initialTop: "calc(50% + 223px)", initialLeft: "calc(50% + 495px)", width: "738px",
-    sizes: "(max-width: 640px) 640px, 738px",
+    sizes: "(max-width: 640px) 100vw, 738px",
   },
   {
     alt: "mountain-6", speedX: 0.065, speedY: 0.05, speedZ: 0.05, rotation: 0.12, distance: 2300,
     zIndex: 18, initialTop: "calc(50% + 120px)", initialLeft: "calc(50% + 590px)", width: "408px",
-    sizes: "(max-width: 640px) 408px, 408px",
+    sizes: "(max-width: 640px) 100vw, 408px",
   },
   {
     alt: "fog-4", speedX: 0.135, speedY: 0.1, speedZ: 0, rotation: 0, distance: 2400,
     zIndex: 11, initialTop: "calc(50% + 223px)", initialLeft: "calc(50% + 460px)", width: "590px",
-    sizes: "(max-width: 640px) 590px, 590px",
+    sizes: "(max-width: 640px) 100vw, 590px",
     className: "opacity-50",
   },
   {
     alt: "mountain-5", speedX: 0.08, speedY: 0.05, speedZ: 0.13, rotation: 0.1, distance: 2550,
     zIndex: 12, initialTop: "calc(50% + 320px)", initialLeft: "calc(50% + 230px)", width: "725px",
-    sizes: "(max-width: 640px) 640px, 725px",
+    sizes: "(max-width: 640px) 100vw, 725px",
   },
   {
     alt: "fog-3", speedX: 0.11, speedY: 0.018, speedZ: 0, rotation: 0, distance: 2800,
     zIndex: 113, initialTop: "calc(50% + 210px)", initialLeft: "calc(50% + 5px)", width: "1600px",
-    sizes: "(max-width: 640px) 640px, 1600px",
+    sizes: "(max-width: 640px) 100vw, 1600px",
   },
   {
     alt: "mountain-4", speedX: 0.059, speedY: 0.024, speedZ: 0.35, rotation: 0.14, distance: 3200,
     zIndex: 15, initialTop: "calc(50% + 196px)", initialLeft: "calc(50% - 698px)", width: "1100px",
-    sizes: "(max-width: 640px) 640px, 1100px",
+    sizes: "(max-width: 640px) 100vw, 1100px",
   },
   {
     alt: "mountain-3", speedX: 0.04, speedY: 0.018, speedZ: 0.32, rotation: 0.05, distance: 3400,
     zIndex: 20, initialTop: "calc(50% - 20px)", initialLeft: "calc(50% + 750px)", width: "630px",
-    sizes: "(max-width: 640px) 630px, 630px",
+    sizes: "(max-width: 640px) 100vw, 630px",
   },
   {
     alt: "fog-2", speedX: 0.15, speedY: 0.0115, speedZ: 0, rotation: 0, distance: 3600,
     zIndex: 16, initialTop: "calc(50% - 20px)", initialLeft: "calc(50% + 698px)", width: "1100px",
-    sizes: "(max-width: 640px) 640px, 1100px",
+    sizes: "(max-width: 640px) 100vw, 1100px",
   },
   {
     alt: "mountain-2", speedX: 0.0235, speedY: 0.013, speedZ: 0.42, rotation: 0.15, distance: 3800,
     zIndex: 17, initialTop: "calc(50% + 256px)", initialLeft: "calc(50% + 528px)", width: "800px",
-    sizes: "(max-width: 640px) 640px, 800px",
+    sizes: "(max-width: 640px) 100vw, 800px",
   },
   {
     alt: "mountain-1", speedX: 0.027, speedY: 0.018, speedZ: 0.53, rotation: 0.2, distance: 4000,
     zIndex: 18, initialTop: "calc(50% + 196px)", initialLeft: "calc(50% - 728px)", width: "1100px",
-    sizes: "(max-width: 640px) 640px, 1100px",
+    sizes: "(max-width: 640px) 100vw, 1100px",
   },
   {
     alt: "fog-1", speedX: 0.12, speedY: 0.01, speedZ: 0, rotation: 0, distance: 4200,
     zIndex: 21, initialTop: "calc(100% - 355px)", initialLeft: "calc(50% + 100px)", width: "1900px",
-    sizes: "(max-width: 640px) 640px, 1900px",
+    sizes: "(max-width: 640px) 100vw, 1900px",
     className: "opacity-50",
   },
 ];
@@ -233,9 +233,12 @@ export function ParallaxHero({
                 (layer.image.variants[layer.image.variants.length - 1]?.w ?? 1) /
                   layer.image.aspect
               )}
-              // Only the full-bleed background blocks first paint; every other
-              // layer is decorative and can arrive late.
-              loading={isBackground ? "eager" : "lazy"}
+              // Every layer is inside a fixed, non-scrolling hero that is on
+              // screen at first paint, so `lazy` never fires for them — the
+              // browser only ever loads the layers already intersecting the
+              // viewport at load time. Load eagerly, but keep the decorative
+              // layers at low priority so the background wins the race.
+              loading="eager"
               fetchPriority={isBackground ? "high" : "low"}
               decoding="async"
               className={cn(

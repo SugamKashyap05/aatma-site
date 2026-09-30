@@ -16,7 +16,7 @@
  * Run: node scripts/optimize-hero-images.mjs
  */
 import sharp from "sharp";
-import { mkdir, writeFile, readFile, rm } from "node:fs/promises";
+import { mkdir, writeFile, readFile, rm, readdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 
@@ -49,15 +49,21 @@ const LAYERS = [
   { name: "fog-1",      display: 1900, kind: "soft",   url: "https://cdn.21st.dev/assets/mirror/aa/aa8ace86d9779fcccce3a1a28b8ac0cb86336b5980706659f2c8889c3daaf5a1.png" },
 ];
 
-/** Quality per layer kind — fog is soft and low-opacity, mountains hold detail. */
+/**
+ * Quality per layer kind. These are soft, low-contrast parallax layers painted
+ * behind a heavy radial vignette (see ParallaxHero's overlay), and they are
+ * frequently scaled up by the browser to fill their CSS width — so fine detail
+ * is both invisible and lost. Aggressive AVIF settings cut the payload roughly
+ * in half with no perceptible difference.
+ */
 const QUALITY = {
-  bg:     { webp: 76, avif: 58 },
-  soft:   { webp: 68, avif: 50 },
-  detail: { webp: 78, avif: 60 },
+  bg:     { webp: 70, avif: 50 },
+  soft:   { webp: 60, avif: 32 },
+  detail: { webp: 72, avif: 45 },
 };
 
 /** Background is full-bleed, so size it to the viewport, not its CSS width. */
-const BG_WIDTHS = [1920, 3840];
+const BG_WIDTHS = [640, 1280, 1920, 3840];
 
 async function download(url, dest) {
   if (existsSync(dest)) return await readFile(dest);
@@ -68,24 +74,51 @@ async function download(url, dest) {
   return buf;
 }
 
+/**
+ * Every layer is absolutely positioned at a FIXED CSS width that is often wider
+ * than the viewport, so the honest `sizes` for a phone is the viewport width,
+ * not the layer's CSS width. We therefore always offer a small variant plus a
+ * mid variant, then the layer's own 1x/2x.
+ *
+ * Without the small/mid entries a phone's `sizes="100vw"` at DPR 3 resolves to
+ * ~1170px, which forces the largest variant to be downloaded.
+ */
+const COMMON_WIDTHS = [640, 1280];
+
+/**
+ * The largest useful variant. Beyond this the browser scales layers up to fill
+ * their CSS width anyway (they are soft, low-contrast, and behind a vignette),
+ * so source-resolution variants at 2700–3400px are pure waste: never selected
+ * on a real device, but they bloat the repo and the build output.
+ */
+const MAX_WIDTH = 1920;
+
 function widthsFor(layer, sourceWidth) {
   const candidates =
     layer.kind === "bg"
       ? BG_WIDTHS
-      : [layer.display, layer.display * 2];
+      : [...COMMON_WIDTHS, layer.display, layer.display * 2];
 
-  // Dedupe, never upscale past the source, keep ascending.
+  // Dedupe, never upscale past the source, cap at MAX_WIDTH, keep ascending.
   const capped = candidates
-    .map((w) => Math.min(Math.round(w), sourceWidth))
+    .map((w) => Math.min(Math.round(w), sourceWidth, MAX_WIDTH))
     .filter((w, i, a) => a.indexOf(w) === i);
   return capped.sort((a, b) => a - b);
 }
 
 async function main() {
   await mkdir(CACHE, { recursive: true });
-  // Start from a clean output dir so stale fixed-width variants don't linger.
-  await rm(OUT, { recursive: true, force: true });
   await mkdir(OUT, { recursive: true });
+
+  // Remove only previously generated image variants — NOT the hand-written
+  // index.ts / manifest.ts that live in the same directory. A blanket rm -rf
+  // on OUT would delete them.
+  const existing = await readdir(OUT).catch(() => []);
+  await Promise.all(
+    existing
+      .filter((f) => /\.(webp|avif)$/.test(f))
+      .map((f) => rm(path.join(OUT, f), { force: true }))
+  );
 
   const manifest = [];
   let totalBefore = 0;
