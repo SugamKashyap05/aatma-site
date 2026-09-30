@@ -28,9 +28,15 @@ function PostHeroShell() {
 }
 
 export default function App() {
-  // Vite exposes the configured base as BASE_URL (e.g. "/aatma-site/").
-  // React Router needs it without the trailing slash.
-  const basename = import.meta.env.BASE_URL.replace(/\/$/, "") || "/";
+  // Vite exposes the configured base as BASE_URL:
+  //   dev            -> "/"
+  //   CI (GH Pages)  -> "/aatma-site/"
+  //   local build    -> "./"   (relative base)
+  // React Router needs a rooted path without a trailing slash. Passing "./"
+  // through naively yields ".", which is not a valid basename and renders nothing.
+  const rawBase = import.meta.env.BASE_URL;
+  const basename =
+    rawBase === "./" || rawBase === "" ? "/" : rawBase.replace(/\/$/, "") || "/";
 
   return (
     <BrowserRouter basename={basename}>

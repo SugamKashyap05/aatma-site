@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+dist
 dist-ssr
 *.local
 
@@ -21,4 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-dist/
+
+# Phase 1 hero pipeline: source PNGs are re-downloadable scratch.
+# The generated .avif/.webp variants and generated.ts ARE committed,
+# because the CI build consumes them directly.
+scripts/.hero-cache/
+scripts/.optimize.log
