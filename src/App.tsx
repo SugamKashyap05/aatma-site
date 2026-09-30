@@ -28,8 +28,12 @@ function PostHeroShell() {
 }
 
 export default function App() {
+  // Vite exposes the configured base as BASE_URL (e.g. "/aatma-site/").
+  // React Router needs it without the trailing slash.
+  const basename = import.meta.env.BASE_URL.replace(/\/$/, "") || "/";
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <DeviceProvider>
         <div className="relative flex flex-col min-h-screen bg-green-deep text-white antialiased overflow-x-hidden">
           {/* Fixed KineticGrid background — behind everything including hero */}

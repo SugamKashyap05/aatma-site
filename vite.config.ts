@@ -4,7 +4,9 @@ import tailwindcss from '@tailwindcss/vite'
 import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
-  base: './',
+  // CI sets VITE_BASE_PATH=/aatma-site/ for GitHub Pages subpath deploys.
+  // Locally it stays './' so the dist folder works from any location.
+  base: process.env.VITE_BASE_PATH || './',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
