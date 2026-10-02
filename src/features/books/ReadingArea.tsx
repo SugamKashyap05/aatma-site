@@ -75,7 +75,7 @@ export function ReadingArea({
                 src={chapter.image}
                 alt={`Page ${chapterIndex + 1} of ${book.title}`}
                 className="max-w-full h-auto rounded-lg shadow-2xl"
-                loading="lazy"
+                loading="eager"
               />
             </div>
           ) : (

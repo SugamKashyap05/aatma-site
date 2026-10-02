@@ -350,7 +350,7 @@ export function ImageReader({
                 src={ch.image}
                 alt=""
                 className="w-full h-full object-cover"
-                loading="lazy"
+                loading="eager"
               />
             </button>
           ))}

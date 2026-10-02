@@ -18,7 +18,7 @@ export function BookCard({ book, onRead, onDownload, isDownloading }: BookCardPr
           src={book.coverImage}
           alt={`Cover of ${book.title}`}
           className="w-full h-full object-cover"
-          loading="lazy"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-green-deep/80 via-transparent to-transparent" />
       </div>
