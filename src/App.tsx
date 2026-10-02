@@ -1,5 +1,5 @@
-import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { lazy, Suspense, useEffect } from "react";
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { ParallaxHero } from "@/features/hero/ParallaxHero";
 import { About } from "@/features/about/About";
 import { AgarStory } from "@/features/agarStory/AgarStory";
@@ -30,6 +30,24 @@ function PostHeroShell() {
   );
 }
 
+function SpaRedirectHandler() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const redirect = sessionStorage.getItem("spa-redirect");
+    if (redirect) {
+      sessionStorage.removeItem("spa-redirect");
+      // Only navigate if we're at the root (the redirect target)
+      if (location.pathname === "/" || location.pathname === "/aatma-site/") {
+        navigate(redirect, { replace: true });
+      }
+    }
+  }, [navigate, location.pathname]);
+
+  return null;
+}
+
 export default function App() {
   // Vite exposes the configured base as BASE_URL:
   //   dev            -> "/"
@@ -44,6 +62,7 @@ export default function App() {
   return (
     <BrowserRouter basename={basename}>
       <DeviceProvider>
+        <SpaRedirectHandler />
         <div className="relative flex flex-col min-h-screen bg-green-deep text-white antialiased overflow-x-hidden">
           {/* Fixed KineticGrid background — behind everything including hero */}
           <KineticGrid />
