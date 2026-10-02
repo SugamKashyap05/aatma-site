@@ -21,9 +21,20 @@ const ZOOM_STEP = 0.5;
 const SWIPE_THRESHOLD = 50;
 
 /**
+ * Derive the image path for a specific page number from a template path.
+ * E.g., "books/agar/pages/page-007.jpg" -> "books/agar/pages/page-012.jpg"
+ */
+function getPageImagePath(template: string, pageNum: number): string {
+  return template.replace(
+    /page-\d+\.jpg$/,
+    `page-${String(pageNum).padStart(3, "0")}.jpg`
+  );
+}
+
+/**
  * Image-based reader component for books with scanned page images.
  * Features: pinch-to-zoom, double-tap zoom, drag-to-pan, swipe navigation,
- * thumbnail strip for quick page jumping.
+ * thumbnail strip for quick page jumping, multi-page chapter support.
  */
 export function ImageReader({
   book,
@@ -38,6 +49,7 @@ export function ImageReader({
   const [scale, setScale] = useState(1);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
+  const [pageIndex, setPageIndex] = useState(0);
   const dragStart = useRef({ x: 0, y: 0 });
   const offsetStart = useRef({ x: 0, y: 0 });
   const lastTap = useRef(0);
@@ -49,11 +61,28 @@ export function ImageReader({
   const isFirst = chapterIndex === 0;
   const isLast = chapterIndex === book.chapters.length - 1;
 
-  // Reset zoom on chapter change
+  // Compute page range for this chapter
+  const pageStart = chapter.pageStart ?? chapter.page ?? 1;
+  const pageEnd = chapter.pageEnd ?? chapter.page ?? 1;
+  const totalPages = Math.max(1, pageEnd - pageStart + 1);
+  const currentPageNum = pageStart + pageIndex;
+  const currentImage = chapter.image
+    ? getPageImagePath(chapter.image, currentPageNum)
+    : "";
+
+  // Reset zoom and page index on chapter change
   useEffect(() => {
     setScale(1);
     setOffset({ x: 0, y: 0 });
+    setPageIndex(0);
   }, [chapterIndex]);
+
+  // Scroll to top on page change
+  useEffect(() => {
+    if (readingRef.current) {
+      readingRef.current.scrollTo({ top: 0 });
+    }
+  }, [chapterIndex, pageIndex, readingRef]);
 
   // Clamp offset to prevent dragging image out of view
   const clampOffset = useCallback((x: number, y: number, s: number) => {
@@ -88,6 +117,42 @@ export function ImageReader({
     setScale(1);
     setOffset({ x: 0, y: 0 });
   }, []);
+
+  // Page-level navigation: move within chapter first, then across chapters
+  const goToPrevPage = useCallback(() => {
+    if (pageIndex > 0) {
+      setPageIndex(pageIndex - 1);
+    } else {
+      onPrev();
+    }
+  }, [pageIndex, onPrev]);
+
+  const goToNextPage = useCallback(() => {
+    if (pageIndex < totalPages - 1) {
+      setPageIndex(pageIndex + 1);
+    } else {
+      onNext();
+    }
+  }, [pageIndex, totalPages, onNext]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight" || e.key === "PageDown") {
+        if (pageIndex < totalPages - 1) {
+          e.stopImmediatePropagation();
+          setPageIndex((i) => i + 1);
+        }
+      } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+        if (pageIndex > 0) {
+          e.stopImmediatePropagation();
+          setPageIndex((i) => i - 1);
+        }
+      }
+    };
+    window.addEventListener("keydown", handler, { capture: true });
+    return () => window.removeEventListener("keydown", handler, { capture: true });
+  }, [pageIndex, totalPages]);
 
   // Touch handlers for pinch-to-zoom, double-tap, and swipe
   const handleTouchStart = useCallback(
@@ -156,17 +221,25 @@ export function ImageReader({
         const dx = e.changedTouches[0].clientX - touchStartX.current;
         const dy = e.changedTouches[0].clientY - touchStartY.current;
         if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
-          if (dx < 0 && !isLast) {
-            onNext();
-          } else if (dx > 0 && !isFirst) {
-            onPrev();
+          if (dx < 0) {
+            if (pageIndex < totalPages - 1) {
+              setPageIndex(pageIndex + 1);
+            } else if (!isLast) {
+              onNext();
+            }
+          } else if (dx > 0) {
+            if (pageIndex > 0) {
+              setPageIndex(pageIndex - 1);
+            } else if (!isFirst) {
+              onPrev();
+            }
           }
         }
       }
       setIsDragging(false);
       lastTouchDist.current = 0;
     },
-    [scale, isLast, isFirst, onNext, onPrev]
+    [scale, pageIndex, totalPages, isLast, isFirst, onNext, onPrev]
   );
 
   // Mouse drag for desktop panning
@@ -196,13 +269,6 @@ export function ImageReader({
     setIsDragging(false);
   }, []);
 
-  // Scroll to top on chapter change
-  useEffect(() => {
-    if (readingRef.current) {
-      readingRef.current.scrollTo({ top: 0 });
-    }
-  }, [chapterIndex, readingRef]);
-
   if (!chapter) return null;
 
   return (
@@ -217,11 +283,12 @@ export function ImageReader({
         aria-label="Image reading area"
       >
         <div className="max-w-4xl mx-auto px-4 py-8 pb-28">
-          <PageTurn pageKey={String(chapterIndex)}>
+          <PageTurn pageKey={`${chapterIndex}-${pageIndex}`}>
             {/* Chapter header */}
             <div className="mb-6">
               <div className="text-gold text-xs font-semibold tracking-[0.2em] uppercase mb-2">
                 Chapter {chapterIndex + 1} of {book.chapters.length}
+                {totalPages > 1 && ` · Page ${pageIndex + 1} of ${totalPages}`}
               </div>
               <h1
                 className={cn(
@@ -250,8 +317,8 @@ export function ImageReader({
               onMouseLeave={handleMouseUp}
             >
               <img
-                src={chapter.image}
-                alt={`Page ${chapterIndex + 1} of ${book.title}`}
+                src={currentImage}
+                alt={`Page ${currentPageNum} of ${book.title} — ${chapter.title}`}
                 className="w-full h-auto select-none"
                 style={{
                   transform: `scale(${scale}) translate(${offset.x / scale}px, ${offset.y / scale}px)`,
@@ -299,8 +366,8 @@ export function ImageReader({
             {/* Page navigation */}
             <div className="mt-8 flex items-center justify-between">
               <button
-                onClick={onPrev}
-                disabled={isFirst}
+                onClick={goToPrevPage}
+                disabled={isFirst && pageIndex === 0}
                 className={cn(
                   "flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed transition-colors min-h-[44px] px-2",
                   darkMode ? "text-white/60 hover:text-gold" : "text-mute hover:text-gold"
@@ -311,11 +378,11 @@ export function ImageReader({
                 Previous
               </button>
               <span className={cn("text-sm", darkMode ? "text-white/40" : "text-mute")}>
-                Page {chapterIndex + 1} of {book.chapters.length}
+                Page {currentPageNum} of {book.chapters.reduce((sum, ch) => sum + Math.max(1, (ch.pageEnd ?? ch.page ?? 1) - (ch.pageStart ?? ch.page ?? 1) + 1), 0)}
               </span>
               <button
-                onClick={onNext}
-                disabled={isLast}
+                onClick={goToNextPage}
+                disabled={isLast && pageIndex === totalPages - 1}
                 className={cn(
                   "flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed transition-colors min-h-[44px] px-2",
                   darkMode ? "text-white/60 hover:text-gold" : "text-mute hover:text-gold"
@@ -330,30 +397,36 @@ export function ImageReader({
         </div>
       </main>
 
-      {/* Fixed thumbnail strip for quick navigation */}
+      {/* Fixed thumbnail strip for quick page navigation */}
       <div className="fixed bottom-0 left-0 right-0 z-20 bg-green-deep/95 backdrop-blur-md border-t border-white/10">
         <div className="flex gap-2 overflow-x-auto px-4 py-2 no-scrollbar">
-          {book.chapters.map((ch, i) => (
-            <button
-              key={ch.id}
-              onClick={() => onGoToChapter(i)}
-              className={cn(
-                "flex-shrink-0 w-12 h-16 rounded overflow-hidden border-2 transition-colors",
-                i === chapterIndex
-                  ? "border-gold"
-                  : "border-transparent opacity-60 hover:opacity-100"
-              )}
-              aria-label={`Go to page ${i + 1}: ${ch.title}`}
-              aria-current={i === chapterIndex ? "true" : undefined}
-            >
-              <img
-                src={ch.image}
-                alt=""
-                className="w-full h-full object-cover"
-                loading="eager"
-              />
-            </button>
-          ))}
+          {Array.from({ length: totalPages }, (_, i) => {
+            const pageNum = pageStart + i;
+            const imagePath = chapter.image
+              ? getPageImagePath(chapter.image, pageNum)
+              : "";
+            return (
+              <button
+                key={i}
+                onClick={() => setPageIndex(i)}
+                className={cn(
+                  "flex-shrink-0 w-12 h-16 rounded overflow-hidden border-2 transition-colors",
+                  i === pageIndex
+                    ? "border-gold"
+                    : "border-transparent opacity-60 hover:opacity-100"
+                )}
+                aria-label={`Go to page ${pageNum}: ${chapter.title}`}
+                aria-current={i === pageIndex ? "true" : undefined}
+              >
+                <img
+                  src={imagePath}
+                  alt=""
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                />
+              </button>
+            );
+          })}
         </div>
       </div>
     </>
