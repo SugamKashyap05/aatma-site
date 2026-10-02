@@ -20,6 +20,8 @@ html {
   --font-display: "Playfair Display", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
   --font-assamese: "Noto Sans Assamese", serif;
+  --font-reading: "Crimson Pro", Georgia, serif;
+  --font-display-alt: "Cormorant Garamond", Georgia, serif;
 }
 @media (prefers-reduced-motion: reduce) {
   *
@@ -199,4 +201,47 @@ html {
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* ---- PageTurn animations ---- */
+.page-turn-container {
+  perspective: 1200px;
+}
+
+.page-turn-3d {
+  animation: page-turn-3d 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left center;
+  backface-visibility: hidden;
+}
+
+.page-turn-slide {
+  animation: page-turn-slide 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes page-turn-3d {
+  0% {
+    transform: rotateY(-15deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes page-turn-slide {
+  0% {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ---- Focus visible (accessibility) ---- */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
 }

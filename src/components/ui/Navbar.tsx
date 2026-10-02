@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AATMA } from "@/data/content";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -9,6 +9,7 @@ export function Navbar({ deviceTier }: { deviceTier?: "mobile" | "tablet" | "des
   const isMobile = deviceTier === "mobile";
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   // React Router updates location on hash navigation (it uses the History API),
   // so location.hash reflects the current hash and causes re-renders automatically.
@@ -90,14 +91,16 @@ export function Navbar({ deviceTier }: { deviceTier?: "mobile" | "tablet" | "des
 
           <div id="navLinks" className={cn("hidden md:block", isMobile && "hidden")}>
             <SlideTabs
-              tabs={["Home", "About", "Agar Story", "Milestones", "Members", "News", "Contact"]}
+              tabs={["Home", "About", "Agar Story", "Milestones", "Members", "News", "Books", "Contact"]}
               onTabChange={(index) => {
-                const hashes = ["#", "#about", "#agar-story", "#milestones", "#members", "#news", "#contact"];
-                const hash = hashes[index];
-                if (hash === "#") {
+                const routes = ["/", "#about", "#agar-story", "#milestones", "#members", "#news", "/books", "#contact"];
+                const route = routes[index];
+                if (route === "/") {
                   window.scrollTo({ top: 0, behavior: "smooth" });
+                } else if (route.startsWith("#")) {
+                  window.location.hash = route;
                 } else {
-                  window.location.hash = hash;
+                  navigate(route);
                 }
               }}
             />
@@ -131,6 +134,7 @@ export function Navbar({ deviceTier }: { deviceTier?: "mobile" | "tablet" | "des
             <NavLinkMobile to="#milestones" label="Milestones" onHome={onHome} close={() => setOpen(false)} />
             <NavLinkMobile to="#members" label="Members" onHome={onHome} close={() => setOpen(false)} />
             <NavLinkMobile to="#news" label="News" onHome={onHome} close={() => setOpen(false)} />
+            <NavLinkMobile to="/books" label="Books" onHome={onHome} close={() => setOpen(false)} />
             <NavLinkMobile to="#contact" label="Contact" onHome={onHome} close={() => setOpen(false)} />
           </div>
         </div>

@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ParallaxHero } from "@/features/hero/ParallaxHero";
 import { About } from "@/features/about/About";
@@ -10,6 +11,8 @@ import { Footer } from "@/features/footer/Footer";
 import { Navbar } from "@/components/ui/Navbar";
 import KineticGrid from "@/components/ui/kinetic-grid";
 import { DeviceProvider, useDevice } from "@/context/DeviceContext";
+
+const BooksPage = lazy(() => import("@/features/books/BooksPage").then(m => ({ default: m.BooksPage })));
 
 function PostHeroShell() {
   const { tier } = useDevice();
@@ -45,8 +48,9 @@ export default function App() {
           {/* Fixed KineticGrid background — behind everything including hero */}
           <KineticGrid />
 
-          {/* Homepage parallax hero — rendered only on route "/" */}
+          {/* Route-specific content */}
           <Routes>
+            <Route path="/books" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><BooksPage /></Suspense>} />
             <Route
               path="/"
               element={
