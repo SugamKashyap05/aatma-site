@@ -133,6 +133,16 @@ export function useBookReader(initialBook: Book | null = null): UseBookReaderRet
 
   const downloadBook = useCallback(() => {
     if (!book) return;
+    // If an external download URL is available, use it directly
+    if (book.externalDownloadUrl) {
+      const a = document.createElement("a");
+      a.href = book.externalDownloadUrl;
+      a.download = `${book.slug}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      return;
+    }
     const content = [
       `${book.title}`,
       `by ${book.author}`,

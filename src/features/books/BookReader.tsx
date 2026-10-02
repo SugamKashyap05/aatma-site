@@ -3,6 +3,7 @@ import { ReaderTopBar } from "./ReaderTopBar";
 import { ProgressBar } from "./ProgressBar";
 import { TableOfContents } from "./TableOfContents";
 import { ReadingArea } from "./ReadingArea";
+import { ImageReader } from "./ImageReader";
 import type { Book } from "@/data/books";
 
 interface BookReaderProps {
@@ -34,16 +35,29 @@ export function BookReader({ book, onBack }: BookReaderProps) {
       <ProgressBar progress={progress} />
 
       <div className="flex">
-        <ReadingArea
-          book={book}
-          chapter={chapter}
-          chapterIndex={chapterIndex}
-          fontSize={fontSize}
-          darkMode={darkMode}
-          onPrev={reader.prevChapter}
-          onNext={reader.nextChapter}
-          readingRef={readingRef}
-        />
+        {chapter.image ? (
+          <ImageReader
+            book={book}
+            chapter={chapter}
+            chapterIndex={chapterIndex}
+            darkMode={darkMode}
+            onPrev={reader.prevChapter}
+            onNext={reader.nextChapter}
+            onGoToChapter={reader.goToChapter}
+            readingRef={readingRef}
+          />
+        ) : (
+          <ReadingArea
+            book={book}
+            chapter={chapter}
+            chapterIndex={chapterIndex}
+            fontSize={fontSize}
+            darkMode={darkMode}
+            onPrev={reader.prevChapter}
+            onNext={reader.nextChapter}
+            readingRef={readingRef}
+          />
+        )}
 
         <TableOfContents
           chapters={book.chapters}

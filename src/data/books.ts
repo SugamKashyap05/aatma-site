@@ -3,6 +3,9 @@ export interface Chapter {
   title: string;
   subtitle?: string;
   body: string[];
+  image?: string;
+  page?: number;
+  bookPage?: number;
 }
 
 export interface Book {
@@ -14,6 +17,7 @@ export interface Book {
   format: string;
   chapterCount: number;
   filePath: string;
+  externalDownloadUrl?: string;
   coverImage: string;
   coverGradient: string;
   wordCount: number;
@@ -146,6 +150,54 @@ export const BOOKS: Book[] = [
           "India secured a CITES export quota for 2024–2027, and in 2025 Assam shipped its first legal agarwood consignment. The Ministry of Commerce constituted a dedicated Agarwood Export Promotion Cell in May 2026. AATMA continues to work toward developing an auction system for agar chips, building a recognised agarwood market, and securing the livelihoods of the families who depend on it.",
         ],
       },
+    ],
+  },
+  {
+    id: "agar-original",
+    slug: "agar-original",
+    title: "AGAR — History & Scope of Plantation: A Perspective",
+    author: "Dr. M. Ahmed and Dr. P. Gogoi",
+    description:
+      "The original AGAR publication by Dr. M. Ahmed and Dr. P. Gogoi — a comprehensive visual document on the agarwood trade, its history, cultivation, and significance to Assam.",
+    format: "pdf",
+    chapterCount: 26,
+    filePath: "public/books/agar.pdf",
+    externalDownloadUrl: "https://drive.google.com/uc?export=download&id=16YhZKCIcLPfor1VEu6KEiMa7OsgPgp1n",
+    coverImage: "public/books/agar/pages/page-001.jpg",
+    coverGradient: "from-green-deep via-green-mid to-green-light",
+    wordCount: 0,
+    readingTime: 0,
+    language: "English",
+    publisher: "AATMA",
+    isbn: "",
+    publishedYear: 2000,
+    chapters: [
+      { id: "front-matter", title: "Front Matter", image: "public/books/agar/pages/page-001.jpg", body: [], page: 1, bookPage: 1 },
+      { id: "introduction", title: "Introduction", image: "public/books/agar/pages/page-007.jpg", body: [], page: 7, bookPage: 1 },
+      { id: "history-of-agarwood", title: "History of Agarwood", image: "public/books/agar/pages/page-007.jpg", body: [], page: 7, bookPage: 1 },
+      { id: "commercial-development", title: "Commercial Development", image: "public/books/agar/pages/page-009.jpg", body: [], page: 9, bookPage: 3 },
+      { id: "use-of-sanchipat", title: "Use of Sanchipat", image: "public/books/agar/pages/page-011.jpg", body: [], page: 11, bookPage: 5 },
+      { id: "distribution", title: "Distribution", image: "public/books/agar/pages/page-011.jpg", body: [], page: 11, bookPage: 5 },
+      { id: "the-tree", title: "The Tree", image: "public/books/agar/pages/page-012.jpg", body: [], page: 12, bookPage: 6 },
+      { id: "how-the-tree-becomes-valuable", title: "How the Tree becomes so valuable", image: "public/books/agar/pages/page-012.jpg", body: [], page: 12, bookPage: 6 },
+      { id: "raising-plantation", title: "Raising Plantation", image: "public/books/agar/pages/page-014.jpg", body: [], page: 14, bookPage: 8 },
+      { id: "soil-and-climate", title: "Soil and Climate", image: "public/books/agar/pages/page-014.jpg", body: [], page: 14, bookPage: 8 },
+      { id: "propagation", title: "Propagation", image: "public/books/agar/pages/page-015.jpg", body: [], page: 15, bookPage: 9 },
+      { id: "planting", title: "Planting", image: "public/books/agar/pages/page-016.jpg", body: [], page: 16, bookPage: 10 },
+      { id: "silvicultural-characteristics", title: "Silvicultural Characteristics", image: "public/books/agar/pages/page-017.jpg", body: [], page: 17, bookPage: 11 },
+      { id: "agar-in-homestead", title: "Agar in Homestead Planting", image: "public/books/agar/pages/page-018.jpg", body: [], page: 18, bookPage: 12 },
+      { id: "agar-in-agroforestry", title: "Agar in Agro-forestry", image: "public/books/agar/pages/page-019.jpg", body: [], page: 19, bookPage: 13 },
+      { id: "agar-in-tea-gardens", title: "Agar in Tea gardens", image: "public/books/agar/pages/page-019.jpg", body: [], page: 19, bookPage: 13 },
+      { id: "present-status-ne-india", title: "Present status of Agar Tree in the NE India", image: "public/books/agar/pages/page-020.jpg", body: [], page: 20, bookPage: 14 },
+      { id: "population-status-trends", title: "Population Status and Trends", image: "public/books/agar/pages/page-020.jpg", body: [], page: 20, bookPage: 14 },
+      { id: "artificial-regeneration", title: "Status in Artificial Regeneration", image: "public/books/agar/pages/page-025.jpg", body: [], page: 25, bookPage: 19 },
+      { id: "promotional-activities", title: "Promotional Activities", image: "public/books/agar/pages/page-026.jpg", body: [], page: 26, bookPage: 20 },
+      { id: "cultural-treatment", title: "Cultural Treatment to Augment Oil Formation", image: "public/books/agar/pages/page-027.jpg", body: [], page: 27, bookPage: 21 },
+      { id: "detection-harvestable", title: "Detection of Harvestable trees", image: "public/books/agar/pages/page-028.jpg", body: [], page: 28, bookPage: 22 },
+      { id: "harvesting", title: "Harvesting", image: "public/books/agar/pages/page-029.jpg", body: [], page: 29, bookPage: 23 },
+      { id: "harvesting-season", title: "Harvesting Season", image: "public/books/agar/pages/page-030.jpg", body: [], page: 30, bookPage: 24 },
+      { id: "yield", title: "Yield", image: "public/books/agar/pages/page-030.jpg", body: [], page: 30, bookPage: 24 },
+      { id: "future-prospects", title: "Future Prospects as a Plantation Crop", image: "public/books/agar/pages/page-031.jpg", body: [], page: 31, bookPage: 25 },
     ],
   },
 ];

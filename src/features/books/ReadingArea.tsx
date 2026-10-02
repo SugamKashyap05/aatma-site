@@ -68,21 +68,32 @@ export function ReadingArea({
             )}
           </div>
 
-          {/* Chapter body */}
-          <div className={cn("space-y-6", FONT_SIZE_MAP[fontSize as keyof typeof FONT_SIZE_MAP])}>
-            {chapter.body.map((para, i) => (
-              <p
-                key={i}
-                className={cn(
-                  "leading-relaxed",
-                  darkMode ? "text-white/90" : "text",
-                  i === 0 && "first-letter:font-display first-letter:text-5xl first-letter:font-bold first-letter:text-gold first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-[0.8]"
-                )}
-              >
-                {para}
-              </p>
-            ))}
-          </div>
+          {/* Chapter body or page image */}
+          {chapter.image ? (
+            <div className="flex justify-center">
+              <img
+                src={chapter.image}
+                alt={`Page ${chapterIndex + 1} of ${book.title}`}
+                className="max-w-full h-auto rounded-lg shadow-2xl"
+                loading="lazy"
+              />
+            </div>
+          ) : (
+            <div className={cn("space-y-6", FONT_SIZE_MAP[fontSize as keyof typeof FONT_SIZE_MAP])}>
+              {chapter.body.map((para, i) => (
+                <p
+                  key={i}
+                  className={cn(
+                    "leading-relaxed",
+                    darkMode ? "text-white/90" : "text",
+                    i === 0 && "first-letter:font-display first-letter:text-5xl first-letter:font-bold first-letter:text-gold first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-[0.8]"
+                  )}
+                >
+                  {para}
+                </p>
+              ))}
+            </div>
+          )}
 
           {/* Chapter navigation */}
           <div className="mt-16 flex items-center justify-between">

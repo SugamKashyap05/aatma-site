@@ -15,10 +15,10 @@ export function BooksPage() {
 
   const handleDownload = (b: Book) => {
     setDownloadingId(b.id);
-    // Use the actual file URL with the download attribute for large files
+    const url = b.externalDownloadUrl || b.filePath;
     const a = document.createElement("a");
-    a.href = b.filePath;
-    a.download = b.filePath.split("/").pop() || `${b.slug}.txt`;
+    a.href = url;
+    a.download = url.split("/").pop() || `${b.slug}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
