@@ -35,15 +35,24 @@ function SpaRedirectHandler() {
   const location = useLocation();
 
   useEffect(() => {
+    // Check for path in query parameter (from 404.html redirect)
+    const params = new URLSearchParams(location.search);
+    const redirectPath = params.get("path");
+    if (redirectPath) {
+      // Remove the query parameter and navigate to the path
+      navigate(redirectPath, { replace: true });
+      return;
+    }
+
+    // Fallback: check sessionStorage
     const redirect = sessionStorage.getItem("spa-redirect");
     if (redirect) {
       sessionStorage.removeItem("spa-redirect");
-      // Only navigate if we're at the root (the redirect target)
       if (location.pathname === "/" || location.pathname === "/aatma-site/") {
         navigate(redirect, { replace: true });
       }
     }
-  }, [navigate, location.pathname]);
+  }, [navigate, location.pathname, location.search]);
 
   return null;
 }

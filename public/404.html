@@ -8,8 +8,9 @@
       // SPA redirect: send all 404s back to index.html so React Router can handle them
       const path = window.location.pathname.replace(/\/$/, '');
       if (path && path !== '/aatma-site' && path !== '/aatma-site/') {
-        sessionStorage.setItem('spa-redirect', path);
-        window.location.replace('/aatma-site/');
+        // Extract the path relative to the basename
+        const relativePath = path.replace(/^\/aatma-site/, '') || '/';
+        window.location.replace('/aatma-site/?path=' + encodeURIComponent(relativePath));
       }
     </script>
   </head>
