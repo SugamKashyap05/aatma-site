@@ -41,8 +41,6 @@ export function BookReader({ book, onBack }: BookReaderProps) {
             chapter={chapter}
             chapterIndex={chapterIndex}
             darkMode={darkMode}
-            onPrev={reader.prevChapter}
-            onNext={reader.nextChapter}
             onGoToChapter={reader.goToChapter}
             readingRef={readingRef}
           />

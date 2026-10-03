@@ -28,6 +28,7 @@ export interface Book {
   publisher: string;
   isbn: string;
   publishedYear: number;
+  totalPages?: number;
   chapters: Chapter[];
 }
 
@@ -173,6 +174,7 @@ export const BOOKS: Book[] = [
     publisher: "AATMA",
     isbn: "",
     publishedYear: 2000,
+    totalPages: 31,
     chapters: [
       { id: "front-matter", title: "Front Matter", image: "books/agar/pages/page-001.jpg", body: [], page: 1, bookPage: 1, pageStart: 1, pageEnd: 6 },
       { id: "introduction", title: "Introduction", image: "books/agar/pages/page-007.jpg", body: [], page: 7, bookPage: 1, pageStart: 7, pageEnd: 8 },

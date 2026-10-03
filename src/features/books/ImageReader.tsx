@@ -9,8 +9,6 @@ interface ImageReaderProps {
   chapter: Chapter;
   chapterIndex: number;
   darkMode: boolean;
-  onPrev: () => void;
-  onNext: () => void;
   onGoToChapter: (index: number) => void;
   readingRef: React.RefObject<HTMLDivElement | null>;
 }
@@ -32,17 +30,26 @@ function getPageImagePath(template: string, pageNum: number): string {
 }
 
 /**
+ * Find which chapter a given page number belongs to.
+ */
+function getChapterForPage(chapters: Chapter[], pageNum: number): number {
+  const index = chapters.findIndex(ch =>
+    pageNum >= (ch.pageStart ?? ch.page ?? 1) &&
+    pageNum <= (ch.pageEnd ?? ch.page ?? 1)
+  );
+  return index === -1 ? 0 : index;
+}
+
+/**
  * Image-based reader component for books with scanned page images.
  * Features: pinch-to-zoom, double-tap zoom, drag-to-pan, swipe navigation,
- * thumbnail strip for quick page jumping, multi-page chapter support.
+ * thumbnail strip for quick page jumping, unified page navigation.
  */
 export function ImageReader({
   book,
   chapter,
   chapterIndex,
   darkMode,
-  onPrev,
-  onNext,
   onGoToChapter,
   readingRef,
 }: ImageReaderProps) {
@@ -58,24 +65,28 @@ export function ImageReader({
   const touchStartY = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const isFirst = chapterIndex === 0;
-  const isLast = chapterIndex === book.chapters.length - 1;
-
-  // Compute page range for this chapter
-  const pageStart = chapter.pageStart ?? chapter.page ?? 1;
-  const pageEnd = chapter.pageEnd ?? chapter.page ?? 1;
-  const totalPages = Math.max(1, pageEnd - pageStart + 1);
-  const currentPageNum = pageStart + pageIndex;
+  // Total pages in the book (unified across all chapters)
+  const totalPages = book.totalPages ?? 31;
+  const currentPageNum = pageIndex + 1;
   const currentImage = chapter.image
     ? getPageImagePath(chapter.image, currentPageNum)
     : "";
 
-  // Reset zoom and page index on chapter change
+  // When chapter changes (from TOC), jump to first page of that chapter
   useEffect(() => {
+    const targetPage = (chapter.pageStart ?? chapter.page ?? 1) - 1;
+    setPageIndex(targetPage);
     setScale(1);
     setOffset({ x: 0, y: 0 });
-    setPageIndex(0);
   }, [chapterIndex]);
+
+  // When page changes, check if chapter changed and update parent
+  useEffect(() => {
+    const newChapterIndex = getChapterForPage(book.chapters, currentPageNum);
+    if (newChapterIndex !== chapterIndex) {
+      onGoToChapter(newChapterIndex);
+    }
+  }, [currentPageNum, chapterIndex, book.chapters, onGoToChapter]);
 
   // Scroll to top on page change
   useEffect(() => {
@@ -118,22 +129,18 @@ export function ImageReader({
     setOffset({ x: 0, y: 0 });
   }, []);
 
-  // Page-level navigation: move within chapter first, then across chapters
+  // Page-level navigation: move through all pages sequentially
   const goToPrevPage = useCallback(() => {
     if (pageIndex > 0) {
       setPageIndex(pageIndex - 1);
-    } else {
-      onPrev();
     }
-  }, [pageIndex, onPrev]);
+  }, [pageIndex]);
 
   const goToNextPage = useCallback(() => {
     if (pageIndex < totalPages - 1) {
       setPageIndex(pageIndex + 1);
-    } else {
-      onNext();
     }
-  }, [pageIndex, totalPages, onNext]);
+  }, [pageIndex, totalPages]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -224,14 +231,10 @@ export function ImageReader({
           if (dx < 0) {
             if (pageIndex < totalPages - 1) {
               setPageIndex(pageIndex + 1);
-            } else if (!isLast) {
-              onNext();
             }
           } else if (dx > 0) {
             if (pageIndex > 0) {
               setPageIndex(pageIndex - 1);
-            } else if (!isFirst) {
-              onPrev();
             }
           }
         }
@@ -239,7 +242,7 @@ export function ImageReader({
       setIsDragging(false);
       lastTouchDist.current = 0;
     },
-    [scale, pageIndex, totalPages, isLast, isFirst, onNext, onPrev]
+    [scale, pageIndex, totalPages]
   );
 
   // Mouse drag for desktop panning
@@ -287,8 +290,7 @@ export function ImageReader({
             {/* Chapter header */}
             <div className="mb-6">
               <div className="text-gold text-xs font-semibold tracking-[0.2em] uppercase mb-2">
-                Chapter {chapterIndex + 1} of {book.chapters.length}
-                {totalPages > 1 && ` · Page ${pageIndex + 1} of ${totalPages}`}
+                Page {currentPageNum} of {totalPages}
               </div>
               <h1
                 className={cn(
@@ -367,7 +369,7 @@ export function ImageReader({
             <div className="mt-8 flex items-center justify-between">
               <button
                 onClick={goToPrevPage}
-                disabled={isFirst && pageIndex === 0}
+                disabled={pageIndex === 0}
                 className={cn(
                   "flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed transition-colors min-h-[44px] px-2",
                   darkMode ? "text-white/60 hover:text-gold" : "text-mute hover:text-gold"
@@ -378,11 +380,11 @@ export function ImageReader({
                 Previous
               </button>
               <span className={cn("text-sm", darkMode ? "text-white/40" : "text-mute")}>
-                Page {currentPageNum} of {book.chapters.reduce((sum, ch) => sum + Math.max(1, (ch.pageEnd ?? ch.page ?? 1) - (ch.pageStart ?? ch.page ?? 1) + 1), 0)}
+                Page {currentPageNum} of {totalPages}
               </span>
               <button
                 onClick={goToNextPage}
-                disabled={isLast && pageIndex === totalPages - 1}
+                disabled={pageIndex === totalPages - 1}
                 className={cn(
                   "flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed transition-colors min-h-[44px] px-2",
                   darkMode ? "text-white/60 hover:text-gold" : "text-mute hover:text-gold"
@@ -401,7 +403,7 @@ export function ImageReader({
       <div className="fixed bottom-0 left-0 right-0 z-20 bg-green-deep/95 backdrop-blur-md border-t border-white/10">
         <div className="flex gap-2 overflow-x-auto px-4 py-2 no-scrollbar">
           {Array.from({ length: totalPages }, (_, i) => {
-            const pageNum = pageStart + i;
+            const pageNum = i + 1;
             const imagePath = chapter.image
               ? getPageImagePath(chapter.image, pageNum)
               : "";
@@ -415,7 +417,7 @@ export function ImageReader({
                     ? "border-gold"
                     : "border-transparent opacity-60 hover:opacity-100"
                 )}
-                aria-label={`Go to page ${pageNum}: ${chapter.title}`}
+                aria-label={`Go to page ${pageNum}`}
                 aria-current={i === pageIndex ? "true" : undefined}
               >
                 <img
