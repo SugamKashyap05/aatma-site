@@ -9,7 +9,7 @@ interface SlideTabsProps {
 }
 
 export const SlideTabs = ({
-  tabs = ["Home", "About", "Story", "Milestones", "Members", "News", "Contact"],
+  tabs = ["Home", "About", "Story", "Milestones", "Members", "Press", "Contact"],
   className,
   onTabChange,
 }: SlideTabsProps) => {
