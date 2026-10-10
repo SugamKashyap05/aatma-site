@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { BookOpen } from "lucide-react";
 import { BookLibrary } from "./BookLibrary";
 import { BookReader } from "./BookReader";
 import type { Book } from "@/data/books";
-import { AmbientMotion } from "@/features/ambient/AmbientMotion";
+import PageLayout from "@/components/ui/PageLayout";
+import { useDevice } from "@/context/DeviceContext";
 
 export function BooksPage() {
   const [activeBook, setActiveBook] = useState<Book | null>(null);
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
+  const { tier } = useDevice();
 
   const handleRead = (b: Book) => {
     setActiveBook(b);
@@ -33,13 +36,24 @@ export function BooksPage() {
 
   // Library view
   return (
-    <section className="relative min-h-screen py-20 md:py-28 overflow-hidden" role="main" aria-label="Book library">
-      <AmbientMotion variant="fog" theme="green" layers={2} speed={50} />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(201,168,76,0.08)_0%,rgba(0,0,0,0)_55%)] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <BookLibrary onRead={handleRead} onDownload={handleDownload} downloadingId={downloadingId} />
+    <PageLayout
+      badge="Digital Library"
+      badgeIcon={<BookOpen size={14} />}
+      title={
+        <>
+          AATMA <span className="text-gold">Publications</span>
+        </>
+      }
+      subtitle="Research, history, and policy documents from the association's work."
+    >
+      <div className="py-20 md:py-28">
+        <BookLibrary
+          onRead={handleRead}
+          onDownload={handleDownload}
+          downloadingId={downloadingId}
+          showHeader={false}
+        />
       </div>
-    </section>
+    </PageLayout>
   );
 }
