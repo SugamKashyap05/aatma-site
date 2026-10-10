@@ -1,34 +1,16 @@
 import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import { ParallaxHero } from "@/features/hero/ParallaxHero";
-import { About } from "@/features/about/About";
-import { AgarStory } from "@/features/agarStory/AgarStory";
-import { Milestones } from "@/features/milestones/Milestones";
-import { Members } from "@/features/members/Members";
-import { NewsSection } from "@/features/news/News";
-import { Contact } from "@/features/contact/Contact";
-import { Footer } from "@/features/footer/Footer";
-import { Navbar } from "@/components/ui/Navbar";
+import { DeviceProvider } from "@/context/DeviceContext";
+import { HomePage } from "@/features/home/HomePage";
 import KineticGrid from "@/components/ui/kinetic-grid";
-import { DeviceProvider, useDevice } from "@/context/DeviceContext";
+import ScrollManager from "@/components/ui/ScrollManager";
 
 const BooksPage = lazy(() => import("@/features/books/BooksPage").then(m => ({ default: m.BooksPage })));
-
-function PostHeroShell() {
-  const { tier } = useDevice();
-  return (
-    <div className="relative z-10">
-      <Navbar deviceTier={tier} />
-      <About deviceTier={tier} />
-      <AgarStory deviceTier={tier} />
-      <Milestones deviceTier={tier} />
-      <Members deviceTier={tier} />
-      <NewsSection deviceTier={tier} />
-      <Contact deviceTier={tier} />
-      <Footer deviceTier={tier} />
-    </div>
-  );
-}
+const PressPage = lazy(() => import("@/features/press/PressPage").then(m => ({ default: m.PressPage })));
+const HistoryPage = lazy(() => import("@/features/history/HistoryPage").then(m => ({ default: m.HistoryPage })));
+const PolicyPage = lazy(() => import("@/features/policy/PolicyPage").then(m => ({ default: m.PolicyPage })));
+const ResearchPage = lazy(() => import("@/features/research/ResearchPage").then(m => ({ default: m.ResearchPage })));
+const NotFoundPage = lazy(() => import("@/features/notFound/NotFoundPage").then(m => ({ default: m.NotFoundPage })));
 
 function SpaRedirectHandler() {
   const navigate = useNavigate();
@@ -72,25 +54,21 @@ export default function App() {
     <BrowserRouter basename={basename}>
       <DeviceProvider>
         <SpaRedirectHandler />
+        <ScrollManager />
         <div className="relative flex flex-col min-h-screen bg-green-deep text-white antialiased overflow-x-hidden">
           {/* Fixed KineticGrid background — behind everything including hero */}
           <KineticGrid />
 
           {/* Route-specific content */}
           <Routes>
+            <Route path="/" element={<HomePage />} />
             <Route path="/books" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><BooksPage /></Suspense>} />
-            <Route
-              path="/"
-              element={
-                <>
-                  <ParallaxHero />
-                </>
-              }
-            />
+            <Route path="/press" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><PressPage /></Suspense>} />
+            <Route path="/history" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><HistoryPage /></Suspense>} />
+            <Route path="/policy" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><PolicyPage /></Suspense>} />
+            <Route path="/research" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><ResearchPage /></Suspense>} />
+            <Route path="*" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><NotFoundPage /></Suspense>} />
           </Routes>
-
-          {/* Persistent sections (below the fold) — KineticGrid shows through */}
-          <PostHeroShell />
         </div>
       </DeviceProvider>
     </BrowserRouter>
