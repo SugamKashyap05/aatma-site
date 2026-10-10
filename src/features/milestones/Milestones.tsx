@@ -4,8 +4,16 @@ import { Reveal } from "@/components/ui/reveal";
 import Timeline from "@/components/ui/timeline";
 import { MILESTONES } from "@/data/content";
 
-export function Milestones({ className, deviceTier }: { className?: ClassValue; deviceTier?: "mobile" | "tablet" | "desktop" }) {
+interface MilestonesProps {
+  className?: ClassValue;
+  deviceTier?: "mobile" | "tablet" | "desktop";
+  /** "home" shows default framing; "history" reframes as a summary timeline */
+  variant?: "home" | "history";
+}
+
+export function Milestones({ className, deviceTier, variant = "home" }: MilestonesProps) {
   const isMobile = deviceTier === "mobile";
+  const isHistory = variant === "history";
 
   const timelineItems = MILESTONES.map((m) => ({
     year: m.year,
@@ -17,7 +25,7 @@ export function Milestones({ className, deviceTier }: { className?: ClassValue; 
 
   return (
     <section
-      id="milestones"
+      id={isHistory ? "timeline-summary" : "milestones"}
       className={cn(
         "relative py-20 md:py-28 overflow-hidden scroll-mt-20 text-white",
         className
@@ -37,20 +45,29 @@ export function Milestones({ className, deviceTier }: { className?: ClassValue; 
         <div className="max-w-4xl mx-auto text-center mb-14 md:mb-18">
           <Reveal variant="fade" delay={0}>
             <span className="inline-block text-gold text-sm font-semibold tracking-[0.25em] uppercase bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-sm mb-4">
-              Our Milestones
+              {isHistory ? "Timeline at a Glance" : "Our Milestones"}
             </span>
           </Reveal>
           <Reveal variant="up" delay={100}>
             <h2 className="font-display font-bold text-2xl md:text-4xl lg:text-5xl leading-tight mb-6 drop-shadow-sm">
-              Five decades of{" "}
-              <span className="text-gold">progress</span>
+              {isHistory ? (
+                <>
+                  Key moments{" "}
+                  <span className="text-gold">summarised</span>
+                </>
+              ) : (
+                <>
+                  Five decades of{" "}
+                  <span className="text-gold">progress</span>
+                </>
+              )}
             </h2>
           </Reveal>
           <Reveal variant="fade" delay={200}>
             <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto">
-              From a meeting of traders in Hojai in 1976 to Assam's first legal
-              export in 2025 — key moments in the association's story and the
-              sector's transformation.
+              {isHistory
+                ? "A quick-reference timeline of AATMA's journey — from formation to export — complementing the detailed narrative above."
+                : "From a meeting of traders in Hojai in 1976 to Assam's first legal export in 2025 — key moments in the association's story and the sector's transformation."}
             </p>
           </Reveal>
         </div>

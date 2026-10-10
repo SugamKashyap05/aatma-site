@@ -31,3 +31,7 @@ scripts/.optimize.log
 
 # Phase 1 hero: regenerated variant logs
 scripts/.opt*.log
+
+# Ad-hoc test scratch files (root-level only)
+/*-test.cjs
+/test-report-*.md
