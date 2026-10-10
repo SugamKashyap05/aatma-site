@@ -41,7 +41,7 @@ export function Reveal({
   delay = 0,
   duration = 700,
   className,
-  threshold = 0.15,
+  threshold = 0.05,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);

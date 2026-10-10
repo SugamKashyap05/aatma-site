@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import { AATMA } from "@/data/content";
 import { cn, type ClassValue } from "@/lib/utils";
 import { AmbientMotion } from "@/features/ambient/AmbientMotion";
@@ -54,7 +55,7 @@ export function Footer({ className, deviceTier }: { className?: ClassValue; devi
             </p>
             <div className="flex gap-3 mt-4">
               <a
-                href="mailto:{AATMA.email}"
+                href={`mailto:${AATMA.email}`}
                 className="text-white/50 hover:text-gold transition-colors duration-300"
                 aria-label="Email AATMA"
               >
@@ -69,14 +70,14 @@ export function Footer({ className, deviceTier }: { className?: ClassValue; devi
               Quick Links
             </div>
             <nav className="space-y-3">
-              {["About AATMA", "Agar Story", "Milestones", "Members", "News", "Contact"].map((link) => (
-                <a
+              {["About", "Agar Story", "Milestones", "Members", "Press", "Contact"].map((link) => (
+                <Link
                   key={link}
-                  href={`#${link.toLowerCase().replace(" ", "-")}`}
+                  to={`/#${link.toLowerCase().replace(/\s+/g, "-")}`}
                   className="text-white/70 hover:text-gold text-sm transition-colors duration-300 block hover:underline underline-offset-4 decoration-white/20"
                 >
                   {link}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
