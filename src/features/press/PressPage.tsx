@@ -1,11 +1,13 @@
 import { Newspaper } from "lucide-react";
 import { PressSection } from "@/features/news/PressSection";
+import { PressDownloads } from "@/features/press/PressDownloads";
 import PageLayout from "@/components/ui/PageLayout";
 import { useDevice } from "@/context/DeviceContext";
 
 /**
  * Press page — dedicated route for press releases and media coverage.
- * Reuses the PressSection component within a page-level layout.
+ * Composes PressSection (press releases + media timeline) and PressDownloads
+ * within a PageLayout wrapper. Fully independent of the home page.
  */
 export function PressPage() {
   const { tier } = useDevice();
@@ -22,6 +24,7 @@ export function PressPage() {
       subtitle="Official communications, press releases, and media coverage of AATMA's work — from policy milestones to the sector's revival."
     >
       <PressSection deviceTier={tier} showHeader={false} />
+      <PressDownloads deviceTier={tier} showHeader={false} />
     </PageLayout>
   );
 }

@@ -5,13 +5,13 @@ import {
   Calendar,
   Download,
   FileText,
-  Landmark,
   Megaphone,
   Newspaper,
   ScrollText,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Reveal, Stagger } from "@/components/ui/reveal";
+import { MediaCoverageTimeline } from "@/features/news/MediaCoverageTimeline";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -27,13 +27,7 @@ interface PressRelease {
   featured?: boolean;
 }
 
-interface TimelineEvent {
-  year: string;
-  title: string;
-  description: string;
-  source: string;
-  type: "press" | "policy" | "media";
-}
+
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -63,40 +57,7 @@ const PRESS_RELEASES: PressRelease[] = [
   },
 ];
 
-const MEDIA_TIMELINE: TimelineEvent[] = [
-  {
-    year: "2023",
-    title: "AATMA Press Note on Wood Based Industries Rules 2022",
-    description:
-      "AATMA issues a press note expressing gratitude over the notification of Assam Wood Based Industries (Promotion and Development) Rules 2022, marking a new era for the agarwood trade in Assam.",
-    source: "AATMA Press Release",
-    type: "press",
-  },
-  {
-    year: "2023",
-    title: "Letter to Chief Minister — Acknowledging Trade Reforms",
-    description:
-      "AATMA writes to Hon'ble Chief Minister Dr Himanta Biswa Sarma, acknowledging the path-breaking reforms that revived the agarwood industry after 23 years of struggle.",
-    source: "Official Correspondence",
-    type: "policy",
-  },
-  {
-    year: "2024",
-    title: "CITES Export Quota Secured — Media Coverage",
-    description:
-      "India's successful trading proposal at CITES secures a formal export quota of 1,51,080 kg/year of agarwood chips & powder. National and regional media cover the landmark achievement.",
-    source: "National Media",
-    type: "media",
-  },
-  {
-    year: "2025",
-    title: "Assam's First Legal Agarwood Export — Press Coverage",
-    description:
-      "Assam ships its first legally approved commercial consignment: 100 kg of premium agarwood chips to Saudi Arabia and 12 kg to the UAE, worth a combined 2.35 crore.",
-    source: "National & Trade Press",
-    type: "media",
-  },
-];
+
 
 // ─── Press Release Card ──────────────────────────────────────────────────────
 
@@ -210,64 +171,7 @@ function PressReleaseCard({
   );
 }
 
-// ─── Timeline Item ────────────────────────────────────────────────────────────
 
-function TimelineItem({
-  event,
-  index,
-}: {
-  event: TimelineEvent;
-  index: number;
-}) {
-  const iconMap = {
-    press: Newspaper,
-    policy: Landmark,
-    media: Megaphone,
-  };
-  const Icon = iconMap[event.type];
-
-  return (
-    <Reveal variant="left" delay={index * 100}>
-      <div className="relative pl-8 md:pl-10 pb-8 md:pb-10 last:pb-0 group">
-        {/* Connector line */}
-        {index < MEDIA_TIMELINE.length - 1 && (
-          <div
-            className="absolute left-[11px] md:left-[13px] top-6 bottom-0 w-px bg-gradient-to-b from-gold/40 via-white/10 to-transparent"
-            aria-hidden="true"
-          />
-        )}
-
-        {/* Dot */}
-        <div
-          className={cn(
-            "absolute left-0 top-1.5 w-[22px] h-[22px] md:w-[26px] md:h-[26px] rounded-full border-2 flex items-center justify-center transition-all duration-300",
-            "bg-green-deep group-hover:bg-gold/10",
-            "border-gold/50 group-hover:border-gold",
-          )}
-        >
-          <Icon size={10} className="text-gold" />
-        </div>
-
-        {/* Content */}
-        <div className="card-hover bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-sm p-4 md:p-5 group-hover:border-gold/25">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-gold font-display font-bold text-sm tracking-wide">
-              {event.year}
-            </span>
-            <span className="text-white/20 text-xs">|</span>
-            <span className="text-white/50 text-xs">{event.source}</span>
-          </div>
-          <h4 className="font-display font-bold text-white text-sm md:text-base leading-snug group-hover:text-gold transition-colors duration-300">
-            {event.title}
-          </h4>
-          <p className="mt-2 text-white/60 text-sm leading-relaxed">
-            {event.description}
-          </p>
-        </div>
-      </div>
-    </Reveal>
-  );
-}
 
 // ─── Main Section ─────────────────────────────────────────────────────────────
 
@@ -349,21 +253,7 @@ export function PressSection({
 
         {/* Media Coverage Timeline */}
         <div className="max-w-3xl mx-auto">
-          <Reveal variant="fade" delay={0}>
-            <div className="flex items-center gap-3 mb-8">
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gold/30" />
-              <h3 className="font-display font-bold text-white text-base md:text-lg tracking-wide">
-                Media Coverage Timeline
-              </h3>
-              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gold/30" />
-            </div>
-          </Reveal>
-
-          <div className="mt-4">
-            {MEDIA_TIMELINE.map((event, i) => (
-              <TimelineItem key={event.year + event.title} event={event} index={i} />
-            ))}
-          </div>
+          <MediaCoverageTimeline />
         </div>
       </div>
     </section>
