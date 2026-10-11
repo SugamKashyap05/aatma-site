@@ -35,3 +35,14 @@ scripts/.opt*.log
 # Ad-hoc test scratch files (root-level only)
 /*-test.cjs
 /test-report-*.md
+
+# Local-only scratch: full-resolution generated source PNGs.
+# The optimised .avif/.webp/.png variants in public/research/ ARE committed.
+/_mai_generated/
+
+# Client source documents (scanned PDFs, internal correspondence).
+# Kept locally for reference; not published.
+/documents/
+
+# Transient verification scaffolding
+/_verify/
