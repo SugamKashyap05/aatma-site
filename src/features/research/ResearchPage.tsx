@@ -5,6 +5,15 @@ import { Link } from "react-router-dom";
 import PageLayout from "@/components/ui/PageLayout";
 import { Reveal } from "@/components/ui/reveal";
 import { BOOKS } from "@/data/books";
+import { MicrobialDataViz } from "@/features/research/MicrobialDataViz";
+import ResearchNav from "@/features/research/ResearchNav";
+import {
+  RhizosphereSection,
+  MicrobialWorkforceSection,
+  BiopesticideSection,
+  PGPRSection,
+  AAUPartnershipSection,
+} from "@/features/research/ResearchSections";
 
 interface ResearchCard {
   icon: React.ReactNode;
@@ -38,7 +47,9 @@ const RESEARCH_CARDS: ResearchCard[] = [
 ];
 
 /**
- * Research page — dedicated route for research publications and knowledge resources.
+ * Research page — dedicated route for research publications, soil science
+ * communication, and knowledge resources. Features sticky scroll-spy nav,
+ * responsive bento cards, SVG illustrations, and data visualization charts.
  */
 export function ResearchPage() {
   return (
@@ -54,7 +65,7 @@ export function ResearchPage() {
       heroPaddingBottom="pb-12"
     >
       {/* Research cards */}
-      <section className="relative pb-16 overflow-hidden">
+      <section className="relative pb-16 overflow-hidden" aria-label="Research publications overview">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <BentoGrid>
             {RESEARCH_CARDS.map((card, i) => (
@@ -70,63 +81,93 @@ export function ResearchPage() {
         </div>
       </section>
 
-      {/* Books section */}
-      <section className="relative pb-20 md:pb-28 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <Reveal variant="fade" delay={0}>
-            <div className="flex items-center gap-3 mb-8">
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gold/30" />
-              <h2 className="font-display font-bold text-white text-lg md:text-xl tracking-wide">
-                Digital Library
-              </h2>
-              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gold/30" />
-            </div>
-          </Reveal>
+      {/* Main content with sidebar nav */}
+      <div className="relative pb-20 md:pb-28">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex gap-10">
+            {/* Sidebar navigation */}
+            <ResearchNav />
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {BOOKS.map((book, i) => (
-              <Reveal key={book.id} variant="up" delay={i * 100}>
-                <div className="card-hover group relative h-full flex flex-col bg-white/[0.08] backdrop-blur-sm border border-white/15 rounded-sm overflow-hidden">
-                  <div className="p-5 md:p-6 flex flex-col flex-1">
-                    <div className="flex items-start gap-4">
-                      <div className="w-16 h-20 rounded-sm bg-gradient-to-br from-green-deep to-green-mid border border-gold/20 flex items-center justify-center flex-shrink-0">
-                        <BookOpen size={24} className="text-gold" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-display font-bold text-white text-base md:text-lg leading-snug group-hover:text-gold transition-colors duration-300">
-                          {book.title}
-                        </h3>
-                        <p className="text-white/50 text-xs mt-1">{book.author}</p>
-                        <p className="text-white/40 text-xs mt-0.5">
-                          {book.publishedYear} · {book.format}
-                        </p>
-                      </div>
-                    </div>
-                    <p className="mt-4 text-white/60 text-sm leading-relaxed flex-1">
-                      {book.description}
-                    </p>
-                    <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between">
-                      <span className="text-white/40 text-xs">
-                        {book.chapterCount} chapters · {book.readingTime} min read
-                      </span>
-                      <Link
-                        to="/books"
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-gold hover:text-gold-light transition-colors duration-300 group/link"
-                      >
-                        Read now
-                        <ArrowRight
-                          size={14}
-                          className="transition-transform duration-300 group-hover/link:translate-x-0.5"
-                        />
-                      </Link>
-                    </div>
+            {/* Content sections */}
+            <div className="flex-1 min-w-0">
+              {/* Books / Digital Library */}
+              <section className="relative pb-16 md:pb-20" aria-labelledby="digital-library-heading">
+                <Reveal variant="fade" delay={0}>
+                  <div className="flex items-center gap-3 mb-8" id="digital-library-heading">
+                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gold/30" aria-hidden="true" />
+                    <h2 className="font-display font-bold text-white text-lg md:text-xl tracking-wide">
+                      Digital Library
+                    </h2>
+                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gold/30" aria-hidden="true" />
                   </div>
+                </Reveal>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  {BOOKS.map((book, i) => (
+                    <Reveal key={book.id} variant="up" delay={i * 100}>
+                      <div className="card-hover group relative h-full flex flex-col bg-white/[0.08] backdrop-blur-sm border border-white/15 rounded-sm overflow-hidden">
+                        <div className="p-5 md:p-6 flex flex-col flex-1">
+                          <div className="flex items-start gap-4">
+                            <div className="w-16 h-20 rounded-sm bg-gradient-to-br from-green-deep to-green-mid border border-gold/20 flex items-center justify-center flex-shrink-0">
+                              <BookOpen size={24} className="text-gold" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="font-display font-bold text-white text-base md:text-lg leading-snug group-hover:text-gold transition-colors duration-300">
+                                {book.title}
+                              </h3>
+                              <p className="text-white/50 text-xs mt-1">{book.author}</p>
+                              <p className="text-white/40 text-xs mt-0.5">
+                                {book.publishedYear} · {book.format}
+                              </p>
+                            </div>
+                          </div>
+                          <p className="mt-4 text-white/60 text-sm leading-relaxed flex-1">
+                            {book.description}
+                          </p>
+                          <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between">
+                            <span className="text-white/40 text-xs">
+                              {book.chapterCount} chapters · {book.readingTime} min read
+                            </span>
+                            <Link
+                              to="/books"
+                              className="inline-flex items-center gap-1.5 text-sm font-medium text-gold hover:text-gold-light transition-colors duration-300 group/link"
+                            >
+                              Read now
+                              <ArrowRight
+                                size={14}
+                                className="transition-transform duration-300 group-hover/link:translate-x-0.5"
+                              />
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </Reveal>
+                  ))}
                 </div>
-              </Reveal>
-            ))}
+              </section>
+
+              {/* Science communication sections */}
+              <RhizosphereSection />
+
+              <div className="section-divider" aria-hidden="true" />
+              <MicrobialWorkforceSection />
+
+              <div className="section-divider" aria-hidden="true" />
+              <BiopesticideSection />
+
+              <div className="section-divider" aria-hidden="true" />
+              <PGPRSection />
+
+              <div className="section-divider" aria-hidden="true" />
+              <AAUPartnershipSection />
+
+              {/* Data visualization */}
+              <div className="section-divider" aria-hidden="true" />
+              <MicrobialDataViz />
+            </div>
           </div>
         </div>
-      </section>
+      </div>
     </PageLayout>
   );
 }
