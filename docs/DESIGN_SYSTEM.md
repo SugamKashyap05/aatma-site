@@ -1,0 +1,281 @@
+# Design System — AATMA
+
+> Source of truth for **how the site looks and feels**.
+> The tokens below are already implemented in `src/index.css` inside the
+> Tailwind v4 `@theme` block. This document formalises them so agents stop
+> inventing values. **If a value is not in this document, do not introduce it.**
+
+---
+
+## 1. Design Direction
+
+**Style:** Editorial heritage — institutional, archival, restrained.
+
+**Mood:** Authoritative and warm. A 50-year institution, not a startup. Deep
+forest greens carry weight; gold accents signal heritage and value; cream
+provides paper-like breathing room. Motion is atmospheric (fog, drifting
+clouds), never playful.
+
+**Design principles:**
+1. **Weight over decoration** — hierarchy comes from scale and spacing, not from adding visual noise.
+2. **Gold is an accent, never a surface** — it marks emphasis, borders, and focus; it is not a background fill.
+3. **Dark-first** — the site sits on `green-deep`; text is light. This is the default, not a theme variant.
+4. **Motion is optional** — every animation must be gated behind `prefers-reduced-motion`.
+5. **Tokens over literals** — colors and fonts come from the `@theme` block, never from inline hex.
+
+---
+
+## 2. Brand
+
+| Field | Value |
+|---|---|
+| Brand name | AATMA |
+| Full name | All Assam Agar Traders & Agaroil Manufacturers' Association |
+| Assamese name | সদৌ অসম আগৰ ব্যৱসায়ী আৰু আগৰতেল উৎপাদনকাৰী সংস্থা |
+| Logo | `public/favicon.svg`; inline SVG seal used in `About.tsx` |
+| Brand voice | Formal, factual, institutional. Third person. No marketing superlatives. |
+
+**Voice rules:**
+- State achievements as verifiable facts with dates ("In July 2019, the Assam Cabinet approved…"), not as claims ("we revolutionised…").
+- Never invent statistics, partnerships, or quotations.
+- Where a figure is illustrative rather than measured, label it explicitly.
+
+---
+
+## 3. Color Palette
+
+All values are defined in `src/index.css` under `@theme`. Use the Tailwind
+utility (e.g. `text-gold`, `bg-green-deep`), never the raw hex.
+
+| Token | Hex | Utility | Role |
+|---|---|---|---|
+| `--color-green-deep` | `#1a3c2a` | `green-deep` | Primary surface / page background |
+| `--color-green-mid` | `#2d5a3d` | `green-mid` | Raised surface, gradient mid-stop |
+| `--color-green-light` | `#3d7a54` | `green-light` | Accent surface, gradient end-stop |
+| `--color-gold` | `#c9a84c` | `gold` | **Primary accent** — headings emphasis, borders, focus, badges |
+| `--color-gold-light` | `#e0c878` | `gold-light` | Hover state for gold elements |
+| `--color-cream` | `#f5f0e8` | `cream` | Light text on dark, paper surfaces |
+| `--color-cream-dark` | `#e8e0d0` | `cream-dark` | Secondary light surface |
+| `--color-charcoal` | `#1a1a1a` | `charcoal` | Deepest neutral |
+| `--color-text` | `#2a2a2a` | `text` | Body text on light surfaces |
+| `--color-text-mute` | `#5a5a5a` | `text-mute` | Secondary text on light surfaces |
+| `--color-border` | `#d4c9b0` | `border` | Borders on light surfaces |
+
+**No success / warning / error tokens are defined.** The site has no forms with
+server responses. If a status color is ever needed, add a token here first.
+
+### Glass surfaces
+
+The site's card treatment is glassmorphism over `green-deep`. Three variants
+exist in the codebase — **use the standard variant unless you have a reason**:
+
+| Variant | Classes | Use |
+|---|---|---|
+| **Standard** (default) | `bg-white/[0.08] backdrop-blur-sm border border-white/15` | All cards |
+| Emphasised | `bg-white/[0.12] backdrop-blur-sm border border-white/15` | Stat strips, feature cards |
+| Subtle | `bg-white/[0.06] backdrop-blur-sm border border-white/10` | Background panels |
+
+---
+
+## 4. Typography
+
+Fonts are loaded via Google Fonts in `index.html` and declared in `@theme`.
+
+| Token | Family | Utility | Role |
+|---|---|---|---|
+| `--font-display` | Playfair Display, Georgia, serif | `font-display` | Headings, page titles |
+| `--font-sans` | Inter, system-ui, sans-serif | `font-sans` | UI, body, navigation |
+| `--font-assamese` | Noto Sans Assamese, serif | `font-assamese` | Assamese script content |
+| `--font-reading` | Crimson Pro, Georgia, serif | `font-reading` | Long-form book reading |
+| `--font-display-alt` | Cormorant Garamond, Georgia, serif | `font-display-alt` | Secondary display accents |
+
+### Scale
+
+| Element | Classes | Notes |
+|---|---|---|
+| Page H1 (via `PageLayout`) | `font-display font-bold text-3xl md:text-5xl lg:text-6xl leading-tight mb-4` | One per route |
+| Section H2 | `font-display font-bold text-2xl md:text-4xl` | Section headings |
+| Subsection H3 | `font-display font-bold text-white text-base` | Card and block headings |
+| Body | `text-white/80 text-base md:text-lg` | Default paragraph on dark |
+| Small / meta | `text-sm`, `text-xs` | Labels, captions, badges |
+
+**Hierarchy rule:** section headings must not all share one scale. Vary between
+H2 and H3 so the page reads as a document, not a list of equal blocks.
+
+---
+
+## 5. Spacing
+
+**Base unit:** 4 px (Tailwind default scale).
+
+**Scale in use:** `4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96` px
+→ `p-1 / p-2 / p-3 / p-4 / p-6 / p-8 / p-12 / p-16 / p-24`
+
+**Section rhythm:**
+- Section vertical padding: `py-16 md:py-24`
+- Container: `max-w-7xl mx-auto px-6`
+- Card internal padding: `p-6 md:p-8`
+- Grid gaps: `gap-4` (tight), `gap-6` (default), `gap-8` (loose)
+
+---
+
+## 6. Border Radius
+
+| Size | Class | Use |
+|---|---|---|
+| Small | `rounded-sm` | Badges, pills, tags |
+| Medium | `rounded-lg` | Buttons, inputs |
+| Large | `rounded-xl` | Cards, panels |
+| Pill | `rounded-full` | Avatars, icon buttons |
+
+---
+
+## 7. Shadows
+
+The site is dark-first; shadows are used sparingly and always gold-tinted on
+hover rather than neutral.
+
+| Size | Rule |
+|---|---|
+| Small | `shadow-sm` — resting cards |
+| Medium | `shadow-lg` — raised cards |
+| Hover | Gold-tinted glow on interactive cards: `hover:shadow-[0_0_30px_rgba(201,168,76,0.15)]` |
+
+---
+
+## 8. Buttons
+
+| Variant | Rule |
+|---|---|
+| Primary | Gold background (`bg-gold`), dark text, `rounded-lg`, `hover:bg-gold-light`, `hover:-translate-y-0.5` |
+| Secondary | Transparent with gold border (`border border-gold/40 text-gold`), `hover:bg-gold/10` |
+| Danger | **Not used** — no destructive actions exist in the product |
+| Disabled | `opacity-50 cursor-not-allowed`, no hover transform |
+| Loading | **Not used** — no async actions exist in the product |
+
+**Motion:** interactive elements lift on hover (`-translate-y-0.5`) and compress
+on press (`active:scale-95`). All such motion must be inside a
+`prefers-reduced-motion` guard.
+
+---
+
+## 9. Inputs
+
+Only one form exists (`Contact.tsx`).
+
+| State | Rule |
+|---|---|
+| Default | `bg-white/[0.08] border border-white/15 rounded-lg px-4 py-3 text-white placeholder:text-white/40` |
+| Focus | `focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40` |
+| Error | **Not implemented** — the form has no validation state |
+| Disabled | **Not implemented** |
+| Placeholder | `text-white/40` |
+
+**Open question:** the contact form has no visible error or success state. See `PRD.md` §11.
+
+---
+
+## 10. Cards
+
+Standard card recipe:
+
+```
+bg-white/[0.08] backdrop-blur-sm border border-white/15 rounded-xl p-6 md:p-8
+transition-all duration-300 hover:border-gold/40 hover:-translate-y-1
+```
+
+Implemented as `BentoCard` (`src/components/ui/bento-card.tsx`) and
+`BentoGrid` (`src/components/ui/bento-grid.tsx`). **Reuse these components**
+rather than rebuilding the recipe.
+
+---
+
+## 11. Navigation
+
+| Surface | Rule |
+|---|---|
+| Header | Fixed top, transparent over hero → `bg-green-deep/90 backdrop-blur` once scrolled. Two zones: 6 home-section links (left) + 5 page routes (right) + logo. Home-section links are hidden on non-home routes. |
+| Section nav | Sticky scroll-spy sidebar on `/policy` (`PolicyNav`) and `/research` (`ResearchNav`) |
+| Mobile navigation | Hamburger → slide-out drawer at `z-[60]` (above navbar `z-50`), `justify-start pt-20`, `overflow-y-auto` |
+| Zone labels | `text-white/60` minimum — `text-white/40` fails WCAG AA on `green-deep` |
+
+**Contrast requirement:** any text on `green-deep` must reach 4.5:1. Verified
+values: `text-white/60` ≈ 5.9:1 ✅ · `text-white/40` ≈ 3.3:1 ❌
+
+---
+
+## 12. States
+
+| State | Rule |
+|---|---|
+| Loading | Route-level `Suspense` fallback: `<div className="min-h-screen bg-green-deep" />` |
+| Empty | Render the section heading with a short explanatory line. Never render a bare blank container. |
+| Error | **Not implemented** — no runtime data fetching exists |
+| Success | **Not implemented** |
+| Disabled | `opacity-50`, no pointer events |
+
+---
+
+## 13. Icons
+
+| Field | Value |
+|---|---|
+| Library | `lucide-react` |
+| Default size | `w-6 h-6` for cards; `size={14}` inside badges |
+| Stroke width | `strokeWidth={1.5}` for card icons; default elsewhere |
+| Style | Outline |
+
+**Rule:** do not mix icon systems. Emoji used as icons must be replaced with
+Lucide equivalents — the codebase previously mixed both.
+
+Decorative SVG must carry `aria-hidden="true"` and `focusable="false"`.
+
+---
+
+## 14. Responsive Design
+
+**Device tiers** come from `DeviceContext` (`mobile` / `tablet` / `desktop`),
+not from ad-hoc media queries. Use `useDevice()`.
+
+| Tier | Width | Behaviour |
+|---|---|---|
+| Mobile | < 768 px | Drawer nav, no WebGL hills (gradient fallback), single-column grids, 1 ambient layer |
+| Tablet | 768–1023 px | Drawer or compact nav, reduced motion layers |
+| Desktop | ≥ 1024 px | Full nav, WebGL hills, multi-column grids |
+
+**Breakpoints:** Tailwind defaults — `sm:640` `md:768` `lg:1024` `xl:1280` `2xl:1536`
+
+**Minimum supported width:** 320 px. Verify no horizontal overflow at 320 px.
+
+---
+
+## 15. Accessibility
+
+Required on every change:
+
+- [ ] Use semantic HTML (`nav`, `main`, `section`, `h1`–`h3` in order).
+- [ ] Maintain sufficient contrast — 4.5:1 for body text, 3:1 for large text and UI borders.
+- [ ] Support keyboard navigation — every interactive element reachable by Tab.
+- [ ] Provide visible focus states — `focus-visible:outline-2 focus-visible:outline-gold`.
+- [ ] Provide accessible labels — `aria-label` on icon-only controls; `alt` on every `<img>`.
+- [ ] Do not rely on colour alone to convey meaning.
+- [ ] Gate all motion behind `prefers-reduced-motion`.
+- [ ] Touch targets at least 44×44 px.
+- [ ] Decorative SVG: `aria-hidden="true"` and `focusable="false"`.
+- [ ] Exactly one `<h1>` per route.
+
+---
+
+## 16. Known Token Violations
+
+These exist today and should be fixed when the file is next touched. They are
+**not** precedent — do not add more.
+
+| File | Violation |
+|---|---|
+| `src/components/ui/InteractiveTimeline.tsx` | 6 hardcoded era colours (`#8B7355`, `#C9A84C`, `#D4A843`, `#B8944A`, `#A67C3D`, `#C9A84C`) |
+| `src/components/ui/glsl-hills.tsx` | Inline `"#1a3c2a"` default for the hills colour |
+| `src/features/research/MicrobialDataViz.tsx` | Chart series colours as literals |
+
+**Total: 29 hardcoded hex values across `src/**/*.tsx`.** New code must use
+tokens. When fixing these, add the missing values to `@theme` first.
