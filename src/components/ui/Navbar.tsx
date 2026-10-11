@@ -1,11 +1,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AATMA } from "@/data/content";
 import { Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { useScrollY } from "@/hooks/useScrollY";
 import { useCurrentRoute } from "@/hooks/useCurrentRoute";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 const HOME_SECTIONS = [
   { id: "about", label: "About" },
@@ -18,7 +19,7 @@ const HOME_SECTIONS = [
 
 const PAGE_LINKS = [
   { path: "/books", label: "Books" },
-  { path: "/press", label: "Press" },
+  { path: "/press", label: "Press Releases" },
   { path: "/history", label: "History" },
   { path: "/policy", label: "Policy" },
   { path: "/research", label: "Research" },
@@ -32,6 +33,8 @@ export function Navbar() {
   const navigate = useNavigate();
   const activeSection = useActiveSection(SECTION_IDS);
   const currentPage = useCurrentRoute();
+  const reducedMotion = usePrefersReducedMotion();
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const isHome = location.pathname === "/" || location.pathname === "/aatma-site/";
   const scrollY = useScrollY();
@@ -67,38 +70,57 @@ export function Navbar() {
     return () => cancelAnimationFrame(rafId);
   }, [location, isHome]);
 
+  // Close menu on Escape key + lock body scroll when open
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   const desktopNav = (
     <div className="hidden md:flex items-center gap-6">
-      <nav aria-label="Home sections" className="flex items-center gap-1">
-        {HOME_SECTIONS.map((section) => {
-          const isActive = isHome && activeSection === section.id;
-          return (
-            <a
-              key={section.id}
-              href={`#${section.id}`}
-              onClick={(event) => {
-                event.preventDefault();
-                goToSection(section.id);
-              }}
-              className={cn(
-                "relative font-sans text-xs font-medium tracking-wide uppercase transition-colors duration-300 px-2 py-1 no-underline",
-                isActive
-                  ? "text-gold"
-                  : onHome
-                  ? "text-white/80 hover:text-gold"
-                  : "text-white/70 hover:text-gold"
-              )}
-            >
-              {section.label}
-              {isActive && (
-                <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-gold rounded-full" />
-              )}
-            </a>
-          );
-        })}
-      </nav>
+      {isHome && (
+        <nav aria-label="Home sections" className="flex items-center gap-1">
+          {HOME_SECTIONS.map((section) => {
+            const isActive = activeSection === section.id;
+            return (
+              <a
+                key={section.id}
+                href={`#${section.id}`}
+                onClick={(event) => {
+                  event.preventDefault();
+                  goToSection(section.id);
+                }}
+                className={cn(
+                  "relative font-sans text-xs font-medium tracking-wide uppercase transition-colors duration-300 px-2 py-1 no-underline",
+                  isActive
+                    ? "text-gold"
+                    : onHome
+                    ? "text-white/80 hover:text-gold"
+                    : "text-white/70 hover:text-gold"
+                )}
+              >
+                {section.label}
+                {isActive && (
+                  <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-gold rounded-full" />
+                )}
+              </a>
+            );
+          })}
+        </nav>
+      )}
 
-      <div className="w-px h-5 bg-white/20" aria-hidden="true" />
+      {isHome && <div className="w-px h-5 bg-white/20" aria-hidden="true" />}
 
       <nav aria-label="Pages" className="flex items-center gap-1">
         {PAGE_LINKS.map((page) => {
@@ -129,67 +151,90 @@ export function Navbar() {
 
   const mobileNav = (
     <button
-      className="md:hidden text-white p-2"
+      className="md:hidden flex items-center justify-center min-w-[44px] min-h-[44px] -mr-2 text-white rounded-lg transition-all duration-200 active:scale-95 active:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
       onClick={() => setOpen((o) => !o)}
-      aria-label="Toggle menu"
+      aria-label={open ? "Close menu" : "Open menu"}
       aria-expanded={open}
       aria-controls="mobileNavLinks"
     >
-      {open ? <X size={22} /> : <Menu size={22} />}
+      {open ? <X size={24} /> : <Menu size={24} />}
     </button>
   );
 
   const mobileMenu = open && (
     <div
-      className="fixed inset-0 z-40 bg-green-deep/95 backdrop-blur-md md:hidden"
+      className="fixed inset-0 z-[60] bg-green-deep/95 backdrop-blur-md md:hidden"
       onClick={() => setOpen(false)}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
     >
+      {/* Close button inside drawer */}
+      <button
+        className="absolute top-4 right-4 flex items-center justify-center min-w-[44px] min-h-[44px] text-white/70 hover:text-white rounded-lg transition-all duration-200 active:scale-95 active:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+        onClick={() => setOpen(false)}
+        aria-label="Close navigation menu"
+      >
+        <X size={24} />
+      </button>
+
       <div
         id="mobileNavLinks"
-        className="flex flex-col h-full items-center justify-center gap-5 text-center px-6"
+        ref={menuRef}
+        className={cn(
+          "flex flex-col h-full items-center justify-start gap-4 text-center px-6 pt-20 overflow-y-auto",
+          !reducedMotion && "mobile-drawer"
+        )}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="text-white/40 text-xs font-semibold tracking-[0.2em] uppercase mb-2">
-          Home
-        </div>
-        {HOME_SECTIONS.map((section) => (
-          <a
-            key={section.id}
-            href={`#${section.id}`}
-            onClick={(event) => {
-              event.preventDefault();
-              goToSection(section.id);
-              setOpen(false);
-            }}
-            className="font-display font-medium text-xl tracking-wide text-white hover:text-gold transition-colors duration-300 no-underline"
-          >
-            {section.label}
-          </a>
-        ))}
+        {isHome && (
+          <>
+            <div className="text-white/60 text-sm font-semibold tracking-[0.25em] uppercase mb-1">
+              Home
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              {HOME_SECTIONS.map((section) => (
+                <a
+                  key={section.id}
+                  href={`#${section.id}`}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    goToSection(section.id);
+                    setOpen(false);
+                  }}
+                  className="font-display font-medium text-xl tracking-wide text-white hover:text-gold transition-colors duration-200 no-underline min-h-[44px] flex items-center px-4 rounded-lg active:bg-white/10 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                >
+                  {section.label}
+                </a>
+              ))}
+            </div>
+            <div className="w-32 h-px bg-white/30 my-3" aria-hidden="true" />
+          </>
+        )}
 
-        <div className="w-16 h-px bg-white/20 my-2" />
-
-        <div className="text-white/40 text-xs font-semibold tracking-[0.2em] uppercase mb-2">
+        <div className="text-white/60 text-sm font-semibold tracking-[0.25em] uppercase mb-1">
           Pages
         </div>
-        {PAGE_LINKS.map((page) => {
-          const pageKey = page.path.slice(1);
-          const isActive = currentPage === pageKey;
-          return (
-            <Link
-              key={page.path}
-              to={page.path}
-              aria-current={isActive ? "page" : undefined}
-              onClick={() => setOpen(false)}
-              className={cn(
-                "font-display font-medium text-xl tracking-wide transition-colors duration-300",
-                isActive ? "text-gold" : "text-white hover:text-gold"
-              )}
-            >
-              {page.label}
-            </Link>
-          );
-        })}
+        <div className="flex flex-col items-center gap-1">
+          {PAGE_LINKS.map((page) => {
+            const pageKey = page.path.slice(1);
+            const isActive = currentPage === pageKey;
+            return (
+              <Link
+                key={page.path}
+                to={page.path}
+                aria-current={isActive ? "page" : undefined}
+                onClick={() => setOpen(false)}
+                className={cn(
+                  "font-display font-medium text-xl tracking-wide transition-colors duration-200 min-h-[44px] flex items-center px-4 rounded-lg active:bg-white/10 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold",
+                  isActive ? "text-gold" : "text-white hover:text-gold"
+                )}
+              >
+                {page.label}
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
@@ -202,10 +247,10 @@ export function Navbar() {
           "bg-green-deep/80 backdrop-blur-md shadow-lg"
         )}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 md:h-20">
           <Link
             to="/"
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-3 group min-h-[44px]"
             aria-label="AATMA home"
           >
             <svg
