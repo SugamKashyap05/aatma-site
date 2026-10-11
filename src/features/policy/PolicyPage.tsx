@@ -2,6 +2,13 @@ import { ScrollText, Scale, Landmark, ShieldCheck } from "lucide-react";
 import { BentoGrid } from "@/components/ui/bento-grid";
 import { BentoCard } from "@/components/ui/bento-card";
 import PageLayout from "@/components/ui/PageLayout";
+import PolicyNav from "@/features/policy/PolicyNav";
+import RulesSection from "@/features/policy/RulesSection";
+import { ComparisonTable } from "@/features/policy/ComparisonTable";
+import CitesCompliance from "@/features/policy/CitesCompliance";
+import RegistrationProcessWalkthrough from "@/features/policy/RegistrationProcessWalkthrough";
+import OnlinePlatformGuidance from "@/features/policy/OnlinePlatformGuidance";
+import { Reveal } from "@/components/ui/reveal";
 
 interface PolicyCard {
   icon: React.ReactNode;
@@ -51,7 +58,8 @@ export function PolicyPage() {
       subtitle="The regulatory journey of Assam's agarwood trade — from decades of informal commerce to a formal, legal, and internationally recognised framework."
       heroPaddingBottom="pb-12"
     >
-      <section className="relative pb-20 md:pb-28 overflow-hidden">
+      {/* Hero cards */}
+      <section className="relative pb-16 md:pb-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <BentoGrid>
             {POLICY_CARDS.map((card, i) => (
@@ -66,6 +74,46 @@ export function PolicyPage() {
           </BentoGrid>
         </div>
       </section>
+
+      {/* Main content with sidebar nav */}
+      <div className="relative pb-20 md:pb-28">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex gap-10">
+            {/* Sidebar navigation */}
+            <PolicyNav />
+
+            {/* Content sections */}
+            <div className="flex-1 min-w-0">
+              <RulesSection />
+
+              {/* Section 3: Comparison Table */}
+              <section id="comparison" className="relative pb-20 md:pb-28">
+                <Reveal variant="fade" delay={0}>
+                  <div className="mb-12 md:mb-16">
+                    <span className="inline-flex items-center gap-2 text-gold text-sm font-semibold tracking-[0.25em] uppercase bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 rounded-sm mb-4">
+                      <ScrollText size={14} />
+                      Section 3
+                    </span>
+                    <h2 className="font-display font-bold text-2xl md:text-4xl text-white mb-3">
+                      2000 vs 2022 <span className="text-gold">Comparison</span>
+                    </h2>
+                    <p className="text-white/70 text-base md:text-lg max-w-3xl">
+                      A comprehensive comparison of the Assam Wood Based Industries Rules 2000
+                      and 2022 across 25 key aspects — showing how the regulatory framework
+                      evolved from restrictive control to promotive development.
+                    </p>
+                  </div>
+                </Reveal>
+                <ComparisonTable />
+              </section>
+
+              <CitesCompliance />
+              <RegistrationProcessWalkthrough />
+              <OnlinePlatformGuidance />
+            </div>
+          </div>
+        </div>
+      </div>
     </PageLayout>
   );
 }
