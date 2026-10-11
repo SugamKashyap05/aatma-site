@@ -210,7 +210,7 @@ export const Timeline = ({
                 )}
                 {!activeItem.link && (
                   <a
-                    href="#contact"
+                    href="/#contact"
                     className="flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-light transition-colors text-left group"
                   >
                     Learn More

@@ -29,9 +29,24 @@ export function BooksPage() {
     setTimeout(() => setDownloadingId(null), 1500);
   };
 
-  // Reader view
+  // Reader view — wrapped in PageLayout for consistent chrome
   if (activeBook) {
-    return <BookReader book={activeBook} onBack={() => setActiveBook(null)} />;
+    return (
+      <PageLayout
+        badge="Reading"
+        badgeIcon={<BookOpen size={14} />}
+        title={
+          <>
+            {activeBook.title}
+          </>
+        }
+        subtitle={activeBook.author || undefined}
+      >
+        <div className="py-4 md:py-8">
+          <BookReader book={activeBook} onBack={() => setActiveBook(null)} />
+        </div>
+      </PageLayout>
+    );
   }
 
   // Library view
