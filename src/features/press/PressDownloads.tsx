@@ -1,4 +1,4 @@
-import { cn, type ClassValue } from "@/lib/utils";
+import { cn, assetUrl, type ClassValue } from "@/lib/utils";
 import { AmbientMotion } from "@/features/ambient/AmbientMotion";
 import {
   ArrowUpRight,
@@ -19,6 +19,10 @@ export interface DownloadItem {
   description: string;
   fileSize: string;
   pdfPath: string;
+  /** False when the PDF has not been produced yet — the card renders a
+   *  "not yet published" state instead of a link that resolves to the SPA
+   *  fallback HTML in dev and a hard 404 in production. */
+  available?: boolean;
   fileName: string;
   category: "press-kit" | "brand" | "fact-sheet" | "bio" | "other";
 }
@@ -33,6 +37,7 @@ const DEFAULT_DOWNLOADS: DownloadItem[] = [
       "Complete press kit with organisation overview, key milestones, leadership profiles, and high-resolution logos for media use.",
     fileSize: "2.4 MB",
     pdfPath: "/press/aatma-press-kit-2024.pdf",
+    available: false,
     fileName: "AATMA-Press-Kit-2024.pdf",
     category: "press-kit",
   },
@@ -43,6 +48,7 @@ const DEFAULT_DOWNLOADS: DownloadItem[] = [
       "Official brand identity guidelines including logo usage, colour palette, typography standards, and tone of voice for consistent representation.",
     fileSize: "1.8 MB",
     pdfPath: "/press/aatma-brand-guidelines.pdf",
+    available: false,
     fileName: "AATMA-Brand-Guidelines.pdf",
     category: "brand",
   },
@@ -53,6 +59,7 @@ const DEFAULT_DOWNLOADS: DownloadItem[] = [
       "Key statistics and facts about the agarwood industry in Assam — production figures, export data, economic impact, and regulatory framework.",
     fileSize: "890 KB",
     pdfPath: "/press/aatma-fact-sheet.pdf",
+    available: false,
     fileName: "AATMA-Fact-Sheet.pdf",
     category: "fact-sheet",
   },
@@ -63,6 +70,7 @@ const DEFAULT_DOWNLOADS: DownloadItem[] = [
       "Biographies of AATMA's executive committee members — their backgrounds, roles, and contributions to the agarwood industry revival.",
     fileSize: "1.2 MB",
     pdfPath: "/press/aatma-executive-bios.pdf",
+    available: false,
     fileName: "AATMA-Executive-Bios.pdf",
     category: "bio",
   },
@@ -118,19 +126,26 @@ function DownloadCard({
           {/* Meta + download */}
           <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between gap-4">
             <span className="text-white/40 text-xs">{item.fileSize}</span>
-            <a
-              href={item.pdfPath}
-              download={item.fileName}
-              className="inline-flex items-center gap-1.5 text-sm font-medium tracking-wide text-white/70 hover:text-gold transition-colors duration-300 group/dl"
-              aria-label={`Download ${item.name}`}
-            >
-              <Download size={14} />
-              <span>Download</span>
-              <ArrowUpRight
-                size={12}
-                className="transition-transform duration-300 group-hover/dl:translate-x-0.5 group-hover/dl:-translate-y-0.5"
-              />
-            </a>
+            {item.available ? (
+              <a
+                href={assetUrl(item.pdfPath)}
+                download={item.fileName}
+                className="inline-flex items-center gap-1.5 text-sm font-medium tracking-wide text-white/70 hover:text-gold transition-colors duration-300 group/dl"
+                aria-label={`Download ${item.name}`}
+              >
+                <Download size={14} />
+                <span>Download</span>
+                <ArrowUpRight
+                  size={12}
+                  className="transition-transform duration-300 group-hover/dl:translate-x-0.5 group-hover/dl:-translate-y-0.5"
+                />
+              </a>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 text-sm font-medium tracking-wide text-white/35">
+                <FileText size={14} />
+                <span>Not yet published</span>
+              </span>
+            )}
           </div>
         </div>
       </article>

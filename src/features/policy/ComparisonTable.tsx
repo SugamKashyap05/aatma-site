@@ -187,6 +187,10 @@ const COMPARISON_DATA: ComparisonRow[] = [
   },
 ];
 
+/** Number of comparison rows rendered. Exported so copy that references the
+ *  count cannot drift from the data. */
+export const COMPARISON_ROW_COUNT = COMPARISON_DATA.length;
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function TrendBadge({ trend }: { trend: ComparisonRow["trend"] }) {

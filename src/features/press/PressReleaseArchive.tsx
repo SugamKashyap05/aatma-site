@@ -1,4 +1,4 @@
-import { cn, type ClassValue } from "@/lib/utils";
+import { cn, assetUrl, type ClassValue } from "@/lib/utils";
 import {
   ArrowUpRight,
   Calendar,
@@ -19,6 +19,9 @@ export interface PressRelease {
   category: string;
   summary: string;
   pdfPath: string;
+  /** False when the PDF is not yet published — the card renders without a
+   *  download link rather than shipping a link that 404s. */
+  available?: boolean;
   fileName: string;
   size: string;
   featured?: boolean;
@@ -36,6 +39,7 @@ const DEFAULT_RELEASES: PressRelease[] = [
     summary:
       "AATMA expresses extreme gratitude over notification of Assam Wood Based Industries (Promotion and Development) Rules 2022 on 12th January 2023, thanking Hon'ble Chief Minister Dr Himanta Biswa Sarma for visionary leadership.",
     pdfPath: "/press/aatma-press-note-2023-01-14.pdf",
+    available: true,
     fileName: "AATMA-Press-Note-2023-01-14.pdf",
     size: "5.6 KB",
     featured: true,
@@ -49,6 +53,7 @@ const DEFAULT_RELEASES: PressRelease[] = [
     summary:
       "AATMA's letter to Shri Himanta Biswa Sarma ji acknowledging the path-breaking reforms and seeking consent to felicitate him at a public meeting in Hojai.",
     pdfPath: "/press/aatma-letter-to-hcm-2023-01-14.pdf",
+    available: true,
     fileName: "AATMA-Letter-to-HCM-2023-01-14.pdf",
     size: "5.7 KB",
   },
@@ -61,6 +66,7 @@ const DEFAULT_RELEASES: PressRelease[] = [
     summary:
       "India's successful trading proposal at CITES secures a formal export quota of 1,51,080 kg/year of agarwood chips & powder, marking a landmark achievement for the sector.",
     pdfPath: "/press/aatma-cites-quota-2024-03-02.pdf",
+    available: false,
     fileName: "AATMA-CITES-Quota-2024-03-02.pdf",
     size: "6.1 KB",
   },
@@ -73,6 +79,7 @@ const DEFAULT_RELEASES: PressRelease[] = [
     summary:
       "Assam ships its first legally approved commercial consignment: 100 kg of premium agarwood chips to Saudi Arabia and 12 kg to the UAE, worth a combined ₹2.35 crore.",
     pdfPath: "/press/aatma-first-export-2025-06-18.pdf",
+    available: false,
     fileName: "AATMA-First-Export-2025-06-18.pdf",
     size: "5.9 KB",
   },
@@ -149,24 +156,31 @@ function PressReleaseCard({
               <span className="text-white/20">|</span>
               <span>{release.size}</span>
             </div>
-            <a
-              href={release.pdfPath}
-              download={release.fileName}
-              className={cn(
-                "inline-flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors duration-300 group/dl",
-                release.featured
-                  ? "text-gold hover:text-gold-light"
-                  : "text-white/70 hover:text-gold"
-              )}
-              aria-label={`Download ${release.title}`}
-            >
-              <Download size={14} />
-              <span>Download</span>
-              <ArrowUpRight
-                size={12}
-                className="transition-transform duration-300 group-hover/dl:translate-x-0.5 group-hover/dl:-translate-y-0.5"
-              />
-            </a>
+            {release.available ? (
+              <a
+                href={assetUrl(release.pdfPath)}
+                download={release.fileName}
+                className={cn(
+                  "inline-flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors duration-300 group/dl",
+                  release.featured
+                    ? "text-gold hover:text-gold-light"
+                    : "text-white/70 hover:text-gold"
+                )}
+                aria-label={`Download ${release.title}`}
+              >
+                <Download size={14} />
+                <span>Download</span>
+                <ArrowUpRight
+                  size={12}
+                  className="transition-transform duration-300 group-hover/dl:translate-x-0.5 group-hover/dl:-translate-y-0.5"
+                />
+              </a>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 text-sm font-medium tracking-wide text-white/35">
+                <FileText size={14} />
+                <span>Not yet published</span>
+              </span>
+            )}
           </div>
         </div>
 

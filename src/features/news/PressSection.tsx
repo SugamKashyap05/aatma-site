@@ -1,4 +1,4 @@
-import { cn, type ClassValue } from "@/lib/utils";
+import { cn, assetUrl, type ClassValue } from "@/lib/utils";
 import { AmbientMotion } from "@/features/ambient/AmbientMotion";
 import {
   ArrowUpRight,
@@ -135,7 +135,7 @@ function PressReleaseCard({
               <span>{release.size}</span>
             </div>
             <a
-              href={release.pdfPath}
+              href={assetUrl(release.pdfPath)}
               download={release.fileName}
               className={cn(
                 "inline-flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors duration-300 group/dl",

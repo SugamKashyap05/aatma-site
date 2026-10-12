@@ -1,6 +1,7 @@
 import { History, Leaf, Ship, Users, Gavel, Award, ScrollText, ArrowRight, ArrowDown } from "lucide-react";
 import type { ElementType, ReactNode } from "react";
 import { InteractiveTimeline } from "@/components/ui/InteractiveTimeline";
+import { HistoryDataSection } from "@/features/history/HistoryDataSection";
 import PageLayout from "@/components/ui/PageLayout";
 import { Reveal } from "@/components/ui/reveal";
 import { useDevice } from "@/context/DeviceContext";
@@ -224,6 +225,13 @@ export function HistoryPage() {
           extraction in Sylhet to the landmark 2022 resolution. Click on any event to learn more.
         </Para>
         <InteractiveTimeline />
+
+        {/*
+          CH-12 — derived from this same timeline's event records (the `era:`
+          tag on each of the 20 events in InteractiveTimeline.tsx), so it sits
+          immediately after the timeline rather than elsewhere on the page.
+        */}
+        <HistoryDataSection />
       </HistorySection>
 
       {/* 4. AATMA Formation Story (1976) */}
@@ -281,6 +289,10 @@ export function HistoryPage() {
                 Region, held at <strong className="text-gold">Administrative Staff College, Guwahati</strong>.
                 Presided over by <strong className="text-gold">Dr. P.K. Hajra</strong>, Ex-Director
                 of the Botanical Survey of India.
+              </p>
+              <p className="text-white/50 text-xs italic">
+                The source document records this seminar as taking place on 22–23 November but
+                does not state a year. It is presented here without one rather than assumed.
               </p>
               <p>
                 The seminar was an eye-opener — entrepreneurs started commercial plantation in
@@ -381,6 +393,23 @@ export function HistoryPage() {
             src={assetUrl("history/critical-era.png")}
             alt="Modern agarwood trading market — contemporary commercial photography"
             caption="The modern agarwood trade that emerged from decades of struggle"
+          />
+
+          {/*
+            IMG-H08 regenerated 2026-10-12. The earlier version rendered a
+            legible but FABRICATED gazette — "No. 12 / 2024, Dated: 24 May 2024,
+            Department of Commerce" — none of which exists. The real instrument is
+            WBI Rules 2022, No. 20, eCF No. 237152, dated 12 January 2023.
+
+            The replacement is shot shallow so the paper carries no legible text
+            at all. Never re-add a caption or prompt that implies the visible
+            document is the actual gazette — the verified identifiers belong in
+            prose (see the 2022 EventCard above and /policy), not in the image.
+          */}
+          <ImageSection
+            src={assetUrl("history/victory-2023.jpg")}
+            alt="Agarwood and a vial of golden agar oil on a desk beside an out-of-focus official notification, evoking the 2023 gazette notification"
+            caption="The 2023 notification — agarwood and agar oil, the trade's two products, at last legally recognised"
           />
         </div>
       </HistorySection>

@@ -22,6 +22,10 @@ html {
   --font-assamese: "Noto Sans Assamese", serif;
   --font-reading: "Crimson Pro", Georgia, serif;
   --font-display-alt: "Cormorant Garamond", Georgia, serif;
+
+  /* Gold-tinted glow for interactive card hovers. Token-backed so the recipe
+     never hard-codes the gold hex — see docs/DESIGN_SYSTEM.md §7. */
+  --shadow-glow-gold: 0 0 30px color-mix(in srgb, var(--color-gold) 15%, transparent);
 }
 @media (prefers-reduced-motion: reduce) {
   *

@@ -50,6 +50,12 @@ const NAV_ITEMS: NavItem[] = [
     icon: <BarChart3 className="w-4 h-4" />,
     subsection: "Section 6",
   },
+  {
+    id: "trade-data",
+    label: "Trade Data",
+    icon: <BarChart3 className="w-4 h-4" />,
+    subsection: "Section 7",
+  },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────

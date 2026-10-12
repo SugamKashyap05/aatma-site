@@ -34,7 +34,9 @@ export function Navbar() {
   const activeSection = useActiveSection(SECTION_IDS);
   const currentPage = useCurrentRoute();
   const reducedMotion = usePrefersReducedMotion();
-  const menuRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const hasOpenedRef = useRef(false);
 
   const isHome = location.pathname === "/" || location.pathname === "/aatma-site/";
   const scrollY = useScrollY();
@@ -86,6 +88,41 @@ export function Navbar() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  // Focus management for the modal drawer.
+  // The drawer declares aria-modal="true", so focus must actually move into it
+  // when it opens and return to the trigger when it closes. Without this, a
+  // keyboard user stayed focused behind the overlay and Tab could reach the
+  // page underneath — the modal contract was claimed but not honoured.
+  useEffect(() => {
+    if (open) {
+      hasOpenedRef.current = true;
+      closeButtonRef.current?.focus();
+      return;
+    }
+    // Only restore focus if the drawer has actually been open, so this does not
+    // steal focus on first mount.
+    if (hasOpenedRef.current) {
+      triggerRef.current?.focus();
+    }
+  }, [open]);
+
+  // Close the drawer when the viewport grows past the `md` breakpoint.
+  // The drawer is hidden by CSS at md (`md:hidden`), but `open` stayed true, so
+  // the body scroll lock persisted and resizing back below md re-opened it.
+  //
+  // Uses a `resize` listener rather than `matchMedia`'s `change` event: both work
+  // in a real browser, but matchMedia change events are not dispatched under
+  // Chrome DevTools Protocol viewport emulation, which makes the behaviour
+  // untestable in automation. A resize listener fires in both.
+  useEffect(() => {
+    const MD_MIN_WIDTH = 768;
+    const onResize = () => {
+      if (window.innerWidth >= MD_MIN_WIDTH) setOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   const desktopNav = (
     <div className="hidden md:flex items-center gap-6">
@@ -151,6 +188,7 @@ export function Navbar() {
 
   const mobileNav = (
     <button
+      ref={triggerRef}
       className="md:hidden flex items-center justify-center min-w-[44px] min-h-[44px] -mr-2 text-white rounded-lg transition-all duration-200 active:scale-95 active:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
       onClick={() => setOpen((o) => !o)}
       aria-label={open ? "Close menu" : "Open menu"}
@@ -171,6 +209,7 @@ export function Navbar() {
     >
       {/* Close button inside drawer */}
       <button
+        ref={closeButtonRef}
         className="absolute top-4 right-4 flex items-center justify-center min-w-[44px] min-h-[44px] text-white/70 hover:text-white rounded-lg transition-all duration-200 active:scale-95 active:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
         onClick={() => setOpen(false)}
         aria-label="Close navigation menu"
@@ -180,7 +219,6 @@ export function Navbar() {
 
       <div
         id="mobileNavLinks"
-        ref={menuRef}
         className={cn(
           "flex flex-col h-full items-center justify-start gap-4 text-center px-6 pt-20 overflow-y-auto",
           !reducedMotion && "mobile-drawer"

@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
-import { Reveal } from "@/components/ui/reveal";
 import { useDevice } from "@/context/DeviceContext";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -181,17 +180,25 @@ export const DEFAULT_EVENTS: TimelineEvent[] = [
 
 // ─── Helper: group events by era ────────────────────────────────────────────
 
+/**
+ * Group events by era, preserving each event's index in the original array.
+ *
+ * The index is captured here rather than recovered later with
+ * `events.indexOf(event)`: indexOf relies on object identity, so it silently
+ * returns -1 for a structurally-equal-but-distinct object, and it is O(n) per
+ * lookup. Carrying the index makes the lookup exact and constant-time.
+ */
 function groupEventsByEra(events: TimelineEvent[], eras: Era[]) {
-  const grouped = new Map<string, TimelineEvent[]>();
+  const grouped = new Map<string, { event: TimelineEvent; index: number }[]>();
   for (const era of eras) {
     grouped.set(era.id, []);
   }
-  for (const event of events) {
+  events.forEach((event, index) => {
     const list = grouped.get(event.era);
     if (list) {
-      list.push(event);
+      list.push({ event, index });
     }
-  }
+  });
   return grouped;
 }
 
@@ -249,16 +256,16 @@ function DesktopTimeline({
     el.scrollBy({ left: direction === "left" ? -amount : amount, behavior: "smooth" });
   };
 
-  // Build a flat list of items: era headers interleaved with events
+  // Build a flat list of items: era headers interleaved with events.
+  // The event's own index is carried through from the grouping step, so the
+  // desktop view and the mobile view agree on which event is which.
   const items: Array<{ type: "era"; era: Era } | { type: "event"; event: TimelineEvent; index: number }> = [];
-  let eventIndex = 0;
   for (const era of eras) {
     const eraEvents = grouped.get(era.id) || [];
     if (eraEvents.length === 0) continue;
     items.push({ type: "era", era });
-    for (const event of eraEvents) {
-      items.push({ type: "event", event, index: eventIndex });
-      eventIndex++;
+    for (const { event, index } of eraEvents) {
+      items.push({ type: "event", event, index });
     }
   }
 
@@ -292,15 +299,19 @@ function DesktopTimeline({
         <ChevronRight size={20} />
       </button>
 
-      {/* Timeline track */}
+      {/* Timeline track.
+          role="listbox" + role="option" is the correct pairing for a set of
+          selectable items. The previous role="list" + role="listitem" made
+          aria-selected invalid — it is not permitted on listitem, so assistive
+          tech silently ignored it and the active event was never announced. */}
       <div
         ref={scrollRef}
         className="overflow-x-auto no-scrollbar scroll-smooth px-12 py-8"
-        role="list"
+        role="listbox"
         aria-label="Timeline of agar trade history"
       >
         <div className="flex items-start gap-0 min-w-max">
-          {items.map((item, i) => {
+          {items.map((item) => {
             if (item.type === "era") {
               return (
                 <div key={`era-${item.era.id}`} className="flex flex-col items-center shrink-0 mx-4">
@@ -328,7 +339,7 @@ function DesktopTimeline({
               <button
                 key={`event-${index}`}
                 data-index={index}
-                role="listitem"
+                role="option"
                 aria-selected={isActive}
                 aria-label={`${event.year}: ${event.title}`}
                 onClick={() => onSelect(index)}
@@ -442,7 +453,7 @@ function MobileTimeline({
   const grouped = useMemo(() => groupEventsByEra(events, eras), [events, eras]);
 
   return (
-    <div className="relative pl-6" role="list" aria-label="Timeline of agar trade history">
+    <div className="relative pl-6" role="listbox" aria-label="Timeline of agar trade history">
       {/* Vertical line */}
       <div className="absolute left-[9px] top-0 bottom-0 w-px bg-white/10" />
 
@@ -470,8 +481,7 @@ function MobileTimeline({
             </div>
 
             {/* Events in this era */}
-            {eraEvents.map((event) => {
-              const globalIndex = events.indexOf(event);
+            {eraEvents.map(({ event, index: globalIndex }) => {
               const isActive = globalIndex === activeIndex;
 
               return (
@@ -536,7 +546,14 @@ export function InteractiveTimeline({
 }: InteractiveTimelineProps) {
   const { tier } = useDevice();
   const isMobile = tier === "mobile";
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [rawActiveIndex, setActiveIndex] = useState(0);
+
+  // Clamp during render rather than in an effect. `events` is a prop, so a
+  // caller can swap in a shorter list and leave the selection pointing past the
+  // end; deriving the clamped value here means the detail panel never indexes
+  // out of bounds, without the extra render pass (and cascading-render warning)
+  // that a setState-in-effect clamp would cause.
+  const activeIndex = Math.min(rawActiveIndex, Math.max(0, events.length - 1));
 
   // Keyboard navigation
   const handleKeyDown = useCallback(

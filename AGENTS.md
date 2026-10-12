@@ -42,7 +42,7 @@ propose the correction — do not silently deviate.
 - **Reuse existing components and utilities** — `PageLayout`, `BentoCard`, `BentoGrid`, `Reveal`, `cn`. Do not rebuild what exists.
 - **Follow the design system** — tokens only, never raw hex.
 - **Follow the architecture** — features in `features/`, primitives in `components/ui/`.
-- **Follow the coding conventions** in `CODE_STYLE.md`.
+- **Follow the coding conventions** in `docs/CODE_STYLE.md`.
 - **Do not invent business requirements.** Content about AATMA must trace to the client documents in `documents/` or to `src/data/content.ts`.
 - **Do not invent facts, statistics, partnerships, or quotations.**
 - **Never present sample or placeholder data as real.** Label it.
@@ -135,7 +135,7 @@ that was never done. The following rules exist because of that:
 
 A task is complete only when:
 
-- [ ] Requirements in `PRD.md` (or the task description) are satisfied.
+- [ ] Requirements in `docs/PRD.md` (or the task description) are satisfied.
 - [ ] `npm run build` succeeds.
 - [ ] `npm run lint` succeeds.
 - [ ] The affected route renders correctly in a browser.

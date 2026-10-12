@@ -17,6 +17,46 @@ import {
   Info,
 } from "lucide-react";
 
+// ─── Provenance ───────────────────────────────────────────────────────────────
+
+/**
+ * Every claim in this section is tagged with where it came from, and the tag is
+ * rendered visibly rather than kept as an internal field.
+ *
+ * The distinction matters: "Inferred from Doc 2" means a human read AATMA's
+ * source document and reconstructed a plausible procedure from it. It is NOT a
+ * transcription of the document, and it is not an official publication of the
+ * Assam Forest Department. Presenting inference as documented fact is the exact
+ * failure this tagging exists to prevent.
+ */
+const PROVENANCE_STYLES: Record<string, string> = {
+  // Reconstructed from AATMA's documents — amber, because it needs scrutiny.
+  "Inferred from Doc 2":
+    "bg-amber-400/10 text-amber-300/90 border-amber-400/25",
+  "Reconstructed — not in source docs":
+    "bg-amber-400/10 text-amber-300/90 border-amber-400/25",
+  // Not documented anywhere — neutral, because it claims nothing.
+  "General Guidance":
+    "bg-white/10 text-white/70 border-white/20",
+  "Gap noted":
+    "bg-white/10 text-white/70 border-white/20",
+  // Transcribed from a named source — green, because it is verifiable.
+  "Source: Doc 2":
+    "bg-emerald-400/10 text-emerald-300/90 border-emerald-400/25",
+};
+
+function ProvenanceTag({ source }: { source: string }) {
+  const style =
+    PROVENANCE_STYLES[source] ?? "bg-white/10 text-white/70 border-white/20";
+  return (
+    <span
+      className={`inline-block text-[10px] font-medium px-1.5 py-0.5 rounded border ${style}`}
+    >
+      {source}
+    </span>
+  );
+}
+
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const PLATFORM_OVERVIEW = {
@@ -190,10 +230,37 @@ export function OnlinePlatformGuidance() {
               Online Platform <span className="text-gold">Guidance</span>
             </h2>
             <p className="text-white/70 text-base md:text-lg max-w-3xl">
-              Complete guidance for using the end-to-end online platform — from account creation
-              to certificate download. Source-backed items are tagged; inferred items are marked
-              as general guidance.
+              Guidance for using the end-to-end online platform — from account creation
+              to certificate download. Every item is tagged with its provenance; see the
+              notice below before relying on any procedure described here.
             </p>
+          </div>
+        </Reveal>
+
+        {/* Provenance notice — this section reconstructs procedures, it does not
+            reproduce an official publication. Say so before the reader acts on it. */}
+        <Reveal variant="fade" delay={50}>
+          <div
+            role="note"
+            className="mb-12 bg-amber-400/[0.07] border border-amber-400/30 rounded-lg p-5 flex items-start gap-4"
+          >
+            <AlertTriangle className="w-5 h-5 text-amber-300 shrink-0 mt-0.5" />
+            <div className="space-y-2">
+              <p className="text-amber-200 text-sm font-semibold">
+                Reconstructed guidance — verify before relying on it
+              </p>
+              <p className="text-white/70 text-sm leading-relaxed">
+                This section is compiled from AATMA&rsquo;s source documents and general
+                regulatory practice. It is <strong className="text-white/90">not an official
+                publication of the Assam Forest Department</strong>, and the platform&rsquo;s
+                actual screens, field names, fees, and timelines may differ. Items marked{" "}
+                <ProvenanceTag source="Inferred from Doc 2" /> were reconstructed from AATMA&rsquo;s
+                correspondence rather than transcribed from it; items marked{" "}
+                <ProvenanceTag source="General Guidance" /> reflect standard practice for
+                comparable registration systems and are not documented for this platform at all.
+                Confirm current procedures with the Forest Department before acting.
+              </p>
+            </div>
           </div>
         </Reveal>
 
@@ -207,7 +274,7 @@ export function OnlinePlatformGuidance() {
             <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6">
               <p className="text-white/70 text-sm leading-relaxed mb-4">
                 {PLATFORM_OVERVIEW.what}{" "}
-                <span className="text-white/40 text-xs">[Source: Doc 2]</span>
+                <ProvenanceTag source="Source: Doc 2" />
               </p>
               <div className="grid sm:grid-cols-3 gap-4 mb-6">
                 {PLATFORM_OVERVIEW.objectives.map((obj, i) => (
@@ -253,7 +320,7 @@ export function OnlinePlatformGuidance() {
             <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6">
               <div className="space-y-4 text-sm text-white/70 leading-relaxed">
                 <p>
-                  <strong className="text-white/90">[General Guidance]</strong> The platform requires
+                  <ProvenanceTag source="General Guidance" /> The platform requires
                   user account creation before submitting any application. Standard practice for
                   Indian government e-governance platforms:
                 </p>
@@ -291,7 +358,9 @@ export function OnlinePlatformGuidance() {
                         <div>
                           <p className="text-white/80 text-sm font-medium">{item.name}</p>
                           <p className="text-white/50 text-xs">{item.desc}</p>
-                          <p className="text-white/30 text-xs mt-0.5">[{item.source}]</p>
+                          <div className="mt-1.5">
+                            <ProvenanceTag source={item.source} />
+                          </div>
                         </div>
                       </li>
                     ))}
@@ -322,7 +391,9 @@ export function OnlinePlatformGuidance() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-3 text-white/30 text-xs italic">[General Guidance]</p>
+                <div className="mt-3">
+                  <ProvenanceTag source="Reconstructed — not in source docs" />
+                </div>
               </div>
               <div className="bg-white/[0.04] border border-white/10 rounded-lg p-5">
                 <h4 className="font-display font-bold text-white text-sm mb-3">
@@ -336,7 +407,9 @@ export function OnlinePlatformGuidance() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-3 text-white/30 text-xs italic">[General Guidance]</p>
+                <div className="mt-3">
+                  <ProvenanceTag source="Reconstructed — not in source docs" />
+                </div>
               </div>
             </div>
           </div>
@@ -364,7 +437,8 @@ export function OnlinePlatformGuidance() {
                 ))}
               </div>
               <p className="mt-4 text-white/50 text-xs">
-                Expected timelines: Initial scrutiny 7-15 working days; Committee review 15-30 working days; Total 30-45 working days. [General Guidance]
+                Expected timelines: Initial scrutiny 7-15 working days; Committee review 15-30 working days; Total 30-45 working days.{" "}
+                <ProvenanceTag source="General Guidance" />
               </p>
             </div>
           </div>
@@ -380,10 +454,10 @@ export function OnlinePlatformGuidance() {
             <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6">
               <p className="text-white/70 text-sm mb-3">
                 Fee amounts are not specified in source documents.{" "}
-                <span className="text-white/40 text-xs">[Gap noted]</span>
+                <ProvenanceTag source="Gap noted" />
               </p>
               <p className="text-white/60 text-sm mb-3">
-                [General Guidance] Standard payment methods: Net Banking, Debit/Credit Card, UPI, NEFT/RTGS.
+                <ProvenanceTag source="General Guidance" /> Standard payment methods: Net Banking, Debit/Credit Card, UPI, NEFT/RTGS.
                 Small and Micro units may be eligible for fee concessions.
               </p>
             </div>
@@ -399,7 +473,7 @@ export function OnlinePlatformGuidance() {
             </h3>
             <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6">
               <p className="text-white/70 text-sm mb-3">
-                [General Guidance] Approved certificates are available as PDF downloads with digital
+                <ProvenanceTag source="General Guidance" /> Approved certificates are available as PDF downloads with digital
                 signature and QR code verification. Certificates can be verified by anyone on the
                 platform's verification page.
               </p>
@@ -416,7 +490,7 @@ export function OnlinePlatformGuidance() {
             </h3>
             <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6">
               <p className="text-white/70 text-sm mb-3">
-                [General Guidance] Registered units may be required to submit:
+                <ProvenanceTag source="General Guidance" /> Registered units may be required to submit:
               </p>
               <ul className="space-y-2 text-white/60 text-sm">
                 <li className="flex items-start gap-2">
@@ -433,7 +507,8 @@ export function OnlinePlatformGuidance() {
                 </li>
               </ul>
               <p className="mt-4 text-white/50 text-xs">
-                Renewal reminders sent 90/60/30 days before expiry. Registration valid for 5 years. [Source: Doc 2]
+                Renewal reminders sent 90/60/30 days before expiry. Registration valid for 5 years.{" "}
+                <ProvenanceTag source="Source: Doc 2" />
               </p>
             </div>
           </div>
@@ -506,7 +581,8 @@ export function OnlinePlatformGuidance() {
                 </p>
                 <p>
                   <strong className="text-white/90">Registration Committee</strong> — At the level of
-                  Conservator of Forests concerned [Source: Doc 2]
+                  Conservator of Forests concerned{" "}
+                  <ProvenanceTag source="Source: Doc 2" />
                 </p>
                 <p>
                   <strong className="text-white/90">AATMA</strong> — Agar Wood Traders and Manufacturers

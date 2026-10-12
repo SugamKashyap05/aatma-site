@@ -218,6 +218,12 @@ function DonutChart() {
     return { ...seg, d, pct: ((seg.value / total) * 100).toFixed(1) };
   });
 
+  // Derive the accessible summary from the same `slices` the chart renders, so
+  // the label can never drift from the data. A hard-coded string here
+  // previously announced 73.5% / 14.9% / 2.4% while the chart showed
+  // 97.7% / 2.0% / 0.3% — wrong data read aloud to screen-reader users.
+  const ariaSummary = slices.map((s) => `${s.label} ${s.pct}%`).join(", ");
+
   return (
     // Layout note: the parent card sits in a 2-of-5 grid column, so it is
     // NARROWEST at the largest viewports. A viewport-keyed `sm:flex-row` is
@@ -226,7 +232,7 @@ function DonutChart() {
     // column and pushed the legend 67px past the card edge. Stack vertically
     // whenever the column is narrow: below `sm` and again from `lg` upward.
     <div className="flex flex-col sm:flex-row lg:flex-col items-center gap-6">
-      <svg viewBox="0 0 220 220" className="w-48 h-48 max-w-full flex-shrink-0" role="img" aria-label="Donut chart showing proportional breakdown of total microbial population: Bacteria 73.5%, Actinomycetes 14.9%, Fungi 2.4%.">
+      <svg viewBox="0 0 220 220" className="w-48 h-48 max-w-full flex-shrink-0" role="img" aria-label={`Donut chart showing proportional breakdown of total microbial population: ${ariaSummary}. Sample data, for illustration only.`}>
         {slices.map((s) => (
           <path key={s.label} d={s.d} fill={s.color} opacity={0.85} className="transition-opacity hover:opacity-100" />
         ))}
@@ -265,7 +271,7 @@ function DonutChart() {
  */
 export function MicrobialDataViz() {
   return (
-    <section className="relative pb-20 md:pb-28 overflow-hidden" aria-labelledby="microbial-viz-heading">
+    <section id="data-visualization" className="relative pb-20 md:pb-28 overflow-hidden scroll-mt-24" aria-labelledby="microbial-viz-heading">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section heading */}
         <div className="text-center mb-12">

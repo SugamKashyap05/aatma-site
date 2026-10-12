@@ -4,10 +4,11 @@ import { BentoCard } from "@/components/ui/bento-card";
 import PageLayout from "@/components/ui/PageLayout";
 import PolicyNav from "@/features/policy/PolicyNav";
 import RulesSection from "@/features/policy/RulesSection";
-import { ComparisonTable } from "@/features/policy/ComparisonTable";
+import { ComparisonTable, COMPARISON_ROW_COUNT } from "@/features/policy/ComparisonTable";
 import CitesCompliance from "@/features/policy/CitesCompliance";
 import RegistrationProcessWalkthrough from "@/features/policy/RegistrationProcessWalkthrough";
 import OnlinePlatformGuidance from "@/features/policy/OnlinePlatformGuidance";
+import { PolicyDataSection } from "@/features/policy/PolicyDataSection";
 import { Reveal } from "@/components/ui/reveal";
 
 interface PolicyCard {
@@ -99,7 +100,7 @@ export function PolicyPage() {
                     </h2>
                     <p className="text-white/70 text-base md:text-lg max-w-3xl">
                       A comprehensive comparison of the Assam Wood Based Industries Rules 2000
-                      and 2022 across 25 key aspects — showing how the regulatory framework
+                      and 2022 across {COMPARISON_ROW_COUNT} key aspects — showing how the regulatory framework
                       evolved from restrictive control to promotive development.
                     </p>
                   </div>
@@ -110,6 +111,7 @@ export function PolicyPage() {
               <CitesCompliance />
               <RegistrationProcessWalkthrough />
               <OnlinePlatformGuidance />
+              <PolicyDataSection />
             </div>
           </div>
         </div>

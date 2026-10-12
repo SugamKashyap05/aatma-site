@@ -7,6 +7,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { BOOKS } from "@/data/books";
 import { MicrobialDataViz } from "@/features/research/MicrobialDataViz";
 import ResearchNav from "@/features/research/ResearchNav";
+import { TradeDataSection } from "@/features/research/TradeDataSection";
 import {
   RhizosphereSection,
   MicrobialWorkforceSection,
@@ -93,9 +94,9 @@ export function ResearchPage() {
               {/* Books / Digital Library */}
               <section className="relative pb-16 md:pb-20" aria-labelledby="digital-library-heading">
                 <Reveal variant="fade" delay={0}>
-                  <div className="flex items-center gap-3 mb-8" id="digital-library-heading">
+                  <div className="flex items-center gap-3 mb-8">
                     <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gold/30" aria-hidden="true" />
-                    <h2 className="font-display font-bold text-white text-lg md:text-xl tracking-wide">
+                    <h2 id="digital-library-heading" className="font-display font-bold text-white text-lg md:text-xl tracking-wide">
                       Digital Library
                     </h2>
                     <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gold/30" aria-hidden="true" />
@@ -164,6 +165,10 @@ export function ResearchPage() {
               {/* Data visualization */}
               <div className="section-divider" aria-hidden="true" />
               <MicrobialDataViz />
+
+              {/* Trade & conservation data — CH-01, CH-02, CH-03, CH-05, CH-07 */}
+              <div className="section-divider" aria-hidden="true" />
+              <TradeDataSection />
             </div>
           </div>
         </div>

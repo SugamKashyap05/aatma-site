@@ -139,7 +139,7 @@ hover rather than neutral.
 |---|---|
 | Small | `shadow-sm` — resting cards |
 | Medium | `shadow-lg` — raised cards |
-| Hover | Gold-tinted glow on interactive cards: `hover:shadow-[0_0_30px_rgba(201,168,76,0.15)]` |
+| Hover | Gold-tinted glow on interactive cards: `hover:shadow-glow-gold` (token-backed — see `@theme`). Never hard-code `rgba(201,168,76,…)`. |
 
 ---
 

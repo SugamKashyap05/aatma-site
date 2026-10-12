@@ -265,7 +265,7 @@ const WALKTHROUGH_STEPS: WalkthroughStep[] = [
  */
 export function RegistrationProcessWalkthrough() {
   return (
-    <section className="relative pb-20 md:pb-28">
+    <section id="registration" className="relative pb-20 md:pb-28 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section header */}
         <Reveal variant="fade" delay={0}>

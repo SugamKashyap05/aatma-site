@@ -166,7 +166,9 @@ tests/
 
 ### Flow 7 — Verify the deep-link recovery
 **Steps:**
-1. In a production build, request `/history` directly (simulating the Pages 404 path)
+1. In a production build served under the deploy base, request `/aatma-site/history`
+   directly (simulating the Pages 404 path). **Dev base is `/`; CI base is `/aatma-site/`.**
+   Testing the bare `/history` path passes while production is broken.
 
 **Expected result:** `404.html` redirects into the SPA and the history route renders.
 
