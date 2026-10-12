@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img"
+     aria-labelledby="svg10-title svg10-desc">
+  <title id="svg10-title">Governance of AATMA at its founding in 1976</title>
+  <desc id="svg10-desc">An organisation diagram showing the three founding
+    office-bearers of AATMA in 1976 — Hazi Anfar Ali as President, Hazi Samsul
+    Islam as Secretary, and Binay Kumar Paul — with the association registered
+    as Reg. No. 664 of 1978–79, and the 2000 reorganisation that brought in
+    Ataur Rahman as President and Jamal Uddin Choudhury as General Secretary.</desc>
+
+  <defs>
+    <linearGradient id="svg10-line" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="var(--color-gold)" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="var(--color-gold)" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ── 1976 founding block ──────────────────────────────────────────── -->
+  <g transform="translate(60,40)" font-family="var(--font-sans)">
+    <text fill="var(--color-gold)" font-size="10" letter-spacing="0.16em" font-weight="700">
+      FOUNDED 1976 — HOJAI
+    </text>
+    <text y="18" fill="var(--color-cream)" fill-opacity="0.5" font-size="9.5">
+      Formed at the initiative of prominent Hojai traders, 1975–76
+    </text>
+
+    <!-- The association node -->
+    <g transform="translate(0,44)">
+      <rect x="0" y="0" width="300" height="54" rx="5"
+            fill="var(--color-gold)" fill-opacity="0.10"
+            stroke="var(--color-gold)" stroke-opacity="0.45" stroke-width="1.2"/>
+      <text x="150" y="23" text-anchor="middle" fill="var(--color-gold-light)"
+            font-size="12.5" font-weight="700">All Assam Agar Traders &amp;</text>
+      <text x="150" y="40" text-anchor="middle" fill="var(--color-gold-light)"
+            font-size="12.5" font-weight="700">Agaroil Manufacturers' Association</text>
+    </g>
+
+    <!-- Connector lines down to the three founders -->
+    <g stroke="url(#svg10-line)" stroke-width="1.4" fill="none">
+      <path d="M 150 98 L 150 118 L 80 118 L 80 138"/>
+      <path d="M 150 98 L 150 138"/>
+      <path d="M 150 98 L 150 118 L 220 118 L 220 138"/>
+    </g>
+
+    <!-- Three founding office-bearers -->
+    <g transform="translate(0,138)">
+      <!-- President -->
+      <g transform="translate(0,0)">
+        <rect x="0" y="0" width="150" height="86" rx="5"
+              fill="var(--color-green-mid)" fill-opacity="0.20"
+              stroke="var(--color-green-light)" stroke-opacity="0.3"/>
+        <circle cx="75" cy="24" r="11" fill="var(--color-gold)" fill-opacity="0.25"
+                stroke="var(--color-gold)" stroke-opacity="0.5"/>
+        <text x="75" y="48" text-anchor="middle" fill="var(--color-gold)" font-size="8.5"
+              letter-spacing="0.1em">PRESIDENT</text>
+        <text x="75" y="66" text-anchor="middle" fill="var(--color-cream)" font-size="11.5"
+              font-weight="600">(L) Hazi</text>
+        <text x="75" y="79" text-anchor="middle" fill="var(--color-cream)" font-size="11.5"
+              font-weight="600">Anfar Ali</text>
+      </g>
+      <!-- Secretary -->
+      <g transform="translate(75,0)">
+        <rect x="0" y="0" width="150" height="86" rx="5"
+              fill="var(--color-green-mid)" fill-opacity="0.20"
+              stroke="var(--color-green-light)" stroke-opacity="0.3"/>
+        <circle cx="75" cy="24" r="11" fill="var(--color-gold)" fill-opacity="0.25"
+                stroke="var(--color-gold)" stroke-opacity="0.5"/>
+        <text x="75" y="48" text-anchor="middle" fill="var(--color-gold)" font-size="8.5"
+              letter-spacing="0.1em">SECRETARY</text>
+        <text x="75" y="66" text-anchor="middle" fill="var(--color-cream)" font-size="11.5"
+              font-weight="600">(L) Hazi</text>
+        <text x="75" y="79" text-anchor="middle" fill="var(--color-cream)" font-size="11.5"
+              font-weight="600">Samsul Islam</text>
+      </g>
+      <!-- Third founder -->
+      <g transform="translate(150,0)">
+        <rect x="0" y="0" width="150" height="86" rx="5"
+              fill="var(--color-green-mid)" fill-opacity="0.20"
+              stroke="var(--color-green-light)" stroke-opacity="0.3"/>
+        <circle cx="75" cy="24" r="11" fill="var(--color-green-light)" fill-opacity="0.3"
+                stroke="var(--color-green-light)" stroke-opacity="0.5"/>
+        <text x="75" y="48" text-anchor="middle" fill="var(--color-green-light)" font-size="8.5"
+              letter-spacing="0.1em">OFFICE-BEARER</text>
+        <text x="75" y="66" text-anchor="middle" fill="var(--color-cream)" font-size="11.5"
+              font-weight="600">(L) Binay</text>
+        <text x="75" y="79" text-anchor="middle" fill="var(--color-cream)" font-size="11.5"
+              font-weight="600">Kumar Paul</text>
+      </g>
+    </g>
+
+    <!-- Registration note -->
+    <g transform="translate(0,244)">
+      <rect x="0" y="0" width="300" height="30" rx="4"
+            fill="var(--color-green-deep)" fill-opacity="0.5"
+            stroke="var(--color-cream)" stroke-opacity="0.14"/>
+      <text x="150" y="19" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.65"
+            font-size="9.5">Registered — Reg. No. 664 of 1978–79</text>
+    </g>
+  </g>
+
+  <!-- ── Divider ──────────────────────────────────────────────────────── -->
+  <line x1="410" y1="52" x2="410" y2="330" stroke="var(--color-cream)" stroke-opacity="0.12"
+        stroke-dasharray="3 5"/>
+
+  <!-- ── 2000 reorganisation block ────────────────────────────────────── -->
+  <g transform="translate(450,40)" font-family="var(--font-sans)">
+    <text fill="var(--color-green-light)" font-size="10" letter-spacing="0.16em" font-weight="700">
+      REORGANISED 2000 — HOJAI
+    </text>
+    <text y="18" fill="var(--color-cream)" fill-opacity="0.5" font-size="9.5">
+      General Meeting, with an Executive body
+    </text>
+
+    <!-- Reorganised association node -->
+    <g transform="translate(0,44)">
+      <rect x="0" y="0" width="290" height="54" rx="5"
+            fill="var(--color-green-light)" fill-opacity="0.10"
+            stroke="var(--color-green-light)" stroke-opacity="0.4" stroke-width="1.2"/>
+      <text x="145" y="23" text-anchor="middle" fill="var(--color-green-light)"
+            font-size="12" font-weight="700">AATMA</text>
+      <text x="145" y="40" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.6"
+            font-size="9.5">Executive body constituted</text>
+    </g>
+
+    <g stroke="url(#svg10-line)" stroke-width="1.4" fill="none">
+      <path d="M 145 98 L 145 118 L 72 118 L 72 138"/>
+      <path d="M 145 98 L 145 118 L 218 118 L 218 138"/>
+    </g>
+
+    <!-- President and General Secretary from 2000 -->
+    <g transform="translate(0,138)">
+      <g transform="translate(0,0)">
+        <rect x="0" y="0" width="140" height="86" rx="5"
+              fill="var(--color-green-mid)" fill-opacity="0.20"
+              stroke="var(--color-green-light)" stroke-opacity="0.3"/>
+        <circle cx="70" cy="24" r="11" fill="var(--color-gold)" fill-opacity="0.25"
+                stroke="var(--color-gold)" stroke-opacity="0.5"/>
+        <text x="70" y="48" text-anchor="middle" fill="var(--color-gold)" font-size="8.5"
+              letter-spacing="0.1em">PRESIDENT</text>
+        <text x="70" y="68" text-anchor="middle" fill="var(--color-cream)" font-size="12"
+              font-weight="600">Ataur Rahman</text>
+      </g>
+      <g transform="translate(150,0)">
+        <rect x="0" y="0" width="140" height="86" rx="5"
+              fill="var(--color-green-mid)" fill-opacity="0.20"
+              stroke="var(--color-green-light)" stroke-opacity="0.3"/>
+        <circle cx="70" cy="24" r="11" fill="var(--color-gold)" fill-opacity="0.25"
+                stroke="var(--color-gold)" stroke-opacity="0.5"/>
+        <text x="70" y="48" text-anchor="middle" fill="var(--color-gold)" font-size="8.5"
+              letter-spacing="0.1em">GEN. SECRETARY</text>
+        <text x="70" y="68" text-anchor="middle" fill="var(--color-cream)" font-size="11"
+              font-weight="600">(L) Jamal Uddin</text>
+        <text x="70" y="81" text-anchor="middle" fill="var(--color-cream)" font-size="11"
+              font-weight="600">Choudhury</text>
+      </g>
+    </g>
+
+    <!-- Continuity note -->
+    <g transform="translate(0,244)">
+      <rect x="0" y="0" width="290" height="30" rx="4"
+            fill="var(--color-green-deep)" fill-opacity="0.5"
+            stroke="var(--color-cream)" stroke-opacity="0.14"/>
+      <text x="145" y="19" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.65"
+            font-size="9.5">Ataur Rahman still President at the 2023 press meet</text>
+    </g>
+  </g>
+
+  <!-- ── Legend note on (L) ───────────────────────────────────────────── -->
+  <g transform="translate(60,356)" font-family="var(--font-sans)">
+    <text fill="var(--color-cream)" fill-opacity="0.4" font-size="8.5" letter-spacing="0.04em">
+      (L) denotes deceased — the client's own convention in the source document
+    </text>
+  </g>
+
+  <!-- ── Source ───────────────────────────────────────────────────────── -->
+  <text x="60" y="380" font-family="var(--font-sans)" font-size="8.5"
+        fill="var(--color-cream)" fill-opacity="0.4" letter-spacing="0.04em">
+    Source: A Brief History of Agar (client document), §5 — Formation of AATMA. Continuity confirmed by the Hindustan Times, 17 Jan 2023.
+  </text>
+</svg>
