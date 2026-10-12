@@ -19,9 +19,21 @@ export interface MediaCoverageItem {
   publication: string;
   articleTitle: string;
   date: string;
-  url: string;
   outletType: MediaOutletType;
   excerpt?: string;
+  /**
+   * A real article permalink, or "" when none is available.
+   *
+   * PROVENANCE RULE — never set this to a publication's homepage. An earlier
+   * revision of this list linked eight bare homepages behind specific
+   * headlines, which read as citations but were unverifiable. When `url` is
+   * empty the card renders a printed citation instead of a link, which is
+   * honest about what we can prove.
+   *
+   * Every entry below is traced to a client-supplied clipping transcribed
+   * verbatim in docs/CLIENT_MATERIAL_RESEARCH.md (§1, §2, §3).
+   */
+  url: string;
 }
 
 interface MediaCoverageTimelineProps {
@@ -31,95 +43,46 @@ interface MediaCoverageTimelineProps {
 }
 
 // ─── Default data ─────────────────────────────────────────────────────────────
+//
+// Three verified clippings, transcribed verbatim from the client's WhatsApp
+// images. See docs/CLIENT_MATERIAL_RESEARCH.md §1–§3.
+//
+// A fourth image (item 5, 76 KB) is likely a further clipping but was never
+// read — vision analysis returned HTTP 429 on every attempt. It is NOT
+// represented here: guessing at its contents would defeat the purpose of a
+// verified list.
 
 const DEFAULT_MEDIA_COVERAGE: MediaCoverageItem[] = [
   {
-    id: "coverage-2023-01",
+    id: "coverage-2023-ht",
+    publication: "Hindustan Times",
+    articleTitle:
+      "AATMA thanks CM Sarma for restoring glory of agar wood-based industries in Assam",
+    date: "17 January 2023",
+    outletType: "national",
+    url: "",
+    excerpt:
+      "Reports the press conference held at the AATMA head office in Hojai on 14 January 2023. Members thanked the State government for repealing the WBI Rules 2000 and notifying the WBI (Promotion and Development) Rules 2022 on 12 January 2023, recognising agarwood units as Secondary Wood Based Industries.",
+  },
+  {
+    id: "coverage-2023-at-winds",
     publication: "The Assam Tribune",
-    articleTitle:
-      "AATMA welcomes Assam Wood Based Industries Rules, calls it a new era for agarwood trade",
-    date: "15 January 2023",
-    url: "https://assamtribune.com",
+    articleTitle: "Wood-based industries: Winds of change soon",
+    date: "2 August 2023",
     outletType: "regional",
+    url: "",
     excerpt:
-      "Traders' association expresses gratitude over the notification of the Assam Wood Based Industries (Promotion and Development) Rules 2022.",
+      "PJ Vijayakar traces the sector's contraction following the Supreme Court's Godavarman order, from 588 primary wood-based industries to roughly 206 today, and sets out the 62-day and 74-day registration limits under the 2022 Rules.",
   },
   {
-    id: "coverage-2023-02",
-    publication: "EastMojo",
-    articleTitle:
-      "Assam's agarwood industry gets a boost with new state rules",
-    date: "22 January 2023",
-    url: "https://www.eastmojo.com",
-    outletType: "digital",
-    excerpt:
-      "The new rules open the door for legal cultivation and trade of agarwood, ending decades of regulatory uncertainty.",
-  },
-  {
-    id: "coverage-2024-01",
-    publication: "The Hindu BusinessLine",
-    articleTitle:
-      "India secures CITES export quota for agarwood after sustained advocacy",
-    date: "12 March 2024",
-    url: "https://www.thehindubusinessline.com",
-    outletType: "national",
-    excerpt:
-      "A quota of 1,51,080 kg/year of agarwood chips and powder has been secured for 2024–2027, a landmark for Indian producers.",
-  },
-  {
-    id: "coverage-2024-02",
-    publication: "Echo of Assam",
-    articleTitle:
-      "Assam agarwood goes global: CITES quota a game-changer for Hojai traders",
-    date: "18 March 2024",
-    url: "https://echoofassam.com",
+    id: "coverage-2024-at-prospects",
+    publication: "The Assam Tribune",
+    articleTitle: "Prospects of Assam's agarwood industry",
+    date: "18 November 2024",
     outletType: "regional",
+    url: "",
     excerpt:
-      "Local traders and manufacturers celebrate the international recognition of agarwood as a sustainable trade commodity.",
-  },
-  {
-    id: "coverage-2025-01",
-    publication: "The Economic Times",
-    articleTitle:
-      "Assam ships first legal agarwood consignment worth Rs 2.35 crore",
-    date: "8 September 2025",
-    url: "https://economictimes.indiatimes.com",
-    outletType: "national",
-    excerpt:
-      "100 kg of premium agarwood chips dispatched to Saudi Arabia and 12 kg to the UAE in Assam's first legally approved commercial export.",
-  },
-  {
-    id: "coverage-2025-02",
-    publication: "The Hindu",
-    articleTitle:
-      "Agarwood exports: How Assam's 'liquid gold' is reaching global markets",
-    date: "22 September 2025",
-    url: "https://www.thehindu.com",
-    outletType: "national",
-    excerpt:
-      "AATMA members reflect on the 50-year journey from unregulated trade to formal international exports.",
-  },
-  {
-    id: "coverage-2026-01",
-    publication: "PIB Delhi",
-    articleTitle:
-      "Agarwood Export Promotion Cell constituted to boost India's agarwood trade",
-    date: "5 May 2026",
-    url: "https://pib.gov.in",
-    outletType: "national",
-    excerpt:
-      "The Ministry of Commerce brings together CHEMEXCIL and SHEFEXIL in a dedicated cell to promote agarwood exports.",
-  },
-  {
-    id: "coverage-2026-02",
-    publication: "Krishi Jagran",
-    articleTitle:
-      "From Hojai to the world: The agarwood revolution in Assam",
-    date: "15 June 2026",
-    url: "https://krishijagran.com",
-    outletType: "trade",
-    excerpt:
-      "AATMA's 50-year advocacy journey has transformed agarwood from a banned forest produce to a legally traded global commodity.",
+      "PJ Vijayakar reports on the Non-detriment Findings study submitted by the Botanical Survey of India in February 2024: Assam holds over 82% of India's agarwood trees, 11.437 crore outside forest areas, with Golaghat district alone at 4.5 crore.",
   },
 ];
 
@@ -195,25 +158,32 @@ function CoverageCard({
             </p>
           )}
 
-          {/* Link */}
+          {/* Source — link only when a real permalink exists */}
           <div className="mt-4 pt-3 border-t border-white/10">
-            <a
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                "inline-flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors duration-300",
-                "text-gold hover:text-gold-light",
-              )}
-              aria-label={`Read article: ${item.articleTitle}`}
-            >
-              <ExternalLink size={13} />
-              <span>Read Article</span>
-              <ArrowUpRight
-                size={12}
-                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </a>
+            {item.url ? (
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  "inline-flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors duration-300",
+                  "text-gold hover:text-gold-light",
+                )}
+                aria-label={`Read article: ${item.articleTitle}`}
+              >
+                <ExternalLink size={13} />
+                <span>Read Article</span>
+                <ArrowUpRight
+                  size={12}
+                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
+            ) : (
+              <p className="text-white/40 text-xs leading-relaxed">
+                {item.publication}, {item.date} — supplied by AATMA. No online
+                archive copy available.
+              </p>
+            )}
           </div>
         </article>
       </div>
