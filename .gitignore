@@ -46,3 +46,7 @@ scripts/.opt*.log
 
 # Transient verification scaffolding
 /_verify/
+
+# Hermes Agent session state — model routing, provider config, local
+# scratch paths and kanban WIP rules. Tooling-local, never published.
+.hermes/
