@@ -1,4 +1,4 @@
-import { Sprout, Users, Shield, Rocket, Handshake } from "lucide-react";
+import { Sprout, Users, Shield, Rocket, Handshake, TreePine } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { assetUrl } from "@/lib/utils";
 
@@ -264,6 +264,116 @@ export function AAUPartnershipSection() {
           <em>The Agarwood Trade of Assam</em> did not contain partnership specifics, but such 
           collaborations are vital for turning laboratory discoveries into real-world farming improvements.
         </Callout>
+      </div>
+    </section>
+  );
+}
+
+export function ConservationHabitatSection() {
+  return (
+    <section id="conservation-habitat" className="relative pb-16 md:pb-20 scroll-mt-24">
+      <SectionHeading
+        id="conservation-heading"
+        icon={<Sprout size={14} />}
+        title="Conservation & Habitat"
+      >
+        Protecting the wild Aquilaria
+      </SectionHeading>
+
+      <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="space-y-4 text-white/70 text-base leading-relaxed">
+          <p>
+            Wild <strong className="text-white/90">Aquilaria</strong> trees are the genetic reservoir of the 
+            agarwood trade. Found in the forests of Assam and the Northeast, these trees are increasingly 
+            threatened by habitat loss and over-harvesting.
+          </p>
+          <p>
+            Conservation of wild populations is essential — not only for biodiversity but for the long-term 
+            sustainability of the agarwood industry. Plantation cultivation reduces pressure on wild stands, 
+            but natural habitats must be preserved.
+          </p>
+          <Callout>
+            <em>The Agarwood Trade of Assam</em> did not contain specific conservation data, but the 
+            importance of habitat protection is widely recognized in the sector.
+          </Callout>
+        </div>
+        <SectionFigure
+          slug="conservation-habitat"
+          alt="Wild Aquilaria tree in Assam forest habitat — natural light, documentary style"
+        />
+      </div>
+    </section>
+  );
+}
+
+export function MarketPerfumerySection() {
+  return (
+    <section id="market-perfumery" className="relative pb-16 md:pb-20 scroll-mt-24">
+      <SectionHeading
+        id="perfumery-heading"
+        icon={<Rocket size={14} />}
+        title="Agar Oil & Perfumery"
+      >
+        The golden essence
+      </SectionHeading>
+
+      <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="space-y-4 text-white/70 text-base leading-relaxed">
+          <p>
+            <strong className="text-white/90">Agar oil</strong> — the essential oil distilled from agarwood — 
+            is one of the most prized raw materials in perfumery. Known as <em>oud</em> in the Middle East, 
+            it has been traded for centuries.
+          </p>
+          <p>
+            The oil is produced through a careful distillation process that can take days. The resulting 
+            golden liquid is used in high-end fragrances, incense, and traditional medicine.
+          </p>
+          <Callout>
+            <em>The Agarwood Trade of Assam</em> documented the distillation craft but did not contain 
+            specific perfumery market data.
+          </Callout>
+        </div>
+        <SectionFigure
+          slug="market-perfumery"
+          alt="Agar oil distillation and perfumery — copper stills, glass vials, golden oil"
+        />
+      </div>
+    </section>
+  );
+}
+
+export function PlantationGrowthSection() {
+  return (
+    <section id="plantation-growth" className="relative pb-16 md:pb-20 scroll-mt-24">
+      <SectionHeading
+        id="plantation-heading"
+        icon={<TreePine size={14} />}
+        title="Plantation Growth"
+      >
+        From forest to farm
+      </SectionHeading>
+
+      <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="space-y-4 text-white/70 text-base leading-relaxed">
+          <p>
+            The shift from wild collection to <strong className="text-white/90">plantation cultivation</strong>{" "}
+            has been transformative for the agarwood sector. Farmers across Assam now grow Aquilaria 
+            in homesteads and dedicated plantations.
+          </p>
+          <p>
+            A joint survey by AATMA and the Assam Government revealed more than{" "}
+            <strong className="text-white/90">crores of agar trees</strong> in private collection in Assam 
+            alone, with similar reports from Tripura and Nagaland.
+          </p>
+          <Callout>
+            <em>The Agarwood Trade of Assam</em> reported no plantation growth data, but the sector's 
+            expansion is well-documented in subsequent surveys.
+          </Callout>
+        </div>
+        <SectionFigure
+          slug="plantation-growth"
+          alt="Agar plantation rows — saplings, farmer at work, daylight"
+        />
       </div>
     </section>
   );

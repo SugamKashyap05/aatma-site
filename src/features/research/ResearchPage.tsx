@@ -14,6 +14,9 @@ import {
   BiopesticideSection,
   PGPRSection,
   AAUPartnershipSection,
+  ConservationHabitatSection,
+  MarketPerfumerySection,
+  PlantationGrowthSection,
 } from "@/features/research/ResearchSections";
 
 interface ResearchCard {
@@ -161,6 +164,18 @@ export function ResearchPage() {
 
               <div className="section-divider" aria-hidden="true" />
               <AAUPartnershipSection />
+
+              {/* Conservation & habitat — IMG-R01 */}
+              <div className="section-divider" aria-hidden="true" />
+              <ConservationHabitatSection />
+
+              {/* Market & perfumery — IMG-R02 */}
+              <div className="section-divider" aria-hidden="true" />
+              <MarketPerfumerySection />
+
+              {/* Plantation growth — IMG-R03 */}
+              <div className="section-divider" aria-hidden="true" />
+              <PlantationGrowthSection />
 
               {/* Data visualization */}
               <div className="section-divider" aria-hidden="true" />

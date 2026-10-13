@@ -50,6 +50,12 @@ const NAV_ITEMS: NavItem[] = [
     icon: <Globe className="w-4 h-4" />,
     subsection: "Section 6",
   },
+  {
+    id: "gazette-citations",
+    label: "Gazette Citations",
+    icon: <ScrollText className="w-4 h-4" />,
+    subsection: "Section 7",
+  },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────

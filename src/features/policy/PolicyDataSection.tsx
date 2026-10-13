@@ -43,9 +43,9 @@ export function PolicyDataSection() {
       <Reveal variant="up" delay={60}>
         <p className="text-white/60 text-sm leading-relaxed mb-10 max-w-3xl">
           The 2022 Rules changed both who may trade and how quickly they may move.
-          The thresholds below are read from the notified Rules themselves; the
-          quota share and the statutory windows are as reported in the press at
-          the time.
+          Unit capacity thresholds are read from the WBI Gazette (Rule 2, No. 20,
+          eCF No. 237152, 12-01-2023) — primary law, no press-estimate badge. The
+          registration time windows and quota share are as reported in the press.
         </p>
       </Reveal>
 

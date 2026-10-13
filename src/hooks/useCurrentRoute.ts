@@ -11,6 +11,7 @@ const PAGE_PATH_MAP: Record<string, string> = {
   "/policy": "policy",
   "/research": "research",
   "/books": "books",
+  "/news": "news",
 };
 
 /**
@@ -18,14 +19,17 @@ const PAGE_PATH_MAP: Record<string, string> = {
  * Returns null for unrecognized paths.
  */
 export function getPageFromPath(pathname: string): string | null {
-  return PAGE_PATH_MAP[pathname] ?? null;
+  if (PAGE_PATH_MAP[pathname]) return PAGE_PATH_MAP[pathname];
+  // /news/:slug → "news"
+  if (pathname.startsWith("/news/")) return "news";
+  return null;
 }
 
 /**
  * Reactive hook that returns the current page identifier
  * based on the browser's route. Re-renders on route change.
  *
- * Returns: "home" | "press" | "history" | "policy" | "research" | "books" | null
+ * Returns: "home" | "press" | "history" | "policy" | "research" | "books" | "news" | null
  */
 export function useCurrentRoute(): string | null {
   const location = useLocation();

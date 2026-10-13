@@ -9,6 +9,7 @@ import CitesCompliance from "@/features/policy/CitesCompliance";
 import RegistrationProcessWalkthrough from "@/features/policy/RegistrationProcessWalkthrough";
 import OnlinePlatformGuidance from "@/features/policy/OnlinePlatformGuidance";
 import { PolicyDataSection } from "@/features/policy/PolicyDataSection";
+import GazetteCitations from "@/features/policy/GazetteCitations";
 import { Reveal } from "@/components/ui/reveal";
 
 interface PolicyCard {
@@ -112,6 +113,7 @@ export function PolicyPage() {
               <RegistrationProcessWalkthrough />
               <OnlinePlatformGuidance />
               <PolicyDataSection />
+              <GazetteCitations />
             </div>
           </div>
         </div>

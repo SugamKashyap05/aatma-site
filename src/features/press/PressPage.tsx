@@ -3,6 +3,7 @@ import { PressSection } from "@/features/news/PressSection";
 import { LatestNewsTeaser } from "@/features/news/LatestNewsTeaser";
 import { PressDownloads } from "@/features/press/PressDownloads";
 import { PressReleaseArchive } from "@/features/press/PressReleaseArchive";
+import { PressMeetGallery } from "@/features/press/PressMeetGallery";
 import PageLayout from "@/components/ui/PageLayout";
 import { useDevice } from "@/context/DeviceContext";
 
@@ -30,6 +31,11 @@ export function PressPage() {
       <div className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
           <PressReleaseArchive showHeader={false} />
+        </div>
+      </div>
+      <div className="py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <PressMeetGallery />
         </div>
       </div>
       <LatestNewsTeaser showHeader={true} />

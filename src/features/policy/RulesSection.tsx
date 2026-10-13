@@ -5,7 +5,7 @@ import { Building2, Scale, CheckCircle, FileText, ArrowRight } from "lucide-reac
 
 const WOOD_INDUSTRIES_CONTENT = {
   title: "Assam Wood Based Industries (Promotion and Development) Rules 2022",
-  notification: "12 January 2023",
+  notification: "No. 20, eCF No. 237152, 12-01-2023",
   repeals: "Assam Wood Based Industries (Establishment and Regulation) Rules 2000",
   sections: [
     {
@@ -66,7 +66,7 @@ const WOOD_INDUSTRIES_CONTENT = {
 
 const TREES_OUTSIDE_FOREST_CONTENT = {
   title: "Assam Trees Outside Forest (Sustainable Management) Rules 2022",
-  notification: "Recently notified (recognized alongside the 2022 wood-based industries rules)",
+  notification: "9 Dec 2022, ECF No. 232904, Assam Gazette No. 1 of 2 Jan 2023",
   sections: [
     {
       heading: "Purpose & Applicability",

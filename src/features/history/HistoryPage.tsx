@@ -205,9 +205,9 @@ export function HistoryPage() {
             </Para>
           </div>
           <ImageSection
-            src={assetUrl("history/ancient-roots.png")}
-            alt="Traditional Indian devotional painting of Vaishnav saint with agarwood"
-            caption="Vaishnav saints used Sanchi paat for writing scriptures"
+            src={assetUrl("history/sanchi-paat-manuscript.jpg")}
+            alt="Decorative illustration evoking a sanchi paat manuscript — aged tree bark with script-like markings, warm lamplight"
+            caption="Sanchi paat — the sacred bark used by Vaishnav saints for writing scriptures"
           />
         </div>
       </HistorySection>
@@ -232,6 +232,113 @@ export function HistoryPage() {
           immediately after the timeline rather than elsewhere on the page.
         */}
         <HistoryDataSection />
+      </HistorySection>
+
+      {/* 3b. Trade Chronology */}
+      <HistorySection
+        id="trade-chronology"
+        icon={Ship}
+        kicker="Trade Chronology · 1905–1970"
+        title="The geographic spread of the agar trade"
+      >
+        <Para>
+          The agarwood trade in Assam evolved through distinct geographic phases, each building
+          on the last to create the industry that exists today.
+        </Para>
+        <EventCard date="1905–06" title="Sylhet: the first oil extraction">
+          <p>
+            Agarwood was found abundantly in the forests of the North Eastern region, and people
+            of <strong className="text-gold">Sylhet</strong> (now in Bangladesh) used it for
+            extracting oil.
+          </p>
+        </EventCard>
+        <EventCard date="Post-Independence" title="Barpather entrepreneurs">
+          <p>
+            Certain entrepreneurs of <strong className="text-gold">Barpather</strong> started an
+            agarwood business in their homesteads, collecting raw agarwood from the forest mahals
+            of <strong className="text-gold">Karbi Anglong and Naga Hills</strong>.
+          </p>
+        </EventCard>
+        <EventCard date="Following years" title="Hojai distillation begins">
+          <p>
+            Visionary people of the <strong className="text-gold">Hojai</strong> area entered the
+            trade and started small-scale distillation at Hojai.
+          </p>
+        </EventCard>
+        <EventCard date="A few years later" title="Naharani, Jorhat, and Sibsagar">
+          <p>
+            The agar trade and distillery business also began in{" "}
+            <strong className="text-gold">Naharani and other parts of Jorhat and Sibsagar
+            districts</strong>, using agarwood harvested from their own homegrown trees.
+          </p>
+        </EventCard>
+        <EventCard date="Late 1960s" title="NEFA and Bhutan leases">
+          <p>
+            A group from Hojai took leases of agar mahals in{" "}
+            <strong className="text-gold">NEFA and Bhutan</strong>, collecting agar there and
+            bringing it to Hojai.
+          </p>
+        </EventCard>
+        <EventCard date="1970–1980s" title="Manipur, Silchar, and Bombay">
+          <p>
+            Entrepreneurs of <strong className="text-gold">Hojai and Silchar</strong> collected
+            agarwood from the mahaldars of <strong className="text-gold">Manipur State</strong>{" "}
+            (under Forest Transit Pass), processed and distilled for oil at Hojai and Silchar.
+            Products were then taken to <strong className="text-gold">Bombay (Mumbai)</strong>{" "}
+            under a <em>Lieu T.P.</em> issued by the Assam Forest Department for sale.
+          </p>
+        </EventCard>
+      </HistorySection>
+
+      {/* 3c. Far East Import Era */}
+      <HistorySection
+        id="far-east-import"
+        icon={ArrowRight}
+        kicker="Far East Import Era · 1970–1980s"
+        title="The import boom and its legacy"
+        className="bg-white/[0.02]"
+      >
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="space-y-4">
+            <EventCard date="1970–1980" title="Manipur dependency">
+              <p>
+                For a short while from 1970 to 1980, the Assam trade survived on agar from
+                Manipur, but <strong className="text-gold">came to a standstill in 1982</strong>.
+              </p>
+            </EventCard>
+            <EventCard date="Post-1982" title="Far East discovery">
+              <p>
+                A sudden change came with the{" "}
+                <strong className="text-gold">discovery of agarwood abundantly in the Far East</strong>{" "}
+                — <strong className="text-gold">Malaysia, Indonesia, Thailand, Cambodia</strong>.
+                Prominent Hojai business houses began importing agarwood from those countries
+                under the Government of India&apos;s Exim Policy, paying heavy import duties.
+              </p>
+            </EventCard>
+            <EventCard date="Peak years" title="5,000 employed in Hojai">
+              <p>
+                Hojai had a good number of skilled agar processing workers and agar oil
+                distilleries;{" "}
+                <strong className="text-gold">employment was as high as 5,000 people</strong>.
+                Imported raw agarwood was{" "}
+                <strong className="text-gold">re-exported after processing</strong> in their
+                factories as finished products.
+              </p>
+            </EventCard>
+          </div>
+          <div className="space-y-4">
+            <Para>
+              The Far East import era transformed Hojai into a processing hub, creating thousands
+              of jobs and establishing trade links that would later prove vital when the import
+              model collapsed in 2005.
+            </Para>
+            <Para>
+              The era also demonstrated the resilience of the Hojai business community — their
+              ability to pivot from local collection to international trade, and eventually to
+              plantation-based cultivation.
+            </Para>
+          </div>
+        </div>
       </HistorySection>
 
       {/* 4. AATMA Formation Story (1976) */}
@@ -282,17 +389,13 @@ export function HistoryPage() {
                 Secretary, with its Executive body.
               </p>
             </EventCard>
-            <EventCard date="22–23 November" title="National Seminar at Guwahati">
+            <EventCard date="22–23 Nov 2000" title="National Seminar at Guwahati">
               <p>
                 AATMA organised a <strong className="text-gold">National level seminar</strong> on
                 Scope &amp; Dimension of Agar (<em>Aquilaria</em> spp.) plantation in North Eastern
                 Region, held at <strong className="text-gold">Administrative Staff College, Guwahati</strong>.
                 Presided over by <strong className="text-gold">Dr. P.K. Hajra</strong>, Ex-Director
                 of the Botanical Survey of India.
-              </p>
-              <p className="text-white/50 text-xs italic">
-                The source document records this seminar as taking place on 22–23 November but
-                does not state a year. It is presented here without one rather than assumed.
               </p>
               <p>
                 The seminar was an eye-opener — entrepreneurs started commercial plantation in
@@ -302,11 +405,39 @@ export function HistoryPage() {
                 Lakhs of people are now involved in cultivation and the agar trade.
               </p>
             </EventCard>
+            <ImageSection
+              src={assetUrl("history/seminar-2000.jpg")}
+              alt="2000 conference hall — long table, name cards, Assam Administrative Staff College"
+              caption="The National Seminar that opened eyes to commercial plantation"
+            />
+            <EventCard date="6–7 Jan 2004" title="JFMC Workshop at Rabindra Bhavan">
+              <p>
+                At the request of the then Forest Minister, AATMA sponsored and participated in{" "}
+                <strong className="text-gold">
+                  &quot;The Workshop on Agar Plantation and the Rule of Joint Forest Management
+                  Committees of Assam&quot;
+                </strong>
+                , held at <strong className="text-gold">Rabindra Bhavan</strong> on{" "}
+                <strong className="text-gold">6 and 7 January 2004</strong>.
+              </p>
+            </EventCard>
+            <EventCard date="Date uncertain" title="Guwahati seminar">
+              <p>
+                A further seminar on agarwood in Guwahati is recorded in the association&apos;s
+                press-meet transcript, but the date is not confirmed. It is presented here
+                without a year rather than assumed.
+              </p>
+            </EventCard>
           </div>
           <ImageSection
-            src={assetUrl("history/aatma-formation.png")}
-            alt="1970s Indian office meeting — documentary style, AATMA formation era"
+            src={assetUrl("history/aatma-formation-era.jpg")}
+            alt="1970s Indian office meeting — three men at a table with ledgers, documentary style, AATMA formation era"
             caption="The modest 1970s office where AATMA was born"
+          />
+          <ImageSection
+            src={assetUrl("history/founders-1976.jpg")}
+            alt="Modest 1970s Hojai office meeting — wooden furniture, paper files, tungsten light, three figures"
+            caption="The founding members who established AATMA in 1976"
           />
         </div>
       </HistorySection>
@@ -367,12 +498,41 @@ export function HistoryPage() {
                 recommendation.
               </p>
             </EventCard>
-            <EventCard date="2017" title="Forest Minister's keen interest">
+            <EventCard date="24.8.2016" title="The turning point — Pramila Rani Brahma">
               <p>
-                The then <strong className="text-gold">Forest Minister, Smt Pramila Rani Brahma</strong>,
-                took keen interest. At her behest, a proposal for inclusion of Agar wood industry
-                in "Secondary Wood Based Industry" by way of exclusion from the Rules, 2000 was
-                submitted to the Govt.
+                An AATMA delegation led by <strong className="text-gold">Humayun Chaudhury</strong>{" "}
+                met the then Forest Minister <strong className="text-gold">Smt. Pramila Rani Brahma</strong>{" "}
+                at the <strong className="text-gold">Hojai Forest Circuit House</strong>. They
+                submitted a memorandum on the challenges the industry faced under the 2000 Rules.
+                She took a keen interest, and{" "}
+                <strong className="text-gold">
+                  at her behest a proposal was submitted to Government
+                </strong>{" "}
+                to classify the agar wood industry as a{" "}
+                <strong className="text-gold">Secondary Wood Based Industry</strong>, excluding it
+                from the 2000 Rules.
+              </p>
+            </EventCard>
+            <EventCard date="28.10.2016" title="National Conference at NEDFi House">
+              <p>
+                Under her initiative, the Assam Forest Department organised a{" "}
+                <strong className="text-gold">
+                  National Conference on &quot;Agarwood &amp; Oil Industries: Prospect &amp;
+                  Possibilities&quot;
+                </strong>
+                , held on <strong className="text-gold">28 October 2016</strong> at{" "}
+                <strong className="text-gold">NEDFi House, Guwahati</strong>.
+              </p>
+            </EventCard>
+            <EventCard date="19.7.2021" title="Sirajuddin Ajmal delegation">
+              <p>
+                An AATMA delegation, accompanied by{" "}
+                <strong className="text-gold">Mr. Sirajuddin Ajmal, MLA</strong>, met the Chief
+                Minister <strong className="text-gold">Shri Himanta Biswa Sharma</strong>,
+                submitting a memorandum apprising him of the problems faced by agar industries
+                over the previous <strong className="text-gold">21 years</strong> due to the 2000
+                Rules. The CM listened patiently, acknowledged the memorandum, and assured them
+                he would work on resolving it.
               </p>
             </EventCard>
             <EventCard date="2022" title="Resolution at last">
@@ -390,9 +550,14 @@ export function HistoryPage() {
             </EventCard>
           </div>
           <ImageSection
-            src={assetUrl("history/critical-era.png")}
-            alt="Modern agarwood trading market — contemporary commercial photography"
-            caption="The modern agarwood trade that emerged from decades of struggle"
+            src={assetUrl("history/critical-era-hardship.jpg")}
+            alt="Roadside checkpoint scene — carts, crates, authority figures, overcast sky, sombre mood"
+            caption="The hardship era — checkpoints and bureaucratic hurdles crippled the trade"
+          />
+          <ImageSection
+            src={assetUrl("history/early-trade-sylhet.jpg")}
+            alt="1905–06 Sylhet riverbank agarwood extraction — period scene, painterly style, workers by the river"
+            caption="Early agarwood extraction on the Sylhet riverbank, circa 1905–06"
           />
 
           {/*
@@ -410,6 +575,11 @@ export function HistoryPage() {
             src={assetUrl("history/victory-2023.jpg")}
             alt="Agarwood and a vial of golden agar oil on a desk beside an out-of-focus official notification, evoking the 2023 gazette notification"
             caption="The 2023 notification — agarwood and agar oil, the trade's two products, at last legally recognised"
+          />
+          <ImageSection
+            src={assetUrl("history/plantation-present-day.jpg")}
+            alt="Present-day Upper Assam agar plantation — rows of young Aquilaria trees, homestead setting"
+            caption="The plantation revolution — young Aquilaria trees now dot homesteads across Assam"
           />
         </div>
       </HistorySection>
@@ -439,6 +609,8 @@ export function HistoryPage() {
           <PersonalityCard name="Shri Siv Kumar, IFS" role="DFO Hojai (Oct 2005); denied verification of consignments" />
           <PersonalityCard name="Smt Pramila Rani Brahma" role="Forest Minister of Assam (2017); took keen interest in agar industry" />
           <PersonalityCard name="Shri Himanta Biswa Sarma" role="Chief Minister of Assam (2022); introduced the 2022 Rules" />
+          <PersonalityCard name="Humayun Chaudhury" role="Led the 24 Aug 2016 delegation to Forest Minister Pramila Rani Brahma" />
+          <PersonalityCard name="Mr. Sirajuddin Ajmal, MLA" role="Accompanied the 19 Jul 2021 delegation to the Chief Minister" />
         </div>
       </HistorySection>
 
