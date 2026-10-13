@@ -13,6 +13,15 @@ interface RevealProps {
   duration?: number;
   className?: string;
   threshold?: number;
+  /**
+   * rootMargin for the IntersectionObserver. Default shrinks the bottom edge
+   * so the reveal fires when the element is ~40px into view. For wrappers
+   * around `loading="lazy"` images, pass a positive bottom margin (e.g.
+   * "0px 0px 300px 0px") so the wrapper reaches opacity:1 BEFORE the
+   * browser's own lazy-load threshold — otherwise the browser treats the
+   * still-invisible (opacity:0) image as not-visible and defers it forever.
+   */
+  rootMargin?: string;
 }
 
 // ─── Variant classes ──────────────────────────────────────────────────────────
@@ -42,6 +51,7 @@ export function Reveal({
   duration = 700,
   className,
   threshold = 0.05,
+  rootMargin = "0px 0px -40px 0px",
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -63,12 +73,12 @@ export function Reveal({
           observer.disconnect();
         }
       },
-      { threshold, rootMargin: "0px 0px -40px 0px" }
+      { threshold, rootMargin }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [reduced, threshold]);
+  }, [reduced, threshold, rootMargin]);
 
   // For reduced motion, render without animation classes
   if (reduced) {

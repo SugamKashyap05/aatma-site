@@ -112,7 +112,7 @@ function ImageSection({
   className?: string;
 }) {
   return (
-    <Reveal variant="scale" delay={120} className={cn("relative rounded-xl overflow-hidden", className)}>
+    <Reveal variant="scale" delay={120} rootMargin="0px 0px 400px 0px" className={cn("relative rounded-xl overflow-hidden", className)}>
       <img
         src={src}
         alt={alt}
