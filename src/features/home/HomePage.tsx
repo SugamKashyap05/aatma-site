@@ -4,6 +4,7 @@ import { AgarStory } from "@/features/agarStory/AgarStory";
 import { Milestones } from "@/features/milestones/Milestones";
 import { Members } from "@/features/members/Members";
 import { PressSection } from "@/features/news/PressSection";
+import { LatestNewsTeaser } from "@/features/news/LatestNewsTeaser";
 import { Contact } from "@/features/contact/Contact";
 import { Footer } from "@/features/footer/Footer";
 import { Navbar } from "@/components/ui/Navbar";
@@ -43,6 +44,9 @@ export function HomePage() {
         </Reveal>
         <Reveal variant="fade" delay={0}>
           <PressSection deviceTier={tier} />
+        </Reveal>
+        <Reveal variant="fade" delay={0}>
+          <LatestNewsTeaser />
         </Reveal>
         <Reveal variant="fade" delay={0}>
           <Contact deviceTier={tier} />

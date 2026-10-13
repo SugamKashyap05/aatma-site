@@ -1,5 +1,6 @@
 import { Newspaper } from "lucide-react";
 import { PressSection } from "@/features/news/PressSection";
+import { LatestNewsTeaser } from "@/features/news/LatestNewsTeaser";
 import { PressDownloads } from "@/features/press/PressDownloads";
 import { PressReleaseArchive } from "@/features/press/PressReleaseArchive";
 import PageLayout from "@/components/ui/PageLayout";
@@ -31,6 +32,7 @@ export function PressPage() {
           <PressReleaseArchive showHeader={false} />
         </div>
       </div>
+      <LatestNewsTeaser showHeader={true} />
       <PressDownloads deviceTier={tier} showHeader={false} />
     </PageLayout>
   );

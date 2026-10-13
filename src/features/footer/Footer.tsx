@@ -70,13 +70,21 @@ export function Footer({ className, deviceTier }: { className?: ClassValue; devi
               Quick Links
             </div>
             <nav className="space-y-3">
-              {["About", "Agar Story", "Milestones", "Members", "Press", "Contact"].map((link) => (
+              {[
+                { label: "About", to: "/#about" },
+                { label: "Agar Story", to: "/#agar-story" },
+                { label: "Milestones", to: "/#milestones" },
+                { label: "Members", to: "/#members" },
+                { label: "News", to: "/news" },
+                { label: "Press", to: "/#press" },
+                { label: "Contact", to: "/#contact" },
+              ].map((link) => (
                 <Link
-                  key={link}
-                  to={`/#${link.toLowerCase().replace(/\s+/g, "-")}`}
+                  key={link.label}
+                  to={link.to}
                   className="text-white/70 hover:text-gold text-sm transition-colors duration-300 block hover:underline underline-offset-4 decoration-white/20"
                 >
-                  {link}
+                  {link.label}
                 </Link>
               ))}
             </nav>

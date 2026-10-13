@@ -20,6 +20,7 @@ const HOME_SECTIONS = [
 const PAGE_LINKS = [
   { path: "/books", label: "Books" },
   { path: "/press", label: "Press Releases" },
+  { path: "/news", label: "News" },
   { path: "/history", label: "History" },
   { path: "/policy", label: "Policy" },
   { path: "/research", label: "Research" },

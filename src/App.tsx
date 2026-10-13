@@ -10,6 +10,8 @@ const PressPage = lazy(() => import("@/features/press/PressPage").then(m => ({ d
 const HistoryPage = lazy(() => import("@/features/history/HistoryPage").then(m => ({ default: m.HistoryPage })));
 const PolicyPage = lazy(() => import("@/features/policy/PolicyPage").then(m => ({ default: m.PolicyPage })));
 const ResearchPage = lazy(() => import("@/features/research/ResearchPage").then(m => ({ default: m.ResearchPage })));
+const NewsIndex = lazy(() => import("@/features/news/NewsIndex").then(m => ({ default: m.NewsIndex })));
+const NewsArticleView = lazy(() => import("@/features/news/NewsArticleView").then(m => ({ default: m.NewsArticleView })));
 const NotFoundPage = lazy(() => import("@/features/notFound/NotFoundPage").then(m => ({ default: m.NotFoundPage })));
 
 function SpaRedirectHandler() {
@@ -67,7 +69,9 @@ export default function App() {
             <Route path="/history" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><HistoryPage /></Suspense>} />
             <Route path="/policy" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><PolicyPage /></Suspense>} />
             <Route path="/research" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><ResearchPage /></Suspense>} />
-            <Route path="*" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><NotFoundPage /></Suspense>} />
+                        <Route path="/news" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><NewsIndex /></Suspense>} />
+            <Route path="/news/:slug" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><NewsArticleView /></Suspense>} />
+                        <Route path="*" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><NotFoundPage /></Suspense>} />
           </Routes>
         </div>
       </DeviceProvider>
