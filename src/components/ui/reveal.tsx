@@ -93,7 +93,13 @@ export function Reveal({
     <div
       ref={ref}
       className={cn(
-        "transition-all ease-out will-change-transform",
+        "transition-all ease-out",
+        // will-change only while visible/animating. Applying it in the hidden
+        // state promotes the (transformed, off-screen) element to its own
+        // compositing layer, and Chrome's lazy-loading defers images inside a
+        // will-change:transform ancestor that hasn't entered view yet — the
+        // root cause of naturalWidth:0 on lazy images wrapped in Reveal.
+        visible && "will-change-transform",
         visible ? VARIANT_VISIBLE[variant] : VARIANT_HIDDEN[variant],
         className
       )}
