@@ -288,13 +288,23 @@ export function ConservationHabitatSection() {
             threatened by habitat loss and over-harvesting.
           </p>
           <p>
-            Conservation of wild populations is essential — not only for biodiversity but for the long-term 
-            sustainability of the agarwood industry. Plantation cultivation reduces pressure on wild stands, 
+            Conservation of wild populations is essential — not only for biodiversity but for the long-term
+            sustainability of the agarwood industry. Plantation cultivation reduces pressure on wild stands,
             but natural habitats must be preserved.
           </p>
+          <p>
+            According to an 18 November 2024 report in The Assam Tribune (PJ Vijayakar),
+            Assam holds over 82% of India&apos;s agarwood trees — 11.437 crore outside
+            forest areas — with Golaghat district alone accounting for 4.5 crore, the
+            highest concentration in the state. Tripura, the second-holding state,
+            reports 1.515 crore trees. Jorhat, Sivasagar, Karimganj, and Cachar are
+            also named as key districts, though the source provides no comparative
+            figures for them.
+          </p>
           <Callout>
-            <em>The Agarwood Trade of Assam</em> did not contain specific conservation data, but the 
-            importance of habitat protection is widely recognized in the sector.
+            These figures are press estimates from journalism, not AATMA&apos;s own
+            research. They indicate the scale of Assam&apos;s standing stock rather
+            than serving as audited statistics.
           </Callout>
         </div>
         <SectionFigure
@@ -325,12 +335,20 @@ export function MarketPerfumerySection() {
             it has been traded for centuries.
           </p>
           <p>
-            The oil is produced through a careful distillation process that can take days. The resulting 
+            The oil is produced through a careful distillation process that can take days. The resulting
             golden liquid is used in high-end fragrances, incense, and traditional medicine.
           </p>
+          <p>
+            The global agarwood market was valued at $44.05 billion in 2023 and is
+            projected to reach $64 billion by 2029 — a 7.7% compound annual growth
+            rate, according to The Assam Tribune (18 November 2024, PJ Vijayakar).
+            Agarwood chips trade between Rs 10,000 and Rs 3,00,000 per kg, while agar
+            oil ranges from Rs 6,000 to Rs 17,500 per tola.
+          </p>
           <Callout>
-            <em>The Agarwood Trade of Assam</em> documented the distillation craft but did not contain 
-            specific perfumery market data.
+            These are press estimates drawn from journalism, not AATMA&apos;s own
+            market research. Chips (per kg) and oil (per tola) are separate product
+            categories and are not directly comparable.
           </Callout>
         </div>
         <SectionFigure
