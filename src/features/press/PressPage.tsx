@@ -11,7 +11,7 @@ import { useDevice } from "@/context/DeviceContext";
 /**
  * Press page — dedicated route for press releases and media coverage.
  * Composes MediaCoverageTimeline, PressReleaseArchive (downloadable releases),
- * PressMeetGallery, LatestNewsTeaser, and PressDownloads within a PageLayout
+ * PressMeetSection, PressMeetGallery, and PressDownloads within a PageLayout
  * wrapper. Fully independent of the home page.
  */
 export function PressPage() {
@@ -48,13 +48,13 @@ export function PressPage() {
                   <span className="text-gold font-medium">News</span> is external media coverage of AATMA's work and the agarwood sector.
                 </p>
               </div>
-              <a
-                href="/news"
+              <Link
+                to="/news"
                 className="inline-flex items-center gap-2 text-sm font-medium tracking-wide text-gold hover:text-gold-light transition-colors duration-300 shrink-0"
               >
                 Visit News
                 <ArrowRight size={16} />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -72,7 +72,6 @@ export function PressPage() {
           <PressMeetGallery />
         </div>
       </div>
-      <LatestNewsTeaser showHeader={true} />
       <PressDownloads deviceTier={tier} showHeader={false} />
     </PageLayout>
   );

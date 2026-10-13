@@ -3,7 +3,41 @@ import { assetUrl, cn } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
 import { Calendar, MapPin, Radio } from "lucide-react";
 
-// ─── Transcript Loading ──────────────────────────────────────────────────────
+// ─── Named-Speaker Sanitizer (defined first, applied at module load) ─────────
+// Per client requirement: "No named attribution in published quotes."
+// Speaker 2 = "likely Ataur Rahman" stays inference. Label speakers S1/S2/S3.
+// Names are stripped at module init so raw text never enters the component state.
+
+const NAMED_INDIVIDUALS = [
+  // English variants
+  "Ataur Rahman",
+  "Helal Uddin",
+  "Anwar Hussain",
+  "Ramesh Nath",
+  // Assamese variants (in spoken content)
+  "আতাউৰ ৰহমান",
+  "হেলালুদ্দিন",
+  "আনোৱাৰ হুছেইন",
+  "ৰমেশ নাথ",
+  // Hindi variants (in spoken content)
+  "अताउर रहमान",
+  "हेलालुद्दीन",
+  "अंवार हुसैन",
+  "रमेश नाथ",
+];
+
+function sanitizeNames(text: string): string {
+  let result = text;
+  for (const name of NAMED_INDIVIDUALS) {
+    result = result.replace(
+      new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi"),
+      "[name withheld]"
+    );
+  }
+  return result;
+}
+
+// ─── Transcript Loading (sanitized at module init) ────────────────────────────
 
 const transcriptFiles = import.meta.glob(
   "../../../docs/TRANSCRIPT_PRESS_MEET_2023-01-14*.md",
@@ -11,9 +45,12 @@ const transcriptFiles = import.meta.glob(
 ) as Record<string, string>;
 
 const TRANSCRIPTS = {
-  assamese: transcriptFiles["../../../docs/TRANSCRIPT_PRESS_MEET_2023-01-14.md"] ?? "",
-  english: transcriptFiles["../../../docs/TRANSCRIPT_PRESS_MEET_2023-01-14_EN.md"] ?? "",
-  hindi: transcriptFiles["../../../docs/TRANSCRIPT_PRESS_MEET_2023-01-14_HI.md"] ?? "",
+  assamese:
+    sanitizeNames(transcriptFiles["../../../docs/TRANSCRIPT_PRESS_MEET_2023-01-14.md"] ?? ""),
+  english:
+    sanitizeNames(transcriptFiles["../../../docs/TRANSCRIPT_PRESS_MEET_2023-01-14_EN.md"] ?? ""),
+  hindi:
+    sanitizeNames(transcriptFiles["../../../docs/TRANSCRIPT_PRESS_MEET_2023-01-14_HI.md"] ?? ""),
 } as const;
 
 type LanguageKey = keyof typeof TRANSCRIPTS;
@@ -97,7 +134,7 @@ export function PressMeetSection({ className }: { className?: string }) {
               poster={assetUrl("press-meet/IMG-P02_press-meet-hero.jpg")}
               className="w-full rounded-sm border border-white/10 bg-black"
             >
-              <source src={assetUrl("press-meet/v2-compressed.mp4")} type="video/mp4" />
+              <source src={assetUrl("press-meet/v2-tiny.mp4")} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
