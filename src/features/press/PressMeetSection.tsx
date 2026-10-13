@@ -3,54 +3,20 @@ import { assetUrl, cn } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
 import { Calendar, MapPin, Radio } from "lucide-react";
 
-// ─── Named-Speaker Sanitizer (defined first, applied at module load) ─────────
-// Per client requirement: "No named attribution in published quotes."
-// Speaker 2 = "likely Ataur Rahman" stays inference. Label speakers S1/S2/S3.
-// Names are stripped at module init so raw text never enters the component state.
-
-const NAMED_INDIVIDUALS = [
-  // English variants
-  "Ataur Rahman",
-  "Helal Uddin",
-  "Anwar Hussain",
-  "Ramesh Nath",
-  // Assamese variants (in spoken content)
-  "আতাউৰ ৰহমান",
-  "হেলালুদ্দিন",
-  "আনোৱাৰ হুছেইন",
-  "ৰমেশ নাথ",
-  // Hindi variants (in spoken content)
-  "अताउर रहमान",
-  "हेलालुद्दीन",
-  "अंवार हुसैन",
-  "रमेश नाथ",
-];
-
-function sanitizeNames(text: string): string {
-  let result = text;
-  for (const name of NAMED_INDIVIDUALS) {
-    result = result.replace(
-      new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi"),
-      "[name withheld]"
-    );
-  }
-  return result;
-}
-
-// ─── Transcript Loading (sanitized at module init) ────────────────────────────
+// ─── Transcript Loading ──────────────────────────────────────────────────────
+// Transcripts are pre-sanitized by scripts/sanitize-transcripts.mjs into docs/web/.
+// Loading via ?raw embeds the sanitized text at build time — named individuals
+// never enter the JS bundle. Regenerate docs/web/ after editing docs/.
 
 const transcriptFiles = import.meta.glob(
-  "../../../docs/TRANSCRIPT_PRESS_MEET_2023-01-14*.md",
+  "../../../docs/web/TRANSCRIPT_PRESS_MEET_2023-01-14*.md",
   { query: "?raw", import: "default", eager: true }
 ) as Record<string, string>;
 
 const TRANSCRIPTS = {
-  assamese:
-    sanitizeNames(transcriptFiles["../../../docs/TRANSCRIPT_PRESS_MEET_2023-01-14.md"] ?? ""),
-  english:
-    sanitizeNames(transcriptFiles["../../../docs/TRANSCRIPT_PRESS_MEET_2023-01-14_EN.md"] ?? ""),
-  hindi:
-    sanitizeNames(transcriptFiles["../../../docs/TRANSCRIPT_PRESS_MEET_2023-01-14_HI.md"] ?? ""),
+  assamese: transcriptFiles["../../../docs/web/TRANSCRIPT_PRESS_MEET_2023-01-14.md"] ?? "",
+  english: transcriptFiles["../../../docs/web/TRANSCRIPT_PRESS_MEET_2023-01-14_EN.md"] ?? "",
+  hindi: transcriptFiles["../../../docs/web/TRANSCRIPT_PRESS_MEET_2023-01-14_HI.md"] ?? "",
 } as const;
 
 type LanguageKey = keyof typeof TRANSCRIPTS;
