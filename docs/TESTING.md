@@ -237,3 +237,26 @@ A task is complete only when:
 correct. Every claim of completion must name the artifact (file path, route,
 command output) that was actually observed. If a file was supposed to be
 created, verify it exists on disk before reporting success.
+
+---
+
+## 9. Lazy-Loading Investigation on /history (2026-10-13)
+
+### Verdict: NOT a bug — correct native lazy-loading behavior
+
+`loading="lazy"` images on `/history` reported `naturalWidth: 0` before scrolling. Cross-browser testing (task `t_c10aad2e`) across **new headless v151, old headless v151, and real headed Chrome v155** showed **identical behavior in all three**: 8/10 lazy images unloaded before scroll, **0 failures after scroll — all load correctly when scrolled into view.** This is exactly how native `loading="lazy"` is designed to work. There is no defect.
+
+The earlier "naturalWidth: 0" observations were measurements taken before scrolling — which is the expected, correct behavior for lazy images, not a failure.
+
+### Changes made (aab4486 + d2e65c6) — minor enhancements, not bug fixes
+
+Two low-risk changes were made to `src/components/ui/reveal.tsx` / `HistoryPage.tsx` on the initial (mistaken) belief that this was a bug. They are harmless and kept, but they were **not fixing a real defect**:
+
+- `aab4486` — added a `rootMargin` prop to `Reveal`, set to `"0px 0px 400px 0px"` on the history `ImageSection`, so images begin loading slightly before fully scrolled in.
+- `d2e65c6` — apply `will-change-transform` only when `visible` (not in the hidden state).
+
+Neither is required for correctness. If revisiting, they can be kept as-is or reverted without user-visible impact.
+
+### Note for Future Contributions
+
+Do **not** treat `naturalWidth: 0` on a `loading="lazy"` image as a bug — measure **after** scrolling the image into view first. Do **not** "fix" lazy-loading by flipping images to `loading="eager"`; that trades a real performance regression for a non-issue. Native lazy-loading is working as intended here.
