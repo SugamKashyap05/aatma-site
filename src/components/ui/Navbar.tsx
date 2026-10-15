@@ -24,6 +24,7 @@ const PAGE_LINKS = [
   { path: "/history", label: "History" },
   { path: "/policy", label: "Policy" },
   { path: "/research", label: "Research" },
+  { path: "/resources", label: "Resources" },
 ] as const;
 
 const SECTION_IDS = HOME_SECTIONS.map((s) => s.id);
