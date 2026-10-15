@@ -113,12 +113,11 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
     category: "policy-documents",
     date: "2023-01-12",
     fileType: "PDF",
-    fileSize: "11 KB",
+    fileSize: "5.3 MB",
     tags: ["rules", "2022", "gazette", "regulatory"],
     description:
       "The gazette notification (No. 20, eCF No. 237152, dated 12 January 2023) notifying the 2022 rules that replace the restrictive 2000 framework.",
-    available: true,
-    downloadPath: "/policy-documents/aatma-policy-documents.pdf",
+    available: false,
   },
 
   // Research Papers
