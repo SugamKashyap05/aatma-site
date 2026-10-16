@@ -12,9 +12,12 @@ const HOME_SECTIONS = [
   { id: "about", label: "About" },
   { id: "agar-story", label: "Agar Story" },
   { id: "sanchi-paat", label: "Sanchi Paat" },
-  { id: "milestones", label: "Milestones" },
+  { id: "formation", label: "Formation" },
   { id: "critical-era", label: "Critical Era" },
   { id: "achievement", label: "Achievement" },
+  { id: "ndf-findings", label: "NDF Findings" },
+  { id: "rules", label: "Rules 2022" },
+  { id: "challenges", label: "Challenges" },
   { id: "press", label: "Press & Media" },
   { id: "contact", label: "Contact" },
 ] as const;

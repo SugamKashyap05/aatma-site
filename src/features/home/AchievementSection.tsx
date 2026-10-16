@@ -1,4 +1,4 @@
-import { cn, type ClassValue } from "@/lib/utils";
+import { cn, type ClassValue, assetUrl } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
 
 /**
@@ -130,7 +130,7 @@ export function AchievementSection({ className }: { className?: ClassValue }) {
             <div className="relative mx-auto max-w-md lg:max-w-full">
               <div className="border-2 border-gold/40 rounded-lg overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.35)]">
                 <img
-                  src="/history/victory-2023.jpg"
+                  src={assetUrl("history/victory-2023.jpg")}
                   alt="AATMA members celebrating the enactment of the WBI Rules 2023"
                   className="w-full h-auto object-cover"
                   loading="lazy"

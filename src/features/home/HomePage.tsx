@@ -29,7 +29,7 @@ import { useDevice } from "@/context/DeviceContext";
  * staggering are preserved.
  *
  * GamosaBorder dividers separate major section groups:
- *   1. After About (hero → content transition)
+ *   1. After Hero (hero → content transition)
  *   2. After Sanchi Paat (heritage → trade narrative)
  *   3. After Achievement (victory → ongoing work)
  */
@@ -41,10 +41,10 @@ export function HomePage() {
       <ParallaxHero />
       <div className="relative z-10">
         <Navbar />
+        <GamosaBorder />
         <Reveal variant="fade" delay={0}>
           <About deviceTier={tier} />
         </Reveal>
-        <GamosaBorder />
         <Reveal variant="fade" delay={0}>
           <SanchiPaatSection />
         </Reveal>
