@@ -64,7 +64,7 @@ export function LatestNewsTeaser({
             <Reveal variant="fade" delay={100}>
               <Link
                 to="/news"
-                className="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-light transition-colors duration-300 group"
+                className="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-light transition-colors duration-300 group min-h-[44px]"
               >
                 View all news
                 <ArrowRight

@@ -11,8 +11,10 @@ import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 const HOME_SECTIONS = [
   { id: "about", label: "About" },
   { id: "agar-story", label: "Agar Story" },
+  { id: "sanchi-paat", label: "Sanchi Paat" },
   { id: "milestones", label: "Milestones" },
-  { id: "members", label: "Members" },
+  { id: "critical-era", label: "Critical Era" },
+  { id: "achievement", label: "Achievement" },
   { id: "press", label: "Press & Media" },
   { id: "contact", label: "Contact" },
 ] as const;

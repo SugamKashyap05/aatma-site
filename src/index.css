@@ -11,6 +11,12 @@ html {
   --color-green-light: #3d7a54;
   --color-gold: #c9a84c;
   --color-gold-light: #e0c878;
+  /* Gold-on-dark is the brand accent, but #c9a84c only reaches 2.0:1 on the
+     cream/cream-dark light surfaces, which fails WCAG AA. These darker
+     variants keep the same warm-gold family while clearing 4.5:1 on light
+     surfaces (see docs/DESIGN_SYSTEM.md §2). Use on light sections only. */
+  --color-gold-deep: #6b4516;
+  --color-gold-deep-light: #7a5220;
   --color-cream: #f5f0e8;
   --color-cream-dark: #e8e0d0;
   --color-charcoal: #1a1a1a;

@@ -50,3 +50,7 @@ scripts/.opt*.log
 # Hermes Agent session state — model routing, provider config, local
 # scratch paths and kanban WIP rules. Tooling-local, never published.
 .hermes/
+
+# Generated demo HTML used to visualise the redesign before implementation.
+# Scratch only — the real components live under src/.
+/cache/

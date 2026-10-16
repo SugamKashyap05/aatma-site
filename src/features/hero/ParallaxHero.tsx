@@ -201,6 +201,8 @@ export function ParallaxHero({
 
   return (
     <main
+      id="main-content"
+      tabIndex={-1}
       ref={containerRef}
       className={cn(
         "relative h-screen w-full overflow-hidden bg-gradient-to-b from-green-deep via-green-mid to-green-deep",

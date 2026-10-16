@@ -277,6 +277,8 @@ export function ImageReader({
   return (
     <>
       <main
+        id="main-content"
+        tabIndex={-1}
         ref={readingRef}
         className={cn(
           "flex-1 overflow-y-auto transition-colors duration-300",

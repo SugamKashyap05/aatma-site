@@ -27,7 +27,7 @@ export function SanchiPaatSection({ className }: { className?: ClassValue }) {
           {/* ---- Text content ---- */}
           <div className="order-2 lg:order-1">
             <Reveal variant="fade" delay={0}>
-              <span className="inline-block text-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
+              <span className="inline-block text-gold-deep text-sm font-semibold tracking-[0.25em] uppercase mb-4">
                 Ancient Tradition
               </span>
             </Reveal>

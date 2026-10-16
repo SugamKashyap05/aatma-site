@@ -6,7 +6,6 @@ import {
   Download,
   FileText,
   Megaphone,
-  Newspaper,
   ScrollText,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -138,7 +137,7 @@ function PressReleaseCard({
               href={assetUrl(release.pdfPath)}
               download={release.fileName}
               className={cn(
-                "inline-flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors duration-300 group/dl",
+                "inline-flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors duration-300 group/dl min-h-[44px]",
                 release.featured
                   ? "text-gold hover:text-gold-light"
                   : "text-white/70 hover:text-gold",
@@ -203,7 +202,7 @@ export function PressSection({
         speed={isMobile ? 60 : 50}
       />
       <div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(201,168,76,0.08)_0%,rgba(0,0,0,0)_60%)] pointer-events-none"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(201,168,76,0.08)_0%,rgba(0,0,0,0)_55%)] pointer-events-none"
         aria-hidden="true"
       />
 
@@ -212,13 +211,12 @@ export function PressSection({
         {showHeader && (
         <div className="max-w-4xl mx-auto text-center mb-14 md:mb-18">
           <Reveal variant="fade" delay={0}>
-            <span className="inline-flex items-center gap-2 text-gold text-sm font-semibold tracking-[0.25em] uppercase bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 rounded-sm mb-4">
-              <Newspaper size={14} />
+            <span className="inline-block text-gold text-sm font-semibold tracking-[0.25em] uppercase bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-sm mb-4">
               Press &amp; Media
             </span>
           </Reveal>
           <Reveal variant="up" delay={100}>
-            <h2 className="font-display font-bold text-xl md:text-3xl lg:text-4xl leading-tight mb-6">
+            <h2 className="font-display font-bold text-2xl md:text-4xl lg:text-5xl leading-tight mb-6">
               Official communications &amp;{" "}
               <span className="text-gold">media coverage</span>
             </h2>

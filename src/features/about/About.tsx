@@ -13,22 +13,14 @@ interface AboutProps {
 
 const SCRIPT: Record<string, string> = {
   en: `
-    For fifty years, AATMA has stood as the voice of Assam's agarwood trade — linking the traders, distillers, cultivators, and manufacturers whose daily work sustains one of India's most valuable forest-derived industries.
+    Agar Tree or Sanchi plant is one of the precious gifts of nature and deeply associated with the culture of Assam & North eastern India since ancient time. Bark of agar tree called sanchi paat was used for writing scripture. The renown Vaishnab saints of Assam — Srimanta Sankar Dev, Madhav Deb and Damudar Deb — used Sanchipat for writing scriptures. Since than the Assamese people of upper Assam planted Sanchi plant in their homestead which become a part of ritual. Agaru is an inseparable puja article of Hindus since ancient time.
 
-    Born in Hojai, the heartland of agarwood in the Northeast, the association has carried its members through every phase of the sector's difficult history: the long years of informal, often illegal trade; the turning point of the 2000 Guwahati seminar that brought external knowledge and technical depth for the first time; the patient advocacy that culminated in the 2019 Cabinet decision; and the policy landmark of the 2020 Assam Agarwood Promotion Policy that finally legalised the entire trade chain on non-forest land.
-
-    Today, AATMA operates at the centre of a sector that is opening to legitimate global commerce. Agarwood — Aquilaria malaccensis, a species now critically endangered in the wild — has been cultivated, distilled, and traded in Assam for generations. The oil, worth tens of thousands of dollars per kilogram, and the resinous chips, prized across perfumery and traditional medicine, are the fruit of a craft that sits at the intersection of agriculture, forestry, and heritage.
-
-    AATMA's ongoing work spans member representation, policy engagement, knowledge sharing, and the promotion of a legal, sustainable agarwood economy that secures the livelihoods of the families who depend on it.
+    Agar scientifically known by the generic name Aquilaria of family Thymeleaceae. Main species found in India are Aquilaria malaccensis, Aquilaria Agalocha and Aquilaria khasiana. Agarwood chips (Black resinous wood) and Agar Oil (Essential Oil) Attar are most useful and oldest raw materials for perfume. Thus agar is a highly commercially useful plant.
   `.trim(),
   as: `
-    ইউনিয়নৰ দশকসমূহ ধৰি আটমা অসমৰ আগৰ বাণিজ্যৰ স্বৰ হিচাপে থাকি আহিছে — ব্যৱসায়ী, স্বচালক, চাষী আৰু উৎপাদকসকলৰ প্ৰতিবেচন কৰি যিয়ে ভাৰতৰ আটাইতকৈ মূল্যবান বানৰপদাৰ্থ শিল্পক বাঁচাই ৰাখে।
+    এজন মূল্যবান প্ৰকৃতিৰ উপহাৰ হৈছে আগাৰ বা সাঁচী গছ, আৰু প্ৰাচীন কালৰ পৰা অসম আৰু উত্তৰ-পূৰ্বাঞচলৰ সংস্কৃতিৰ লগত ইয়াৰ গভীৰ সম্পৰ্ক আছে। আগাৰ গছৰ বাকল সাঁচী পাত বুলি পুৰণি ধৰ্মগ্ৰন্থ লিখিবলৈ ব্যৱহাৰ কৰা হৈছিল। অসমৰ বিখ্যাত বৈষ্ণব সন্ত শ্ৰীমন্ত শংকৰ দেব, মাধৱ দেব আৰু দামোদৰ দেবে সাঁচীপাত ব্যৱহাৰ কৰি ধৰ্মগ্ৰন্থ লিখিছিল। তেতিয়াৰ পৰা ওপৰৰ অসমৰ অসমীয়া লোকে সাঁচী গছ নিজৰ ঘৰত লগাই ধৰ্মীয় অনুষ্ঠানৰ অংশ হৈ পেলায়। আগাৰু প্ৰাচীন কালৰ পৰা হিন্দুসকলৰ অবিচ্ছেদ্য পূজা সামগ্রী।
 
-    নেপা উত্তৰ-পূৰ্বাঞ্চলৰ আগৰকেন্দ্ৰ হৈছে হজাই, সংস্থাটোৱে শিল্পৰ কঠিন ইতিহাসৰ প্ৰতিটো ধাপত সদস্যবৃন্দক নিয়াই যাই: দীৰ্ঘ বছৰ বৈধ নহোৱা, প্ৰায়ে অবৈধ বাণিজ্য; ২০০০ চনৰ গুৱাহাটী সেমিনাৰৰ পথপ্ৰদৰ্শক কাল য'ত প্ৰথমবাৰে বাহিৰৰ জ্ঞান আৰু প্ৰযুক্তিগত গভীৰতা আহে; ২০১৯ চনৰ মন্ত্ৰীপৰিষদৰ সিদ্ধান্তলৈ প্ৰায় ২০ বছৰ লড়াই; আৰু ২০২০ চনৰ অসম আগৰবোৰ বিকাশ নীতিয়ে অন্ততঃ বনৰ বাহিৰৰ ভূমিত বাণিজ্যৰ চেইনটো নিয়মবদ্ধ কৰি দি।
-
-    আজি, আটমা শিল্পটোৰ বৈধ বিশ্ববাণিজ্যলৈ মুকলি হোৱাৰ কেন্দ্ৰত কাম কৰে। আগৰ — Aquaillaria malaccensis, বৰ্তমান বনত গভীৰভাৱে বিপন্ন প্ৰজাতি — অসমত প্ৰজন্মে প্ৰজন্মে চাষ, জ্বলন আৰু বাণিজ্য কৰি আহিছে। তেল, কিলোগ্ৰামত হাজাৰা হাজাৰ ডলাৰ মূল্যৰ, আৰু রেজিনযুক্ত টুকুৰীসমূহ, সুগন্ধি আৰু প্ৰথাগত ঔষধৰ পাহৰত মূৰীয়া, কৃষি, বনবিজ্ঞান আৰু ঐতিহ্যৰ ছেদত অৱস্থিত এক শিল্পৰ ফল।
-
-    আটমাৰ চলি থকা কাম সমূহত ম সদস্য প্ৰতিনিধিত্ব, নীতি যোগাযোগ, জ্ঞান বিনিময়, আৰু বৈধ, টেকসই আগৰ অৰ্থনীতিৰ বিকাশ — যিটো শিল্পত ওলাই দিয়া পৰিয়ালবোৰৰ জীৱিকা নিৰাপদ কৰে — অন্তৰ্ভুক্ত।
+    আগাৰ বৈজ্ঞানিকভাৱে জেনেৰিক নাম Aquilaria, পৰিয়াল Thymeleaceae। ভাৰতত পোৱা মুখ্য প্ৰজাতিবোৰ হৈছে Aquilaria malaccensis, Aquilaria Agalocha আৰু Aquilaria khasiana। আগাৰড চিপছ (ক'লা ৰেজিনযুক্ত কাঠ) আৰু আগাৰ অইল (এচেনচিয়েল অইল) আত্তৰ সুগন্ধি উদ্যোগৰ বাবে সবাতোকৈ উপযোগী আৰু পুৰণি কাঁচামাল। গতিকে আগাৰ এটা অতি বাণিজ্যিকভাৱে উপযোগী গছ।
   `.trim(),
 };
 
@@ -66,38 +58,42 @@ export function About({ className, deviceTier }: AboutProps) {
             </span>
           </Reveal>
 
-          <Reveal variant="up" delay={100}>
+          <Reveal variant="up" delay={100} rootMargin="0px 0px 300px 0px">
             <div className="backdrop-blur-sm bg-white/[0.08] border border-white/15 rounded-sm p-6 md:p-8">
               <h2 className="font-display font-bold text-3xl md:text-5xl lg:text-6xl leading-tight max-w-3xl text-center mb-6 drop-shadow-lg">
-                Five decades<br />
-                at the heart{" "}
-                <span className="text-gold">of the agar trade</span>
+                A Precious Gift<br />
+                <span className="text-gold">of Nature</span>
               </h2>
-              <div className="relative z-10 max-w-4xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div
                   className={cn(
-                    "divide-y divide-white/10 text-sm md:text-base text-center leading-relaxed text-white/95 transition-all duration-700 ease-out",
-                    "opacity-100 translate-y-0",
+                    "text-sm md:text-base leading-relaxed text-white/95 transition-all duration-700 ease-out",
+                    "opacity-100 translate-y-0"
                   )}
                 >
                   <p
                     className={
                       langRef.current === "en" ? "font-sans" : "font-assamese"
                     }
-                    style={{
-                      minHeight: "220px",
-                      textAlign: "center",
-                    }}
+                    style={{ textAlign: "left" }}
                   >
                     {lang === "en" ? SCRIPT.en : SCRIPT.as}
                   </p>
                   <button
                     onClick={() => setLang(lang === "en" ? "as" : "en")}
-                    className="mt-6 mb-6 inline-flex items-center gap-2 text-gold text-sm font-medium tracking-wide self-center bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 px-5 py-2 rounded-sm transition-all duration-300"
+                    className="mt-6 mb-6 inline-flex items-center gap-2 text-gold text-sm font-medium tracking-wide self-center bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 px-5 py-2.5 rounded-sm transition-all duration-300 min-h-[44px]"
                   >
                     {lang === "en" ? "অসমীয়াত পঢ়ক" : "Read in English"}
                     <ChevronRight size={16} />
                   </button>
+                </div>
+                <div className="relative">
+                  <img
+                    src="/history/hero-banner.jpg"
+                    alt="Agarwood tree — a precious gift of nature"
+                    className="w-full h-auto rounded-sm border border-white/15 shadow-lg"
+                    loading="lazy"
+                  />
                 </div>
               </div>
             </div>

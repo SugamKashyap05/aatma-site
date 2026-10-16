@@ -56,7 +56,7 @@ export function Footer({ className, deviceTier }: { className?: ClassValue; devi
             <div className="flex gap-3 mt-4">
               <a
                 href={`mailto:${AATMA.email}`}
-                className="text-white/50 hover:text-gold transition-colors duration-300"
+                className="inline-flex items-center justify-center w-11 h-11 text-white/50 hover:text-gold transition-colors duration-300"
                 aria-label="Email AATMA"
               >
                 <Mail size={18} strokeWidth={1.5} />
@@ -73,8 +73,8 @@ export function Footer({ className, deviceTier }: { className?: ClassValue; devi
               {[
                 { label: "About", to: "/#about" },
                 { label: "Agar Story", to: "/#agar-story" },
+                { label: "Sanchi Paat", to: "/#sanchi-paat" },
                 { label: "Milestones", to: "/#milestones" },
-                { label: "Members", to: "/#members" },
                 { label: "News", to: "/news" },
                 { label: "Press", to: "/#press" },
                 { label: "Contact", to: "/#contact" },

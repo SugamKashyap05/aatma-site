@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { DeviceProvider } from "@/context/DeviceContext";
 import { HomePage } from "@/features/home/HomePage";
+import ChallengesSection from "@/features/home/ChallengesSection";
 import KineticGrid from "@/components/ui/kinetic-grid";
 import ScrollManager from "@/components/ui/ScrollManager";
 
@@ -58,12 +59,23 @@ export default function App() {
       <DeviceProvider>
         <SpaRedirectHandler />
         <ScrollManager />
+        {/* Skip link — first focusable element, so keyboard users can jump past
+            the fixed navbar to the page content. Targets #main-content, which
+            every route renders on its content wrapper (see
+            docs/HOMEPAGE_REDESIGN_PLAN.md §8). */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[200] focus:rounded-sm focus:bg-gold focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-green-deep focus:outline-none"
+        >
+          Skip to main content
+        </a>
         <div className="relative flex flex-col min-h-screen bg-green-deep text-white antialiased overflow-x-hidden">
           {/* Fixed KineticGrid background — behind everything including hero */}
           <KineticGrid />
 
           {/* Route-specific content */}
           <Routes>
+            <Route path="/__challenges-probe" element={<ChallengesSection />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/books" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><BooksPage /></Suspense>} />
             <Route path="/press" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><PressPage /></Suspense>} />

@@ -41,7 +41,7 @@ export function PageLayout({
   const isMobile = tier === "mobile";
 
   return (
-    <div className={cn("relative min-h-screen", className)}>
+    <div id="main-content" tabIndex={-1} className={cn("relative min-h-screen", className)}>
       <Navbar />
 
       {/* Hero section */}
