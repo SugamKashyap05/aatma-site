@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 html {
@@ -26,6 +27,12 @@ html {
   /* Gold-tinted glow for interactive card hovers. Token-backed so the recipe
      never hard-codes the gold hex — see docs/DESIGN_SYSTEM.md §7. */
   --shadow-glow-gold: 0 0 30px color-mix(in srgb, var(--color-gold) 15%, transparent);
+
+  /* Assam visual-identity tokens for upcoming homepage components */
+  --color-gamosa-red: #b83a2e;
+  --color-terracotta: #c67b5c;
+  --color-mustard: #d4a03c;
+  --font-assamese: 'Noto Sans Bengali', sans-serif;
 }
 @media (prefers-reduced-motion: reduce) {
   *

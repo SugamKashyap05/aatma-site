@@ -268,8 +268,11 @@ export function ParallaxHero({
         }}
       >
         <span className="inline-block self-start mb-4 px-4 py-1.5 text-[11px] font-semibold tracking-[0.2em] uppercase bg-white/10 backdrop-blur-sm border border-white/20 rounded-sm text-cream-dark">
-          Established 1976 · Hojai, Assam
+          Est. 1976 · Hojai, Assam
         </span>
+        <p className="mb-3 text-lg md:text-xl font-light tracking-wide text-cream-dark/90">
+          অসমৰ আগাৰৱুডি কারুকলা
+        </p>
         <h1 className="font-display font-bold text-[clamp(2.5rem,7vw,6.5rem)] leading-[0.85] max-md:text-[clamp(1.8rem,5vw,4rem)] max-sm:text-[clamp(1.2rem,3.5vw,2.8rem)] drop-shadow-lg">
           All Assam Agar Traders<br />& Agaroil Manufacturers'
           <span className="block md:inline font-normal text-[0.42em] mt-2 md:mt-0 md:ml-3 tracking-[0.18em] uppercase text-gold-light">
