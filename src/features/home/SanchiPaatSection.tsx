@@ -1,4 +1,4 @@
-import { cn, type ClassValue } from "@/lib/utils";
+import { cn, type ClassValue, assetUrl } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
 
 /**
@@ -81,7 +81,7 @@ export function SanchiPaatSection({ className }: { className?: ClassValue }) {
                     <div className="border border-gold/30 p-3">
                       <div className="border border-gold/20 p-2 bg-white/60">
                         <img
-                          src="/history/sanchi-paat-manuscript.jpg"
+                          src={assetUrl("history/sanchi-paat-manuscript.jpg")}
                           alt="Ancient sanchi paat manuscript — sacred scripture written on agar bark"
                           className="w-full h-auto object-contain"
                           loading="lazy"

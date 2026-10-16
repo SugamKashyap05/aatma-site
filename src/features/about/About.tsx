@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { AATMA } from "@/data/content";
 import { MapPin, Phone, Mail, Clock, ChevronRight } from "lucide-react";
-import { cn, type ClassValue } from "@/lib/utils";
+import { cn, type ClassValue, assetUrl } from "@/lib/utils";
 import { useRef, useState } from "react";
 import { AmbientMotion } from "@/features/ambient/AmbientMotion";
 import { Reveal, Stagger } from "@/components/ui/reveal";
@@ -89,7 +89,7 @@ export function About({ className, deviceTier }: AboutProps) {
                 </div>
                 <div className="relative">
                   <img
-                    src="/history/hero-banner.jpg"
+                    src={assetUrl("history/hero-banner.jpg")}
                     alt="Agarwood tree — a precious gift of nature"
                     className="w-full h-auto rounded-sm border border-white/15 shadow-lg"
                     loading="lazy"
