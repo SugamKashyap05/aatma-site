@@ -42,42 +42,45 @@ export function HomePage() {
       <div className="relative z-10">
         <Navbar />
         <GamosaBorder />
-        <Reveal variant="fade" delay={0}>
+        {/* Positive rootMargin on Reveal wrappers ensures sections reach
+            opacity:1 before the browser's lazy-load threshold, so lazy images
+            inside actually load instead of being deferred forever. */}
+        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
           <About deviceTier={tier} />
         </Reveal>
-        <Reveal variant="fade" delay={0}>
+        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
           <SanchiPaatSection />
         </Reveal>
         <GamosaBorder />
-        <Reveal variant="fade" delay={0}>
+        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
           <AgarStory deviceTier={tier} />
         </Reveal>
-        <Reveal variant="fade" delay={0}>
+        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
           <FormationSection />
         </Reveal>
-        <Reveal variant="fade" delay={0}>
+        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
           <CriticalEraSection />
         </Reveal>
-        <Reveal variant="fade" delay={0}>
+        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
           <AchievementSection />
         </Reveal>
         <GamosaBorder />
-        <Reveal variant="fade" delay={0}>
+        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
           <NdfFindingsSection />
         </Reveal>
-        <Reveal variant="fade" delay={0}>
+        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
           <RulesSection />
         </Reveal>
-        <Reveal variant="fade" delay={0}>
+        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
           <ChallengesSection />
         </Reveal>
-        <Reveal variant="fade" delay={0}>
+        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
           <PressSection deviceTier={tier} />
         </Reveal>
-        <Reveal variant="fade" delay={0}>
+        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
           <LatestNewsTeaser />
         </Reveal>
-        <Reveal variant="fade" delay={0}>
+        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
           <Contact deviceTier={tier} />
         </Reveal>
         <Footer deviceTier={tier} />
