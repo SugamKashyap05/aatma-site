@@ -1,19 +1,49 @@
+import { useMemo, useState } from "react";
 import { Download } from "lucide-react";
 import PageLayout from "@/components/ui/PageLayout";
-import { Reveal } from "@/components/ui/reveal";
 import ResourceNav from "@/features/resources/ResourceNav";
+import { ResourceFilter } from "@/features/resources/ResourceFilter";
 import { ResourceCategorySection } from "@/features/resources/ResourceCategorySection";
 import {
   RESOURCE_CATEGORIES,
   RESOURCE_DOCUMENTS,
+  type ResourceDocType,
 } from "@/data/resources";
 
 /**
  * ResourceCenterPage — dedicated route for the Resource Center / Downloads page.
- * Features 5 clearly delineated category sections with sticky scroll-spy nav,
- * responsive layout, and a metadata schema per document for future tagging.
+ *
+ * Groups every published document under its category, with a sticky scroll-spy
+ * nav and a type filter. Only documents that trace to a real client or gazette
+ * source appear here — see `src/data/resources.ts`.
  */
 export function ResourceCenterPage() {
+  const [activeFilter, setActiveFilter] = useState<ResourceDocType | "all">("all");
+
+  const counts = useMemo(() => {
+    const tally: Record<string, number> = { all: RESOURCE_DOCUMENTS.length };
+    for (const doc of RESOURCE_DOCUMENTS) {
+      tally[doc.docType] = (tally[doc.docType] ?? 0) + 1;
+    }
+    return tally;
+  }, []);
+
+  const visibleDocuments = useMemo(
+    () =>
+      activeFilter === "all"
+        ? RESOURCE_DOCUMENTS
+        : RESOURCE_DOCUMENTS.filter((doc) => doc.docType === activeFilter),
+    [activeFilter]
+  );
+
+  const visibleCategories = useMemo(
+    () =>
+      RESOURCE_CATEGORIES.filter((category) =>
+        visibleDocuments.some((doc) => doc.category === category.id)
+      ),
+    [visibleDocuments]
+  );
+
   return (
     <PageLayout
       badge="Resource Center"
@@ -23,7 +53,7 @@ export function ResourceCenterPage() {
           Resource <span className="text-gold">Center</span>
         </>
       }
-      subtitle="Official documents, press notes, policy papers, research publications, and registration forms — organised by category for easy access."
+      subtitle="Official documents from AATMA and the Government of Assam — press notes, gazette notifications, research and seminar papers, and the prescribed registration and CITES forms. Organised by category, downloadable as PDFs."
       heroPaddingBottom="pb-12"
     >
       {/* Main content with sidebar nav */}
@@ -31,22 +61,31 @@ export function ResourceCenterPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex gap-10">
             {/* Sidebar navigation */}
-            <ResourceNav />
+            <ResourceNav categories={visibleCategories} />
 
             {/* Content sections */}
             <div className="flex-1 min-w-0">
-              {RESOURCE_CATEGORIES.map((category) => {
-                const docs = RESOURCE_DOCUMENTS.filter(
-                  (d) => d.category === category.id
-                );
-                return (
+              <ResourceFilter
+                active={activeFilter}
+                onChange={setActiveFilter}
+                counts={counts}
+              />
+
+              {visibleCategories.length > 0 ? (
+                visibleCategories.map((category) => (
                   <ResourceCategorySection
                     key={category.id}
                     category={category}
-                    documents={docs}
+                    documents={visibleDocuments.filter(
+                      (doc) => doc.category === category.id
+                    )}
                   />
-                );
-              })}
+                ))
+              ) : (
+                <p className="text-white/75 text-sm">
+                  No documents match this filter.
+                </p>
+              )}
             </div>
           </div>
         </div>

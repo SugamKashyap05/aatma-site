@@ -1,0 +1,22 @@
+# Line-ending policy for binary assets.
+#
+# core.autocrlf=true is set on this checkout. Git's text heuristic misclassifies
+# small PDFs as text (they contain no NUL byte early enough), so it rewrites LF
+# to CRLF on checkout — which silently changes the bytes of every PDF, including
+# the ones under public/resources/ and public/press/. Declaring them binary
+# stops any conversion in either direction.
+*.pdf   binary
+
+# Other binary asset types, for the same reason.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.webp  binary
+*.avif  binary
+*.gif   binary
+*.ico   binary
+*.mp4   binary
+*.webm  binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
