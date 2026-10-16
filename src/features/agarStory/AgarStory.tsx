@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { cn, type ClassValue, assetUrl } from "@/lib/utils";
 import { AmbientMotion } from "@/features/ambient/AmbientMotion";
 import { Reveal } from "@/components/ui/reveal";
@@ -245,15 +246,15 @@ export function AgarStory({
 
         {/* CTA */}
         <Reveal variant="fade" delay={200} className="mt-16 text-center">
-          <a
-            href="#milestones"
+          <Link
+            to="/history"
             className="inline-flex items-center gap-2 text-gold text-sm font-medium tracking-wide hover:text-gold-light transition-colors duration-300 group min-h-[44px]"
           >
             See AATMA's milestones
             <span className="group-hover:translate-x-1 transition-transform duration-300">
               <ArrowRight size={16} strokeWidth={2} />
             </span>
-          </a>
+          </Link>
         </Reveal>
       </div>
     </section>
