@@ -50,7 +50,7 @@ export function ResourceCenterPage() {
       badgeIcon={<Download size={14} />}
       title={
         <>
-          Resource <span className="text-gold">Center</span>
+          Resource <span className="text-gold-light">Center</span>
         </>
       }
       subtitle="Official documents from AATMA and the Government of Assam — press notes, gazette notifications, research and seminar papers, and the prescribed registration and CITES forms. Organised by category, downloadable as PDFs."

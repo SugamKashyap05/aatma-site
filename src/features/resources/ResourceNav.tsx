@@ -61,8 +61,8 @@ export function ResourceNav({ categories }: { categories: ResourceCategory[] }) 
       aria-label="Resource center sections"
       className="hidden lg:block sticky top-24 w-64 shrink-0"
     >
-      <div className="border border-white/10 rounded-lg bg-white/[0.03] backdrop-blur-sm p-4">
-        <p className="text-gold text-xs font-semibold tracking-[0.2em] uppercase mb-3">
+      <div className="glass-surface-subtle rounded-lg p-4">
+        <p className="text-gold-light text-xs font-semibold tracking-[0.2em] uppercase mb-3">
           On this page
         </p>
         <ul className="space-y-1">
@@ -77,14 +77,14 @@ export function ResourceNav({ categories }: { categories: ResourceCategory[] }) 
                     "flex items-center gap-2.5 px-3 py-2 rounded-sm text-sm transition-all",
                     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold",
                     isActive
-                      ? "bg-gold/10 text-gold border border-gold/20"
-                      : "text-white/75 hover:text-white hover:bg-white/5 border border-transparent"
+                      ? "bg-gold/10 text-gold-light border border-gold/20"
+                      : "text-white/75 hover:text-white active:text-white hover:bg-white/5 active:bg-white/5 border border-transparent"
                   )}
                 >
                   <span
                     className={cn(
                       "shrink-0",
-                      isActive ? "text-gold" : "text-white/55"
+                      isActive ? "text-gold-light" : "text-white/55"
                     )}
                   >
                     <Icon className="w-4 h-4" aria-hidden="true" focusable="false" />
@@ -96,7 +96,7 @@ export function ResourceNav({ categories }: { categories: ResourceCategory[] }) 
           })}
         </ul>
         <div className="mt-4 pt-3 border-t border-white/10">
-          <div className="flex items-center gap-2 text-white/60 text-xs">
+          <div className="flex items-center gap-2 text-cream/75 text-xs">
             <BookOpen className="w-3 h-3" aria-hidden="true" focusable="false" />
             <span>
               {categories.length}{" "}

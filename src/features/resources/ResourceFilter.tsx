@@ -19,7 +19,7 @@ export function ResourceFilter({ active, onChange, counts }: ResourceFilterProps
     <div className="mb-10">
       <p
         id="resource-filter-label"
-        className="text-gold text-xs font-semibold tracking-[0.2em] uppercase mb-3"
+        className="text-gold-light text-xs font-semibold tracking-[0.2em] uppercase mb-3"
       >
         Filter by type
       </p>
@@ -41,15 +41,15 @@ export function ResourceFilter({ active, onChange, counts }: ResourceFilterProps
                 "inline-flex items-center gap-2 px-3.5 py-2 rounded-sm text-sm border transition-colors duration-200",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold",
                 isActive
-                  ? "bg-gold/15 border-gold/40 text-gold"
-                  : "bg-white/[0.04] border-white/15 text-white/75 hover:text-white hover:border-white/30"
+                  ? "bg-gold/15 border-gold/40 text-gold-light"
+                  : "bg-glass-surface-subtle border-glass-border text-cream/75 hover:text-white hover:border-glass-border-strong"
               )}
             >
               <span>{option.label}</span>
               <span
                 className={cn(
                   "text-xs tabular-nums",
-                  isActive ? "text-gold/80" : "text-white/65"
+                  isActive ? "text-gold-light" : "text-white/65"
                 )}
                 aria-hidden="true"
               >

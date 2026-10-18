@@ -38,14 +38,14 @@ export function ResourceDocumentCard({
         data-doc-type={doc.docType}
         data-doc-category={doc.category}
         data-doc-id={doc.id}
-        className="card-hover group relative h-full flex flex-col bg-white/[0.08] backdrop-blur-sm border border-white/15 rounded-sm overflow-hidden"
+        className="card-hover glass-surface group relative h-full flex flex-col rounded-sm overflow-hidden"
       >
         {/* Header strip — file type + size */}
-        <div className="px-5 py-2.5 flex items-center justify-between gap-3 border-b border-white/10 bg-white/[0.04]">
+        <div className="px-5 py-2.5 flex items-center justify-between gap-3 border-b border-white/10 bg-glass-surface-subtle">
           <div className="flex items-center gap-2">
             <FileText
               size={14}
-              className="text-gold shrink-0"
+              className="text-gold-light shrink-0"
               aria-hidden="true"
               focusable="false"
             />
@@ -59,7 +59,7 @@ export function ResourceDocumentCard({
 
         {/* Body */}
         <div className="flex-1 p-5 md:p-6 flex flex-col">
-          <h3 className="font-display font-bold text-base md:text-lg leading-snug text-white group-hover:text-gold transition-colors duration-300">
+          <h3 className="font-display font-bold text-base md:text-lg leading-snug text-white group-hover:text-gold-light group-active:text-gold-light transition-colors duration-300">
             {doc.title}
           </h3>
           <p className="mt-3 text-white/75 text-sm leading-relaxed flex-1">
@@ -91,14 +91,14 @@ export function ResourceDocumentCard({
               <a
                 href={assetUrl(doc.downloadPath as string)}
                 download={fileName}
-                className="inline-flex items-center gap-1.5 text-sm font-medium tracking-wide text-white/85 hover:text-gold transition-colors duration-300 group/dl rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-0"
+                className="inline-flex items-center gap-1.5 text-sm font-medium tracking-wide text-white/85 hover:text-gold-light transition-colors duration-300 group/dl rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-0"
                 aria-label={`Download ${doc.title} — ${doc.fileType}, ${doc.fileSize}`}
               >
                 <Download size={14} aria-hidden="true" focusable="false" />
                 <span>Download</span>
               </a>
             ) : (
-              <span className="inline-flex items-center gap-1.5 text-sm font-medium tracking-wide text-white/60">
+              <span className="inline-flex items-center gap-1.5 text-sm font-medium tracking-wide text-cream/75">
                 <FileText size={14} aria-hidden="true" focusable="false" />
                 <span>Not yet published</span>
               </span>

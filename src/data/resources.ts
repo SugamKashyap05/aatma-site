@@ -201,7 +201,7 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
   },
   {
     id: "research-seminar-abstracts-2000",
-    title: "Abstracts of Papers — National Seminar on Agar (Aquilaria spp.) Plantation",
+    title: "Seminar on Scope & Dimension of Agar (Aquilaria spp.) Plantation in NE Region — Abstracts of Papers",
     category: "research-papers",
     docType: "research",
     date: "2000-11-22",
@@ -210,7 +210,7 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
     pageCount: 15,
     tags: ["seminar", "2000", "abstracts", "plantation"],
     description:
-      "Collected abstracts of papers presented at the national seminar on the scope and dimension of agar plantation in the North East, organised by AATMA at the Assam Administrative Staff College, Guwahati.",
+      "Collected abstracts of papers presented at the seminar held 22–23 November 2000 at Assam Administrative Staff College, Khanapara, Guwahati.",
     source: "AATMA seminar publication, 22–23 November 2000",
     available: true,
     downloadPath: "resources/seminar-abstracts-2000.pdf",
