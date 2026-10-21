@@ -22,19 +22,19 @@ function EraCardItem({ card, index, onSelect }: EraCardItemProps) {
         aria-haspopup="dialog"
         aria-label={`Read more about ${card.title}, ${card.year}`}
         onClick={() => onSelect(card)}
-        className="group relative flex h-full w-full flex-col rounded-xl border-t-4 border-gold bg-cream p-6 text-left shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] active:-translate-y-1 active:shadow-[0_8px_32px_rgba(0,0,0,0.12)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold md:p-7"
+        className="group relative flex h-full w-full flex-col rounded-xl border-t-4 border-gold bg-glass-card backdrop-blur-xl border-x-white/15 border-b-white/15 p-6 text-left shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.35)] active:-translate-y-1 active:shadow-[0_8px_32px_rgba(0,0,0,0.35)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold md:p-7"
       >
-        <span className="mb-4 inline-block rounded-full bg-green-deep px-3 py-1 font-display text-sm font-bold tracking-wider text-gold-light">
+        <span className="mb-4 inline-block rounded-full bg-green-deep px-3 py-1 font-display text-sm font-bold tracking-wider text-agar-label">
           {card.year}
         </span>
 
-        <h3 className="mb-3 font-display text-lg font-bold leading-snug text-green-deep">
+        <h3 className="mb-3 font-display text-lg font-bold leading-snug text-agar-title">
           {card.title}
         </h3>
 
-        <p className="text-sm leading-relaxed text-text-mute">{card.description}</p>
+        <p className="text-sm leading-relaxed text-agar-body">{card.description}</p>
 
-        <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-gold-deep">
+        <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-agar-label">
           Read details
           <ArrowRight size={16} aria-hidden="true" focusable="false" />
         </span>
@@ -56,13 +56,13 @@ export function CriticalEraSection({ className }: { className?: ClassValue }) {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         <Reveal variant="fade" delay={0} className="mb-14 text-center">
-          <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-[0.25em] text-gold-deep">
+          <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-[0.25em] text-agar-label">
             Critical Era · 2000–2016
           </span>
-          <h2 className="mb-6 font-display text-3xl font-bold text-charcoal md:text-5xl">
+          <h2 className="mb-6 font-display text-3xl font-bold text-agar-title md:text-5xl">
             The Critical Era
           </h2>
-          <p className="mx-auto max-w-3xl text-base leading-relaxed text-text-mute md:text-lg">
+          <p className="mx-auto max-w-3xl text-base leading-relaxed text-agar-body md:text-lg">
             In the year 2000 the Govt. of Assam notified the Assam Wood Based
             Industries (Establishment and Regulation) Rules, 2000, classifying
             agar oil extracting units as wood based industries. These rules
@@ -85,7 +85,7 @@ export function CriticalEraSection({ className }: { className?: ClassValue }) {
         <Reveal variant="up" delay={200} className="mt-12 text-center">
           <Link
             to="/history"
-            className="group inline-flex min-h-[44px] items-center gap-2 rounded-sm text-sm font-medium tracking-wide text-green-deep underline decoration-gold/40 underline-offset-4 transition-colors duration-300 hover:decoration-gold active:decoration-gold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+            className="group inline-flex min-h-[44px] items-center gap-2 rounded-sm text-sm font-medium tracking-wide text-agar-label underline decoration-gold/40 underline-offset-4 transition-colors duration-300 hover:decoration-gold active:decoration-gold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
           >
             Read the full story
             <span className="transition-transform duration-300 group-hover:translate-x-1 group-active:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-active:translate-x-0">

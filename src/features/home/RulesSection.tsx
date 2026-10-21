@@ -33,12 +33,10 @@ interface RuleCard {
   badge: string;
   title: string;
   description: string;
-  /** Provenance string rendered under the description. */
-  source: string;
+  /** Optional rendered provenance line; omitted on brief-sourced cards. */
+  source?: string;
 }
 
-const BRIEF_SOURCE =
-  "A brief note on Agar Trade (2).docx §9 — WBI Rules 2022 notification";
 const GAZETTE_SOURCE =
   "Assam Gazette No. 20, eCF No. 237152, 12 Jan 2023 — Rule 2";
 
@@ -48,21 +46,18 @@ const RULE_CARDS: RuleCard[] = [
     title: "Register, Don't License",
     description:
       "Industries need only to be registered with the forest department — the licensing regime is gone. Registration is valid for five (5) years.",
-    source: BRIEF_SOURCE,
   },
   {
     badge: "Location",
     title: "Operate from Present Location",
     description:
       "800+ cottage industries can function from their present locations without shifting to designated industrial estates.",
-    source: BRIEF_SOURCE,
   },
   {
     badge: "CITES",
     title: "Fully CITES Compliant",
     description:
       "Registration of industry, registration of plantations, stock register of inbound and outbound raw materials — all under ease of doing business.",
-    source: BRIEF_SOURCE,
   },
   {
     badge: "Scale",
@@ -78,24 +73,26 @@ function RuleCardItem({ card, index }: { card: RuleCard; index: number }) {
     <Reveal
       variant="up"
       delay={index * 80}
-      className="group relative flex h-full flex-col bg-white rounded-xl border-t-4 border-gold shadow-[0_2px_12px_rgba(0,0,0,0.06)] p-6 md:p-7 transition-all duration-300 hover:-translate-y-1 active:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] active:shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
+      className="group relative flex h-full flex-col bg-glass-card backdrop-blur-xl rounded-xl border-t-4 border-gold border-x-white/15 border-b-white/15 shadow-lg p-6 md:p-7 transition-all duration-300 hover:-translate-y-1 active:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.35)] active:shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
     >
       {/* Badge label */}
       <span className="inline-block self-start bg-gold text-green-deep font-display font-bold text-xs tracking-wider px-3 py-1 rounded-full mb-4 uppercase">
         {card.badge}
       </span>
 
-      <h3 className="font-display font-bold text-green-deep text-lg mb-3 leading-snug">
+      <h3 className="font-display font-bold text-agar-title text-lg mb-3 leading-snug">
         {card.title}
       </h3>
 
-      <p className="text-text-mute text-sm leading-relaxed">
+      <p className="text-agar-body text-sm leading-relaxed">
         {card.description}
       </p>
 
-      <span className="mt-auto pt-4 block text-xs italic leading-snug text-text-mute">
-        Source: {card.source}
-      </span>
+      {card.source ? (
+        <span className="mt-auto pt-4 block text-xs italic leading-snug text-agar-body">
+          Source: {card.source}
+        </span>
+      ) : null}
     </Reveal>
   );
 }
@@ -115,25 +112,22 @@ export function RulesSection({ className }: { className?: ClassValue }) {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section header */}
         <Reveal variant="fade" delay={0} className="text-center mb-14">
-          <span className="inline-block text-gold-deep text-sm font-semibold tracking-[0.25em] uppercase mb-4">
+          <span className="inline-block text-agar-label text-sm font-semibold tracking-[0.25em] uppercase mb-4">
             Policy
           </span>
-          <h2 className="font-display font-bold text-3xl md:text-5xl text-charcoal mb-4">
+          <h2 className="font-display font-bold text-3xl md:text-5xl text-agar-title mb-4">
             Assam Wood Based Industries (Promotion &amp; Development) Rules, 2022
           </h2>
           {/* The gazette notification behind the section title. */}
-          <p className="text-gold-deep font-display font-semibold text-sm md:text-base mb-6">
+          <p className="text-agar-label font-display font-semibold text-sm md:text-base mb-6">
             Gazette Notification No. 20, eCF No. 237152, Dispur, 12 January 2023
           </p>
-          <p className="text-text-mute text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+          <p className="text-agar-body text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
             Under the new set of Rules, the Agar wood based industries have been
             newly categorized into Secondary Wood-Based Industries and
             licensing has been done away with. They need only to be registered
             with the forest department and start functioning legally at present
             location without shifting to any other place.
-          </p>
-          <p className="mt-3 text-xs italic leading-relaxed text-text-mute">
-            Source: {BRIEF_SOURCE}
           </p>
         </Reveal>
 
@@ -146,9 +140,8 @@ export function RulesSection({ className }: { className?: ClassValue }) {
 
         {/* Source footer */}
         <Reveal variant="fade" delay={100}>
-          <p className="mt-10 border-t border-border pt-4 text-xs leading-relaxed text-text-mute">
-            Sources: {GAZETTE_SOURCE}; {BRIEF_SOURCE}; The Assam Tribune, 2
-            August 2023.
+          <p className="mt-10 border-t border-white/15 pt-4 text-xs leading-relaxed text-agar-body">
+            Sources: {GAZETTE_SOURCE}; The Assam Tribune, 2 August 2023.
           </p>
         </Reveal>
       </div>

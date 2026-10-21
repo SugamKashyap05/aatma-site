@@ -67,7 +67,7 @@ export function FormationSection({ className }: FormationSectionProps) {
         {/* Section header — client's own section title, [HIST] p.2 */}
         <div className="max-w-4xl mx-auto text-center mb-14 md:mb-18">
           <Reveal variant="fade" delay={0}>
-            <span className="glass-surface-subtle inline-block text-agar-label text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-4">
+            <span className="bg-glass-card backdrop-blur-xl border border-white/20 inline-block text-agar-label text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-4">
               Formation
             </span>
           </Reveal>

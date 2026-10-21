@@ -81,29 +81,29 @@ function PressCard({ item, index }: { item: PressItem; index: number }) {
     <Reveal
       variant="up"
       delay={index * 100}
-      className="group relative flex h-full flex-col bg-white rounded-xl border border-cream-dark shadow-[0_2px_12px_rgba(0,0,0,0.06)] p-6 transition-all duration-300 hover:-translate-y-1 active:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] active:shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
+      className="group relative flex h-full flex-col bg-glass-card backdrop-blur-xl rounded-xl border border-white/20 shadow-lg p-6 transition-all duration-300 hover:-translate-y-1 active:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.35)] active:shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
     >
       {/* Category + date */}
       <div className="flex items-center justify-between gap-3 mb-4">
         <div className="flex items-center gap-2">
           <Icon
             size={14}
-            className="text-gamosa-red"
+            className="text-agar-label"
             aria-hidden="true"
             focusable="false"
           />
-          <span className="text-xs font-semibold tracking-[0.12em] uppercase text-gamosa-red">
+          <span className="text-xs font-semibold tracking-[0.12em] uppercase text-agar-label">
             {item.category}
           </span>
         </div>
-        <span className="text-xs text-text-mute">{item.date}</span>
+        <span className="text-xs text-agar-body">{item.date}</span>
       </div>
 
-      <h3 className="font-display font-bold text-green-deep text-base md:text-lg leading-snug mb-3">
+      <h3 className="font-display font-bold text-agar-title text-base md:text-lg leading-snug mb-3">
         {item.title}
       </h3>
 
-      <p className="text-text-mute text-sm leading-relaxed flex-1">
+      <p className="text-agar-body text-sm leading-relaxed flex-1">
         {item.summary}
       </p>
     </Reveal>
@@ -117,7 +117,7 @@ function ResourceCard({ item, index }: { item: ResourceItem; index: number }) {
     <Reveal
       variant="up"
       delay={index * 100}
-      className="group flex items-start gap-4 bg-white rounded-xl border border-cream-dark shadow-[0_2px_12px_rgba(0,0,0,0.06)] p-5 transition-all duration-300 hover:-translate-y-0.5 active:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] active:shadow-[0_8px_24px_rgba(0,0,0,0.1)]"
+      className="group flex items-start gap-4 bg-glass-card backdrop-blur-xl rounded-xl border border-white/20 shadow-lg p-5 transition-all duration-300 hover:-translate-y-0.5 active:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)] active:shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
     >
       <div className="w-10 h-10 rounded-lg bg-[linear-gradient(135deg,var(--color-green-mid),var(--color-green-deep))] flex items-center justify-center text-cream flex-shrink-0">
         <Icon
@@ -127,10 +127,10 @@ function ResourceCard({ item, index }: { item: ResourceItem; index: number }) {
         />
       </div>
       <div className="min-w-0">
-        <h3 className="font-display font-bold text-green-deep text-sm md:text-base leading-snug mb-1">
+        <h3 className="font-display font-bold text-agar-title text-sm md:text-base leading-snug mb-1">
           {item.title}
         </h3>
-        <p className="text-text-mute text-sm leading-snug">
+        <p className="text-agar-body text-sm leading-snug">
           {item.description}
         </p>
       </div>
@@ -153,14 +153,14 @@ export function PressTeaser({ className }: { className?: ClassValue }) {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section header */}
         <Reveal variant="fade" delay={0} className="text-center mb-14">
-          <span className="inline-block text-gamosa-red text-sm font-semibold tracking-[0.25em] uppercase bg-white/60 px-4 py-1.5 rounded-sm mb-4">
+          <span className="inline-block text-agar-label text-sm font-semibold tracking-[0.25em] uppercase bg-glass-card backdrop-blur-xl border border-white/20 px-4 py-1.5 rounded-sm mb-4">
             Press &amp; Resources
           </span>
-          <h2 className="font-display font-bold text-3xl md:text-5xl text-charcoal mb-6">
+          <h2 className="font-display font-bold text-3xl md:text-5xl text-agar-title mb-6">
             Official Communications
           </h2>
-          <p className="text-text-mute text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
-            Client-supplied press releases, official letters, and resource documents from AATMA.
+          <p className="text-agar-body text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+            Press releases, official letters, and resource documents issued by AATMA.
           </p>
         </Reveal>
 
@@ -169,7 +169,7 @@ export function PressTeaser({ className }: { className?: ClassValue }) {
           <Reveal variant="fade" delay={0}>
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gamosa-red/30" />
-              <h3 className="font-display font-bold text-charcoal text-sm md:text-base tracking-wide">
+              <h3 className="font-display font-bold text-agar-label text-sm md:text-base tracking-wide">
                 Press Releases
               </h3>
               <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gamosa-red/30" />
@@ -188,7 +188,7 @@ export function PressTeaser({ className }: { className?: ClassValue }) {
           <Reveal variant="fade" delay={0}>
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gamosa-red/30" />
-              <h3 className="font-display font-bold text-charcoal text-sm md:text-base tracking-wide">
+              <h3 className="font-display font-bold text-agar-label text-sm md:text-base tracking-wide">
                 Resource Documents
               </h3>
               <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gamosa-red/30" />
@@ -217,7 +217,7 @@ export function PressTeaser({ className }: { className?: ClassValue }) {
             </Link>
             <Link
               to="/resources"
-              className="inline-flex items-center gap-2 bg-white text-green-deep text-sm font-medium tracking-wide px-6 py-3 rounded-sm border border-cream-dark transition-all duration-300 hover:bg-cream active:bg-cream min-h-[44px] group"
+              className="inline-flex items-center gap-2 bg-glass-card backdrop-blur-xl border border-white/20 text-agar-label text-sm font-medium tracking-wide px-6 py-3 rounded-sm transition-all duration-300 hover:bg-green-deep/95 active:bg-green-deep/95 min-h-[44px] group"
             >
               Browse Resources
               <ArrowUpRight
@@ -226,14 +226,6 @@ export function PressTeaser({ className }: { className?: ClassValue }) {
               />
             </Link>
           </div>
-        </Reveal>
-
-        {/* Source footer */}
-        <Reveal variant="fade" delay={100}>
-          <p className="mt-10 border-t border-cream-dark pt-4 text-xs leading-relaxed text-text-mute text-center">
-            Sources: AATMA press note Rev.docx (14 Jan 2023); AATMA to HCM.docx
-            (14 Jan 2023); A BRIEF HISTORY OF AGAR.pdf.
-          </p>
         </Reveal>
       </div>
     </section>

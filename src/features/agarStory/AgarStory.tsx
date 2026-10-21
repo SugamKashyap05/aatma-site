@@ -100,7 +100,7 @@ export function AgarStory({ className }: {
     <section
       id="agar-story"
       className={cn(
-        "relative py-20 md:py-28 overflow-hidden scroll-mt-20 text-cream",
+        "relative py-20 md:py-28 overflow-hidden scroll-mt-20 text-agar-body",
         className
       )}
     >
@@ -111,7 +111,7 @@ export function AgarStory({ className }: {
         {/* Section header */}
         <div className="max-w-4xl mx-auto text-center mb-14 md:mb-18">
           <Reveal variant="fade" delay={0}>
-            <span className="glass-surface-subtle inline-block text-agar-label text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-4">
+            <span className="bg-glass-card backdrop-blur-xl border border-white/20 inline-block text-agar-label text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-4">
               Agar Trade in Assam
             </span>
           </Reveal>
@@ -121,7 +121,7 @@ export function AgarStory({ className }: {
             </h2>
           </Reveal>
           <Reveal variant="fade" delay={200}>
-            <p className="text-cream/90 text-base md:text-lg max-w-2xl mx-auto">
+            <p className="text-agar-body text-base md:text-lg max-w-2xl mx-auto">
               The client history describes agarwood chips (black resinous wood) and agar oil/attar as useful raw materials for perfumery, and agar as a highly commercially useful plant.
             </p>
           </Reveal>
@@ -143,8 +143,8 @@ export function AgarStory({ className }: {
                 decoding="async"
               />
             </picture>
-            <p className="mt-3 text-center text-xs leading-relaxed text-cream/75">
-              Schematic relationship diagram, not to geographic scale. Source: client-supplied A Brief History of Agar, §3.
+            <p className="mt-3 text-center text-xs leading-relaxed text-agar-body">
+              Schematic relationship diagram, not to geographic scale.
             </p>
           </div>
         </Reveal>
@@ -243,7 +243,7 @@ export function AgarStory({ className }: {
         <Reveal variant="fade" delay={200} className="mt-16 text-center">
           <Link
             to="/history"
-            className="inline-flex items-center gap-2 text-gold-light text-sm font-medium tracking-wide hover:text-gold-light active:text-gold-light transition-colors duration-300 group min-h-[44px]"
+            className="inline-flex items-center gap-2 text-agar-label text-sm font-medium tracking-wide hover:text-agar-label active:text-agar-label transition-colors duration-300 group min-h-[44px]"
           >
             See AATMA's milestones
             <span className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform duration-300">

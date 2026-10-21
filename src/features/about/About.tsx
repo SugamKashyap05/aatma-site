@@ -51,7 +51,7 @@ export function About({ className, deviceTier }: AboutProps) {
       <div className="max-w-6xl mx-auto w-full px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           <Reveal variant="fade" delay={0}>
-            <span className="glass-surface-subtle inline-block text-agar-label text-xs md:text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-6">
+            <span className="bg-glass-card backdrop-blur-xl border border-white/20 inline-block text-agar-label text-xs md:text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-6">
               About AATMA
             </span>
           </Reveal>
@@ -79,7 +79,7 @@ export function About({ className, deviceTier }: AboutProps) {
                   </p>
                   <button
                     onClick={() => setLang(lang === "en" ? "as" : "en")}
-                    className="mt-6 mb-6 inline-flex items-center gap-2 text-agar-label text-sm font-medium tracking-wide self-center glass-surface-subtle hover:bg-glass-surface-hover px-5 py-2.5 rounded-sm transition-all duration-300 min-h-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light"
+                    className="mt-6 mb-6 inline-flex items-center gap-2 text-agar-label text-sm font-medium tracking-wide self-center bg-glass-card backdrop-blur-xl border border-white/20 hover:bg-green-deep/95 px-5 py-2.5 rounded-sm transition-all duration-300 min-h-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light"
                   >
                     {lang === "en" ? "অসমীয়াত পঢ়ক" : "Read in English"}
                     <ChevronRight size={16} />

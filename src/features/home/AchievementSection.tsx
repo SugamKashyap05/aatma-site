@@ -58,43 +58,42 @@ export function AchievementSection({ className }: { className?: ClassValue }) {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* ---- Section header ---- */}
         <Reveal variant="fade" delay={0}>
-          <span className="inline-block text-gold-deep text-sm font-semibold tracking-[0.25em] uppercase mb-4">
+          <span className="inline-block text-agar-label text-sm font-semibold tracking-[0.25em] uppercase mb-4">
             Achievement
           </span>
         </Reveal>
 
         <Reveal variant="up" delay={100}>
-          <h2 className="font-display font-bold text-3xl md:text-5xl text-cream mb-6">
-            A New Dawn for the Agarwood Trade
-          </h2>
-        </Reveal>
-
-        <Reveal variant="fade" delay={200}>
-          <p className="text-cream/70 text-base md:text-lg leading-relaxed max-w-3xl mb-6">
-            Following this on 19 July 2021, an AATMA delegation accompanied
-            by Mr. Sirajuddin Ajmal, MLA, met with the Chief Minister of
-            Assam, Dr. Himanta Biswa Sharma, to submit a memorandum apprising
-            him of the ongoing problems faced by the agar industries for the
-            last 21 years. The Chief Minister patiently listened to the
-            delegation, acknowledged the memorandum, and assured them he
-            would work on resolving the matter. True to his assurance, the
-            Chief Minister of Assam and his government took a fresh, positive
-            approach to the long-standing, vexed issue — and the association
-            extends its sincere thanks to Sri Himanta Biswa Sharma for
-            enacting the Assam Wood Based Industries (Promotion &amp;
-            Development) Rules, 2022 on 12 January 2023.
-          </p>
+          <div className="mx-auto max-w-4xl bg-glass-card backdrop-blur-xl rounded-sm p-6 md:p-8 shadow-lg border border-white/20 space-y-5">
+            <h2 className="font-display font-bold text-3xl md:text-5xl text-agar-title">
+              A New Dawn for the Agarwood Trade
+            </h2>
+            <p className="text-agar-body text-base md:text-lg leading-relaxed">
+              Following this on 19 July 2021, an AATMA delegation accompanied
+              by Mr. Sirajuddin Ajmal, MLA, met with the Chief Minister of
+              Assam, Dr. Himanta Biswa Sharma, to submit a memorandum apprising
+              him of the ongoing problems faced by the agar industries for the
+              last 21 years. The Chief Minister patiently listened to the
+              delegation, acknowledged the memorandum, and assured them he would
+              work on resolving the matter. True to his assurance, the
+              Chief Minister of Assam and his government took a fresh, positive
+              approach to the long-standing, vexed issue — and the association
+              extends its sincere thanks to Sri Himanta Biswa Sharma for
+              enacting the Assam Wood Based Industries (Promotion &amp;
+              Development) Rules, 2022 on 12 January 2023.
+            </p>
+          </div>
         </Reveal>
 
         {/* ---- Stats row ---- */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-10 md:mt-14">
           {STATS.map((stat, i) => (
             <Reveal key={stat.label} variant="up" delay={i * 100}>
-              <div className="glass-surface rounded-lg p-6">
-                <div className="font-display font-bold text-4xl md:text-5xl text-gold-light">
+              <div className="bg-glass-card backdrop-blur-xl border border-white/20 rounded-lg p-6 shadow-lg">
+                <div className="font-display font-bold text-4xl md:text-5xl text-agar-label">
                   {stat.value}
                 </div>
-                <div className="mt-2 text-cream/70 text-xs md:text-sm uppercase tracking-widest">
+                <div className="mt-2 text-agar-body text-xs md:text-sm uppercase tracking-widest">
                   {stat.label}
                 </div>
               </div>
@@ -106,7 +105,8 @@ export function AchievementSection({ className }: { className?: ClassValue }) {
         <div className="mt-16 md:mt-20">
           {/* Timeline of achievement events */}
           <Reveal variant="fade" delay={100} className="mx-auto max-w-4xl">
-            <ol className="relative space-y-10 before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-px before:bg-gold/30">
+            <div className="bg-glass-card backdrop-blur-xl border border-white/20 rounded-sm p-6 md:p-8 shadow-lg">
+              <ol className="relative space-y-10 before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-px before:bg-gold/30">
               {EVENTS.map((event) => (
                 <li key={event.date} className="relative pl-10">
                   {/* Timeline node */}
@@ -114,18 +114,19 @@ export function AchievementSection({ className }: { className?: ClassValue }) {
                     aria-hidden="true"
                     className="absolute left-0 top-1.5 w-4 h-4 rounded-full bg-gold ring-4 ring-green-deep"
                   />
-                  <span className="inline-block text-gold-light font-semibold tracking-wide text-sm uppercase">
+                  <span className="inline-block text-agar-label font-semibold tracking-wide text-sm uppercase">
                     {event.date}
                   </span>
-                  <h3 className="font-display text-xl md:text-2xl text-cream mt-1 mb-2">
+                  <h3 className="font-display text-xl md:text-2xl text-agar-title mt-1 mb-2">
                     {event.title}
                   </h3>
-                  <p className="text-cream/70 text-sm md:text-base leading-relaxed">
+                  <p className="text-agar-body text-sm md:text-base leading-relaxed">
                     {event.body}
                   </p>
                 </li>
               ))}
             </ol>
+            </div>
           </Reveal>
 
         </div>

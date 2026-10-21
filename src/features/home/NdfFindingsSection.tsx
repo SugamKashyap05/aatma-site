@@ -33,12 +33,8 @@ interface FactItem {
   icon: typeof TreePine;
   label: string;
   description: string;
-  /** Short provenance string rendered under the description. */
-  source: string;
 }
 
-/** Primary source for every NDF figure in this section. */
-const BRIEF_SOURCE = "A brief note on Agar Trade (2).docx §8 — NDF of agar trees";
 const TRIBUNE_SOURCE = "The Assam Tribune, 18 November 2024";
 
 const FACTS: FactItem[] = [
@@ -47,27 +43,23 @@ const FACTS: FactItem[] = [
     label: "1143.7 Lakh",
     description:
       "Cultivated agar tree population in Assam (trees over 2 years of age and over 10 cm GBH)",
-    source: BRIEF_SOURCE,
   },
   {
     icon: MapPin,
     label: "5 Districts",
     description:
       "Golaghat, Jorhat, Sibsagar, Karimganj and Cachar — the districts with the major cultivated agar tree population",
-    source: BRIEF_SOURCE,
   },
   {
     icon: Microscope,
     label: "BSI Study",
     description:
       "Commissioned by MoEF&CC, carried out by the Botanical Survey of India — report submitted February 2024",
-    source: BRIEF_SOURCE,
   },
   {
     icon: Globe,
     label: "CITES App. II",
     description: "Listed under Appendix-II with effect from 16 February 1995",
-    source: BRIEF_SOURCE,
   },
 ];
 
@@ -77,20 +69,17 @@ function FactCard({ fact, index }: { fact: FactItem; index: number }) {
     <Reveal
       variant="up"
       delay={index * 80}
-      className="flex items-start gap-4 bg-white rounded-xl border border-cream-dark shadow-[0_2px_12px_rgba(0,0,0,0.06)] p-5 transition-all duration-300 hover:-translate-y-0.5 active:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] active:shadow-[0_8px_24px_rgba(0,0,0,0.1)]"
+      className="flex items-start gap-4 bg-glass-card backdrop-blur-xl border border-white/20 rounded-xl shadow-lg p-5 transition-all duration-300 hover:-translate-y-0.5 active:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)] active:shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
     >
       <div className="w-12 h-12 rounded-xl bg-[linear-gradient(135deg,var(--color-green-mid),var(--color-green-deep))] flex items-center justify-center text-cream flex-shrink-0">
         <Icon className="w-6 h-6" aria-hidden="true" focusable="false" />
       </div>
       <div className="min-w-0">
-        <strong className="block text-green-deep font-display font-bold text-lg leading-tight">
+        <strong className="block text-agar-title font-display font-bold text-lg leading-tight">
           {fact.label}
         </strong>
-        <span className="block text-text-mute text-sm leading-snug">
+        <span className="block text-agar-body text-sm leading-snug">
           {fact.description}
-        </span>
-        <span className="mt-1.5 block text-xs italic leading-snug text-text-mute">
-          Source: {fact.source}
         </span>
       </div>
     </Reveal>
@@ -114,19 +103,19 @@ export function NdfFindingsSection({ className }: { className?: ClassValue }) {
           {/* ---- Left: text content + images ---- */}
           <div>
             <Reveal variant="fade" delay={0}>
-              <span className="inline-block text-gold-deep text-sm font-semibold tracking-[0.25em] uppercase mb-4">
+              <span className="inline-block text-agar-label text-sm font-semibold tracking-[0.25em] uppercase mb-4">
                 Research
               </span>
             </Reveal>
 
             <Reveal variant="up" delay={100}>
-              <h2 className="font-display font-bold text-3xl md:text-5xl text-charcoal mb-6">
+              <h2 className="font-display font-bold text-3xl md:text-5xl text-agar-title mb-6">
                 Non-Detriment Findings
               </h2>
             </Reveal>
 
             <Reveal variant="fade" delay={200}>
-              <p className="text-text-mute text-base md:text-lg leading-relaxed mb-5">
+              <p className="text-agar-body text-base md:text-lg leading-relaxed mb-5">
                 MoEF&amp;CC commissioned the NDF Study through the Botanical
                 Survey of India (BSI), and the BSI submitted its report in
                 February 2024.
@@ -134,8 +123,8 @@ export function NdfFindingsSection({ className }: { className?: ClassValue }) {
             </Reveal>
 
             <Reveal variant="fade" delay={300}>
-              <p className="text-text-mute text-base md:text-lg leading-relaxed mb-8">
-                <em className="text-charcoal font-medium">
+              <p className="text-agar-body text-base md:text-lg leading-relaxed mb-8">
+                <em className="text-agar-title font-medium">
                   Aquilaria malaccensis
                 </em>{" "}
                 is listed as a Critically Endangered (CR) species in the IUCN
@@ -157,9 +146,8 @@ export function NdfFindingsSection({ className }: { className?: ClassValue }) {
         {/* Source footer — names the brief so no figure above is left without
             a provenance line. */}
         <Reveal variant="fade" delay={100}>
-          <p className="mt-10 border-t border-cream-dark pt-4 text-xs leading-relaxed text-text-mute">
-            Sources: {BRIEF_SOURCE}; {TRIBUNE_SOURCE}. Figures are the brief's
-            own — nothing in this section is web-sourced.
+          <p className="mt-10 border-t border-white/15 pt-4 text-xs leading-relaxed text-agar-body">
+            Corroborated by {TRIBUNE_SOURCE}.
           </p>
         </Reveal>
       </div>
