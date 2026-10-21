@@ -8,15 +8,14 @@ import { Calendar, MapPin, Radio } from "lucide-react";
 // Loading via ?raw embeds the sanitized text at build time — named individuals
 // never enter the JS bundle. Regenerate docs/web/ after editing docs/.
 
-const transcriptFiles = import.meta.glob(
-  "../../../docs/web/TRANSCRIPT_PRESS_MEET_2023-01-14*.md",
-  { query: "?raw", import: "default", eager: true }
-) as Record<string, string>;
+import assameseTranscript from "../../../docs/web/TRANSCRIPT_PRESS_MEET_2023-01-14.md?raw";
+import englishTranscript from "../../../docs/web/TRANSCRIPT_PRESS_MEET_2023-01-14_EN.md?raw";
+import hindiTranscript from "../../../docs/web/TRANSCRIPT_PRESS_MEET_2023-01-14_HI.md?raw";
 
 const TRANSCRIPTS = {
-  assamese: transcriptFiles["../../../docs/web/TRANSCRIPT_PRESS_MEET_2023-01-14.md"] ?? "",
-  english: transcriptFiles["../../../docs/web/TRANSCRIPT_PRESS_MEET_2023-01-14_EN.md"] ?? "",
-  hindi: transcriptFiles["../../../docs/web/TRANSCRIPT_PRESS_MEET_2023-01-14_HI.md"] ?? "",
+  assamese: assameseTranscript,
+  english: englishTranscript,
+  hindi: hindiTranscript,
 } as const;
 
 type LanguageKey = keyof typeof TRANSCRIPTS;
@@ -49,6 +48,9 @@ function parseTranscript(raw: string): SpeakerBlock[] {
         timestamp: headingMatch[2].trim(),
         content: "",
       };
+    } else if (/^#{1,6}\s+/.test(line)) {
+      if (currentBlock) blocks.push(currentBlock);
+      currentBlock = null;
     } else if (currentBlock) {
       currentBlock.content += line + "\n";
     }
@@ -96,7 +98,8 @@ export function PressMeetSection({ className }: { className?: string }) {
           <div className="mb-12">
             <video
               controls
-              preload="metadata"
+              preload="none"
+              aria-label="Client-supplied video of the AATMA press meet on 14 January 2023"
               poster={assetUrl("press-meet/IMG-P02_press-meet-hero.jpg")}
               className="w-full rounded-sm border border-white/10 bg-black"
             >
@@ -113,12 +116,14 @@ export function PressMeetSection({ className }: { className?: string }) {
               {LANGUAGES.map((lang) => (
                 <button
                   key={lang.key}
+                  type="button"
+                  aria-pressed={activeTab === lang.key}
                   onClick={() => setActiveTab(lang.key)}
                   className={cn(
-                    "px-4 py-2 text-sm font-medium rounded-sm transition-colors",
+                    "px-4 py-2 min-h-[44px] text-sm font-medium rounded-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light",
                     activeTab === lang.key
                       ? "bg-gold text-green-deep"
-                      : "bg-white/10 text-white/70 hover:text-white"
+                      : "bg-glass-surface-subtle text-cream/90 hover:text-cream"
                   )}
                 >
                   {lang.label}
@@ -130,13 +135,13 @@ export function PressMeetSection({ className }: { className?: string }) {
               {blocks.map((block, i) => (
                 <div
                   key={i}
-                  className="bg-white/[0.05] border border-white/10 rounded-sm p-4"
+                  className="glass-surface rounded-sm p-4"
                 >
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-gold font-semibold text-sm">
+                    <span className="text-gold-light font-semibold text-sm">
                       {block.speaker}
                     </span>
-                    <span className="text-white/40 text-xs">
+                    <span className="text-cream/75 text-xs">
                       {block.timestamp}
                     </span>
                   </div>
@@ -151,15 +156,15 @@ export function PressMeetSection({ className }: { className?: string }) {
 
         {/* Event metadata */}
         <Reveal variant="fade" delay={200}>
-          <div className="bg-white/[0.05] border border-white/10 rounded-sm p-6">
+          <div className="glass-surface rounded-sm p-6">
             <h3 className="font-display font-bold text-white text-lg mb-4">
               Event Details
             </h3>
             <div className="grid gap-4 md:grid-cols-3">
               <div className="flex items-start gap-3">
-                <Calendar size={16} className="text-gold mt-0.5" />
+                <Calendar size={16} className="text-gold-light mt-0.5" />
                 <div>
-                  <div className="text-white/50 text-xs uppercase tracking-wide">
+                  <div className="text-cream/75 text-xs uppercase tracking-wide">
                     Date & Time
                   </div>
                   <div className="text-white/90 text-sm">
@@ -168,20 +173,20 @@ export function PressMeetSection({ className }: { className?: string }) {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <MapPin size={16} className="text-gold mt-0.5" />
+                <MapPin size={16} className="text-gold-light mt-0.5" />
                 <div>
-                  <div className="text-white/50 text-xs uppercase tracking-wide">
+                  <div className="text-cream/75 text-xs uppercase tracking-wide">
                     Venue
                   </div>
                   <div className="text-white/90 text-sm">
-                    Head Office, Main Road, Hojai–782435
+                    AATMA Head Office, Hojai
                   </div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Radio size={16} className="text-gold mt-0.5" />
+                <Radio size={16} className="text-gold-light mt-0.5" />
                 <div>
-                  <div className="text-white/50 text-xs uppercase tracking-wide">
+                  <div className="text-cream/75 text-xs uppercase tracking-wide">
                     Broadcasters
                   </div>
                   <div className="text-white/90 text-sm">

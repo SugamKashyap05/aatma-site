@@ -23,6 +23,18 @@ html {
   --color-text: #2a2a2a;
   --color-text-mute: #5a5a5a;
   --color-border: #d4c9b0;
+  /* Shared dark-glass recipe; restrained fill keeps gold text accessible. */
+  --color-glass-surface: rgb(245 240 232 / 14%);
+  --color-glass-surface-hover: rgb(245 240 232 / 16%);
+  --color-glass-surface-subtle: rgb(245 240 232 / 8%);
+  --color-glass-border: rgb(245 240 232 / 32%);
+  --color-glass-border-strong: rgb(245 240 232 / 46%);
+  --color-glass-nav: rgb(26 60 42 / 90%);
+  --color-glass-card: rgb(26 60 42 / 88%);
+  --color-agar-title: #F5F1E4;
+  --color-agar-body: #DCE3D6;
+  --color-agar-label: #F0D77A;
+  --color-agar-icon: #E8C85A;
 
   --font-display: "Playfair Display", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
@@ -32,6 +44,8 @@ html {
   /* Gold-tinted glow for interactive card hovers. Token-backed so the recipe
      never hard-codes the gold hex — see docs/DESIGN_SYSTEM.md §7. */
   --shadow-glow-gold: 0 0 30px color-mix(in srgb, var(--color-gold) 15%, transparent);
+  --shadow-glass: 0 12px 32px rgb(0 0 0 / 18%);
+  --shadow-glass-hover: 0 18px 44px rgb(0 0 0 / 28%), var(--shadow-glow-gold);
 
   /* Assam visual-identity tokens for upcoming homepage components */
   --color-gamosa-red: #b83a2e;
@@ -39,27 +53,63 @@ html {
   --color-mustard: #d4a03c;
   --font-assamese: 'Noto Sans Bengali', sans-serif;
 }
+
+@layer components {
+  .glass-surface {
+    background-color: var(--color-glass-surface);
+    border: 1px solid var(--color-glass-border);
+    backdrop-filter: blur(12px) saturate(115%);
+    -webkit-backdrop-filter: blur(12px) saturate(115%);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-surface:hover,
+  .glass-surface:focus-within {
+    background-color: var(--color-glass-surface-hover);
+    border-color: var(--color-glass-border-strong);
+  }
+
+  .glass-surface-subtle {
+    background-color: var(--color-glass-surface-subtle);
+    border: 1px solid var(--color-glass-border);
+    backdrop-filter: blur(10px) saturate(110%);
+    -webkit-backdrop-filter: blur(10px) saturate(110%);
+  }
+
+  .glass-nav {
+    background-color: var(--color-glass-nav);
+    border-bottom: 1px solid var(--color-glass-border);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    box-shadow: var(--shadow-glass);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *
+  * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
 
   /* Neutralize hero parallax layer transforms */
-  .hero-layer
+  .hero-layer {
     transform: none !important;
+  }
 
   /* Neutralize ambient motion layers */
   .style-float,
   .style-cloud,
-  [style*="animationDuration: 0s"]
+  [style*="animationDuration: 0s"] {
     animation: none !important;
     transform: none !important;
+  }
 
   /* Static fallback background for reduced-motion ambient */
-  .ambient-reduced-fallback
+  .ambient-reduced-fallback {
     opacity: 1 !important;
+  }
 }
 
 /* ---- Ambient Motion Keyframes (section-level fog/clouds) ---- */
@@ -110,6 +160,16 @@ html {
   animation-name: float-fog;
 }
 
+/* ---- Document Preview Modal fade-in ---- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .style-cloud {
   animation-name: float-cloud;
 }
@@ -123,48 +183,35 @@ html {
 /* Tailwind v4 preserves raw CSS at the end of the processed file.
    Put the reduced-motion media query here so it survives the build. */
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  /* Neutralize hero parallax layer transforms */
-  .hero-layer {
-    transform: none !important;
-  }
-
-  /* Neutralize ambient motion layers (fog/clouds/particles) */
-  .style-float,
-  .style-cloud,
-  [style*="animationDuration: 0s"] {
-    animation: none !important;
-    transform: none !important;
-  }
-
-  /* Static fallback background for reduced-motion ambient */
-  .ambient-reduced-fallback {
-    opacity: 1 !important;
-  }
-}
-
 /* ---- Global card hover effects ---- */
 .card-hover {
   transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  touch-action: manipulation;
 }
 
-.card-hover:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(201, 168, 76, 0.15);
-  border-color: rgba(201, 168, 76, 0.4);
-  background-color: rgba(255, 255, 255, 0.15);
+.card-hover:hover,
+.card-hover:active {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glass-hover);
+}
+
+/* ---- Touch target & gesture utilities ---- */
+/* Prevent double-tap zoom on interactive elements */
+button, a, input, select, textarea, [role="button"], [role="tab"], [role="link"] {
+  touch-action: manipulation;
+}
+
+/* Ensure minimum touch target size for elements that might be too small */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Active state feedback for touch devices */
+.touch-active:active {
+  opacity: 0.85;
+  transform: scale(0.98);
 }
 
 /* ---- Scroll reveal base states ---- */
@@ -214,6 +261,7 @@ html {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -281,5 +329,36 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .mobile-drawer {
     animation: none;
+  }
+}
+
+/* ---- Forest background (decorative shell layer) ----
+   ForestBackground.tsx owns responsive AVIF/WebP/JPEG delivery and the
+   solid-color fallback. The approved Kaziranga image remains decorative only. */
+/* High-contrast overlay that sits above the forest image to keep text legible.
+   Two variants: green (default, for dark sections) and cream (for light sections
+   that need a warm wash). Both use the design-system tokens. */
+.forest-overlay-green {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-green-deep) 88%, transparent) 0%,
+    color-mix(in srgb, var(--color-green-deep) 78%, transparent) 50%,
+    color-mix(in srgb, var(--color-green-deep) 88%, transparent) 100%
+  );
+}
+
+.forest-overlay-cream {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-cream) 92%, transparent) 0%,
+    color-mix(in srgb, var(--color-cream) 85%, transparent) 50%,
+    color-mix(in srgb, var(--color-cream) 92%, transparent) 100%
+  );
+}
+
+/* Reduced-motion: forest background is static (no parallax, no drift). */
+@media (prefers-reduced-motion: reduce) {
+  .forest-bg {
+    background-attachment: scroll;
   }
 }

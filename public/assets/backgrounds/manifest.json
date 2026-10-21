@@ -1,0 +1,1063 @@
+{
+  "source": {
+    "file": "kaziranga-forest-assam-source.jpg",
+    "width": 4080,
+    "height": 3060,
+    "aspect": 1.3333,
+    "bytes": 6374749,
+    "url": "https://commons.wikimedia.org/wiki/File:Kaziranga_forest_in_Assam_24.jpg",
+    "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Kaziranga_forest_in_Assam_24.jpg",
+    "author": "Pinakpani",
+    "credit": "Own work",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "attributionRequired": true,
+    "dateOriginal": "2026-04-13",
+    "sha1": "a4a022ac5584140486336cf07e0fe8295135060b",
+    "contentNote": "Filename says 'forest'; the photograph is an open Kaziranga grassland/wetland under overcast sky, i.e. a wildlife-park scene, not dense forest. The upper ~third is featureless sky, the horizon carries a distant treeline, and the mid-ground contains: an adult Asian elephant walking on a dirt path, a second elephant lying in the stream with a mahout (handler) on its back, and a human-made elevated viewing pavilion with metal railings. Decorative use only — it does not depict AATMA, agarwood, agar plantations or agar cultivation."
+  },
+  "modifications": [
+    "Downloaded from Wikimedia Commons into public/assets/backgrounds/ (local copy; never hotlinked at runtime)",
+    "Resized to 1920 / 1280 / 768 / 480 px wide for responsive delivery",
+    "Focal crops to 21:9 (desktop), 16:10 (tablet), 4:3 (mobile) and 1:1 (small), at 85% crop-window scale",
+    "Converted to WebP and AVIF, with mozjpeg JPEG fallbacks",
+    "No retouching, colour grading, compositing or content alteration"
+  ],
+  "cropZoom": 0.85,
+  "cropNotes": {
+    "center": "Grassland mid-ground: elephant on the dirt path, viewing pavilion, horizon treeline.",
+    "top": "Overcast sky band plus horizon treeline and a little grassland — sky-dominant (weakest read).",
+    "bottom": "Foreground grass and dirt path, no sky — busiest read.",
+    "left": "Frames the large tree at the left edge with the viewing pavilion beyond it.",
+    "right": "Frames the stream with the second elephant and its mahout on the right of the frame.",
+    "top-left": "Left tree canopy against sky — sky-dominant.",
+    "top-right": "Sky above the distant treeline — sky-dominant (weakest read).",
+    "bottom-left": "Tree base and pavilion over foreground grass.",
+    "bottom-right": "Dirt path and stream bank across the foreground grass."
+  },
+  "derivatives": [
+    {
+      "name": "forest-1920",
+      "width": 1920,
+      "height": 1440,
+      "crop": "full",
+      "webp": {
+        "file": "forest-1920.webp",
+        "bytes": 593340
+      },
+      "avif": {
+        "file": "forest-1920.avif",
+        "bytes": 407743
+      },
+      "jpeg": {
+        "file": "forest-1920.jpg",
+        "bytes": 583933
+      }
+    },
+    {
+      "name": "forest-1280",
+      "width": 1280,
+      "height": 960,
+      "crop": "full",
+      "webp": {
+        "file": "forest-1280.webp",
+        "bytes": 245812
+      },
+      "avif": {
+        "file": "forest-1280.avif",
+        "bytes": 177666
+      },
+      "jpeg": {
+        "file": "forest-1280.jpg",
+        "bytes": 243706
+      }
+    },
+    {
+      "name": "forest-768",
+      "width": 768,
+      "height": 576,
+      "crop": "full",
+      "webp": {
+        "file": "forest-768.webp",
+        "bytes": 77128
+      },
+      "avif": {
+        "file": "forest-768.avif",
+        "bytes": 60605
+      },
+      "jpeg": {
+        "file": "forest-768.jpg",
+        "bytes": 80150
+      }
+    },
+    {
+      "name": "forest-480",
+      "width": 480,
+      "height": 360,
+      "crop": "full",
+      "webp": {
+        "file": "forest-480.webp",
+        "bytes": 27818
+      },
+      "avif": {
+        "file": "forest-480.avif",
+        "bytes": 22995
+      },
+      "jpeg": {
+        "file": "forest-480.jpg",
+        "bytes": 30392
+      }
+    },
+    {
+      "name": "forest-desktop-center",
+      "width": 1920,
+      "height": 823,
+      "crop": "center",
+      "breakpoint": "desktop",
+      "aspect": 2.3333,
+      "extract": {
+        "left": 306,
+        "top": 787,
+        "width": 3468,
+        "height": 1487
+      },
+      "webp": {
+        "file": "forest-desktop-center.webp",
+        "bytes": 411272
+      },
+      "avif": {
+        "file": "forest-desktop-center.avif",
+        "bytes": 231865
+      },
+      "jpeg": {
+        "file": "forest-desktop-center.jpg",
+        "bytes": 360348
+      }
+    },
+    {
+      "name": "forest-desktop-top",
+      "width": 1920,
+      "height": 823,
+      "crop": "top",
+      "breakpoint": "desktop",
+      "aspect": 2.3333,
+      "extract": {
+        "left": 306,
+        "top": 0,
+        "width": 3468,
+        "height": 1487
+      },
+      "webp": {
+        "file": "forest-desktop-top.webp",
+        "bytes": 146600
+      },
+      "avif": {
+        "file": "forest-desktop-top.avif",
+        "bytes": 94011
+      },
+      "jpeg": {
+        "file": "forest-desktop-top.jpg",
+        "bytes": 156760
+      }
+    },
+    {
+      "name": "forest-desktop-bottom",
+      "width": 1920,
+      "height": 823,
+      "crop": "bottom",
+      "breakpoint": "desktop",
+      "aspect": 2.3333,
+      "extract": {
+        "left": 306,
+        "top": 1573,
+        "width": 3468,
+        "height": 1487
+      },
+      "webp": {
+        "file": "forest-desktop-bottom.webp",
+        "bytes": 520012
+      },
+      "avif": {
+        "file": "forest-desktop-bottom.avif",
+        "bytes": 284269
+      },
+      "jpeg": {
+        "file": "forest-desktop-bottom.jpg",
+        "bytes": 431680
+      }
+    },
+    {
+      "name": "forest-desktop-left",
+      "width": 1920,
+      "height": 823,
+      "crop": "left",
+      "breakpoint": "desktop",
+      "aspect": 2.3333,
+      "extract": {
+        "left": 0,
+        "top": 787,
+        "width": 3468,
+        "height": 1487
+      },
+      "webp": {
+        "file": "forest-desktop-left.webp",
+        "bytes": 421230
+      },
+      "avif": {
+        "file": "forest-desktop-left.avif",
+        "bytes": 238850
+      },
+      "jpeg": {
+        "file": "forest-desktop-left.jpg",
+        "bytes": 367645
+      }
+    },
+    {
+      "name": "forest-desktop-right",
+      "width": 1920,
+      "height": 823,
+      "crop": "right",
+      "breakpoint": "desktop",
+      "aspect": 2.3333,
+      "extract": {
+        "left": 612,
+        "top": 787,
+        "width": 3468,
+        "height": 1487
+      },
+      "webp": {
+        "file": "forest-desktop-right.webp",
+        "bytes": 406230
+      },
+      "avif": {
+        "file": "forest-desktop-right.avif",
+        "bytes": 229791
+      },
+      "jpeg": {
+        "file": "forest-desktop-right.jpg",
+        "bytes": 356504
+      }
+    },
+    {
+      "name": "forest-desktop-top-left",
+      "width": 1920,
+      "height": 823,
+      "crop": "top-left",
+      "breakpoint": "desktop",
+      "aspect": 2.3333,
+      "extract": {
+        "left": 0,
+        "top": 0,
+        "width": 3468,
+        "height": 1487
+      },
+      "webp": {
+        "file": "forest-desktop-top-left.webp",
+        "bytes": 171590
+      },
+      "avif": {
+        "file": "forest-desktop-top-left.avif",
+        "bytes": 109708
+      },
+      "jpeg": {
+        "file": "forest-desktop-top-left.jpg",
+        "bytes": 181400
+      }
+    },
+    {
+      "name": "forest-desktop-top-right",
+      "width": 1920,
+      "height": 823,
+      "crop": "top-right",
+      "breakpoint": "desktop",
+      "aspect": 2.3333,
+      "extract": {
+        "left": 612,
+        "top": 0,
+        "width": 3468,
+        "height": 1487
+      },
+      "webp": {
+        "file": "forest-desktop-top-right.webp",
+        "bytes": 122430
+      },
+      "avif": {
+        "file": "forest-desktop-top-right.avif",
+        "bytes": 79618
+      },
+      "jpeg": {
+        "file": "forest-desktop-top-right.jpg",
+        "bytes": 133733
+      }
+    },
+    {
+      "name": "forest-desktop-bottom-left",
+      "width": 1920,
+      "height": 823,
+      "crop": "bottom-left",
+      "breakpoint": "desktop",
+      "aspect": 2.3333,
+      "extract": {
+        "left": 0,
+        "top": 1573,
+        "width": 3468,
+        "height": 1487
+      },
+      "webp": {
+        "file": "forest-desktop-bottom-left.webp",
+        "bytes": 525002
+      },
+      "avif": {
+        "file": "forest-desktop-bottom-left.avif",
+        "bytes": 288180
+      },
+      "jpeg": {
+        "file": "forest-desktop-bottom-left.jpg",
+        "bytes": 435488
+      }
+    },
+    {
+      "name": "forest-desktop-bottom-right",
+      "width": 1920,
+      "height": 823,
+      "crop": "bottom-right",
+      "breakpoint": "desktop",
+      "aspect": 2.3333,
+      "extract": {
+        "left": 612,
+        "top": 1573,
+        "width": 3468,
+        "height": 1487
+      },
+      "webp": {
+        "file": "forest-desktop-bottom-right.webp",
+        "bytes": 517816
+      },
+      "avif": {
+        "file": "forest-desktop-bottom-right.avif",
+        "bytes": 281578
+      },
+      "jpeg": {
+        "file": "forest-desktop-bottom-right.jpg",
+        "bytes": 428879
+      }
+    },
+    {
+      "name": "forest-tablet-center",
+      "width": 1280,
+      "height": 800,
+      "crop": "center",
+      "breakpoint": "tablet",
+      "aspect": 1.6,
+      "extract": {
+        "left": 306,
+        "top": 446,
+        "width": 3468,
+        "height": 2168
+      },
+      "webp": {
+        "file": "forest-tablet-center.webp",
+        "bytes": 226254
+      },
+      "avif": {
+        "file": "forest-tablet-center.avif",
+        "bytes": 135951
+      },
+      "jpeg": {
+        "file": "forest-tablet-center.jpg",
+        "bytes": 205338
+      }
+    },
+    {
+      "name": "forest-tablet-top",
+      "width": 1280,
+      "height": 800,
+      "crop": "top",
+      "breakpoint": "tablet",
+      "aspect": 1.6,
+      "extract": {
+        "left": 306,
+        "top": 0,
+        "width": 3468,
+        "height": 2168
+      },
+      "webp": {
+        "file": "forest-tablet-top.webp",
+        "bytes": 158408
+      },
+      "avif": {
+        "file": "forest-tablet-top.avif",
+        "bytes": 99639
+      },
+      "jpeg": {
+        "file": "forest-tablet-top.jpg",
+        "bytes": 154590
+      }
+    },
+    {
+      "name": "forest-tablet-bottom",
+      "width": 1280,
+      "height": 800,
+      "crop": "bottom",
+      "breakpoint": "tablet",
+      "aspect": 1.6,
+      "extract": {
+        "left": 306,
+        "top": 892,
+        "width": 3468,
+        "height": 2168
+      },
+      "webp": {
+        "file": "forest-tablet-bottom.webp",
+        "bytes": 296820
+      },
+      "avif": {
+        "file": "forest-tablet-bottom.avif",
+        "bytes": 172472
+      },
+      "jpeg": {
+        "file": "forest-tablet-bottom.jpg",
+        "bytes": 248379
+      }
+    },
+    {
+      "name": "forest-tablet-left",
+      "width": 1280,
+      "height": 800,
+      "crop": "left",
+      "breakpoint": "tablet",
+      "aspect": 1.6,
+      "extract": {
+        "left": 0,
+        "top": 446,
+        "width": 3468,
+        "height": 2168
+      },
+      "webp": {
+        "file": "forest-tablet-left.webp",
+        "bytes": 239692
+      },
+      "avif": {
+        "file": "forest-tablet-left.avif",
+        "bytes": 142515
+      },
+      "jpeg": {
+        "file": "forest-tablet-left.jpg",
+        "bytes": 212945
+      }
+    },
+    {
+      "name": "forest-tablet-right",
+      "width": 1280,
+      "height": 800,
+      "crop": "right",
+      "breakpoint": "tablet",
+      "aspect": 1.6,
+      "extract": {
+        "left": 612,
+        "top": 446,
+        "width": 3468,
+        "height": 2168
+      },
+      "webp": {
+        "file": "forest-tablet-right.webp",
+        "bytes": 218422
+      },
+      "avif": {
+        "file": "forest-tablet-right.avif",
+        "bytes": 130823
+      },
+      "jpeg": {
+        "file": "forest-tablet-right.jpg",
+        "bytes": 198770
+      }
+    },
+    {
+      "name": "forest-tablet-top-left",
+      "width": 1280,
+      "height": 800,
+      "crop": "top-left",
+      "breakpoint": "tablet",
+      "aspect": 1.6,
+      "extract": {
+        "left": 0,
+        "top": 0,
+        "width": 3468,
+        "height": 2168
+      },
+      "webp": {
+        "file": "forest-tablet-top-left.webp",
+        "bytes": 172176
+      },
+      "avif": {
+        "file": "forest-tablet-top-left.avif",
+        "bytes": 108523
+      },
+      "jpeg": {
+        "file": "forest-tablet-top-left.jpg",
+        "bytes": 166798
+      }
+    },
+    {
+      "name": "forest-tablet-top-right",
+      "width": 1280,
+      "height": 800,
+      "crop": "top-right",
+      "breakpoint": "tablet",
+      "aspect": 1.6,
+      "extract": {
+        "left": 612,
+        "top": 0,
+        "width": 3468,
+        "height": 2168
+      },
+      "webp": {
+        "file": "forest-tablet-top-right.webp",
+        "bytes": 144232
+      },
+      "avif": {
+        "file": "forest-tablet-top-right.avif",
+        "bytes": 92195
+      },
+      "jpeg": {
+        "file": "forest-tablet-top-right.jpg",
+        "bytes": 143360
+      }
+    },
+    {
+      "name": "forest-tablet-bottom-left",
+      "width": 1280,
+      "height": 800,
+      "crop": "bottom-left",
+      "breakpoint": "tablet",
+      "aspect": 1.6,
+      "extract": {
+        "left": 0,
+        "top": 892,
+        "width": 3468,
+        "height": 2168
+      },
+      "webp": {
+        "file": "forest-tablet-bottom-left.webp",
+        "bytes": 300758
+      },
+      "avif": {
+        "file": "forest-tablet-bottom-left.avif",
+        "bytes": 175026
+      },
+      "jpeg": {
+        "file": "forest-tablet-bottom-left.jpg",
+        "bytes": 251292
+      }
+    },
+    {
+      "name": "forest-tablet-bottom-right",
+      "width": 1280,
+      "height": 800,
+      "crop": "bottom-right",
+      "breakpoint": "tablet",
+      "aspect": 1.6,
+      "extract": {
+        "left": 612,
+        "top": 892,
+        "width": 3468,
+        "height": 2168
+      },
+      "webp": {
+        "file": "forest-tablet-bottom-right.webp",
+        "bytes": 294312
+      },
+      "avif": {
+        "file": "forest-tablet-bottom-right.avif",
+        "bytes": 169992
+      },
+      "jpeg": {
+        "file": "forest-tablet-bottom-right.jpg",
+        "bytes": 246508
+      }
+    },
+    {
+      "name": "forest-mobile-center",
+      "width": 768,
+      "height": 576,
+      "crop": "center",
+      "breakpoint": "mobile",
+      "aspect": 1.3333,
+      "extract": {
+        "left": 306,
+        "top": 230,
+        "width": 3468,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-mobile-center.webp",
+        "bytes": 80786
+      },
+      "avif": {
+        "file": "forest-mobile-center.avif",
+        "bytes": 51321
+      },
+      "jpeg": {
+        "file": "forest-mobile-center.jpg",
+        "bytes": 76017
+      }
+    },
+    {
+      "name": "forest-mobile-top",
+      "width": 768,
+      "height": 576,
+      "crop": "top",
+      "breakpoint": "mobile",
+      "aspect": 1.3333,
+      "extract": {
+        "left": 306,
+        "top": 0,
+        "width": 3468,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-mobile-top.webp",
+        "bytes": 69718
+      },
+      "avif": {
+        "file": "forest-mobile-top.avif",
+        "bytes": 45463
+      },
+      "jpeg": {
+        "file": "forest-mobile-top.jpg",
+        "bytes": 68768
+      }
+    },
+    {
+      "name": "forest-mobile-bottom",
+      "width": 768,
+      "height": 576,
+      "crop": "bottom",
+      "breakpoint": "mobile",
+      "aspect": 1.3333,
+      "extract": {
+        "left": 306,
+        "top": 459,
+        "width": 3468,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-mobile-bottom.webp",
+        "bytes": 92670
+      },
+      "avif": {
+        "file": "forest-mobile-bottom.avif",
+        "bytes": 57474
+      },
+      "jpeg": {
+        "file": "forest-mobile-bottom.jpg",
+        "bytes": 83578
+      }
+    },
+    {
+      "name": "forest-mobile-left",
+      "width": 768,
+      "height": 576,
+      "crop": "left",
+      "breakpoint": "mobile",
+      "aspect": 1.3333,
+      "extract": {
+        "left": 0,
+        "top": 230,
+        "width": 3468,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-mobile-left.webp",
+        "bytes": 86466
+      },
+      "avif": {
+        "file": "forest-mobile-left.avif",
+        "bytes": 54396
+      },
+      "jpeg": {
+        "file": "forest-mobile-left.jpg",
+        "bytes": 79558
+      }
+    },
+    {
+      "name": "forest-mobile-right",
+      "width": 768,
+      "height": 576,
+      "crop": "right",
+      "breakpoint": "mobile",
+      "aspect": 1.3333,
+      "extract": {
+        "left": 612,
+        "top": 230,
+        "width": 3468,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-mobile-right.webp",
+        "bytes": 76056
+      },
+      "avif": {
+        "file": "forest-mobile-right.avif",
+        "bytes": 48910
+      },
+      "jpeg": {
+        "file": "forest-mobile-right.jpg",
+        "bytes": 72812
+      }
+    },
+    {
+      "name": "forest-mobile-top-left",
+      "width": 768,
+      "height": 576,
+      "crop": "top-left",
+      "breakpoint": "mobile",
+      "aspect": 1.3333,
+      "extract": {
+        "left": 0,
+        "top": 0,
+        "width": 3468,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-mobile-top-left.webp",
+        "bytes": 75064
+      },
+      "avif": {
+        "file": "forest-mobile-top-left.avif",
+        "bytes": 48400
+      },
+      "jpeg": {
+        "file": "forest-mobile-top-left.jpg",
+        "bytes": 72722
+      }
+    },
+    {
+      "name": "forest-mobile-top-right",
+      "width": 768,
+      "height": 576,
+      "crop": "top-right",
+      "breakpoint": "mobile",
+      "aspect": 1.3333,
+      "extract": {
+        "left": 612,
+        "top": 0,
+        "width": 3468,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-mobile-top-right.webp",
+        "bytes": 64146
+      },
+      "avif": {
+        "file": "forest-mobile-top-right.avif",
+        "bytes": 42355
+      },
+      "jpeg": {
+        "file": "forest-mobile-top-right.jpg",
+        "bytes": 64725
+      }
+    },
+    {
+      "name": "forest-mobile-bottom-left",
+      "width": 768,
+      "height": 576,
+      "crop": "bottom-left",
+      "breakpoint": "mobile",
+      "aspect": 1.3333,
+      "extract": {
+        "left": 0,
+        "top": 459,
+        "width": 3468,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-mobile-bottom-left.webp",
+        "bytes": 96976
+      },
+      "avif": {
+        "file": "forest-mobile-bottom-left.avif",
+        "bytes": 60017
+      },
+      "jpeg": {
+        "file": "forest-mobile-bottom-left.jpg",
+        "bytes": 86353
+      }
+    },
+    {
+      "name": "forest-mobile-bottom-right",
+      "width": 768,
+      "height": 576,
+      "crop": "bottom-right",
+      "breakpoint": "mobile",
+      "aspect": 1.3333,
+      "extract": {
+        "left": 612,
+        "top": 459,
+        "width": 3468,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-mobile-bottom-right.webp",
+        "bytes": 88072
+      },
+      "avif": {
+        "file": "forest-mobile-bottom-right.avif",
+        "bytes": 55709
+      },
+      "jpeg": {
+        "file": "forest-mobile-bottom-right.jpg",
+        "bytes": 81273
+      }
+    },
+    {
+      "name": "forest-small-center",
+      "width": 480,
+      "height": 480,
+      "crop": "center",
+      "breakpoint": "small",
+      "aspect": 1,
+      "extract": {
+        "left": 740,
+        "top": 230,
+        "width": 2601,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-small-center.webp",
+        "bytes": 37018
+      },
+      "avif": {
+        "file": "forest-small-center.avif",
+        "bytes": 24668
+      },
+      "jpeg": {
+        "file": "forest-small-center.jpg",
+        "bytes": 36978
+      }
+    },
+    {
+      "name": "forest-small-top",
+      "width": 480,
+      "height": 480,
+      "crop": "top",
+      "breakpoint": "small",
+      "aspect": 1,
+      "extract": {
+        "left": 740,
+        "top": 0,
+        "width": 2601,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-small-top.webp",
+        "bytes": 31334
+      },
+      "avif": {
+        "file": "forest-small-top.avif",
+        "bytes": 21457
+      },
+      "jpeg": {
+        "file": "forest-small-top.jpg",
+        "bytes": 32561
+      }
+    },
+    {
+      "name": "forest-small-bottom",
+      "width": 480,
+      "height": 480,
+      "crop": "bottom",
+      "breakpoint": "small",
+      "aspect": 1,
+      "extract": {
+        "left": 740,
+        "top": 459,
+        "width": 2601,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-small-bottom.webp",
+        "bytes": 43730
+      },
+      "avif": {
+        "file": "forest-small-bottom.avif",
+        "bytes": 28354
+      },
+      "jpeg": {
+        "file": "forest-small-bottom.jpg",
+        "bytes": 41461
+      }
+    },
+    {
+      "name": "forest-small-left",
+      "width": 480,
+      "height": 480,
+      "crop": "left",
+      "breakpoint": "small",
+      "aspect": 1,
+      "extract": {
+        "left": 0,
+        "top": 230,
+        "width": 2601,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-small-left.webp",
+        "bytes": 45556
+      },
+      "avif": {
+        "file": "forest-small-left.avif",
+        "bytes": 29262
+      },
+      "jpeg": {
+        "file": "forest-small-left.jpg",
+        "bytes": 42296
+      }
+    },
+    {
+      "name": "forest-small-right",
+      "width": 480,
+      "height": 480,
+      "crop": "right",
+      "breakpoint": "small",
+      "aspect": 1,
+      "extract": {
+        "left": 1479,
+        "top": 230,
+        "width": 2601,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-small-right.webp",
+        "bytes": 35780
+      },
+      "avif": {
+        "file": "forest-small-right.avif",
+        "bytes": 23880
+      },
+      "jpeg": {
+        "file": "forest-small-right.jpg",
+        "bytes": 35769
+      }
+    },
+    {
+      "name": "forest-small-top-left",
+      "width": 480,
+      "height": 480,
+      "crop": "top-left",
+      "breakpoint": "small",
+      "aspect": 1,
+      "extract": {
+        "left": 0,
+        "top": 0,
+        "width": 2601,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-small-top-left.webp",
+        "bytes": 40420
+      },
+      "avif": {
+        "file": "forest-small-top-left.avif",
+        "bytes": 26416
+      },
+      "jpeg": {
+        "file": "forest-small-top-left.jpg",
+        "bytes": 38890
+      }
+    },
+    {
+      "name": "forest-small-top-right",
+      "width": 480,
+      "height": 480,
+      "crop": "top-right",
+      "breakpoint": "small",
+      "aspect": 1,
+      "extract": {
+        "left": 1479,
+        "top": 0,
+        "width": 2601,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-small-top-right.webp",
+        "bytes": 29894
+      },
+      "avif": {
+        "file": "forest-small-top-right.avif",
+        "bytes": 20676
+      },
+      "jpeg": {
+        "file": "forest-small-top-right.jpg",
+        "bytes": 31513
+      }
+    },
+    {
+      "name": "forest-small-bottom-left",
+      "width": 480,
+      "height": 480,
+      "crop": "bottom-left",
+      "breakpoint": "small",
+      "aspect": 1,
+      "extract": {
+        "left": 0,
+        "top": 459,
+        "width": 2601,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-small-bottom-left.webp",
+        "bytes": 50660
+      },
+      "avif": {
+        "file": "forest-small-bottom-left.avif",
+        "bytes": 31705
+      },
+      "jpeg": {
+        "file": "forest-small-bottom-left.jpg",
+        "bytes": 45488
+      }
+    },
+    {
+      "name": "forest-small-bottom-right",
+      "width": 480,
+      "height": 480,
+      "crop": "bottom-right",
+      "breakpoint": "small",
+      "aspect": 1,
+      "extract": {
+        "left": 1479,
+        "top": 459,
+        "width": 2601,
+        "height": 2601
+      },
+      "webp": {
+        "file": "forest-small-bottom-right.webp",
+        "bytes": 41742
+      },
+      "avif": {
+        "file": "forest-small-bottom-right.avif",
+        "bytes": 27236
+      },
+      "jpeg": {
+        "file": "forest-small-bottom-right.jpg",
+        "bytes": 39912
+      }
+    }
+  ],
+  "fallback": {
+    "type": "solid-color",
+    "color": "#1a3c2a",
+    "token": "--color-green-deep",
+    "description": "Deep forest green (--color-green-deep) fallback when the decorative wallpaper image is unavailable",
+    "clientHomepageHero": {
+      "summary": "The client-supplied 1000×800 tree-and-path photograph is used separately in the bounded homepage split hero; it does not replace or change the attribution of this decorative wallpaper.",
+      "assets": [
+        "WhatsApp Image 2026-09-26 at 7.13.00 PM.jpeg — 1000×800 (selected)",
+        "WhatsApp Image 2026-09-26 at 7.12.59 PM.jpeg — 758×606 (not selected)"
+      ],
+      "assessment": "The selected photo displays at up to 576 px wide in the split hero. Alt text and caption describe only visible rows of trees and a grassy path; species and location are not inferred.",
+      "status": "1000×800 client-supplied photo selected for bounded homepage hero; full-resolution original not required for this use"
+    }
+  }
+}

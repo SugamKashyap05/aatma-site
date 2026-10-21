@@ -1,23 +1,3 @@
-# Transcript — AATMA Press Meet, 14 January 2023 — **English**
-
-**Source:** Two broadcasts of the same event
-- **v1** — Asom First, 6 min 26 s, 7 speaker blocks
-- **v2** — News To Newsaxom, 13 min 20 s, 14 speaker blocks
-**Event:** AATMA press meet, Head Office, Main Road, Hojai – 782435, Saturday 14 January 2023, 6:00 PM
-**Original language:** Assamese (one statement delivered in English)
-**Transcribed by:** MAI-Transcribe-2 (Microsoft AI Playground), Verbatim mode — 12 October 2026
-**Translation:** from the Assamese transcript by the agent. Assamese originals: `TRANSCRIPT_PRESS_MEET_2023-01-14.md` and `TRANSCRIPT_PRESS_MEET_2023-01-14_v2.md`
-
-> **Translation caveats.** This is a working translation, not a certified one.
-> - Whisper produced unusable output on this audio (11 Latin-script and 7 CJK hallucination segments in v2). MAI-Transcribe-2 is the authoritative source.
-> - **Neither video contains a studio anchor segment.** Both are press-conference footage throughout. The "speaker vs anchor" distinction does not exist in these files — the real distinction is between speakers at the podium.
-> - Where the original is ambiguous or likely mis-heard, this is marked **[uncertain]**.
-> - The Assamese idiom at the very opening of v1 renders as "in the holy moment of Bihu" — but this press meet was in **January**, and Bihu falls in April. Almost certainly a mis-hearing. **[uncertain]**
-
----
-
-# PART 1 — Asom First broadcast (v1, 6 min 26 s)
-
 ## Speaker 1 — 0:01
 
 "[**uncertain** — opening phrase garbled; likely a seasonal or ceremonial greeting, not "Bihu"] — good news has come for the agar industry. At last the Assam government has legalised the agar wood trade.
@@ -84,8 +64,6 @@ So I tell you this — because until today this has not appeared in any newspape
 "Bureau report. Asom First."
 
 ---
-
-# PART 2 — News To Newsaxom broadcast (v2, 13 min 20 s)
 
 ## Speaker 1 — 0:02
 
@@ -193,31 +171,3 @@ And along with that, a proposal was adopted that from our AATMA side we should p
 "I — I — invitation."
 
 ---
-
-# Verification summary
-
-### Confirmed by the Hindustan Times clipping (17 Jan 2023)
-12 January 2023 notification · Rules 2000 repealed / 2022 notified · secondary classification · fully CITES compliant · **~1,000 industries** · district list · registration valid five years · Registration Committees at Conservator of Forests · units operate from present locations · [name withheld] (President) · [name withheld] (General Secretary) · Himanta Biswa Sarma (CM)
-
-### Confirmed by the Gazette notifications
-12 Jan 2023 (WBI Gazette No. 20) · **9 December 2022** (ToF Gazette, file ECF No. 232904) · unit capacity categories
-
-### ⚠️ In both transcriptions but unverified
-- **"Seventy-seven species"** — appears in both v1 and v2. Not in either gazette's Rule 2; not in any clipping.
-- **"Five kilometres from a forest"** — appears in both v1 and v2. Not in either gazette's Rule 2; not in any clipping.
-
-Two independent transcriptions recording the same figure suggests it was said, but *said* is not *legally accurate*. Both still need the full gazette rule text.
-
-### ⚠️ Unique to v2 — no other source
-- **The 2010 Delhi conference** — DG Forests said "this is a state matter"; Assam, Arunachal and Mizoram representatives present; nobody acted
-- **CITES mechanics explained** — forest permit to remove, CITES permit to export beyond Assam; hence registration under secondary wood-based
-- **Wider industries legalised** — furniture shops and factories, mesh factories, *kaththa* factories
-- **Only veneer and saw mills need designated areas**
-- **Three executive decisions** of 11 January 2023, including a public honour for the CM in Guwahati
-- **A national seminar on agar in Guwahati** — the transcript reads "two thousand six"; the site's timeline records a "Dec 2003/Jan 2004" workshop. **Conflict — needs a decision, not silent reconciliation.**
-
-### Notes on this translation
-- The **English statement at 9:34 is the speaker's own words**, not a translation — it was delivered in English and is reproduced as spoken.
-- **No quote should be attributed to a named individual** without confirming Speaker 2's identity. Speaker 1 addresses him as "Honourable President" and the content matches what HT attributes to [name withheld], but that is inference.
-- **Chandra Mohan Patowary is not named** in either video. The HT clipping credits the Forests Minister; the videos credit only the CM. Do not add the minister's name from the video.
-- *Sanchi* = *Aquilaria malaccensis*. *Mihadi* = homestead plot. *Kaththa* = catechu.

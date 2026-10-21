@@ -54,3 +54,10 @@ scripts/.opt*.log
 # Generated demo HTML used to visualise the redesign before implementation.
 # Scratch only — the real components live under src/.
 /cache/
+
+# Large scanned PDF (107 MiB) — above GitHub's 100 MiB per-file limit for
+# repository contents, so it cannot be committed. It is served from GitHub
+# Releases instead; see src/data/books.ts for the URL.
+# The in-page reader does not use this file: it renders the per-page scans
+# under public/books/proceedings/pages/, which ARE committed.
+/public/books/proceedings-seminar-2001.pdf

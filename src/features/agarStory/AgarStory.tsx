@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { cn, type ClassValue, assetUrl } from "@/lib/utils";
 import { AmbientMotion } from "@/features/ambient/AmbientMotion";
 import { Reveal } from "@/components/ui/reveal";
+import { ClientAgarwoodPhotos } from "@/features/agarStory/ClientAgarwoodPhotos";
 import {
   ArrowRight,
   TreePine,
@@ -18,36 +19,32 @@ interface Milestone {
   icon: React.ReactNode;
   title: string;
   description: string;
-  image?: string;
-  imageAlt?: string;
 }
 
 /**
- * The agar trade timeline — brief §2 (About the trade), §3 (early trade
- * 1905–1970) and §4 (Far East discovery and the import era).
+ * The agar trade timeline — client-supplied A BRIEF HISTORY OF AGAR.pdf
+ * §§3–4 (early trade and Far East import era), §6 (national seminar), and the
+ * client-supplied Agar Trade note §5 (Legal Procurement Certificate).
  *
- * Wording follows the client brief. The milestones the brief dates
- * explicitly form the spine of the timeline; the two undated brief passages
- * they bracket are carried as the closing entries. The November 2000
- * National Seminar is the one dated event from brief §5 and is retained as
- * the pivot point.
+ * Preserve the source's own wording: the Hojai passage says "Meanwhile" but
+ * gives no year, and the Far East import-era passage is undated. Only the
+ * trade standstill itself is dated to 1982.
  */
 const MILESTONES: Milestone[] = [
   {
     year: "1905–06",
     icon: <TreePine className="w-5 h-5" strokeWidth={1.5} />,
-    title: "Sylhet: the first oil extraction",
+    title: "Sylhet oil extraction",
     description:
       "Agarwood was found abundantly in the forests of the North Eastern region, and people of Sylhet (now in Bangladesh) used it for extracting oil.",
   },
   {
-    year: "1960s",
+    year: "Date not stated",
     icon: <Droplets className="w-5 h-5" strokeWidth={1.5} />,
     title: "Hojai distillation begins",
     description:
       "Meanwhile, several enthusiastic and visionary people of Hojai area entered in the trade and started small-scale distillation at Hojai.",
-    image: assetUrl("history/trade-journey-hojai.jpg"),
-    imageAlt: "Traditional agar oil distillation at Hojai, Assam",
+
   },
   {
     year: "Late 1960s",
@@ -59,9 +56,16 @@ const MILESTONES: Milestone[] = [
   {
     year: "1982",
     icon: <Landmark className="w-5 h-5" strokeWidth={1.5} />,
-    title: "Trade standstill + Far East discovery",
+    title: "Trade standstill",
     description:
-      "For a short while from 1970 to 1980 trade of agar in Assam survived somehow with the agar from the state of Manipur but it came to a standstill since 1982. However, there happened a sudden change in the trade which started with the discovery of Agar wood abundantly in the far Eastern countries like Malaysia, Indonesia, Thiland, Combodia etc.",
+      "For a short while from 1970 to 1980, Assam's agar trade survived on agar from Manipur. It came to a standstill in 1982.",
+  },
+  {
+    year: "Far East import era",
+    icon: <Globe className="w-5 h-5" strokeWidth={1.5} />,
+    title: "Far East discovery and imports",
+    description:
+      "The client history describes a sudden change in the trade with the discovery of abundant agarwood in Malaysia, Indonesia, Thailand, and Cambodia. Prominent Hojai business houses began importing agarwood from those countries under the Government of India's Exim Policy, paying heavy import duties. Imported raw agarwood was re-exported as finished products after processing.",
   },
   {
     year: "Nov 2000",
@@ -69,8 +73,7 @@ const MILESTONES: Milestone[] = [
     title: "National Seminar at Guwahati",
     description:
       "In November 2000, AATMA organized a National level seminar on Scope & Dimension of Agar (Aquilaria spp.) plantation in North Eastern Region at Administrative staff college, Guwahati, which was attended by several scientist from different parts of India and was presided over by Dr. P.K. Hajra, Ex Director of the Botanical Survey of India.",
-    image: assetUrl("history/seminar-2000.jpg"),
-    imageAlt: "National Seminar on Agar Plantation, Guwahati, November 2000",
+
   },
   {
     year: "LPC",
@@ -82,9 +85,9 @@ const MILESTONES: Milestone[] = [
 ];
 
 /**
- * The brief's closing passage for the early trade — the Manipur supply line
- * and the Bombay market. Carried as a standalone strip rather than a seventh
- * milestone so the timeline stays at the six required entries.
+ * The client's closing passage for the early trade — the Manipur supply line
+ * and Bombay market. It remains a standalone strip rather than a dated card,
+ * since the source describes a range rather than a single year.
  */
 const TRADING_ROUTE =
   "From 1970 to 1980s the entrepreneurs of Hojai & Silchar collected Agarwood from the Mahalders of Manipur State (under Forest Transit Pass) which were processed & distilled for oil at Hojai and Silchar. These products were subsequently taken to Bombay (Mumbai) under Lieu T.P. issued by Forest Deptt. Of Assam for sale.";
@@ -102,7 +105,7 @@ export function AgarStory({
     <section
       id="agar-story"
       className={cn(
-        "relative py-20 md:py-28 overflow-hidden scroll-mt-20 text-white",
+        "relative py-20 md:py-28 overflow-hidden scroll-mt-20 text-cream",
         className
       )}
     >
@@ -118,18 +121,18 @@ export function AgarStory({
         {/* Section header */}
         <div className="max-w-4xl mx-auto text-center mb-14 md:mb-18">
           <Reveal variant="fade" delay={0}>
-            <span className="inline-block text-gold text-sm font-semibold tracking-[0.25em] uppercase bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-sm mb-4">
-              The Agar Story
+            <span className="glass-surface-subtle inline-block text-agar-label text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-4">
+              Agar Trade in Assam
             </span>
           </Reveal>
           <Reveal variant="up" delay={100}>
             <h2 className="font-display font-bold text-3xl md:text-5xl lg:text-6xl leading-tight mb-6 drop-shadow-lg">
-              From forest to fragrance
+              Agarwood in the trade
             </h2>
           </Reveal>
           <Reveal variant="fade" delay={200}>
-            <p className="text-white/70 text-base md:text-lg max-w-2xl mx-auto">
-              The story of agarwood — a resin that forms only in wounded trees, an oil that trades for tens of thousands of dollars, and a trade that for centuries ran through the forests and markets of Assam.
+            <p className="text-cream/90 text-base md:text-lg max-w-2xl mx-auto">
+              The client history describes agarwood chips (black resinous wood) and agar oil/attar as useful raw materials for perfumery, and agar as a highly commercially useful plant.
             </p>
           </Reveal>
         </div>
@@ -137,13 +140,26 @@ export function AgarStory({
         {/* Map visual */}
         <Reveal variant="fade" delay={250} className="mb-16">
           <div className="max-w-3xl mx-auto">
-            <img
-              src={assetUrl("history/trade-journey-map.svg")}
-              alt="Map of the agarwood trade journey across Northeast India"
-              className="w-full h-auto rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm"
-            />
+            <picture className="block overflow-hidden rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
+              <source
+                media="(max-width: 639px)"
+                srcSet={assetUrl("history/trade-journey-map-mobile.svg")}
+              />
+              <img
+                src={assetUrl("history/trade-journey-map.svg")}
+                alt="Schematic of client-described agar trade chronology and supply relationships; not a geographic map or to scale"
+                className="block w-full h-auto"
+                loading="eager"
+                decoding="async"
+              />
+            </picture>
+            <p className="mt-3 text-center text-xs leading-relaxed text-cream/75">
+              Schematic relationship diagram, not to geographic scale. Source: client-supplied A Brief History of Agar, §3.
+            </p>
           </div>
         </Reveal>
+
+        <ClientAgarwoodPhotos />
 
         {/* Timeline */}
         <div className="relative">
@@ -177,42 +193,31 @@ export function AgarStory({
                     >
                       <div
                         className={cn(
-                          "group p-5 md:p-6 rounded-xl border transition-all duration-300",
-                          "bg-white/[0.04] border-white/10 backdrop-blur-sm",
-                          "hover:bg-white/[0.08] hover:border-gold/30 hover:shadow-lg hover:shadow-gold/10"
+                          "p-5 md:p-6 rounded-xl border transition-all duration-300 bg-glass-card backdrop-blur-xl border-white/20 shadow-[0_12px_32px_rgba(0,0,0,0.32)]",
+                          "hover:bg-green-deep/95 active:bg-green-deep/95 hover:border-gold/30 active:border-gold/30 hover:shadow-lg hover:shadow-gold/10"
                         )}
                       >
                         {/* Year + icon */}
                         <div className="flex items-center gap-3 mb-3">
-                          <span className="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 border border-gold/20 text-gold">
+                          <span className="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 border border-gold/20 text-agar-icon">
                             {milestone.icon}
                           </span>
-                          <span className="text-gold text-lg md:text-xl font-bold font-display tracking-tight">
+                          <span className="text-agar-label text-lg md:text-xl font-bold font-display tracking-tight">
                             {milestone.year}
                           </span>
                         </div>
 
                         {/* Title */}
-                        <h3 className="text-white text-lg md:text-xl font-semibold mb-2 font-display leading-tight">
+                        <h3 className="text-agar-title text-lg md:text-xl font-semibold mb-2 font-display leading-tight">
                           {milestone.title}
                         </h3>
 
                         {/* Description */}
-                        <p className="text-white/65 text-sm md:text-base leading-relaxed mb-4">
+                        <p className="text-agar-body text-sm md:text-base leading-relaxed mb-4">
                           {milestone.description}
                         </p>
 
-                        {/* Image */}
-                        {milestone.image && (
-                          <div className="mt-4 rounded-lg overflow-hidden border border-white/10">
-                            <img
-                              src={milestone.image}
-                              alt={milestone.imageAlt || milestone.title}
-                              className="w-full h-48 md:h-56 object-cover transition-transform duration-500 group-hover:scale-105"
-                              loading="lazy"
-                            />
-                          </div>
-                        )}
+
                       </div>
                     </div>
 
@@ -227,16 +232,16 @@ export function AgarStory({
 
         {/* The Manipur supply line and the road to Bombay */}
         <Reveal variant="fade" delay={250} className="mt-14 md:mt-18">
-          <div className="max-w-4xl mx-auto bg-white/[0.04] border border-white/10 backdrop-blur-sm rounded-lg p-6 md:p-7">
+          <div className="max-w-4xl mx-auto bg-glass-card backdrop-blur-xl border border-white/20 rounded-lg p-6 md:p-7 shadow-[0_12px_32px_rgba(0,0,0,0.32)]">
             <div className="flex items-start gap-4">
-              <span className="flex items-center justify-center w-10 h-10 shrink-0 rounded-full bg-gold/10 border border-gold/20 text-gold">
+              <span className="flex items-center justify-center w-10 h-10 shrink-0 rounded-full bg-gold/10 border border-gold/20 text-agar-icon">
                 <Ship className="w-5 h-5" strokeWidth={1.5} />
               </span>
               <div>
-                <h3 className="text-white text-lg md:text-xl font-semibold mb-2 font-display leading-tight">
+                <h3 className="text-agar-title text-lg md:text-xl font-semibold mb-2 font-display leading-tight">
                   The Manipur supply, and the road to Bombay
                 </h3>
-                <p className="text-white/65 text-sm md:text-base leading-relaxed">
+                <p className="text-agar-body text-sm md:text-base leading-relaxed">
                   {TRADING_ROUTE}
                 </p>
               </div>
@@ -248,10 +253,10 @@ export function AgarStory({
         <Reveal variant="fade" delay={200} className="mt-16 text-center">
           <Link
             to="/history"
-            className="inline-flex items-center gap-2 text-gold text-sm font-medium tracking-wide hover:text-gold-light transition-colors duration-300 group min-h-[44px]"
+            className="inline-flex items-center gap-2 text-gold-light text-sm font-medium tracking-wide hover:text-gold-light active:text-gold-light transition-colors duration-300 group min-h-[44px]"
           >
             See AATMA's milestones
-            <span className="group-hover:translate-x-1 transition-transform duration-300">
+            <span className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform duration-300">
               <ArrowRight size={16} strokeWidth={2} />
             </span>
           </Link>

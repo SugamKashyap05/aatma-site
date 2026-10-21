@@ -31,9 +31,23 @@ export const DEFAULT_ERAS: Era[] = [
   { id: "growth", label: "Growth", range: "1977–1999", color: "#B8944A" },
   { id: "critical", label: "Critical Era", range: "2000–2022", color: "#A67C3D" },
   { id: "modern", label: "Modern", range: "2023–2026", color: "#C9A84C" },
+  { id: "undated", label: "Undated source passage", range: "No date stated", color: "#C9A84C" },
 ];
 
-// ─── Default Events (from agar_brief.md) ────────────────────────────────────
+// ─── Default Events (client-supplied source documents) ───────────────────────
+// Current claim decisions are tracked in docs/PHASE1_CANONICAL_CLAIM_LEDGER.md.
+// Events removed during ledger audit (2026-10-17):
+//   - "2001 Fresh Representation" — not in any client source
+//   - "2005–2016 Continued Efforts" — vague filler, not in ledger
+//   - "2023 Assam Agarwood Promotion Policy" — only in team-authored [50YRS]
+//   - "2024 CITES Export Quota Secured" — exclude (no client source)
+//   - "2025 First Legal Agarwood Export" — exclude (no client source)
+//   - "2026 Export Promotion Cell Constituted" — exclude (no client source)
+// Date corrections:
+//   - "Dec 2003" → "6–7 Jan 2004" (workshop held Jan 2004, requested Dec 2003)
+//   - "2017" → "24.8.2016" (delegation meeting was 24 Aug 2016 per [HIST] p.4)
+//   - Hojai distillation is undated; the client source says "Meanwhile," not "Following years."
+// Privacy: full member names removed per client instruction (ledger C3).
 
 export const DEFAULT_EVENTS: TimelineEvent[] = [
   {
@@ -44,24 +58,24 @@ export const DEFAULT_EVENTS: TimelineEvent[] = [
     era: "early-trade",
   },
   {
-    year: "Post-1947",
+    year: "Post-Independence",
     title: "Barpather Entrepreneurs",
     description:
-      "Entrepreneurs of Barpather who were also Mahalders (Lessee) started agarwood business in their homestead, collecting raw agarwood from forest Mahals of Karbi Anglong and Nagaland.",
+      "Certain entrepreneurs of Barpather started agarwood business in their homesteads, collecting raw agarwood from the forest mahals of Karbi Angong and Naga Hills.",
     era: "early-trade",
   },
   {
-    year: "Late 1960s",
+    year: "Date not stated",
     title: "Hojai Distillation",
     description:
-      "Enthusiastic and visionary people of Hojai area started distillation of agar oil. Key figures: (L) Hazi Mastafauddin Gaoburha, (L) Ajmal Ali, (L) Hazi Anfar Ali.",
+      "Meanwhile, several enthusiastic and visionary people of the Hojai area entered the trade and started small-scale distillation at Hojai.",
     era: "early-trade",
   },
   {
     year: "1970–1980s",
     title: "Manipur Supply",
     description:
-      "Entrepreneurs of Hojai collected Agarwood from Mahalders of Manipur State (under Forest Transit Pass); processed & distilled for oil at Hojai and Silchar.",
+      "Entrepreneurs of Hojai and Silchar collected agarwood from the mahaldars of Manipur State under Forest Transit Pass, then processed and distilled it for oil at Hojai and Silchar.",
     era: "early-trade",
   },
   {
@@ -73,16 +87,30 @@ export const DEFAULT_EVENTS: TimelineEvent[] = [
   },
   {
     year: "1982",
-    title: "New Dimension — Imports",
+    title: "Trade Standstill",
     description:
-      "From 1970-1980, agar trade survived with Manipur supply, but stalled since 1982. Discovery of abundant agarwood in Far Eastern countries led to imports.",
+      "For a short while from 1970 to 1980, Assam's agar trade survived on agar from Manipur. It came to a standstill in 1982.",
     era: "growth",
   },
   {
-    year: "2000",
-    title: "Re-organisation & National Seminar",
+    year: "Date not stated",
+    title: "Far East Discovery and Imports",
     description:
-      "AATMA re-organised in a General Meeting at Hojai. National seminar on Scope & Dimension of Agar plantation held at Administrative Staff College, Guwahati.",
+      "The client history describes a sudden change in the trade with the discovery of abundant agarwood in Malaysia, Indonesia, Thailand, and Cambodia. Prominent Hojai business houses began importing agarwood from those countries under the Government of India's Exim Policy, paying heavy import duties. Imported raw agarwood was re-exported as finished products after processing.",
+    era: "undated",
+  },
+  {
+    year: "2000",
+    title: "AATMA Re-organisation",
+    description:
+      "AATMA was re-organised in a General Meeting at Hojai.",
+    era: "critical",
+  },
+  {
+    year: "22–23 Nov 2000",
+    title: "National Seminar at Guwahati",
+    description:
+      "AATMA's seminar on Scope & Dimension of Agar (Aquilaria spp.) Plantation in the North Eastern Region was held at the Assam Administrative Staff College, Khanapara, Guwahati.",
     era: "critical",
   },
   {
@@ -100,14 +128,7 @@ export const DEFAULT_EVENTS: TimelineEvent[] = [
     era: "critical",
   },
   {
-    year: "2001",
-    title: "Fresh Representation",
-    description:
-      "AATMA submitted fresh representation before Govt. of Assam urging exclusion of Agar oil extracting units from the Rules, 2000.",
-    era: "critical",
-  },
-  {
-    year: "Dec 2003",
+    year: "6–7 Jan 2004",
     title: "Workshop at Rabindra Bhavan",
     description:
       "AATMA sponsored and participated in 'The Workshop on Agar Plantation and Rule of Joint Forest Management Committees of Assam'.",
@@ -117,7 +138,7 @@ export const DEFAULT_EVENTS: TimelineEvent[] = [
     year: "Oct 2005",
     title: "DFO Hojai Refusal",
     description:
-      "DFO denied verification of consignments for CITES compliance. ~6/7 processing units suffered huge losses; 7/8 business houses shifted to Meghalaya or abroad.",
+      "The then DFO of Hojai denied verification of imported and re-exported consignments for CITES compliance. Around seven processing units suffered massive financial losses; several business houses shifted operations to neighboring states or overseas.",
     era: "critical",
   },
   {
@@ -128,52 +149,45 @@ export const DEFAULT_EVENTS: TimelineEvent[] = [
     era: "critical",
   },
   {
-    year: "2005–2016",
-    title: "Continued Efforts",
-    description:
-      "Office bearers of AATMA continued to meet Chief Minister / Forest Minister and forest deptt authorities, submitting memoranda for excluding agar industry from Rules, 2000.",
-    era: "critical",
-  },
-  {
-    year: "2017",
+    year: "24.8.2016",
     title: "Forest Minister's Interest",
     description:
-      "The then Forest Minister, Smt Pramila Rani Brahma, took keen interest in agar industry. A proposal for inclusion of Agar wood industry in 'Secondary Wood Based Industry' was submitted.",
+      "The then Forest Minister took keen interest in agar industry. A proposal for inclusion of Agar wood industry in 'Secondary Wood Based Industry' was submitted.",
     era: "critical",
   },
   {
-    year: "2022",
-    title: "Resolution",
+    year: "28.10.2016",
+    title: "National Conference at NEDFi House",
     description:
-      "Govt made rules: 'Assam Wood Based Industries (Promotion & Development) Rules, 2022'. Agar Wood Industries declared as Secondary Wood Based Industries, liberalizing the trade.",
+      "The Assam Forest Department organized a National Conference on Agarwood & Oil Industries: Prospect & Possibilities.",
     era: "critical",
   },
   {
-    year: "2023",
-    title: "Assam Agarwood Promotion Policy",
+    year: "19.7.2021",
+    title: "Delegation to Chief Minister",
     description:
-      "The state legalises the entire agarwood trade chain — plantation, harvesting, processing, transit, and sale — bringing agar out of the ambit of forest produce regulations.",
+      "An AATMA delegation met the Chief Minister of Assam and submitted a memorandum on the problems faced by agar industries over the previous 21 years.",
+    era: "critical",
+  },
+  {
+    year: "12 Jan 2023",
+    title: "2022 Rules Enacted",
+    description:
+      "On 12 January 2023, the Government of Assam enacted the 'Assam Wood Based Industries (Promotion & Development) Rules, 2022'. Agar Wood Industries were declared Secondary Wood Based Industries, liberalizing the trade.",
     era: "modern",
   },
   {
-    year: "2024",
-    title: "CITES Export Quota Secured",
+    year: "14 Feb 2023",
+    title: "Stakeholders Conference",
     description:
-      "India secures a formal export quota: 1,51,080 kg/year of chips & powder and 7,050 kg/year of oil for 2024-2027.",
+      "A Stakeholders Conference was organized to explain the Assam Wood Based Industries (Promotion & Development) Rules, 2022 and the Assam Trees Outside Forest (Sustainable Management) Rules, 2022 to relevant industry stakeholders, in the presence of the Environment & Forests Department, Government of Assam.",
     era: "modern",
   },
   {
-    year: "2025",
-    title: "First Legal Agarwood Export",
+    year: "26 Aug 2026",
+    title: "AIDC Stakeholders’ Workshop",
     description:
-      "Assam ships its first legally approved commercial consignment: 100 kg of premium agarwood chips to Saudi Arabia and 12 kg to the UAE.",
-    era: "modern",
-  },
-  {
-    year: "2026",
-    title: "Export Promotion Cell Constituted",
-    description:
-      "In May 2026, the Ministry of Commerce constitutes a dedicated Agarwood Export Promotion Cell, bringing together CHEMEXCIL and SHEFEXIL.",
+      "AATMA participated in a one-day stakeholders’ workshop organized by the Assam Industrial Development Corporation Limited, in the presence of the Forest, Agriculture, and Industry Ministers. Discussions covered relaxations for the agarwood trade and industry.",
     era: "modern",
   },
 ];
@@ -279,7 +293,7 @@ function DesktopTimeline({
         className={cn(
           "absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300",
           canScrollLeft
-            ? "bg-gold/20 border border-gold/40 text-gold hover:bg-gold/30 cursor-pointer"
+            ? "bg-gold/20 border border-gold/40 text-gold-light hover:bg-gold/30 active:bg-gold/30 cursor-pointer"
             : "bg-white/5 border border-white/10 text-white/20 cursor-not-allowed"
         )}
       >
@@ -292,7 +306,7 @@ function DesktopTimeline({
         className={cn(
           "absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300",
           canScrollRight
-            ? "bg-gold/20 border border-gold/40 text-gold hover:bg-gold/30 cursor-pointer"
+            ? "bg-gold/20 border border-gold/40 text-gold-light hover:bg-gold/30 active:bg-gold/30 cursor-pointer"
             : "bg-white/5 border border-white/10 text-white/20 cursor-not-allowed"
         )}
       >
@@ -306,7 +320,7 @@ function DesktopTimeline({
           tech silently ignored it and the active event was never announced. */}
       <div
         ref={scrollRef}
-        className="overflow-x-auto no-scrollbar scroll-smooth px-12 py-8"
+        className="overflow-x-auto no-scrollbar scroll-smooth px-4 sm:px-12 py-8 snap-x snap-proximity"
         role="listbox"
         aria-label="Timeline of agar trade history"
       >
@@ -325,7 +339,7 @@ function DesktopTimeline({
                   >
                     {item.era.label}
                   </span>
-                  <span className="text-[10px] text-white/40 mt-0.5">{item.era.range}</span>
+                  <span className="text-[10px] text-cream/75 mt-0.5">{item.era.range}</span>
                 </div>
               );
             }
@@ -344,7 +358,7 @@ function DesktopTimeline({
                 aria-label={`${event.year}: ${event.title}`}
                 onClick={() => onSelect(index)}
                 className={cn(
-                  "flex flex-col items-center shrink-0 mx-3 group cursor-pointer transition-all duration-300",
+                  "flex flex-col items-center shrink-0 mx-3 group cursor-pointer transition-all duration-300 snap-center",
                   isActive ? "scale-110" : "hover:scale-105"
                 )}
               >
@@ -354,7 +368,7 @@ function DesktopTimeline({
                     "w-4 h-4 rounded-full border-2 transition-all duration-300 mb-3",
                     isActive
                       ? "border-gold bg-gold shadow-lg shadow-gold/40"
-                      : "border-white/30 bg-white/10 group-hover:border-gold/60 group-hover:bg-gold/20"
+                      : "border-white/30 bg-white/10 group-hover:border-gold/60 group-active:border-gold/60 group-hover:bg-gold/20 group-active:bg-gold/20"
                   )}
                   style={isActive ? { borderColor: eraColor, backgroundColor: eraColor } : undefined}
                 />
@@ -362,7 +376,7 @@ function DesktopTimeline({
                 <span
                   className={cn(
                     "text-sm font-bold tracking-tight transition-colors duration-300 mb-1",
-                    isActive ? "text-gold" : "text-white/50 group-hover:text-white/80"
+                    isActive ? "text-gold-light" : "text-cream/75 group-hover:text-white/80 group-active:text-white/80"
                   )}
                 >
                   {event.year}
@@ -371,7 +385,7 @@ function DesktopTimeline({
                 <span
                   className={cn(
                     "text-xs text-center max-w-[120px] leading-tight transition-colors duration-300",
-                    isActive ? "text-white" : "text-white/40 group-hover:text-white/70"
+                    isActive ? "text-white" : "text-cream/75 group-hover:text-white/70 group-active:text-white/70"
                   )}
                 >
                   {event.title}
@@ -390,7 +404,7 @@ function DesktopTimeline({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -12 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="mt-6 mx-4 md:mx-12 p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm"
+          className="mt-6 mx-4 md:mx-12 glass-surface rounded-xl p-6"
           aria-live="polite"
         >
           {(() => {
@@ -410,7 +424,7 @@ function DesktopTimeline({
                     >
                       {era?.label || event.era}
                     </span>
-                    <span className="text-gold text-sm font-semibold">{event.year}</span>
+                    <span className="text-gold-light text-sm font-semibold">{event.year}</span>
                   </div>
                   <h3 className="text-white text-lg md:text-xl font-semibold mb-2 font-display">
                     {event.title}
@@ -476,7 +490,7 @@ function MobileTimeline({
                 >
                   {era.label}
                 </span>
-                <span className="text-[10px] text-white/40 ml-2">{era.range}</span>
+                <span className="text-[10px] text-cream/75 ml-2">{era.range}</span>
               </div>
             </div>
 
@@ -500,7 +514,7 @@ function MobileTimeline({
                   <div
                     className={cn(
                       "absolute left-[-13px] top-1 w-3 h-3 rounded-full border-2 border-green-deep transition-all duration-300",
-                      isActive ? "scale-125" : "group-hover:scale-110"
+                      isActive ? "scale-125" : "group-hover:scale-110 group-active:scale-110"
                     )}
                     style={{ backgroundColor: isActive ? era.color : `${era.color}60` }}
                   />
@@ -510,14 +524,14 @@ function MobileTimeline({
                       "p-4 rounded-lg border transition-all duration-300",
                       isActive
                         ? "bg-white/10 border-gold/30"
-                        : "bg-white/[0.03] border-white/10 group-hover:bg-white/[0.06]"
+                        : "bg-glass-surface-subtle border-glass-border group-hover:bg-glass-surface-hover"
                     )}
                   >
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-gold text-xs font-bold">{event.year}</span>
+                      <span className="text-gold-light text-xs font-bold">{event.year}</span>
                     </div>
                     <h4 className="text-white text-sm font-semibold mb-1">{event.title}</h4>
-                    <p className="text-white/50 text-xs leading-relaxed line-clamp-2">
+                    <p className="text-cream/75 text-xs leading-relaxed line-clamp-2">
                       {event.description}
                     </p>
                   </div>
@@ -591,7 +605,7 @@ export function InteractiveTimeline({
               className="w-2.5 h-2.5 rounded-full"
               style={{ backgroundColor: era.color }}
             />
-            <span className="text-[10px] text-white/50 tracking-wide uppercase">
+            <span className="text-[10px] text-cream/75 tracking-wide uppercase">
               {era.label}
             </span>
           </div>
@@ -615,7 +629,7 @@ export function InteractiveTimeline({
       )}
 
       {/* Keyboard hint */}
-      <p className="text-center text-white/30 text-[10px] mt-4">
+      <p className="text-center text-cream/75 text-[10px] mt-4">
         Use arrow keys to navigate, Home/End to jump to start/end
       </p>
     </div>

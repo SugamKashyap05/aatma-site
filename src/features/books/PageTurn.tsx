@@ -6,6 +6,7 @@ interface PageTurnProps {
   children: React.ReactNode;
   pageKey: string;
   className?: string;
+  enabled?: boolean;
 }
 
 /**
@@ -14,12 +15,12 @@ interface PageTurnProps {
  * Mobile: slide-and-fade (250ms).
  * All animation gated behind usePrefersReducedMotion.
  */
-export function PageTurn({ children, pageKey, className }: PageTurnProps) {
+export function PageTurn({ children, pageKey, className, enabled = true }: PageTurnProps) {
   const reducedMotion = usePrefersReducedMotion();
   const tier = useDeviceTier();
   const isMobile = tier === "mobile";
 
-  const animClass = reducedMotion
+  const animClass = !enabled || reducedMotion
     ? ""
     : isMobile
       ? "page-turn-slide"

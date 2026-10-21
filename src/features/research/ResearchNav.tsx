@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { Sprout, Users, Shield, Rocket, Handshake, BarChart3 } from "lucide-react";
+import { BarChart3 } from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -15,46 +15,10 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   {
-    id: "rhizosphere-mycoflora",
-    label: "Rhizosphere Mycoflora",
-    icon: <Sprout className="w-4 h-4" />,
-    subsection: "Section 1",
-  },
-  {
-    id: "microbial-workforce",
-    label: "Microbial Workforce",
-    icon: <Users className="w-4 h-4" />,
-    subsection: "Section 2",
-  },
-  {
-    id: "biopesticide-potential",
-    label: "Biopesticide Potential",
-    icon: <Shield className="w-4 h-4" />,
-    subsection: "Section 3",
-  },
-  {
-    id: "pgpr-cultivation",
-    label: "PGPR for Cultivation",
-    icon: <Rocket className="w-4 h-4" />,
-    subsection: "Section 4",
-  },
-  {
-    id: "aau-partnership",
-    label: "AAU Partnership",
-    icon: <Handshake className="w-4 h-4" />,
-    subsection: "Section 5",
-  },
-  {
-    id: "data-visualization",
-    label: "Data Visualization",
-    icon: <BarChart3 className="w-4 h-4" />,
-    subsection: "Section 6",
-  },
-  {
     id: "trade-data",
     label: "Trade Data",
     icon: <BarChart3 className="w-4 h-4" />,
-    subsection: "Section 7",
+    subsection: "Section 1",
   },
 ];
 
@@ -92,8 +56,8 @@ export function ResearchNav() {
       aria-label="Research page sections"
       className="hidden lg:block sticky top-24 w-64 shrink-0"
     >
-      <div className="border border-white/10 rounded-lg bg-white/[0.03] backdrop-blur-sm p-4">
-        <p className="text-gold text-xs font-semibold tracking-[0.2em] uppercase mb-3">
+      <div className="glass-surface-subtle rounded-lg p-4">
+        <p className="text-gold-light text-xs font-semibold tracking-[0.2em] uppercase mb-3">
           On this page
         </p>
         <ul className="space-y-1">
@@ -104,14 +68,14 @@ export function ResearchNav() {
                 className={cn(
                   "flex items-center gap-2.5 px-3 py-2 rounded-sm text-sm transition-all",
                   activeId === item.id
-                    ? "bg-gold/10 text-gold border border-gold/20"
-                    : "text-white/60 hover:text-white/90 hover:bg-white/5 border border-transparent"
+                    ? "bg-gold/10 text-gold-light border border-gold/20"
+                    : "text-cream/75 hover:text-white/90 active:text-white/90 hover:bg-white/5 active:bg-white/5 border border-transparent"
                 )}
               >
                 <span
                   className={cn(
                     "shrink-0",
-                    activeId === item.id ? "text-gold" : "text-white/40"
+                    activeId === item.id ? "text-gold-light" : "text-cream/75"
                   )}
                 >
                   {item.icon}
@@ -122,9 +86,9 @@ export function ResearchNav() {
           ))}
         </ul>
         <div className="mt-4 pt-3 border-t border-white/10">
-          <div className="flex items-center gap-2 text-white/40 text-xs">
-            <Sprout className="w-3 h-3" />
-            <span>Soil microbiome research</span>
+          <div className="flex items-center gap-2 text-cream/75 text-xs">
+            <BarChart3 className="w-3 h-3" />
+            <span>Client-supplied data only</span>
           </div>
         </div>
       </div>

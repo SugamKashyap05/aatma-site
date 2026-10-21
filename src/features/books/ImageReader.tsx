@@ -276,32 +276,31 @@ export function ImageReader({
 
   return (
     <>
-      <main
-        id="main-content"
-        tabIndex={-1}
+      <section
         ref={readingRef}
         className={cn(
           "flex-1 overflow-y-auto transition-colors duration-300",
           darkMode ? "bg-green-deep" : "bg-cream"
         )}
-        role="main"
+        role="region"
         aria-label="Image reading area"
+        tabIndex={0}
       >
         <div className="max-w-4xl mx-auto px-4 py-8 pb-28">
-          <PageTurn pageKey={`${chapterIndex}-${pageIndex}`}>
+          <PageTurn pageKey={`${chapterIndex}-${pageIndex}`} enabled={book.readerStyle === "flipbook"}>
             {/* Chapter header */}
             <div className="mb-6">
-              <div className="text-gold text-xs font-semibold tracking-[0.2em] uppercase mb-2">
+              <div className={cn("text-xs font-semibold tracking-[0.2em] uppercase mb-2", darkMode ? "text-gold-light" : "text-gold-deep")}>
                 Page {currentPageNum} of {totalPages}
               </div>
-              <h1
+              <h2
                 className={cn(
                   "font-display font-bold text-2xl md:text-3xl mb-2",
                   darkMode ? "text-white" : "text-charcoal"
                 )}
               >
                 {chapter.title}
-              </h1>
+              </h2>
             </div>
 
             {/* Image container with zoom and pan */}
@@ -374,14 +373,14 @@ export function ImageReader({
                 disabled={pageIndex === 0}
                 className={cn(
                   "flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed transition-colors min-h-[44px] px-2",
-                  darkMode ? "text-white/60 hover:text-gold" : "text-mute hover:text-gold"
+                  darkMode ? "text-cream/75 hover:text-gold-light" : "text-mute hover:text-gold-deep"
                 )}
                 aria-label="Previous page"
               >
                 <ChevronLeft size={16} />
                 Previous
               </button>
-              <span className={cn("text-sm", darkMode ? "text-white/40" : "text-mute")}>
+              <span className={cn("text-sm", darkMode ? "text-cream/75" : "text-mute")}>
                 Page {currentPageNum} of {totalPages}
               </span>
               <button
@@ -389,7 +388,7 @@ export function ImageReader({
                 disabled={pageIndex === totalPages - 1}
                 className={cn(
                   "flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed transition-colors min-h-[44px] px-2",
-                  darkMode ? "text-white/60 hover:text-gold" : "text-mute hover:text-gold"
+                  darkMode ? "text-cream/75 hover:text-gold-light" : "text-mute hover:text-gold-deep"
                 )}
                 aria-label="Next page"
               >
@@ -399,11 +398,9 @@ export function ImageReader({
             </div>
           </PageTurn>
         </div>
-      </main>
-
-      {/* Fixed thumbnail strip for quick page navigation */}
+      </section>
       <div className="fixed bottom-0 left-0 right-0 z-20 bg-green-deep/95 backdrop-blur-md border-t border-white/10">
-        <div className="flex gap-2 overflow-x-auto px-4 py-2 no-scrollbar">
+        <div className="flex gap-2 overflow-x-auto px-4 py-2 no-scrollbar snap-x snap-proximity">
           {Array.from({ length: totalPages }, (_, i) => {
             const pageNum = i + 1;
             const imagePath = chapter.image
@@ -414,7 +411,7 @@ export function ImageReader({
                 key={i}
                 onClick={() => setPageIndex(i)}
                 className={cn(
-                  "flex-shrink-0 w-12 h-16 rounded overflow-hidden border-2 transition-colors",
+                  "flex-shrink-0 w-10 h-14 sm:w-12 sm:h-16 rounded overflow-hidden border-2 transition-colors snap-center",
                   i === pageIndex
                     ? "border-gold"
                     : "border-transparent opacity-60 hover:opacity-100"
@@ -424,7 +421,7 @@ export function ImageReader({
               >
                 <img
                   src={imagePath}
-                  alt=""
+                  alt={`Page ${pageNum} thumbnail`}
                   className="w-full h-full object-cover"
                   loading="eager"
                 />

@@ -270,13 +270,13 @@ export function RegistrationProcessWalkthrough() {
         {/* Section header */}
         <Reveal variant="fade" delay={0}>
           <div className="mb-12 md:mb-16">
-            <span className="inline-flex items-center gap-2 text-gold text-sm font-semibold tracking-[0.25em] uppercase bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 rounded-sm mb-4">
+            <span className="glass-surface-subtle inline-flex items-center gap-2 text-gold-light text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-4">
               <ClipboardCheck size={14} />
               Step-by-Step Guide
             </span>
             <h2 className="font-display font-bold text-2xl md:text-4xl text-white mb-3">
               Registration Process{" "}
-              <span className="text-gold">Walkthrough</span>
+              <span className="text-gold-light">Walkthrough</span>
             </h2>
             <p className="text-white/70 text-base md:text-lg max-w-3xl">
               The complete end-to-end journey for registering your agar wood
@@ -308,8 +308,8 @@ export function RegistrationProcessWalkthrough() {
                       className={cn(
                         "w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center border-2 transition-colors",
                         step.decisionPoint
-                          ? "bg-gold/20 border-gold text-gold"
-                          : "bg-green-deep border-gold/40 text-gold",
+                          ? "bg-gold/20 border-gold text-gold-light"
+                          : "bg-green-deep border-gold/40 text-gold-light",
                       )}
                     >
                       <span className="font-display font-bold text-lg md:text-xl">
@@ -330,14 +330,14 @@ export function RegistrationProcessWalkthrough() {
                     >
                       {/* Header row */}
                       <div className="flex items-start gap-3 mb-3">
-                        <div className="text-gold mt-0.5 shrink-0">
+                        <div className="text-gold-light mt-0.5 shrink-0">
                           {step.icon}
                         </div>
                         <div className="min-w-0">
                           <h3 className="font-display font-bold text-lg md:text-xl text-white leading-snug">
                             {step.title}
                           </h3>
-                          <p className="text-white/60 text-sm mt-1 leading-relaxed">
+                          <p className="text-cream/75 text-sm mt-1 leading-relaxed">
                             {step.description}
                           </p>
                         </div>
@@ -345,7 +345,7 @@ export function RegistrationProcessWalkthrough() {
 
                       {/* Action items */}
                       <div className="mt-4 space-y-2">
-                        <p className="text-gold/80 text-xs font-semibold tracking-wider uppercase">
+                        <p className="text-gold-light text-xs font-semibold tracking-wider uppercase">
                           Action Items
                         </p>
                         <ul className="space-y-1.5">
@@ -354,7 +354,7 @@ export function RegistrationProcessWalkthrough() {
                               key={i}
                               className="flex items-start gap-2 text-white/70 text-sm leading-relaxed"
                             >
-                              <span className="text-gold/60 mt-1.5 shrink-0">
+                              <span className="text-gold-light mt-1.5 shrink-0">
                                 ▸
                               </span>
                               {item}
@@ -366,7 +366,7 @@ export function RegistrationProcessWalkthrough() {
                       {/* Required documents */}
                       {step.requiredDocuments.length > 0 && (
                         <div className="mt-4">
-                          <p className="text-gold/80 text-xs font-semibold tracking-wider uppercase mb-2 flex items-center gap-1.5">
+                          <p className="text-gold-light text-xs font-semibold tracking-wider uppercase mb-2 flex items-center gap-1.5">
                             <FileCheck className="w-3.5 h-3.5" />
                             Required Documents
                           </p>
@@ -385,17 +385,17 @@ export function RegistrationProcessWalkthrough() {
                       )}
 
                       {/* Metadata row */}
-                      <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-xs text-white/50">
+                      <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-xs text-cream/75">
                         <span className="flex items-center gap-1.5">
-                          <User className="w-3.5 h-3.5 text-gold/60" />
+                          <User className="w-3.5 h-3.5 text-gold-light" />
                           {step.responsibleAuthority}
                         </span>
                         <span className="flex items-center gap-1.5">
-                          <Clock className="w-3.5 h-3.5 text-gold/60" />
+                          <Clock className="w-3.5 h-3.5 text-gold-light" />
                           {step.timeline}
                         </span>
                         <span className="flex items-center gap-1.5">
-                          <FileText className="w-3.5 h-3.5 text-gold/60" />
+                          <FileText className="w-3.5 h-3.5 text-gold-light" />
                           Source: {step.source}
                         </span>
                       </div>
@@ -403,7 +403,7 @@ export function RegistrationProcessWalkthrough() {
                       {/* Decision point */}
                       {step.decisionPoint && (
                         <div className="mt-5 border-t border-gold/20 pt-4">
-                          <p className="text-gold text-xs font-semibold tracking-wider uppercase mb-3 flex items-center gap-1.5">
+                          <p className="text-gold-light text-xs font-semibold tracking-wider uppercase mb-3 flex items-center gap-1.5">
                             <AlertTriangle className="w-3.5 h-3.5" />
                             Decision Point
                           </p>
@@ -419,7 +419,7 @@ export function RegistrationProcessWalkthrough() {
                                   If Approved
                                 </span>
                               </div>
-                              <p className="text-white/60 text-xs leading-relaxed">
+                              <p className="text-cream/75 text-xs leading-relaxed">
                                 {step.decisionPoint.approvedPath}
                               </p>
                             </div>
@@ -431,7 +431,7 @@ export function RegistrationProcessWalkthrough() {
                                   If Rejected
                                 </span>
                               </div>
-                              <p className="text-white/60 text-xs leading-relaxed">
+                              <p className="text-cream/75 text-xs leading-relaxed">
                                 {step.decisionPoint.rejectedPath}
                               </p>
                             </div>

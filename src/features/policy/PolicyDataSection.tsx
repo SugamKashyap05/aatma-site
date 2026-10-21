@@ -41,8 +41,8 @@ export function PolicyDataSection() {
       </Reveal>
 
       <Reveal variant="up" delay={60}>
-        <p className="text-white/60 text-sm leading-relaxed mb-10 max-w-3xl">
-          The 2022 Rules changed both who may trade and how quickly they may move.
+        <p className="text-cream/75 text-sm leading-relaxed mb-10 max-w-3xl">
+          The charts distinguish Gazette rule text from figures reported by newspapers.
           Unit capacity thresholds are read from the WBI Gazette (Rule 2, No. 20,
           eCF No. 237152, 12-01-2023) — primary law, no press-estimate badge. The
           registration time windows and quota share are as reported in the press.

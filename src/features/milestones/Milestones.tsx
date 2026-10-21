@@ -44,7 +44,7 @@ export function Milestones({ className, deviceTier, variant = "home" }: Mileston
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-14 md:mb-18">
           <Reveal variant="fade" delay={0}>
-            <span className="inline-block text-gold text-sm font-semibold tracking-[0.25em] uppercase bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-sm mb-4">
+            <span className="glass-surface-subtle inline-block text-gold-light text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-4">
               {isHistory ? "Timeline at a Glance" : "Our Milestones"}
             </span>
           </Reveal>
@@ -53,12 +53,12 @@ export function Milestones({ className, deviceTier, variant = "home" }: Mileston
               {isHistory ? (
                 <>
                   Key moments{" "}
-                  <span className="text-gold">summarised</span>
+                  <span className="text-gold-light">summarised</span>
                 </>
               ) : (
                 <>
                   Five decades of{" "}
-                  <span className="text-gold">progress</span>
+                  <span className="text-gold-light">progress</span>
                 </>
               )}
             </h2>

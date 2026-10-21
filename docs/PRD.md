@@ -28,8 +28,8 @@
 | Established | 1976 |
 | Registration | Registrar of Societies — Reg. No. 664 of 78–79 |
 | Head office | Main Road, Hojai – 782435, Assam, India |
-| Phone | +91 94014 82133 |
-| Email | aatma20676@gmail.com |
+| Phone | [REDACTED: unverified contact] |
+| Email | [REDACTED: unverified contact] |
 | Districts served | Golaghat, Jorhat, Sivasagar, Hojai |
 | Tagline | "A 50-year institution at the heart of India's agarwood trade." |
 

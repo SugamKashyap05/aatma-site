@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Book, Chapter } from "@/data/books";
@@ -37,34 +37,33 @@ export function ReadingArea({
   }, [chapterIndex, readingRef]);
 
   return (
-    <main
-      id="main-content"
+    <div
       tabIndex={-1}
       ref={readingRef}
       className={cn(
         "flex-1 overflow-y-auto transition-colors duration-300",
         darkMode ? "bg-green-deep" : "bg-cream"
       )}
-      role="main"
+      role="region"
       aria-label="Reading area"
     >
       <div className="max-w-3xl mx-auto px-6 py-12">
         <PageTurn pageKey={String(chapterIndex)}>
           {/* Chapter header */}
           <div className="mb-8">
-            <div className="text-gold text-xs font-semibold tracking-[0.2em] uppercase mb-2">
+            <div className={cn("text-xs font-semibold tracking-[0.2em] uppercase mb-2", darkMode ? "text-gold-light" : "text-gold-deep")}>
               Chapter {chapterIndex + 1} of {book.chapters.length}
             </div>
-            <h1
+            <h2
               className={cn(
                 "font-display font-bold text-2xl md:text-3xl mb-2",
                 darkMode ? "text-white" : "text-charcoal"
               )}
             >
               {chapter.title}
-            </h1>
+            </h2>
             {chapter.subtitle && (
-              <p className={cn("text-base", darkMode ? "text-white/60" : "text-mute")}>
+              <p className={cn("text-base", darkMode ? "text-cream/75" : "text-mute")}>
                 {chapter.subtitle}
               </p>
             )}
@@ -88,7 +87,10 @@ export function ReadingArea({
                   className={cn(
                     "leading-relaxed",
                     darkMode ? "text-white/90" : "text",
-                    i === 0 && "first-letter:font-display first-letter:text-5xl first-letter:font-bold first-letter:text-gold first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-[0.8]"
+                    i === 0 && cn(
+                      "first-letter:font-display first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-[0.8]",
+                      darkMode ? "first-letter:text-gold-light" : "first-letter:text-gold-deep",
+                    )
                   )}
                 >
                   {para}
@@ -104,7 +106,7 @@ export function ReadingArea({
               disabled={isFirst}
               className={cn(
                 "flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed transition-colors min-h-[44px] px-2",
-                darkMode ? "text-white/60 hover:text-gold" : "text-mute hover:text-gold"
+                darkMode ? "text-cream/75 hover:text-gold-light" : "text-mute hover:text-gold-deep"
               )}
               aria-label="Previous chapter"
             >
@@ -116,7 +118,7 @@ export function ReadingArea({
               disabled={isLast}
               className={cn(
                 "flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed transition-colors min-h-[44px] px-2",
-                darkMode ? "text-white/60 hover:text-gold" : "text-mute hover:text-gold"
+                darkMode ? "text-cream/75 hover:text-gold-light" : "text-mute hover:text-gold-deep"
               )}
               aria-label="Next chapter"
             >
@@ -126,6 +128,6 @@ export function ReadingArea({
           </div>
         </PageTurn>
       </div>
-    </main>
+    </div>
   );
 }

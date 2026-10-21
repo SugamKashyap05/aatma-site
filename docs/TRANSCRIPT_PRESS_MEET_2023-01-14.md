@@ -48,7 +48,7 @@ Bureau report, অহম first。
 | Secondary classification | "secondary wood based এটা আইন বনাই" | "categorizing the agar wood-based industries as 'Secondary Wood Based Industries'" ✅ |
 | Five-year validity | *(not stated in this video)* | "valid for five years" — HT only |
 | ~1,000 industries | *(not stated in this video)* | "about 1,000 agar wood-based industries in Assam" — HT only |
-| Ataur Rahman, President | "আত্মাৰ সভাপতি আতাউৰ ৰহমান" | "Ataur Rahman, president" ✅ |
+| [REDACTED: AATMA member], President | "আত্মাৰ সভাপতি আতাউৰ ৰহমান" | "[REDACTED: AATMA member], president" ✅ |
 | Helal Uddin, General Secretary | "সাধাৰণ সম্পাদক হেলালুদ্দিন" | "Helal Uddin, general secretary" ✅ |
 | Himanta Biswa Sarma, CM | "মুখ্যমন্ত্ৰী হিমন্ত বিশ্ব শৰ্মা" | "Dr Himanta Biswa Sarma" ✅ |
 
@@ -80,10 +80,10 @@ These appear **only** in the video and are not corroborated by any document supp
 | Speaker | Role (inferred from content) |
 |---|---|
 | Speaker 1 | Opens the press meet; reads the formal statement of thanks. Likely the MC or a second office-bearer. |
-| Speaker 2 | The principal speaker — gives the full history and struggle account. Given the content, almost certainly **Ataur Rahman (President)**. |
+| Speaker 2 | The principal speaker — gives the full history and struggle account. Given the content, almost certainly **[REDACTED: AATMA member] (President)**. |
 | Speaker 3 | One-line interjection ("veneer mill"). |
 
-**The transcript does not name speakers.** Speaker 2's content matches what the HT clipping attributes to Ataur Rahman, but that is inference, not identification. Do not attribute quotes to named individuals without confirmation.
+**The transcript does not name speakers.** Speaker 2's content matches what the HT clipping attributes to [REDACTED: AATMA member], but that is inference, not identification. Do not attribute quotes to named individuals without confirmation.
 
 ---
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { ScrollText, Building2, Scale, ClipboardCheck, Globe, AlertTriangle } from "lucide-react";
+import { ScrollText, Building2, Scale, Globe, AlertTriangle } from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -39,22 +39,10 @@ const NAV_ITEMS: NavItem[] = [
     subsection: "Section 4",
   },
   {
-    id: "registration",
-    label: "Registration Walkthrough",
-    icon: <ClipboardCheck className="w-4 h-4" />,
-    subsection: "Section 5",
-  },
-  {
-    id: "platform",
-    label: "Online Platform Guidance",
-    icon: <Globe className="w-4 h-4" />,
-    subsection: "Section 6",
-  },
-  {
     id: "gazette-citations",
     label: "Gazette Citations",
     icon: <ScrollText className="w-4 h-4" />,
-    subsection: "Section 7",
+    subsection: "Section 5",
   },
 ];
 
@@ -92,8 +80,8 @@ export function PolicyNav() {
       aria-label="Policy page sections"
       className="hidden lg:block sticky top-24 w-64 shrink-0"
     >
-      <div className="border border-white/10 rounded-lg bg-white/[0.03] backdrop-blur-sm p-4">
-        <p className="text-gold text-xs font-semibold tracking-[0.2em] uppercase mb-3">
+      <div className="glass-surface-subtle rounded-lg p-4">
+        <p className="text-gold-light text-xs font-semibold tracking-[0.2em] uppercase mb-3">
           On this page
         </p>
         <ul className="space-y-1">
@@ -104,13 +92,13 @@ export function PolicyNav() {
                 className={cn(
                   "flex items-center gap-2.5 px-3 py-2 rounded-sm text-sm transition-all",
                   activeId === item.id
-                    ? "bg-gold/10 text-gold border border-gold/20"
-                    : "text-white/60 hover:text-white/90 hover:bg-white/5 border border-transparent"
+                    ? "bg-gold/10 text-gold-light border border-gold/20"
+                    : "text-cream/75 hover:text-white/90 active:text-white/90 hover:bg-white/5 active:bg-white/5 border border-transparent"
                 )}
               >
                 <span className={cn(
                   "shrink-0",
-                  activeId === item.id ? "text-gold" : "text-white/40"
+                  activeId === item.id ? "text-gold-light" : "text-cream/75"
                 )}>
                   {item.icon}
                 </span>
@@ -120,7 +108,7 @@ export function PolicyNav() {
           ))}
         </ul>
         <div className="mt-4 pt-3 border-t border-white/10">
-          <div className="flex items-center gap-2 text-white/40 text-xs">
+          <div className="flex items-center gap-2 text-cream/75 text-xs">
             <AlertTriangle className="w-3 h-3" />
             <span>Source: 3 AATMA documents</span>
           </div>

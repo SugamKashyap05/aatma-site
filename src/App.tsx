@@ -1,10 +1,11 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect, type ReactNode } from "react";
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { DeviceProvider } from "@/context/DeviceContext";
 import { HomePage } from "@/features/home/HomePage";
-import ChallengesSection from "@/features/home/ChallengesSection";
-import KineticGrid from "@/components/ui/kinetic-grid";
+import { AboutPage } from "@/features/about/AboutPage";
+import { ContactPage } from "@/features/contact/ContactPage";
 import ScrollManager from "@/components/ui/ScrollManager";
+import { RouteMetadata, ROUTE_META, NOT_FOUND_META, type RouteMeta } from "@/components/ui/RouteMetadata";
 
 const BooksPage = lazy(() => import("@/features/books/BooksPage").then(m => ({ default: m.BooksPage })));
 const PressPage = lazy(() => import("@/features/press/PressPage").then(m => ({ default: m.PressPage })));
@@ -15,6 +16,24 @@ const NewsIndex = lazy(() => import("@/features/news/NewsIndex").then(m => ({ de
 const NewsArticleView = lazy(() => import("@/features/news/NewsArticleView").then(m => ({ default: m.NewsArticleView })));
 const ResourceCenterPage = lazy(() => import("@/features/resources/ResourceCenterPage").then(m => ({ default: m.ResourceCenterPage })));
 const NotFoundPage = lazy(() => import("@/features/notFound/NotFoundPage").then(m => ({ default: m.NotFoundPage })));
+
+const FALLBACK = <div className="min-h-screen bg-green-deep" />;
+
+/**
+ * Wraps a lazy route so its `<title>` and meta tags are applied as soon as the
+ * route matches, not after the chunk finishes loading — a reader or crawler
+ * that lands on a deep URL sees the right title immediately.
+ *
+ * The element itself is memoised: `RouteMetadata` re-renders on every
+ * `useLocation()` change (it reads the pathname to build the canonical URL),
+ * and without this boundary that re-render would remount the lazy component.
+ */
+function RouteMetaRoute({ meta, children }: { meta: RouteMeta; children: ReactNode }) {
+  const element = (
+    <Suspense fallback={FALLBACK}>{children}</Suspense>
+  );
+  return <RouteMetadata meta={meta}>{element}</RouteMetadata>;
+}
 
 function SpaRedirectHandler() {
   const navigate = useNavigate();
@@ -69,23 +88,23 @@ export default function App() {
         >
           Skip to main content
         </a>
-        <div className="relative flex flex-col min-h-screen bg-green-deep text-white antialiased overflow-x-hidden">
-          {/* Fixed KineticGrid background — behind everything including hero */}
-          <KineticGrid />
-
+        <div className="relative flex flex-col min-h-screen bg-green-deep text-white antialiased overflow-x-clip">
           {/* Route-specific content */}
           <Routes>
-            <Route path="/__challenges-probe" element={<ChallengesSection />} />
             <Route path="/" element={<HomePage />} />
-            <Route path="/books" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><BooksPage /></Suspense>} />
-            <Route path="/press" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><PressPage /></Suspense>} />
-            <Route path="/history" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><HistoryPage /></Suspense>} />
-            <Route path="/policy" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><PolicyPage /></Suspense>} />
-            <Route path="/research" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><ResearchPage /></Suspense>} />
-                        <Route path="/news" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><NewsIndex /></Suspense>} />
-            <Route path="/news/:slug" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><NewsArticleView /></Suspense>} />
-            <Route path="/resources" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><ResourceCenterPage /></Suspense>} />
-                        <Route path="*" element={<Suspense fallback={<div className="min-h-screen bg-green-deep" />}><NotFoundPage /></Suspense>} />
+            <Route path="/about" element={<RouteMetaRoute meta={ROUTE_META["/about"]}><AboutPage /></RouteMetaRoute>} />
+            <Route path="/contact" element={<RouteMetaRoute meta={ROUTE_META["/contact"]}><ContactPage /></RouteMetaRoute>} />
+            <Route path="/books" element={<RouteMetaRoute meta={ROUTE_META["/books"]}><BooksPage /></RouteMetaRoute>} />
+            <Route path="/press" element={<RouteMetaRoute meta={ROUTE_META["/press"]}><PressPage /></RouteMetaRoute>} />
+            <Route path="/history" element={<RouteMetaRoute meta={ROUTE_META["/history"]}><HistoryPage /></RouteMetaRoute>} />
+            <Route path="/policy" element={<RouteMetaRoute meta={ROUTE_META["/policy"]}><PolicyPage /></RouteMetaRoute>} />
+            <Route path="/research" element={<RouteMetaRoute meta={ROUTE_META["/research"]}><ResearchPage /></RouteMetaRoute>} />
+                        <Route path="/news" element={<RouteMetaRoute meta={ROUTE_META["/news"]}><NewsIndex /></RouteMetaRoute>} />
+            {/* An individual clipping sets its own title in `NewsArticleView`,
+                which overrides this one once the article is known. */}
+            <Route path="/news/:slug" element={<RouteMetaRoute meta={ROUTE_META["/news"]}><NewsArticleView /></RouteMetaRoute>} />
+            <Route path="/resources" element={<RouteMetaRoute meta={ROUTE_META["/resources"]}><ResourceCenterPage /></RouteMetaRoute>} />
+            <Route path="*" element={<RouteMetaRoute meta={NOT_FOUND_META}><NotFoundPage /></RouteMetaRoute>} />
           </Routes>
         </div>
       </DeviceProvider>

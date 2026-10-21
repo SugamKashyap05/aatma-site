@@ -1,14 +1,5 @@
 export const AATMA = {
-  fullName: "All Assam Agar Traders & Agaroil Manufacturers' Association",
   shortName: "AATMA",
-  assameseName: "সদৌ অসম আগৰ ব্যৱসায়ী আৰু আগৰতেল উৎপাদনকাৰী সংস্থা",
-  established: 1976,
-  registered: "Registrar of Societies — Reg. No. 664 of 78–79",
-  headOffice: "Main Road, Hojai – 782435, Assam, India",
-  phone: "+91 94014 82133",
-  email: "aatma20676@gmail.com",
-  tagline: "A 50-year institution at the heart of India's agarwood trade.",
-  districts: ["Golaghat", "Jorhat", "Sivasagar", "Hojai"],
 };
 
 export const MILESTONES = [
@@ -29,12 +20,6 @@ export const MILESTONES = [
     tag: "Turning Point",
     title: "Seminar at Assam Administrative Staff College, Guwahati",
     body: "AATMA connects with outside agar expertise for the first time — a landmark seminar that opens the association to broader knowledge, technical input, and wider networks. The association begins a sustained push to legalise the agarwood business through protests, memoranda, and seminars.",
-  },
-  {
-    year: "2000",
-    tag: "Knowledge Leadership",
-    title: "Seminar on Agar Plantation in the Northeast",
-    body: "Co-organised in Nagaon with proceedings published — an early contribution to building a knowledge base for agar cultivation in the region.",
   },
   {
     year: "2019",

@@ -1,38 +1,37 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AATMA } from "@/data/content";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { useScrollY } from "@/hooks/useScrollY";
 import { useCurrentRoute } from "@/hooks/useCurrentRoute";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { NAV_HOME_SECTIONS, NAV_PAGE_LINKS } from "@/data/navigation";
 
-const HOME_SECTIONS = [
-  { id: "about", label: "About" },
-  { id: "agar-story", label: "Agar Story" },
-  { id: "sanchi-paat", label: "Sanchi Paat" },
-  { id: "formation", label: "Formation" },
-  { id: "critical-era", label: "Critical Era" },
-  { id: "achievement", label: "Achievement" },
-  { id: "ndf-findings", label: "NDF Findings" },
-  { id: "rules", label: "Rules 2022" },
-  { id: "challenges", label: "Challenges" },
-  { id: "press", label: "Press & Media" },
-  { id: "contact", label: "Contact" },
-] as const;
-
-const PAGE_LINKS = [
-  { path: "/books", label: "Books" },
-  { path: "/press", label: "Press Releases" },
-  { path: "/news", label: "News" },
-  { path: "/history", label: "History" },
-  { path: "/policy", label: "Policy" },
-  { path: "/research", label: "Research" },
-  { path: "/resources", label: "Resources" },
-] as const;
+const HOME_SECTIONS = NAV_HOME_SECTIONS;
+const PAGE_LINKS = NAV_PAGE_LINKS;
 
 const SECTION_IDS = HOME_SECTIONS.map((s) => s.id);
+
+/**
+ * Wraps a link target in the deploy base.
+ *
+ * React Router handles this for `<Link to>` automatically, but this site also
+ * uses plain `<a href>` in a few places (in-page anchors, cross-page
+ * navigation, download links). A root-absolute target like `/policy` resolves
+ * against the DOMAIN root rather than `/aatma-site/`, so it 404s on GitHub
+ * Pages in production while still working in dev, where the base is `/`.
+ *
+ * `assetUrl()` in `@/lib/utils` exists for files inside `public/`; this is the
+ * same rule for app routes. In dev both resolve to `/path`, so it is a no-op
+ * there.
+ */
+export function routeUrl(path: string): string {
+  const base = import.meta.env.BASE_URL || "/";
+  const root = base === "./" || base === "" ? "" : base.replace(/\/+$/, "");
+  return `${root}${path.startsWith("/") ? path : `/${path}`}`;
+}
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -41,6 +40,7 @@ export function Navbar() {
   const activeSection = useActiveSection(SECTION_IDS);
   const currentPage = useCurrentRoute();
   const reducedMotion = usePrefersReducedMotion();
+  const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const hasOpenedRef = useRef(false);
@@ -49,6 +49,14 @@ export function Navbar() {
   const scrollY = useScrollY();
   const onHome = isHome && scrollY < 60 && !location.hash;
 
+  /**
+   * Home sections are only reachable from `/` itself; there is no
+   * `/aatma-site/#section` route (that trailing-slash form is treated as an
+   * unknown path by the router). The scroll-spy effect below only runs on `/`,
+   * so an off-home navigation lands at the top of the home page instead of the
+   * section it was asked for — hence `/#section`, which this site has always
+   * used for cross-page anchors.
+   */
   const goToSection = (sectionId: string) => {
     if (isHome) {
       const el = document.getElementById(sectionId);
@@ -56,7 +64,7 @@ export function Navbar() {
         el.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      navigate(`/#${sectionId}`);
+      navigate(routeUrl(`/#${sectionId}`));
     }
   };
 
@@ -84,7 +92,29 @@ export function Navbar() {
     if (!open) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+      if (e.key !== "Tab") return;
+
+      const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable?.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!dialogRef.current?.contains(document.activeElement)) {
+        e.preventDefault();
+        first.focus();
+      } else if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
 
     document.addEventListener("keydown", handleKeyDown);
@@ -114,59 +144,60 @@ export function Navbar() {
     }
   }, [open]);
 
-  // Close the drawer when the viewport grows past the `md` breakpoint.
-  // The drawer is hidden by CSS at md (`md:hidden`), but `open` stayed true, so
-  // the body scroll lock persisted and resizing back below md re-opened it.
-  //
-  // Uses a `resize` listener rather than `matchMedia`'s `change` event: both work
-  // in a real browser, but matchMedia change events are not dispatched under
-  // Chrome DevTools Protocol viewport emulation, which makes the behaviour
-  // untestable in automation. A resize listener fires in both.
+  // Close the drawer when the viewport grows past the xl breakpoint.
+  // The drawer is hidden by CSS at xl, but `open` must not retain the body
+  // scroll lock when a tablet viewport is resized into the desktop layout.
+  // A resize listener works under both real browser and CDP viewport emulation.
   useEffect(() => {
-    const MD_MIN_WIDTH = 768;
+    const XL_MIN_WIDTH = 1280;
     const onResize = () => {
-      if (window.innerWidth >= MD_MIN_WIDTH) setOpen(false);
+      if (window.innerWidth >= XL_MIN_WIDTH) setOpen(false);
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
   const desktopNav = (
-    <div className="hidden md:flex items-center gap-6">
+    <div className="hidden xl:flex items-center gap-3">
       {isHome && (
-        <nav aria-label="Home sections" className="flex items-center gap-1">
-          {HOME_SECTIONS.map((section) => {
-            const isActive = activeSection === section.id;
-            return (
+        <details className="relative">
+          <summary
+            aria-controls="desktop-home-sections"
+            className="flex min-h-[44px] cursor-pointer list-none items-center gap-1 px-2 text-xs font-medium uppercase tracking-wide text-cream/90 transition-colors hover:text-gold-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light"
+          >
+            Sections
+            <ChevronDown aria-hidden="true" size={14} />
+          </summary>
+          <nav
+            id="desktop-home-sections"
+            aria-label="Home sections"
+            className="glass-surface absolute left-0 top-full z-[70] mt-2 max-h-[min(70vh,32rem)] w-64 overflow-y-auto rounded-lg p-2"
+          >
+            {HOME_SECTIONS.map((section) => (
               <a
                 key={section.id}
                 href={`#${section.id}`}
+                aria-current={activeSection === section.id ? "location" : undefined}
                 onClick={(event) => {
                   event.preventDefault();
+                  event.currentTarget.closest("details")?.removeAttribute("open");
                   goToSection(section.id);
                 }}
                 className={cn(
-                  "relative font-sans text-xs font-medium tracking-wide uppercase transition-colors duration-300 px-2 py-1 no-underline",
-                  isActive
-                    ? "text-gold"
-                    : onHome
-                    ? "text-white/80 hover:text-gold"
-                    : "text-white/70 hover:text-gold"
+                  "flex min-h-[44px] items-center rounded-md px-3 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light",
+                  activeSection === section.id
+                    ? "text-gold-light"
+                    : "text-cream/90 hover:bg-glass-surface-subtle hover:text-gold-light"
                 )}
               >
                 {section.label}
-                {isActive && (
-                  <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-gold rounded-full" />
-                )}
               </a>
-            );
-          })}
-        </nav>
+            ))}
+          </nav>
+        </details>
       )}
 
-      {isHome && <div className="w-px h-5 bg-white/20" aria-hidden="true" />}
-
-      <nav aria-label="Pages" className="flex items-center gap-1">
+      <nav aria-label="Pages" className="flex items-center gap-0.5">
         {PAGE_LINKS.map((page) => {
           const pageKey = page.path.slice(1);
           const isActive = currentPage === pageKey;
@@ -176,15 +207,13 @@ export function Navbar() {
               to={page.path}
               aria-current={isActive ? "page" : undefined}
               className={cn(
-                "relative font-sans text-xs font-medium tracking-wide uppercase transition-colors duration-300 px-2 py-1",
-                isActive
-                  ? "text-gold"
-                  : "text-white/70 hover:text-gold"
+                "relative flex min-h-[44px] items-center px-2 text-xs font-medium uppercase tracking-wide transition-colors",
+                isActive ? "text-gold-light" : "text-cream/80 hover:text-gold-light"
               )}
             >
               {page.label}
               {isActive && (
-                <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-gold rounded-full" />
+                <span className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-gold-light" />
               )}
             </Link>
           );
@@ -196,7 +225,7 @@ export function Navbar() {
   const mobileNav = (
     <button
       ref={triggerRef}
-      className="md:hidden flex items-center justify-center min-w-[44px] min-h-[44px] -mr-2 text-white rounded-lg transition-all duration-200 active:scale-95 active:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+      className="xl:hidden flex items-center justify-center min-w-[44px] min-h-[44px] -mr-2 text-cream rounded-lg transition-all duration-200 active:scale-95 active:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light"
       onClick={() => setOpen((o) => !o)}
       aria-label={open ? "Close menu" : "Open menu"}
       aria-expanded={open}
@@ -208,7 +237,8 @@ export function Navbar() {
 
   const mobileMenu = open && (
     <div
-      className="fixed inset-0 z-[60] bg-green-deep/95 backdrop-blur-md md:hidden"
+      ref={dialogRef}
+      className="fixed inset-0 z-[60] bg-green-deep/95 backdrop-blur-md xl:hidden"
       onClick={() => setOpen(false)}
       role="dialog"
       aria-modal="true"
@@ -217,7 +247,7 @@ export function Navbar() {
       {/* Close button inside drawer */}
       <button
         ref={closeButtonRef}
-        className="absolute top-4 right-4 flex items-center justify-center min-w-[44px] min-h-[44px] text-white/70 hover:text-white rounded-lg transition-all duration-200 active:scale-95 active:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+        className="absolute top-4 right-4 flex items-center justify-center min-w-[44px] min-h-[44px] text-cream/70 hover:text-cream rounded-lg transition-all duration-200 active:scale-95 active:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light"
         onClick={() => setOpen(false)}
         aria-label="Close navigation menu"
       >
@@ -234,30 +264,30 @@ export function Navbar() {
       >
         {isHome && (
           <>
-            <div className="text-white/60 text-sm font-semibold tracking-[0.25em] uppercase mb-1">
+            <div className="text-cream/75 text-sm font-semibold tracking-[0.25em] uppercase mb-1">
               Home
             </div>
             <div className="flex flex-col items-center gap-1">
               {HOME_SECTIONS.map((section) => (
-                <a
+                <Link
                   key={section.id}
-                  href={`#${section.id}`}
+                  to={`#${section.id}`}
                   onClick={(event) => {
                     event.preventDefault();
                     goToSection(section.id);
                     setOpen(false);
                   }}
-                  className="font-display font-medium text-xl tracking-wide text-white hover:text-gold transition-colors duration-200 no-underline min-h-[44px] flex items-center px-4 rounded-lg active:bg-white/10 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                  className="font-display font-medium text-xl tracking-wide text-cream hover:text-gold-light transition-colors duration-200 no-underline min-h-[44px] flex items-center px-4 rounded-lg active:bg-white/10 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light"
                 >
                   {section.label}
-                </a>
+                </Link>
               ))}
             </div>
             <div className="w-32 h-px bg-white/30 my-3" aria-hidden="true" />
           </>
         )}
 
-        <div className="text-white/60 text-sm font-semibold tracking-[0.25em] uppercase mb-1">
+        <div className="text-cream/75 text-sm font-semibold tracking-[0.25em] uppercase mb-1">
           Pages
         </div>
         <div className="flex flex-col items-center gap-1">
@@ -271,8 +301,8 @@ export function Navbar() {
                 aria-current={isActive ? "page" : undefined}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "font-display font-medium text-xl tracking-wide transition-colors duration-200 min-h-[44px] flex items-center px-4 rounded-lg active:bg-white/10 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold",
-                  isActive ? "text-gold" : "text-white hover:text-gold"
+                  "font-display font-medium text-xl tracking-wide transition-colors duration-200 min-h-[44px] flex items-center px-4 rounded-lg active:bg-white/10 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light",
+                  isActive ? "text-gold-light" : "text-cream hover:text-gold-light"
                 )}
               >
                 {page.label}
@@ -289,7 +319,7 @@ export function Navbar() {
       <nav
         className={cn(
           "fixed top-0 left-0 z-50 w-full transition-colors duration-300",
-          "bg-green-deep/80 backdrop-blur-md shadow-lg"
+          "glass-nav"
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 md:h-20">
@@ -327,7 +357,7 @@ export function Navbar() {
             <span
               className={cn(
                 "font-display text-sm md:text-base font-semibold tracking-tight transition-colors duration-300",
-                onHome ? "text-white drop-shadow" : "text-gold"
+                onHome ? "text-white drop-shadow" : "text-gold-light"
               )}
             >
               {AATMA.shortName}

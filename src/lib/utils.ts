@@ -19,8 +19,16 @@ export function cn(...inputs: ClassValue[]) {
  *
  * Note: files under `src/assets/` are handled by Vite's import pipeline and
  * must NOT go through this — import them instead so hashing still applies.
+ *
+ * Absolute URLs are returned unchanged: prefixing the deploy base onto an
+ * `https://` URL would corrupt it. Needed for assets hosted outside the repo,
+ * such as the 107 MiB proceedings PDF, which lives on GitHub Releases because
+ * it is above GitHub's 100 MiB per-file limit for repository contents.
  */
 export function assetUrl(path: string): string {
+  if (/^(https?:)?\/\//.test(path) || path.startsWith("data:")) {
+    return path;
+  }
   const base = import.meta.env.BASE_URL || "/";
   // Vite may emit "./" for a relative build; normalise it away so we always
   // produce a usable absolute path.

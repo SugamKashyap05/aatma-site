@@ -5,11 +5,11 @@ import { CHART_COLORS, ChartFrame, buildAriaSummary } from "./ChartFrame";
  * Route: /history · Source: the site's own InteractiveTimeline data
  *
  * Counts were derived programmatically from src/components/ui/InteractiveTimeline.tsx
- * by reading the `era:` tag on each of the 20 timeline events, not estimated:
+ * by reading the `era:` tag on each of the 16 timeline events, not estimated:
  *
  *   ancient       0   early-trade   4
  *   formation     1   growth        1
- *   critical     10   modern        4
+ *   critical     10   modern        0
  *
  * The "Ancient Roots" era legitimately has zero events — it is a period heading
  * with no dated entries in the timeline data. That zero is shown rather than
@@ -29,7 +29,7 @@ const ERAS: EraDensity[] = [
   { id: "formation", label: "AATMA Formation", range: "1976", count: 1 },
   { id: "growth", label: "Growth", range: "1977–1999", count: 1 },
   { id: "critical", label: "Critical Era", range: "2000–2022", count: 10 },
-  { id: "modern", label: "Modern", range: "2023–2026", count: 4 },
+  { id: "modern", label: "Modern", range: "2023–2026", count: 0 },
 ];
 
 const TOTAL_EVENTS = ERAS.reduce((s, e) => s + e.count, 0);

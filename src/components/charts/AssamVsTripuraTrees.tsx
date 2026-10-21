@@ -36,7 +36,7 @@ export function AssamVsTripuraTrees() {
   return (
     <ChartFrame
       title="Assam against the next state"
-      subtitle={`Assam holds ${ratio}× Tripura's count. The source credits Assam with over 82% of India's agarwood trees.`}
+      subtitle={`Calculated from the two reported press estimates, Assam's count is ${ratio}× Tripura's. The article also reports over 82% of India's agarwood trees in Assam.`}
       ariaLabel={ariaLabel}
       source={{
         publication: "The Assam Tribune",

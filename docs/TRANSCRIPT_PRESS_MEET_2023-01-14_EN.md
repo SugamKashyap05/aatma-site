@@ -30,7 +30,7 @@ The new notification identifies micro, medium and large agar enterprises and pro
 
 For this Gazette notification that legalises the agar trade, the Association expresses its thanks through this press meet. We are extremely happy.
 
-Present at this press meet were AATMA's President **Ataur Rahman**, General Secretary **Helal Uddin**, Editor **Anwar Hussain**, **Ramesh Nath**, and other office-bearers of AATMA."
+Present at this press meet were AATMA's President **[REDACTED: AATMA member]**, General Secretary **Helal Uddin**, Editor **Anwar Hussain**, **Ramesh Nath**, and other office-bearers of AATMA."
 
 ## Speaker 2 — 1:20
 
@@ -197,7 +197,7 @@ And along with that, a proposal was adopted that from our AATMA side we should p
 # Verification summary
 
 ### Confirmed by the Hindustan Times clipping (17 Jan 2023)
-12 January 2023 notification · Rules 2000 repealed / 2022 notified · secondary classification · fully CITES compliant · **~1,000 industries** · district list · registration valid five years · Registration Committees at Conservator of Forests · units operate from present locations · Ataur Rahman (President) · Helal Uddin (General Secretary) · Himanta Biswa Sarma (CM)
+12 January 2023 notification · Rules 2000 repealed / 2022 notified · secondary classification · fully CITES compliant · **~1,000 industries** · district list · registration valid five years · Registration Committees at Conservator of Forests · units operate from present locations · [REDACTED: AATMA member] (President) · Helal Uddin (General Secretary) · Himanta Biswa Sarma (CM)
 
 ### Confirmed by the Gazette notifications
 12 Jan 2023 (WBI Gazette No. 20) · **9 December 2022** (ToF Gazette, file ECF No. 232904) · unit capacity categories
@@ -218,6 +218,6 @@ Two independent transcriptions recording the same figure suggests it was said, b
 
 ### Notes on this translation
 - The **English statement at 9:34 is the speaker's own words**, not a translation — it was delivered in English and is reproduced as spoken.
-- **No quote should be attributed to a named individual** without confirming Speaker 2's identity. Speaker 1 addresses him as "Honourable President" and the content matches what HT attributes to Ataur Rahman, but that is inference.
+- **No quote should be attributed to a named individual** without confirming Speaker 2's identity. Speaker 1 addresses him as "Honourable President" and the content matches what HT attributes to [REDACTED: AATMA member], but that is inference.
 - **Chandra Mohan Patowary is not named** in either video. The HT clipping credits the Forests Minister; the videos credit only the CM. Do not add the minister's name from the video.
 - *Sanchi* = *Aquilaria malaccensis*. *Mihadi* = homestead plot. *Kaththa* = catechu.

@@ -10,12 +10,14 @@
     "preview": "vite preview",
     "hero:optimize": "node scripts/optimize-hero-images.mjs",
     "hero:assets": "node scripts/generate-hero-assets.mjs",
-    "hero:build": "npm run hero:optimize && npm run hero:assets"
+    "hero:build": "npm run hero:optimize && npm run hero:assets",
+    "bg:forest": "node scripts/generate-forest-backgrounds.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.3.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "gsap": "^3.15.0",
     "lucide-react": "^1.48.0",
     "motion": "^13.4.6",
     "react": "^19.3.0",

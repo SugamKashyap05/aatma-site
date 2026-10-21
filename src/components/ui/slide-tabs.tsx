@@ -98,8 +98,8 @@ const Tab = React.forwardRef<
         });
       }}
       className={cn(
-        "relative z-10 block cursor-pointer px-3 py-1.5 text-xs uppercase tracking-wide transition-colors duration-200 md:px-4 md:py-2.5 md:text-sm",
-        isActive ? "text-green-deep font-semibold" : "text-white/70 hover:text-white"
+        "relative z-10 block cursor-pointer px-3 py-1.5 text-xs uppercase tracking-wide transition-colors duration-200 md:px-4 md:py-2.5 md:text-sm min-h-[44px] flex items-center justify-center",
+        isActive ? "text-green-deep font-semibold" : "text-white/70 hover:text-white active:text-white"
       )}
     >
       {children}

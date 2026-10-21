@@ -104,7 +104,7 @@ The demo (`aatma-homepage-demo.html`) demonstrates the full redesign:
 | Brief section | Content | Homepage section |
 |---------------|---------|-----------------|
 | §1 A BRIEF HISTORY OF AGAR | Agar tree, Sanchi paat, Aquilaria, perfume | About + Sanchi Paat |
-| §2 ABOUT THE TRADE | 1905 Sylhet, 1960s Hojai, 1970s NEFA/Bhutan, 1982 standstill, Far East imports | Story / Trade |
+| §2 ABOUT THE TRADE | 1905 Sylhet, following years Hojai, late 1960s NEFA/Bhutan, 1982 standstill, Far East import era (no year stated) | Story / Trade |
 | §3 FORMATION OF AATMA | 1976 founding, Reg. 664 of 1978-79, 2000 reorg | Formation |
 | §4 NATIONAL SEMINAR | Nov 2000, Dr. P.K. Hajra, plantation survey | Story / Trade |
 | §5 NEW DIMENSION | Far East discovery, LPC, re-export | Story / Trade |
@@ -118,10 +118,10 @@ The demo (`aatma-homepage-demo.html`) demonstrates the full redesign:
 
 | Brief says | Homepage says |
 |------------|---------------|
-| "(L) Hazi Anfar Ali, (L) Hazi Samsul Islam and (L) Binay Kumar Paul" | "AATMA's founding members" |
-| "Ataur Rahman as President" | "AATMA's President at the time" |
-| "(L) Jamal Uddin Choudhury as General Secretary" | "AATMA's General Secretary at the time" |
-| "Humayun Chaudhury led the delegation" | "An AATMA delegation led by its office bearers" |
+| "(L) [REDACTED: AATMA member], (L) [REDACTED: AATMA member] and (L) [REDACTED: AATMA member]" | "AATMA's founding members" |
+| "[REDACTED: AATMA member] as President" | "AATMA's President at the time" |
+| "(L) [REDACTED: AATMA member] as General Secretary" | "AATMA's General Secretary at the time" |
+| "[REDACTED: AATMA member] led the delegation" | "An AATMA delegation led by its office bearers" |
 | "S. Doley, PCCF" | Keep (government official) |
 | "Smt. Pramila Rani Brahma" | Keep (government official) |
 | "Dr. Himanta Biswa Sharma" | Keep (government official) |

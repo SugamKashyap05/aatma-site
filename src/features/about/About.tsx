@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
-import { AATMA } from "@/data/content";
-import { MapPin, Phone, Mail, Clock, ChevronRight } from "lucide-react";
-import { cn, type ClassValue, assetUrl } from "@/lib/utils";
+import { ChevronRight } from "lucide-react";
+import { cn, type ClassValue } from "@/lib/utils";
 import { useRef, useState } from "react";
 import { AmbientMotion } from "@/features/ambient/AmbientMotion";
 import { Reveal, Stagger } from "@/components/ui/reveal";
@@ -34,7 +32,7 @@ export function About({ className, deviceTier }: AboutProps) {
     <section
       id="about"
       className={cn(
-        "relative min-h-screen flex flex-col items-center pt-20 pb-16 overflow-hidden scroll-mt-20 text-white",
+        "relative min-h-screen flex flex-col items-center pt-20 pb-16 overflow-hidden scroll-mt-20 text-green-deep",
         className
       )}
     >
@@ -53,21 +51,21 @@ export function About({ className, deviceTier }: AboutProps) {
       <div className="max-w-6xl mx-auto w-full px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           <Reveal variant="fade" delay={0}>
-            <span className="inline-block text-gold text-xs md:text-sm font-semibold tracking-[0.25em] uppercase bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-sm mb-6">
+            <span className="glass-surface-subtle inline-block text-gold-light text-xs md:text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-6">
               About AATMA
             </span>
           </Reveal>
 
           <Reveal variant="up" delay={100} rootMargin="0px 0px 300px 0px">
-            <div className="backdrop-blur-sm bg-white/[0.08] border border-white/15 rounded-sm p-6 md:p-8">
+            <div className="glass-surface rounded-sm p-6 md:p-8">
               <h2 className="font-display font-bold text-3xl md:text-5xl lg:text-6xl leading-tight max-w-3xl text-center mb-6 drop-shadow-lg">
                 A Precious Gift<br />
-                <span className="text-gold">of Nature</span>
+                <span className="text-gold-light">of Nature</span>
               </h2>
-              <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="grid">
                 <div
                   className={cn(
-                    "text-sm md:text-base leading-relaxed text-white/95 transition-all duration-700 ease-out",
+                    "text-sm md:text-base leading-relaxed text-green-deep/95 transition-all duration-700 ease-out",
                     "opacity-100 translate-y-0"
                   )}
                 >
@@ -81,19 +79,11 @@ export function About({ className, deviceTier }: AboutProps) {
                   </p>
                   <button
                     onClick={() => setLang(lang === "en" ? "as" : "en")}
-                    className="mt-6 mb-6 inline-flex items-center gap-2 text-gold text-sm font-medium tracking-wide self-center bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 px-5 py-2.5 rounded-sm transition-all duration-300 min-h-[44px]"
+                    className="mt-6 mb-6 inline-flex items-center gap-2 text-gold-light text-sm font-medium tracking-wide self-center glass-surface-subtle hover:bg-glass-surface-hover px-5 py-2.5 rounded-sm transition-all duration-300 min-h-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light"
                   >
                     {lang === "en" ? "অসমীয়াত পঢ়ক" : "Read in English"}
                     <ChevronRight size={16} />
                   </button>
-                </div>
-                <div className="relative">
-                  <img
-                    src={assetUrl("history/hero-banner.jpg")}
-                    alt="Agarwood tree — a precious gift of nature"
-                    className="w-full h-auto rounded-sm border border-white/15 shadow-lg"
-                    loading="lazy"
-                  />
                 </div>
               </div>
             </div>
@@ -104,24 +94,22 @@ export function About({ className, deviceTier }: AboutProps) {
       <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         <Stagger staggerMs={120}>
           {[
-            { label: "Established", value: "1976", subtext: "50 years of advocacy" },
-            { label: "Trade Members", value: "~2 Lakh", subtext: "livelihoods across Assam" },
-            { label: "First Legal Export", value: "2025", subtext: "112 kg to Saudi Arabia & UAE" },
-            { label: "CITES Quota (2024–27)", value: "1.51 Lakh kg", subtext: "chips & powder / year for India" },
+            { label: "Established", value: "1976" },
+
           ].map((stat) => (
             <div
               key={stat.label}
-              className="card-hover relative group backdrop-blur-sm bg-white/[0.12] border border-white/10 rounded-sm p-5 md:p-6 text-center"
+              className="card-hover glass-surface relative group rounded-sm p-5 md:p-6 text-center"
             >
-              <div className="font-display text-3xl md:text-4xl text-gold font-bold mb-1">
+              <div className="font-display text-3xl md:text-4xl text-gold-light font-bold mb-1">
                 {stat.value}
               </div>
-              <div className="text-white/70 text-xs md:text-sm font-medium tracking-wide uppercase">
+              <div className="text-green-deep/70 text-xs md:text-sm font-medium tracking-wide uppercase">
                 {stat.label}
               </div>
-              <div className="text-white/50 text-xs mt-1">{stat.subtext}</div>
-              <div className="mt-3 text-white/20 group-hover:text-gold/40 transition-colors duration-300 text-2xl">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="inline-block w-5 h-5">
+
+              <div className="mt-3 text-white/20 group-hover:text-gold-light/40 group-active:text-gold-light/40 transition-colors duration-300 text-2xl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="inline-block w-5 h-5" aria-hidden="true" focusable="false">
                   <path d="M12 2 L15 8 L22 9 L17 14 L18 21 L12 18 L6 21 L7 14 L2 9 L9 8 Z" />
                 </svg>
               </div>
@@ -158,10 +146,10 @@ function SealCard() {
         </g>
         <path d="M33 72 Q50 60 67 72 L64 79 Q50 72 36 79 Z" fill="var(--color-gold)" />
       </svg>
-      <span className="font-display text-xs text-gold/80 text-center leading-tight tracking-wide">
+      <span className="font-display text-xs text-gold-light text-center leading-tight tracking-wide">
         AATMA
         <br />
-        <span className="text-white/60 text-[10px]">Est. 1976 · Hojai</span>
+        <span className="text-cream/75 text-[10px]">Est. 1976 · Hojai</span>
       </span>
     </div>
   );

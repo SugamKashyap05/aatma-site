@@ -1,70 +1,54 @@
 import { Reveal } from "@/components/ui/reveal";
-import { Globe, CheckCircle, XCircle, AlertTriangle, ArrowRight } from "lucide-react";
+import { Globe, CheckCircle } from "lucide-react";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const CITES_TIMELINE = [
   {
-    period: "Pre-2005",
-    status: "Functioning",
+    period: "Until 2005",
+    status: "LPC issued",
     description:
-      "CITES verification by DFO required for import/re-export; functioning normally",
-    source: "Doc 1",
+      "Local forest authorities issued LPCs for re-export products derived from imported agar wood to comply with CITES provisions",
+    source: "AATMA-supplied brief, §5",
   },
   {
     period: "Oct 2005",
     status: "Disrupted",
     description:
-      "DFO Hojai denied CITES verification on alleged verbal instruction of Forest Minister; 6-7 units suffered huge losses",
-    source: "Doc 1",
-  },
-  {
-    period: "2005-2022",
-    status: "Blocked",
-    description:
-      "Trade crippled; 7-8 businesses shifted to Meghalaya and abroad; huge loss of industries and foreign currency",
-    source: "Doc 1, Doc 3",
+      "DFO Hojai denied CITES verification on alleged verbal instruction of the then Forest Minister. Around seven processing units suffered massive financial losses; several prominent business houses shifted operations to neighbouring states like Meghalaya and overseas.",
+    source: "A Brief History of Agar, §7",
   },
   {
     period: "Jan 2023",
-    status: "Resolved",
+    status: "Rules notified",
     description:
-      "Assam Wood Based Industries (Promotion and Development) Rules 2022 notified — fully CITES compliant",
-    source: "Doc 2",
+      "Assam Wood Based Industries (Promotion and Development) Rules 2022 were notified on 12 January 2023 and described by AATMA as fully CITES compliant.",
+    source: "AATMA press note, 14 Jan 2023",
   },
   {
     period: "2023+",
-    status: "Revived",
+    status: "Trade provisions",
     description:
-      "Import, re-export, and export of agar wood products revived under CITES-compliant framework",
-    source: "Doc 2",
+      "AATMA's supplied press note says the Rules paved the way for import and re-export, as well as export of domestic agarwood products.",
+    source: "AATMA press note, 14 Jan 2023",
   },
 ];
 
 const CITES_KEY_FACTS = [
   "CITES verification was a mandatory step for import and re-export of agar wood consignments",
   "DFO (Divisional Forest Officer) was the authority responsible for CITES verification",
-  "The 2005 denial of CITES verification by DFO Hojai caused 6-7 processing units to suffer huge losses",
-  "The Assam Wood Based Industries (Promotion and Development) Rules 2022 are explicitly \"fully CITES compliant\"",
-  "CITES compliance under the 2022 rules enables import, re-export, and export of domestic agar wood products",
+  "Around seven processing units suffered massive financial losses after the October 2005 denial of CITES verification by DFO Hojai",
+  "AATMA's 14 January 2023 press note describes the Assam Wood Based Industries (Promotion and Development) Rules 2022 as fully CITES compliant",
+  "AATMA's supplied press note says the 2022 rules paved the way for import and re-export, as well as export of domestic agar wood products",
   "Registration under the 2022 rules is valid for 5 years",
   "The 2022 rules replaced the 2000 rules that had imposed legal hurdles blocking import and re-export",
-];
-
-const CITES_GAPS = [
-  "No specific CITES Appendix or Schedule references (e.g., Appendix I, II, III)",
-  "No specific permit or certificate types mentioned",
-  "No penalty provisions for CITES non-compliance",
-  "No specific CITES-listed species names (e.g., Aquilaria malaccensis)",
-  "No reference to the CITES Secretariat or international CITES bodies",
-  "No mention of the Wildlife Protection Act, 1972",
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
 /**
  * CitesCompliance — CITES compliance section for the /policy page.
- * Includes timeline, key facts, gaps, and cross-references.
+ * Summarizes the CITES claims in client-supplied documents.
  */
 export function CitesCompliance() {
   return (
@@ -73,16 +57,15 @@ export function CitesCompliance() {
         {/* Section header */}
         <Reveal variant="fade" delay={0}>
           <div className="mb-12 md:mb-16">
-            <span className="inline-flex items-center gap-2 text-gold text-sm font-semibold tracking-[0.25em] uppercase bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 rounded-sm mb-4">
+            <span className="glass-card inline-flex items-center gap-2 text-gold-light text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-4">
               <Globe size={14} />
               Section 4
             </span>
             <h2 className="font-display font-bold text-2xl md:text-4xl text-white mb-3">
-              CITES <span className="text-gold">Compliance</span>
+              CITES <span className="text-gold-light">Compliance</span>
             </h2>
             <p className="text-white/70 text-base md:text-lg max-w-3xl">
-              How the 2022 rules resolved decades of CITES-related trade disruptions —
-              and what compliance means for your business today.
+              Client documents describe the verification process, the 2005 disruption, and the 2022 Rules.
             </p>
           </div>
         </Reveal>
@@ -106,13 +89,13 @@ export function CitesCompliance() {
                       {/* Dot */}
                       <div
                         className={`absolute left-2.5 md:left-4.5 top-1.5 w-3 h-3 rounded-full border-2 ${
-                          item.status === "Functioning"
+                          item.status === "LPC issued"
                             ? "bg-emerald-400/20 border-emerald-400"
                             : item.status === "Disrupted"
                               ? "bg-red-400/20 border-red-400"
                               : item.status === "Blocked"
                                 ? "bg-red-400/20 border-red-400"
-                                : item.status === "Resolved"
+                                : item.status === "Rules notified"
                                   ? "bg-gold/20 border-gold"
                                   : "bg-emerald-400/20 border-emerald-400"
                         }`}
@@ -124,24 +107,24 @@ export function CitesCompliance() {
                           </span>
                           <span
                             className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
-                              item.status === "Functioning"
+                              item.status === "LPC issued"
                                 ? "text-emerald-400 bg-emerald-400/10"
                                 : item.status === "Disrupted"
                                   ? "text-red-400 bg-red-400/10"
                                   : item.status === "Blocked"
                                     ? "text-red-400 bg-red-400/10"
-                                    : item.status === "Resolved"
-                                      ? "text-gold bg-gold/10"
+                                    : item.status === "Rules notified"
+                                      ? "text-gold-light bg-gold/10"
                                       : "text-emerald-400 bg-emerald-400/10"
                             }`}
                           >
                             {item.status}
                           </span>
-                          <span className="text-white/30 text-xs">
+                          <span className="text-cream/75 text-xs">
                             [{item.source}]
                           </span>
                         </div>
-                        <p className="text-white/60 text-sm leading-relaxed">
+                        <p className="text-cream/75 text-sm leading-relaxed">
                           {item.description}
                         </p>
                       </div>
@@ -153,11 +136,11 @@ export function CitesCompliance() {
           </div>
         </Reveal>
 
-        {/* Key facts + gaps */}
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Key facts */}
+        <div className="grid gap-8">
           {/* Key facts */}
           <Reveal variant="fade" delay={200}>
-            <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6">
+            <div className="glass-card rounded-lg p-6">
               <h3 className="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-emerald-400" />
                 Key Facts
@@ -165,59 +148,19 @@ export function CitesCompliance() {
               <ul className="space-y-3">
                 {CITES_KEY_FACTS.map((fact, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-white/70 text-sm leading-relaxed">
-                    <span className="text-gold/60 mt-1.5 shrink-0">▸</span>
+                    <span className="text-gold-light mt-1.5 shrink-0">▸</span>
                     {fact}
                   </li>
                 ))}
               </ul>
-            </div>
-          </Reveal>
-
-          {/* Gaps */}
-          <Reveal variant="fade" delay={300}>
-            <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6">
-              <h3 className="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
-                <AlertTriangle className="w-5 h-5 text-gold" />
-                Not in Source Documents
-              </h3>
-              <ul className="space-y-3">
-                {CITES_GAPS.map((gap, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-white/50 text-sm leading-relaxed">
-                    <XCircle className="w-3.5 h-3.5 text-white/30 mt-0.5 shrink-0" />
-                    {gap}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-4 pt-3 border-t border-white/10 text-white/40 text-xs italic">
-                For complete CITES guidance, contact the Assam Forest Department or refer to the
-                official CITES documentation.
+              <p className="mt-4 text-cream/75 text-xs leading-relaxed">
+                Sources: AATMA-supplied brief, §5; A Brief History of Agar, §7; AATMA press note, 14 January 2023.
               </p>
             </div>
           </Reveal>
+
         </div>
 
-        {/* Cross-reference */}
-        <Reveal variant="fade" delay={400}>
-          <div className="mt-8 bg-gold/5 border border-gold/20 rounded-lg p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <div className="text-gold shrink-0">
-              <ArrowRight className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-white/80 text-sm leading-relaxed">
-                <strong className="text-gold">Related:</strong> CITES compliance is an ongoing
-                obligation under the 2022 rules. See the{" "}
-                <a href="#registration" className="text-gold underline underline-offset-2 hover:text-gold/80 transition-colors">
-                  Registration Walkthrough
-                </a>{" "}
-                for how CITES compliance integrates with the registration process, and the{" "}
-                <a href="#platform" className="text-gold underline underline-offset-2 hover:text-gold/80 transition-colors">
-                  Online Platform Guidance
-                </a>{" "}
-                for how to submit CITES compliance reports.
-              </p>
-            </div>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

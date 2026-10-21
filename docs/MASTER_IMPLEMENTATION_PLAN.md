@@ -70,7 +70,7 @@ This document is **the richest source we have received** and it targets the `/hi
 | New content | Currently on site? | Priority |
 |---|---|---|
 | *Sanchi paat* as writing material; Sankar Dev, Madhav Deb, Damudar Deb | Partial — mentioned, no depth | **High** |
-| **3 founding fathers** (Anfar Ali, Samsul Islam, Binay Kumar Paul) | **No** | **High** |
+| **3 founding fathers** (Anfar Ali, Samsul Islam, [REDACTED: AATMA member]) | **No** | **High** |
 | **Trade chronology 1905→Bombay** — Sylhet, Barpather, Karbi Anglong, Naga Hills, NEFA, Bhutan, Manipur, Silchar | Era thumbnails only | **High** |
 | **Nov 2000 national seminar**, Dr. P.K. Hajra presiding | **No** — wrong date on timeline | **High** |
 | **5,000 employment figure** at the Far East import peak | **No** | Medium |
@@ -126,12 +126,12 @@ This document is **the richest source we have received** and it targets the `/hi
 | # | New section | Source | Content |
 |---|---|---|---|
 | H1 | **Agar in Assamese culture** | D1 §1 | *Sanchi paat* writing; Sankar Dev, Madhav Deb, Damudar Deb; homestead ritual; *puja* article |
-| H2 | **Founding of AATMA** | D1 §5 | 1975–76 impetus; 3 founders with "(L)" markers; Reg. No. 664 of 1978–79; 2000 reorganisation (Ataur Rahman, Jamal Uddin Choudhury) |
+| H2 | **Founding of AATMA** | D1 §5 | 1975–76 impetus; 3 founders with "(L)" markers; Reg. No. 664 of 1978–79; 2000 reorganisation ([REDACTED: AATMA member], [REDACTED: AATMA member]) |
 | H3 | **The early trade, 1905–1970** | D1 §3 | Full chronology as a visual journey — Sylhet → Barpather → Hojai → Jorhat/Sibsagar → NEFA/Bhutan → Manipur → Bombay |
 | H4 | **Far East discovery & import era** | D1 §4 | Malaysia, Indonesia, Thailand, Cambodia; **5,000 employed**; re-export model |
 | H5 | **National seminar, Nov 2000** | D1 §6 | Dr. P.K. Hajra; Administrative Staff College; commercial plantation spread to Assam, Nagaland, Tripura, Manipur; **>1 crore trees** |
 | H6 | **The critical era, 2001–2016** | D1 §7 | 26 Jun 2000 memorandum · Oct 2005 DFO denial · 7 units ruined · flight to Meghalaya/overseas · CEC rec. 01.03.2006 **rejected by Cabinet** · 2005–2016 continued struggle |
-| H7 | **The 2016 turning point** | D1 §7 | 24 Aug 2016 Humayun Chaudhury + Pramila Rani Brahma; 28 Oct 2016 NEDFi conference |
+| H7 | **The 2016 turning point** | D1 §7 | 24 Aug 2016 [REDACTED: AATMA member] + Pramila Rani Brahma; 28 Oct 2016 NEDFi conference |
 | H8 | **Achievement — 2022 Rules** | D1 §8 | 19 Jul 2021 Sirajuddin Ajmal MLA; 12 Jan 2023 enactment; consequences |
 | H9 | **Life on the ground** | D1 §7 | The client's own paragraph on harassment and seizures — powerful, quotable |
 
@@ -231,7 +231,7 @@ This document is **the richest source we have received** and it targets the `/hi
 | **GATE A** | Read N4 (4th WhatsApp image, 76 KB) — vision 429 | Final press-archive scope |
 | **GATE B** | Finish gazette read — D2 pp. 620–682, D3 pp. 3–25 | "77 species", "5 km", 62/74-day re-sourcing |
 | **GATE C** | Resolve conflicts C1–C4 | History timeline accuracy |
-| **GATE D** | Confirm Speaker 2 = Ataur Rahman | Any named quote attribution |
+| **GATE D** | Confirm Speaker 2 = [REDACTED: AATMA member] | Any named quote attribution |
 | **GATE E** | Decide video hosting (125 MB total) | `/press-meet-2023` route |
 | **GATE F** | Confirm *Thymelaeaceae* family wording | H1 botanical line |
 
@@ -306,5 +306,5 @@ CH1, CH8, CH9 after A; CH2–CH7 after B.
 - **No Kanban cards created.** This document is the input for triage.
 - **N4 unread** (vision rate limit) — carried as GATE A, not guessed.
 - **Gazette Rules 3+ unread** — carried as GATE B. Every claim here traces to either a gazette page I read, a named newspaper article, or the history PDF.
-- **No speaker identity assumed.** Speaker 2 is very likely Ataur Rahman, but that stays inference until confirmed.
+- **No speaker identity assumed.** Speaker 2 is very likely [REDACTED: AATMA member], but that stays inference until confirmed.
 - **The 4 conflicts in Part 1 are flagged for your decision**, not silently reconciled.

@@ -3,7 +3,6 @@ import { Reveal } from "@/components/ui/reveal";
 import { Stagger } from "@/components/ui/reveal";
 import {
   Landmark,
-  FileClock,
   Building2,
   CalendarDays,
   type LucideIcon,
@@ -12,15 +11,20 @@ import {
 /**
  * ChallengesSection — brief §10 "Ongoing Challenges & The Way Forward".
  *
- * Four challenges currently facing Assam's agarwood trade: license fees that
- * price out small traders, an export NOC process that spans four agencies and
- * takes up to 30 working days, the single-window system AATMA advocates in
- * place of that multi-layered bureaucracy, and the August 26, 2026 AIDC
- * stakeholders' workshop where the industry put its case to government.
+ * Three challenges currently facing Assam's agarwood trade: license fees that
+ * price out small traders, the single-window system AATMA advocates in place
+ * of multi-layered bureaucracy, and the August 26, 2026 AIDC stakeholders'
+ * workshop where the industry put its case to government.
  *
  * Each item carries a terracotta left border (the Assam visual-identity
  * accent introduced alongside this section) to set the tone apart from the
  * celebratory gold-bordered achievement sections above it.
+ *
+ * Source: the latest client brief, "A brief note on Agar Trade (2)" §10
+ * ("Ongoing Challenges & The Way Forward"), carries the high-license-fee,
+ * single-window and 26 August 2026 AIDC workshop wording directly. The
+ * canonical Phase 1 ledger supersedes the old `exclude` row for the
+ * NOC/30-working-day claim; that claim is not rendered here.
  */
 
 interface Challenge {
@@ -34,11 +38,6 @@ const CHALLENGES: Challenge[] = [
     icon: Landmark,
     title: "High License Fees",
     body: "Current license fees remain quite high for small-scale and general traders. A shorter, more efficient, and cost-effective licensing process is needed.",
-  },
-  {
-    icon: FileClock,
-    title: "Export Process Too Lengthy",
-    body: "NOC requires navigating DGFT, State Forest Department, MoEFCC, and CITES Management Authority. Ministry can take up to 30 working days just to issue the NOC.",
   },
   {
     icon: Building2,
@@ -59,9 +58,9 @@ function ChallengeItem({ challenge, index }: { challenge: Challenge; index: numb
     <Reveal
       variant="up"
       delay={index * 100}
-      className="group flex gap-5 md:gap-6 items-start bg-white rounded-lg border border-cream-dark border-l-4 border-l-gamosa-red shadow-[0_2px_12px_rgba(0,0,0,0.05)] p-6 md:p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_32px_rgba(184,58,46,0.12)] hover:border-l-terracotta"
+      className="group flex gap-5 md:gap-6 items-start bg-white rounded-lg border border-cream-dark border-l-4 border-l-gamosa-red shadow-[0_2px_12px_rgba(0,0,0,0.05)] p-6 md:p-7 transition-all duration-300 hover:-translate-y-1 active:-translate-y-1 hover:shadow-[0_10px_32px_rgba(184,58,46,0.12)] active:shadow-[0_10px_32px_rgba(184,58,46,0.12)] hover:border-l-terracotta active:border-l-terracotta"
     >
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-gamosa-red/10 text-gamosa-red transition-colors duration-300 group-hover:bg-gamosa-red group-hover:text-white">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-gamosa-red/10 text-gamosa-red transition-colors duration-300 group-hover:bg-gamosa-red group-active:bg-gamosa-red group-hover:text-white group-active:text-white">
         <Icon className="h-5 w-5" aria-hidden="true" focusable="false" />
       </span>
 
@@ -82,7 +81,7 @@ export function ChallengesSection({ className }: { className?: ClassValue }) {
     <section
       id="challenges"
       className={cn(
-        "relative py-20 md:py-28 scroll-mt-20 bg-cream overflow-hidden",
+        "relative py-20 md:py-28 scroll-mt-20 overflow-hidden",
         className,
       )}
     >
@@ -92,7 +91,7 @@ export function ChallengesSection({ className }: { className?: ClassValue }) {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section header */}
         <Reveal variant="fade" delay={0} className="text-center mb-14 md:mb-18">
-          <span className="inline-block text-gamosa-red text-sm font-semibold tracking-[0.25em] uppercase bg-white/60 border border-gamosa-red/20 px-4 py-1.5 rounded-sm mb-4">
+          <span className="inline-block text-gamosa-red text-sm font-semibold tracking-[0.25em] uppercase bg-white/60 px-4 py-1.5 rounded-sm mb-4">
             Ongoing Challenges
           </span>
           <h2 className="font-display font-bold text-3xl md:text-5xl text-charcoal mb-6">

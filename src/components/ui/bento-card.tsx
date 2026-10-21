@@ -35,7 +35,7 @@ export function BentoCard({
     <motion.div
       variants={cardVariants}
       className={cn(
-        "card-hover relative group bg-white/[0.08] backdrop-blur-sm border border-white/15 rounded-sm overflow-hidden p-5 md:p-6",
+        "card-hover glass-surface relative group rounded-sm overflow-hidden p-5 md:p-6",
         colSpan === 2 && "md:col-span-2",
         colSpan === 3 && "md:col-span-3",
         className,
@@ -45,7 +45,7 @@ export function BentoCard({
 
       <div className="relative z-10">
         {icon && (
-          <div className="text-gold mb-4">
+          <div className="text-gold-light mb-4">
             {icon}
           </div>
         )}
@@ -58,7 +58,7 @@ export function BentoCard({
         {children}
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold/60 to-transparent opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500" />
     </motion.div>
   );
 }

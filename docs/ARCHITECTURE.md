@@ -25,7 +25,7 @@ GitHub Pages (static files from dist/)
   ├── 404.html ──► redirects deep links back into the SPA via ?path=
   │
   └── public/ static assets
-        ├── books/   (text chapters, scanned page images, covers)
+        ├── books/   (two client publications, scanned page images, and cover art)
         ├── history/ (9 generated images)
         ├── research/(3 SVG illustrations)
         └── press/   (download assets)
@@ -78,7 +78,7 @@ statically hosted site.
 - Render six routes and a not-found route.
 - Manage client-side navigation and scroll restoration.
 - Detect device tier and adapt layout and animation cost.
-- Read and paginate books (text and scanned-image formats).
+- Serve exactly two client-supplied book publications: a scanned page-image AGAR book and an embedded proceedings PDF.
 - Serve as the sole source of truth for content presentation.
 
 ### Build responsibilities
@@ -87,7 +87,7 @@ statically hosted site.
 - Apply `base` so assets resolve under `/aatma-site/` on Pages.
 
 ### Static-asset responsibilities
-- `public/books/` — book text, chapter images, covers.
+- `public/books/` — the two client publications, scanned AGAR page images, and the local proceedings PDF.
 - `public/history/` — hero banner and section illustrations.
 - `public/research/` — SVG illustrations.
 - `public/press/` — downloadable assets.
@@ -153,9 +153,9 @@ statically hosted site.
 4. `SpaRedirectHandler` reads `path` from the query string and calls `navigate(redirectPath, { replace: true })`.
 
 ### Book reading
-1. `/books` renders `BookLibrary` from `BOOKS` (`src/data/books.ts`).
-2. Selecting a book calls `useBookReader`, which loads either chapter text (`filePath`) or page images (`public/books/<slug>/pages/`).
-3. Reader state (current page, font size) lives in the hook; `BookReader` renders it.
+1. `/books` renders the two client-supplied publications from `BOOKS` (`src/data/books.ts`).
+2. The AGAR scan uses its 31 local page images and the configured `flipbook` page-turn style; the seminar proceedings use the embedded local PDF.
+3. Reader state (current page and navigation) is managed by the book-reading hooks/components.
 
 ---
 

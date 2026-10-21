@@ -222,12 +222,12 @@ export function OnlinePlatformGuidance() {
         {/* Section header */}
         <Reveal variant="fade" delay={0}>
           <div className="mb-12 md:mb-16">
-            <span className="inline-flex items-center gap-2 text-gold text-sm font-semibold tracking-[0.25em] uppercase bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 rounded-sm mb-4">
+            <span className="glass-card inline-flex items-center gap-2 text-gold-light text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-4">
               <Globe size={14} />
               Section 6
             </span>
             <h2 className="font-display font-bold text-2xl md:text-4xl text-white mb-3">
-              Online Platform <span className="text-gold">Guidance</span>
+              Online Platform <span className="text-gold-light">Guidance</span>
             </h2>
             <p className="text-white/70 text-base md:text-lg max-w-3xl">
               Guidance for using the end-to-end online platform — from account creation
@@ -268,39 +268,39 @@ export function OnlinePlatformGuidance() {
         <Reveal variant="fade" delay={100}>
           <div className="mb-12">
             <h3 className="font-display font-bold text-lg md:text-xl text-white mb-4 flex items-center gap-2">
-              <LayoutDashboard className="w-5 h-5 text-gold" />
+              <LayoutDashboard className="w-5 h-5 text-gold-light" />
               Platform Overview
             </h3>
-            <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6">
+            <div className="glass-card rounded-lg p-6">
               <p className="text-white/70 text-sm leading-relaxed mb-4">
                 {PLATFORM_OVERVIEW.what}{" "}
                 <ProvenanceTag source="Source: Doc 2" />
               </p>
               <div className="grid sm:grid-cols-3 gap-4 mb-6">
                 {PLATFORM_OVERVIEW.objectives.map((obj, i) => (
-                  <div key={i} className="bg-white/[0.03] border border-white/10 rounded-sm p-3">
+                  <div key={i} className="glass-card rounded-sm p-3">
                     <p className="text-white/70 text-xs leading-relaxed">{obj}</p>
                   </div>
                 ))}
               </div>
-              <h4 className="text-gold text-xs font-semibold tracking-wider uppercase mb-3">
+              <h4 className="text-gold-light text-xs font-semibold tracking-wider uppercase mb-3">
                 Who Uses the Platform
               </h4>
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm">
                   <thead>
                     <tr className="border-b border-white/10">
-                      <th className="py-2 pr-4 text-white/50 text-xs font-semibold">User Type</th>
-                      <th className="py-2 pr-4 text-white/50 text-xs font-semibold">Purpose</th>
-                      <th className="py-2 text-white/50 text-xs font-semibold">Applicable Rule</th>
+                      <th className="py-2 pr-4 text-cream/75 text-xs font-semibold">User Type</th>
+                      <th className="py-2 pr-4 text-cream/75 text-xs font-semibold">Purpose</th>
+                      <th className="py-2 text-cream/75 text-xs font-semibold">Applicable Rule</th>
                     </tr>
                   </thead>
                   <tbody>
                     {PLATFORM_OVERVIEW.users.map((user, i) => (
                       <tr key={i} className="border-b border-white/5">
                         <td className="py-2 pr-4 text-white/70 text-xs">{user.type}</td>
-                        <td className="py-2 pr-4 text-white/60 text-xs">{user.purpose}</td>
-                        <td className="py-2 text-white/50 text-xs">{user.rule}</td>
+                        <td className="py-2 pr-4 text-cream/75 text-xs">{user.purpose}</td>
+                        <td className="py-2 text-cream/75 text-xs">{user.rule}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -314,24 +314,24 @@ export function OnlinePlatformGuidance() {
         <Reveal variant="fade" delay={150}>
           <div className="mb-12">
             <h3 className="font-display font-bold text-lg md:text-xl text-white mb-4 flex items-center gap-2">
-              <UserPlus className="w-5 h-5 text-gold" />
+              <UserPlus className="w-5 h-5 text-gold-light" />
               Account Creation & Login
             </h3>
-            <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6">
+            <div className="glass-card rounded-lg p-6">
               <div className="space-y-4 text-sm text-white/70 leading-relaxed">
                 <p>
                   <ProvenanceTag source="General Guidance" /> The platform requires
                   user account creation before submitting any application. Standard practice for
                   Indian government e-governance platforms:
                 </p>
-                <ol className="list-decimal list-inside space-y-1.5 text-white/60">
+                <ol className="list-decimal list-inside space-y-1.5 text-cream/75">
                   <li>Navigate to the platform URL (see Platform Overview above)</li>
                   <li>Click "New User Registration" or "Sign Up"</li>
                   <li>Provide: full name, mobile number, email, Aadhaar number, username, password</li>
                   <li>Verify mobile number via OTP</li>
                   <li>Verify email address via confirmation link</li>
                 </ol>
-                <p className="text-white/50 text-xs italic">
+                <p className="text-cream/75 text-xs italic">
                   Platform URL not specified in source documents. Likely hosted on assamforest.in
                   or the Assam e-District portal.
                 </p>
@@ -344,12 +344,12 @@ export function OnlinePlatformGuidance() {
         <Reveal variant="fade" delay={200}>
           <div className="mb-12">
             <h3 className="font-display font-bold text-lg md:text-xl text-white mb-4 flex items-center gap-2">
-              <FileText className="w-5 h-5 text-gold" />
+              <FileText className="w-5 h-5 text-gold-light" />
               Available Workflows
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
               {WORKFLOWS.map((group, gi) => (
-                <div key={gi} className="bg-white/[0.04] border border-white/10 rounded-lg p-5">
+                <div key={gi} className="glass-card rounded-lg p-5">
                   <h4 className="font-display font-bold text-white text-sm mb-3">{group.category}</h4>
                   <ul className="space-y-3">
                     {group.items.map((item, i) => (
@@ -357,7 +357,7 @@ export function OnlinePlatformGuidance() {
                         <CheckCircle className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
                         <div>
                           <p className="text-white/80 text-sm font-medium">{item.name}</p>
-                          <p className="text-white/50 text-xs">{item.desc}</p>
+                          <p className="text-cream/75 text-xs">{item.desc}</p>
                           <div className="mt-1.5">
                             <ProvenanceTag source={item.source} />
                           </div>
@@ -375,18 +375,18 @@ export function OnlinePlatformGuidance() {
         <Reveal variant="fade" delay={250}>
           <div className="mb-12">
             <h3 className="font-display font-bold text-lg md:text-xl text-white mb-4 flex items-center gap-2">
-              <Upload className="w-5 h-5 text-gold" />
+              <Upload className="w-5 h-5 text-gold-light" />
               Document Checklist
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white/[0.04] border border-white/10 rounded-lg p-5">
+              <div className="glass-card rounded-lg p-5">
                 <h4 className="font-display font-bold text-white text-sm mb-3">
                   Industry Unit Registration
                 </h4>
                 <ul className="space-y-2">
                   {DOCUMENT_CHECKLIST.industry.map((doc, i) => (
-                    <li key={i} className="flex items-start gap-2 text-white/60 text-xs">
-                      <span className="text-gold/60 mt-0.5 shrink-0">{i + 1}.</span>
+                    <li key={i} className="flex items-start gap-2 text-cream/75 text-xs">
+                      <span className="text-gold-light mt-0.5 shrink-0">{i + 1}.</span>
                       {doc}
                     </li>
                   ))}
@@ -395,14 +395,14 @@ export function OnlinePlatformGuidance() {
                   <ProvenanceTag source="Reconstructed — not in source docs" />
                 </div>
               </div>
-              <div className="bg-white/[0.04] border border-white/10 rounded-lg p-5">
+              <div className="glass-card rounded-lg p-5">
                 <h4 className="font-display font-bold text-white text-sm mb-3">
                   Plantation Registration
                 </h4>
                 <ul className="space-y-2">
                   {DOCUMENT_CHECKLIST.plantation.map((doc, i) => (
-                    <li key={i} className="flex items-start gap-2 text-white/60 text-xs">
-                      <span className="text-gold/60 mt-0.5 shrink-0">{i + 1}.</span>
+                    <li key={i} className="flex items-start gap-2 text-cream/75 text-xs">
+                      <span className="text-gold-light mt-0.5 shrink-0">{i + 1}.</span>
                       {doc}
                     </li>
                   ))}
@@ -419,10 +419,10 @@ export function OnlinePlatformGuidance() {
         <Reveal variant="fade" delay={300}>
           <div className="mb-12">
             <h3 className="font-display font-bold text-lg md:text-xl text-white mb-4 flex items-center gap-2">
-              <Search className="w-5 h-5 text-gold" />
+              <Search className="w-5 h-5 text-gold-light" />
               Tracking Application Status
             </h3>
-            <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6">
+            <div className="glass-card rounded-lg p-6">
               <p className="text-white/70 text-sm mb-4">
                 The platform provides real-time status tracking. Application states include:
               </p>
@@ -430,13 +430,13 @@ export function OnlinePlatformGuidance() {
                 {["Submitted", "Under Scrutiny", "Query Raised", "Approved", "Rejected"].map((status) => (
                   <span
                     key={status}
-                    className="text-xs font-medium px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/70"
+                    className="text-xs font-medium px-3 py-1.5 rounded-full bg-glass-card border border-glass-border text-white/70 min-h-[44px] flex items-center justify-center"
                   >
                     {status}
                   </span>
                 ))}
               </div>
-              <p className="mt-4 text-white/50 text-xs">
+              <p className="mt-4 text-cream/75 text-xs">
                 Expected timelines: Initial scrutiny 7-15 working days; Committee review 15-30 working days; Total 30-45 working days.{" "}
                 <ProvenanceTag source="General Guidance" />
               </p>
@@ -448,15 +448,15 @@ export function OnlinePlatformGuidance() {
         <Reveal variant="fade" delay={350}>
           <div className="mb-12">
             <h3 className="font-display font-bold text-lg md:text-xl text-white mb-4 flex items-center gap-2">
-              <CreditCard className="w-5 h-5 text-gold" />
+              <CreditCard className="w-5 h-5 text-gold-light" />
               Fee Payment
             </h3>
-            <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6">
+            <div className="glass-card rounded-lg p-6">
               <p className="text-white/70 text-sm mb-3">
                 Fee amounts are not specified in source documents.{" "}
                 <ProvenanceTag source="Gap noted" />
               </p>
-              <p className="text-white/60 text-sm mb-3">
+              <p className="text-cream/75 text-sm mb-3">
                 <ProvenanceTag source="General Guidance" /> Standard payment methods: Net Banking, Debit/Credit Card, UPI, NEFT/RTGS.
                 Small and Micro units may be eligible for fee concessions.
               </p>
@@ -468,10 +468,10 @@ export function OnlinePlatformGuidance() {
         <Reveal variant="fade" delay={400}>
           <div className="mb-12">
             <h3 className="font-display font-bold text-lg md:text-xl text-white mb-4 flex items-center gap-2">
-              <Award className="w-5 h-5 text-gold" />
+              <Award className="w-5 h-5 text-gold-light" />
               Certificate Download
             </h3>
-            <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6">
+            <div className="glass-card rounded-lg p-6">
               <p className="text-white/70 text-sm mb-3">
                 <ProvenanceTag source="General Guidance" /> Approved certificates are available as PDF downloads with digital
                 signature and QR code verification. Certificates can be verified by anyone on the
@@ -485,28 +485,28 @@ export function OnlinePlatformGuidance() {
         <Reveal variant="fade" delay={450}>
           <div className="mb-12">
             <h3 className="font-display font-bold text-lg md:text-xl text-white mb-4 flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-gold" />
+              <ShieldCheck className="w-5 h-5 text-gold-light" />
               Compliance Reporting
             </h3>
-            <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6">
+            <div className="glass-card rounded-lg p-6">
               <p className="text-white/70 text-sm mb-3">
                 <ProvenanceTag source="General Guidance" /> Registered units may be required to submit:
               </p>
-              <ul className="space-y-2 text-white/60 text-sm">
+              <ul className="space-y-2 text-cream/75 text-sm">
                 <li className="flex items-start gap-2">
-                  <span className="text-gold/60 mt-1 shrink-0">▸</span>
+                  <span className="text-gold-light mt-1 shrink-0">▸</span>
                   Annual Return — production volume, raw material source, product sales
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-gold/60 mt-1 shrink-0">▸</span>
+                  <span className="text-gold-light mt-1 shrink-0">▸</span>
                   CITES Compliance Report — for units engaged in import/re-export
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-gold/60 mt-1 shrink-0">▸</span>
+                  <span className="text-gold-light mt-1 shrink-0">▸</span>
                   Change of Particulars Report — proprietorship, address, capacity changes
                 </li>
               </ul>
-              <p className="mt-4 text-white/50 text-xs">
+              <p className="mt-4 text-cream/75 text-xs">
                 Renewal reminders sent 90/60/30 days before expiry. Registration valid for 5 years.{" "}
                 <ProvenanceTag source="Source: Doc 2" />
               </p>
@@ -518,18 +518,18 @@ export function OnlinePlatformGuidance() {
         <Reveal variant="fade" delay={500}>
           <div className="mb-12">
             <h3 className="font-display font-bold text-lg md:text-xl text-white mb-4 flex items-center gap-2">
-              <Wrench className="w-5 h-5 text-gold" />
+              <Wrench className="w-5 h-5 text-gold-light" />
               Troubleshooting
             </h3>
             <div className="grid md:grid-cols-3 gap-4">
               {TROUBLESHOOTING.map((group, gi) => (
-                <div key={gi} className="bg-white/[0.04] border border-white/10 rounded-lg p-4">
+                <div key={gi} className="glass-card rounded-lg p-4">
                   <h4 className="font-display font-bold text-white text-xs mb-3">{group.category}</h4>
                   <ul className="space-y-2">
                     {group.items.map((item, i) => (
                       <li key={i}>
                         <p className="text-white/70 text-xs font-medium">{item.issue}</p>
-                        <p className="text-white/50 text-xs">{item.solution}</p>
+                        <p className="text-cream/75 text-xs">{item.solution}</p>
                       </li>
                     ))}
                   </ul>
@@ -543,19 +543,19 @@ export function OnlinePlatformGuidance() {
         <Reveal variant="fade" delay={550}>
           <div className="mb-12">
             <h3 className="font-display font-bold text-lg md:text-xl text-white mb-4 flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-gold" />
+              <BookOpen className="w-5 h-5 text-gold-light" />
               Quick Reference Guides
             </h3>
             <div className="space-y-4">
               {QUICK_GUIDES.map((guide, gi) => (
-                <div key={gi} className="bg-white/[0.04] border border-white/10 rounded-lg p-5">
+                <div key={gi} className="glass-card rounded-lg p-5">
                   <h4 className="font-display font-bold text-white text-sm mb-3">
                     {guide.title}
                   </h4>
                   <ol className="space-y-1.5">
                     {guide.steps.map((step, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-white/60 text-xs">
-                        <span className="text-gold/60 font-semibold shrink-0">{i + 1}.</span>
+                      <li key={i} className="flex items-start gap-2.5 text-cream/75 text-xs">
+                        <span className="text-gold-light font-semibold shrink-0">{i + 1}.</span>
                         {step}
                       </li>
                     ))}
@@ -570,10 +570,10 @@ export function OnlinePlatformGuidance() {
         <Reveal variant="fade" delay={600}>
           <div className="mb-12">
             <h3 className="font-display font-bold text-lg md:text-xl text-white mb-4 flex items-center gap-2">
-              <Phone className="w-5 h-5 text-gold" />
+              <Phone className="w-5 h-5 text-gold-light" />
               Help Resources & Contacts
             </h3>
-            <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6">
+            <div className="glass-card rounded-lg p-6">
               <div className="space-y-3 text-sm text-white/70">
                 <p>
                   <strong className="text-white/90">Assam Forest Department</strong> — Aranya Bhawan,
@@ -588,7 +588,7 @@ export function OnlinePlatformGuidance() {
                   <strong className="text-white/90">AATMA</strong> — Agar Wood Traders and Manufacturers
                   Association can assist with understanding the 2022 rules and navigating registration
                 </p>
-                <p className="text-white/50 text-xs italic">
+                <p className="text-cream/75 text-xs italic">
                   Escalation: Platform helpdesk → Conservator of Forests → PCCF Assam → Forest Minister's office → AATMA
                 </p>
               </div>
@@ -598,18 +598,18 @@ export function OnlinePlatformGuidance() {
 
         {/* Gaps */}
         <Reveal variant="fade" delay={650}>
-          <div className="bg-white/[0.04] border border-white/10 rounded-lg p-6">
+          <div className="glass-card rounded-lg p-6">
             <h3 className="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 text-gold" />
+              <AlertTriangle className="w-5 h-5 text-gold-light" />
               Information Gaps
             </h3>
-            <p className="text-white/60 text-sm mb-3">
+            <p className="text-cream/75 text-sm mb-3">
               The following information is not available in the source documents:
             </p>
             <div className="grid sm:grid-cols-2 gap-2">
               {GAPS.map((gap, i) => (
-                <div key={i} className="flex items-start gap-2 text-white/50 text-xs">
-                  <Info className="w-3 h-3 mt-0.5 shrink-0 text-white/30" />
+                <div key={i} className="flex items-start gap-2 text-cream/75 text-xs">
+                  <Info className="w-3 h-3 mt-0.5 shrink-0 text-cream/75" />
                   {gap}
                 </div>
               ))}
@@ -620,18 +620,18 @@ export function OnlinePlatformGuidance() {
         {/* Cross-reference */}
         <Reveal variant="fade" delay={700}>
           <div className="mt-8 bg-gold/5 border border-gold/20 rounded-lg p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <div className="text-gold shrink-0">
+            <div className="text-gold-light shrink-0">
               <Globe className="w-5 h-5" />
             </div>
             <div>
               <p className="text-white/80 text-sm leading-relaxed">
-                <strong className="text-gold">Related:</strong> The online platform is the primary
+                <strong className="text-gold-light">Related:</strong> The online platform is the primary
                 interface for registration. See the{" "}
-                <a href="#registration" className="text-gold underline underline-offset-2 hover:text-gold/80 transition-colors">
+                <a href="#registration" className="text-gold-light underline underline-offset-2 hover:text-gold-light transition-colors">
                   Registration Walkthrough
                 </a>{" "}
                 for the step-by-step process, and the{" "}
-                <a href="#cites" className="text-gold underline underline-offset-2 hover:text-gold/80 transition-colors">
+                <a href="#cites" className="text-gold-light underline underline-offset-2 hover:text-gold-light transition-colors">
                   CITES Compliance
                 </a>{" "}
                 section for how CITES reporting integrates with the platform.

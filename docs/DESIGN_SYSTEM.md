@@ -52,28 +52,50 @@ utility (e.g. `text-gold`, `bg-green-deep`), never the raw hex.
 | `--color-green-deep` | `#1a3c2a` | `green-deep` | Primary surface / page background |
 | `--color-green-mid` | `#2d5a3d` | `green-mid` | Raised surface, gradient mid-stop |
 | `--color-green-light` | `#3d7a54` | `green-light` | Accent surface, gradient end-stop |
-| `--color-gold` | `#c9a84c` | `gold` | **Primary accent** — headings emphasis, borders, focus, badges |
-| `--color-gold-light` | `#e0c878` | `gold-light` | Hover state for gold elements |
+| `--color-gold` | `#c9a84c` | `gold` | Ornament, borders, decorative marks; avoid for small text on dark surfaces |
+| `--color-gold-light` | `#e0c878` | `gold-light` | Text accents and focus indicators on dark green/glass |
+| `--color-gold-deep` | `#6b4516` | `gold-deep` | Gold text on cream/light surfaces |
+| `--color-gold-deep-light` | `#7a5220` | `gold-deep-light` | Hover text on cream/light surfaces |
 | `--color-cream` | `#f5f0e8` | `cream` | Light text on dark, paper surfaces |
 | `--color-cream-dark` | `#e8e0d0` | `cream-dark` | Secondary light surface |
 | `--color-charcoal` | `#1a1a1a` | `charcoal` | Deepest neutral |
 | `--color-text` | `#2a2a2a` | `text` | Body text on light surfaces |
 | `--color-text-mute` | `#5a5a5a` | `text-mute` | Secondary text on light surfaces |
 | `--color-border` | `#d4c9b0` | `border` | Borders on light surfaces |
+| `--color-glass-surface` | cream at 14% | `glass-surface` | Standard translucent surface over evergreen |
+| `--color-glass-surface-hover` | cream at 16% | `glass-surface-hover` | Hover surface; maximum fill while using gold-light text |
+| `--color-glass-border` | cream at 32% | `glass-border` | Visible glass boundary |
+| `--color-glass-nav` | `rgb(26 60 42 / 90%)` | `glass-nav` | Fixed navigation surface |
+| `--color-glass-card` | `rgb(26 60 42 / 88%)` | `glass-card` | Reading card over variable, bright video; use light foreground tokens |
+| `--color-agar-title` | `#F5F1E4` | `agar-title` | Warm off-white titles on dark agar-story cards |
+| `--color-agar-body` | `#DCE3D6` | `agar-body` | Soft sage-white body text on dark agar-story cards |
+| `--color-agar-label` | `#F0D77A` | `agar-label` | Bright gold date / label on dark agar-story cards |
+| `--color-agar-icon` | `#E8C85A` | `agar-icon` | Gold icon accent on dark agar-story cards |
 
 **No success / warning / error tokens are defined.** The site has no forms with
 server responses. If a status color is ever needed, add a token here first.
 
 ### Glass surfaces
 
-The site's card treatment is glassmorphism over `green-deep`. Three variants
-exist in the codebase — **use the standard variant unless you have a reason**:
+The site uses layered glass only over dark evergreen backgrounds. The recipe is
+centralized in `src/index.css`; do not recreate it with one-off white alpha
+classes. Standard and subtle surfaces retain an opaque cream fallback through
+their borders and are not used for long-form reading.
 
-| Variant | Classes | Use |
+| Variant | Classes/tokens | Use |
 |---|---|---|
-| **Standard** (default) | `bg-white/[0.08] backdrop-blur-sm border border-white/15` | All cards |
-| Emphasised | `bg-white/[0.12] backdrop-blur-sm border border-white/15` | Stat strips, feature cards |
-| Subtle | `bg-white/[0.06] backdrop-blur-sm border border-white/10` | Background panels |
+| **Standard** | `glass-surface` (`--color-glass-surface`, 14% cream fill; 32% cream border; 12px blur) | Cards, dropdowns, and feature panels over dark green |
+| **Hover** | `--color-glass-surface-hover` (16% cream fill); `--color-glass-border-strong` (46%) | Interactive emphasis; keep gold-light text at or above 4.5:1 |
+| **Subtle** | `glass-surface-subtle` (8% cream fill; 32% border; 10px blur) | Decorative or secondary dark panels |
+| **Navigation** | `glass-nav` (90% green-deep; 16px blur) | Fixed site navigation |
+| **Paper** | opaque `cream` / `cream-dark`, dark text | Long copy, tables, publications, and book-reading surfaces |
+
+The global `.card-hover` uses the standard glass fill and moves by no more than
+4px on hover. Gold-light is the default text/focus accent over dark glass;
+`gold` is reserved for ornament/borders. On cream surfaces use `gold-deep` for
+text, never `gold` or `gold-light`. The core palette maintains cream text at
+10.7:1 and gold-light at 7.4:1 on the evergreen base; translucent overlays must
+still be checked against the actual background image and composited surface.
 
 ---
 
@@ -178,6 +200,8 @@ Only one form exists (`Contact.tsx`).
 ## 10. Cards
 
 Standard card recipe:
+
+The dark video background makes dark-green card text low contrast. Agar-story cards use the stronger `glass-card` dark evergreen surface with `agar-title`, `agar-body`, `agar-label`, and `agar-icon` foreground tokens so variable bright video patches do not wash out text.
 
 ```
 bg-white/[0.08] backdrop-blur-sm border border-white/15 rounded-xl p-6 md:p-8

@@ -2,11 +2,11 @@ import { assetUrl } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
 
 /**
- * PressMeetGallery — mounts the 3 verified frame grabs from the 14 Jan 2023
+ * PressMeetGallery — mounts the three client-supplied frame grabs from the 14 Jan 2023
  * press meet video into the /press page.
  *
- * Each image uses a <picture> element with AVIF → WebP → JPEG → PNG fallback
- * so every browser gets the smallest format it supports. All paths go through
+ * Each image uses a <picture> element with WebP → JPEG fallback so every
+ * browser gets a supported format. All paths go through
  * assetUrl() to resolve correctly under the GitHub Pages subpath.
  *
  * IMG-P04 alt transcribes the actual banner text (verified legible).
@@ -24,20 +24,14 @@ interface FrameGrab {
 
 const FRAME_GRABS: FrameGrab[] = [
   {
-    slug: "aatma-head-office",
-    alt: "AATMA head office on Main Road, Hojai — modest building exterior",
-    width: 1024,
-    height: 1024,
-  },
-  {
     slug: "IMG-P02_press-meet-hero",
-    alt: "Five men seated at a table during the AATMA press meet, with a banner reading PRESS MEET visible behind them",
+    alt: "Press-meet attendees seated at a table, with the event banner visible behind them",
     width: 1280,
     height: 720,
   },
   {
     slug: "IMG-P03_speakers-table",
-    alt: "Six men seated in a wider row at the AATMA press meet speakers table",
+    alt: "A wider view of attendees seated at the AATMA press-meet table",
     width: 1280,
     height: 720,
   },
@@ -53,10 +47,6 @@ function FrameImage({ grab }: { grab: FrameGrab }) {
   return (
     <picture>
       <source
-        srcSet={assetUrl(`press-meet/${grab.slug}.avif`)}
-        type="image/avif"
-      />
-      <source
         srcSet={assetUrl(`press-meet/${grab.slug}.webp`)}
         type="image/webp"
       />
@@ -65,10 +55,10 @@ function FrameImage({ grab }: { grab: FrameGrab }) {
         type="image/jpeg"
       />
       <img
-        src={assetUrl(`press-meet/${grab.slug}.png`)}
+        src={assetUrl(`press-meet/${grab.slug}.jpg`)}
         alt={grab.alt}
         className="w-full h-auto rounded-sm border border-white/10 bg-white/[0.03]"
-        loading="lazy"
+        loading="eager"
         decoding="async"
         width={grab.width}
         height={grab.height}

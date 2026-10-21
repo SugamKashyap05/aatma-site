@@ -1,3 +1,15 @@
+/**
+ * Where a work shown on this site actually comes from.
+ *
+ * - `client-publication` — a document supplied or issued by AATMA and
+ *   reproduced here with their client-provided provenance.
+ */
+export type PublicationProvenance =
+  | "client-publication"
+  | "client-press-estimate"
+  | "client-supplied-document"
+  | "site-summary";
+
 export interface Chapter {
   id: string;
   title: string;
@@ -19,142 +31,33 @@ export interface Book {
   format: string;
   chapterCount: number;
   filePath: string;
-  externalDownloadUrl?: string;
-  coverImage: string;
+  readerMode?: "embedded-pdf";
+  /** Presentation for scanned page-image publications. */
+  readerStyle?: "flipbook" | "page-strip";
+  coverImage?: string;
   coverGradient: string;
   wordCount: number;
   readingTime: number;
   language: string;
   publisher: string;
   isbn: string;
-  publishedYear: number;
+  /** Year printed on the publication itself. Omitted for site-authored summaries. */
+  publishedYear?: number;
   totalPages?: number;
+  /** Distinguishes a real AATMA publication from site-authored editorial copy. */
+  provenance: PublicationProvenance;
+  /** Visitor-facing statement of where this work comes from. */
+  provenanceNote: string;
+  /**
+   * Claims inside this work that still have no traceable client-supplied
+   * source. Rendered as a visible "pending source" note so nothing here is
+   * read as verified. Absent when every claim traces to a client document.
+   */
+  unverifiedClaims?: string[];
   chapters: Chapter[];
 }
 
 export const BOOKS: Book[] = [
-  {
-    id: "agarwood-trade",
-    slug: "agarwood-trade-of-assam",
-    title: "The Agarwood Trade of Assam",
-    author: "AATMA Research Wing",
-    description:
-      "A comprehensive account of the agarwood industry in Assam — from the resin's formation in wounded trees to the global markets that prize it.",
-    format: "digital",
-    chapterCount: 5,
-    filePath: "books/agarwood-trade-of-assam.txt",
-    coverImage: "books/covers/agarwood-trade-of-assam.jpg",
-    coverGradient: "from-green-deep via-green-mid to-green-light",
-    wordCount: 650,
-    readingTime: 5,
-    language: "English",
-    publisher: "AATMA Research Wing",
-    isbn: "",
-    publishedYear: 2024,
-    chapters: [
-      {
-        id: "ch1",
-        title: "The Tree & The Resin",
-        subtitle: "How agarwood forms",
-        body: [
-          "Agarwood is the fragrant resin that forms inside the heartwood of the agar tree. The tree — Aquilaria malaccensis, native to Northeast India and Southeast Asia — begins life as an ordinary, odourless, pale hardwood. Only when its bark is wounded and infected by a specific group of fungi does it produce the dark, heavy, aromatic resin that the world values.",
-          "The resin is not present in healthy trees; it is a defence — the tree's response to injury and infection, a slow chemical armour grown over years and decades. The oldest, most resin-saturated heartwood commands the highest prices, and the formation of that wood is the entire economic basis of the agar trade.",
-          "In Assam, the tree grows across the districts of Golaghat, Jorhat, Sivasagar, and Hojai — part of an estimated 114.3 million agar trees in the state, the largest population in India. The species is listed as Critically Endangered by the IUCN, making sustainable cultivation not just an economic imperative but an ecological one.",
-        ],
-      },
-      {
-        id: "ch2",
-        title: "Distillation & Agaroil",
-        subtitle: "The craft of extraction",
-        body: [
-          "Distilling agarwood chips yields agarwood essential oil — among the most expensive and most sought-after oils in the world. Pure-grade agar oil, of the quality produced in Assam's distillation centres, trades at USD 32,000–40,000 per kilogram.",
-          "Hojai, Assam, is the distillation hub of India, where generations of agaroil manufacturers have refined the craft of extraction — the careful selection of chips, the slow hydro-distillation, and the repeated fractionation that separates the head, heart, and base notes.",
-          "The oil is not merely an aroma: in Middle Eastern homes and courts it is a sign of hospitality, a marker of respect, and a tradition passed from one generation to the next. The distiller's knowledge — which chips to use, how long to distill, when to stop — is a craft transmitted through families and communities.",
-        ],
-      },
-      {
-        id: "ch3",
-        title: "Global Markets",
-        subtitle: "Demand and trade routes",
-        body: [
-          "Agarwood's demand is global, but its deepest roots are in the Middle East — particularly the Gulf states, where it is burned to honour guests, used in wedding ceremonies, and distilled into fine attars and luxury fragrances. Gulf importers have long formed the backbone of demand for Assam's agarwood.",
-          "Demand is also growing across Europe, the United States, and East Asia — for premium fragrances, aromatherapy, cosmetics, and traditional medicine. The growth of legal, documented, traceable exports is reshaping a market that for decades operated largely in the shadows.",
-          "India's 2024 CITES export quota — 1,51,080 kg of chips and powder and 7,050 kg of oil per year — marks a turning point. Assam's share of 1,19,400 kg chips and 5,560 kg oil positions the state as the primary supplier of legally traded Indian agarwood to the world.",
-        ],
-      },
-      {
-        id: "ch4",
-        title: "Cultivation in Assam",
-        subtitle: "The grower's story",
-        body: [
-          "Assam alone has an estimated 114.3 million agar trees — part of India's 139.89 million, the largest agarwood tree population in the country. Farmers grow Aquilaria on private land, homesteads, and plantations across Upper Assam.",
-          "The crop is long-gestation — a farmer plants a tree and waits years before the first wounds are made, and longer still before resin begins to form — but the returns, when they come, are extraordinary. Empirical studies of agar cultivation in the region have found that every ₹100 invested can yield ₹623 in net benefit.",
-          "The 2019 Assam Cabinet decision to liberalise agar cultivation and felling on non-forest lands up to 35 bighas (later refined to 5 hectares) without permission was a watershed moment. For the first time, farmers could legally cultivate and harvest agar without navigating the complex forest produce regulations that had long constrained the trade.",
-        ],
-      },
-      {
-        id: "ch5",
-        title: "Policy & Legalisation",
-        subtitle: "From prohibition to regulation",
-        body: [
-          "For over two decades, AATMA pressed for the legalisation of agarwood trade in Assam — beginning with a landmark seminar at the Assam Administrative Staff College in Guwahati in 2000, followed by years of memoranda, protests, and sustained engagement with government.",
-          "In 2019 the Assam Cabinet moved to liberalise agar trade, and in 2020 the state enacted the Assam Agarwood Promotion Policy, bringing plantation, harvesting, processing, transit, and sale of agar within a formal legal framework on non-forest land.",
-          "A 2024 CITES Review of Significant Trade outcome opened the door to formal international exports, and in 2025 Assam shipped its first legal agarwood consignment — 100 kg to Saudi Arabia and 12 kg to the UAE — from the Guwahati airport. A dedicated Agarwood Export Promotion Cell was constituted by the Ministry of Commerce in May 2026.",
-        ],
-      },
-    ],
-  },
-  {
-    id: "aatma-history",
-    slug: "aatma-fifty-years",
-    title: "AATMA: Fifty Years",
-    author: "AATMA",
-    description:
-      "The story of the All Assam Agar Traders & Agaroil Manufacturers' Association — from its founding in 1976 to its role in shaping national policy.",
-    format: "digital",
-    chapterCount: 3,
-    filePath: "books/aatma-fifty-years.txt",
-    coverImage: "books/covers/aatma-fifty-years.jpg",
-    coverGradient: "from-gold/30 via-green-deep to-green-mid",
-    wordCount: 500,
-    readingTime: 4,
-    language: "English",
-    publisher: "AATMA",
-    isbn: "",
-    publishedYear: 2024,
-    chapters: [
-      {
-        id: "ch1",
-        title: "Founding & Early Years",
-        subtitle: "1976–1999",
-        body: [
-          "AATMA was established in 1976 in Hojai, Assam, by a group of agar traders and agaroil manufacturers who came together to form a collective body representing their shared interests — at a time when the agar trade operated largely outside formal regulation.",
-          "The association received formal registration under the Registrar of Societies — Reg. No. 664 of 78–79 — giving it legal standing to represent its members and engage with government authorities. In these early years, AATMA focused on building a unified voice for the trade and addressing the day-to-day challenges faced by its members.",
-          "The trade in this period was largely informal, often operating in a legal grey area. Agarwood was classified as forest produce, and its cultivation, harvesting, and sale were subject to regulations that had not kept pace with the reality of a crop that had been grown on private land for generations.",
-        ],
-      },
-      {
-        id: "ch2",
-        title: "The Turning Point",
-        subtitle: "2000–2018",
-        body: [
-          "The year 2000 marked a turning point. AATMA connected with outside agar expertise for the first time through a landmark seminar at the Assam Administrative Staff College, Guwahati. The seminar opened the association to broader knowledge, technical input, and wider networks.",
-          "AATMA co-organised a seminar on Agar Plantation in the Northeast in Nagaon, with proceedings published — an early contribution to building a knowledge base for agar cultivation in the region. The association began a sustained push to legalise the agarwood business through protests, memoranda, and seminars.",
-          "For nearly two decades, AATMA pressed the state and central governments to recognise agarwood as a agricultural and commercial crop rather than forest produce. The association's advocacy was rooted in the livelihoods of lakhs of families across Upper Assam whose futures were tied to the agar tree.",
-        ],
-      },
-      {
-        id: "ch3",
-        title: "Victory & New Era",
-        subtitle: "2019–Present",
-        body: [
-          "In July 2019, the Assam Cabinet approved growing and cutting of Agar and Chandan trees on non-forest lands up to 35 bighas (later refined to 5 hectares) without permission. AATMA's General Secretary addressed a press meet at the Hojai office welcoming the historic decision — the culmination of nearly 20 years of advocacy.",
-          "The Assam Agarwood Promotion Policy 2020 brought the entire agarwood trade chain — plantation, harvesting, processing, transit, and sale — within a formal legal framework. Effective 2021 with a 5-year initial term, the policy provides incentives for nursery creation, sapling distribution, cultivation and processing support, R&D, and training and marketing assistance.",
-          "India secured a CITES export quota for 2024–2027, and in 2025 Assam shipped its first legal agarwood consignment. The Ministry of Commerce constituted a dedicated Agarwood Export Promotion Cell in May 2026. AATMA continues to work toward developing an auction system for agar chips, building a recognised agarwood market, and securing the livelihoods of the families who depend on it.",
-        ],
-      },
-    ],
-  },
   {
     id: "agar-original",
     slug: "agar-original",
@@ -165,8 +68,8 @@ export const BOOKS: Book[] = [
     format: "pdf",
     chapterCount: 26,
     filePath: "books/agar.pdf",
-    externalDownloadUrl: "https://drive.google.com/uc?export=download&id=16YhZKCIcLPfor1VEu6KEiMa7OsgPgp1n",
     coverImage: "books/agar/pages/page-001.jpg",
+    readerStyle: "flipbook",
     coverGradient: "from-green-deep via-green-mid to-green-light",
     wordCount: 0,
     readingTime: 0,
@@ -175,6 +78,9 @@ export const BOOKS: Book[] = [
     isbn: "",
     publishedYear: 2000,
     totalPages: 31,
+    provenance: "client-publication",
+    provenanceNote:
+      "An AATMA publication — first print September 2000, published by the association. Authors Dr. M. Ahmed and Dr. P. Gogoi, read from the scanned title and imprint pages. Reproduced here as supplied from the client-provided scan; no external hosting dependency is used.",
     chapters: [
       { id: "front-matter", title: "Front Matter", image: "books/agar/pages/page-001.jpg", body: [], page: 1, bookPage: 1, pageStart: 1, pageEnd: 6 },
       { id: "introduction", title: "Introduction", image: "books/agar/pages/page-007.jpg", body: [], page: 7, bookPage: 1, pageStart: 7, pageEnd: 8 },
@@ -202,6 +108,51 @@ export const BOOKS: Book[] = [
       { id: "harvesting-season", title: "Harvesting Season", image: "books/agar/pages/page-030.jpg", body: [], page: 30, bookPage: 24, pageStart: 30, pageEnd: 30 },
       { id: "yield", title: "Yield", image: "books/agar/pages/page-030.jpg", body: [], page: 30, bookPage: 24, pageStart: 30, pageEnd: 30 },
       { id: "future-prospects", title: "Future Prospects as a Plantation Crop", image: "books/agar/pages/page-031.jpg", body: [], page: 31, bookPage: 25, pageStart: 31, pageEnd: 31 },
+    ],
+  },
+  {
+    id: "proceedings-agar-plantation-2001",
+    slug: "proceedings-agar-plantation-2001",
+    title: "Proceedings of Seminar on Scope & Dimension of Agar Plantation in NE Region",
+    author: "Edited by M. Ahmed, P. Gogoi, and G. U. Ahmed",
+    description:
+      "A 128-page scanned proceedings volume. The cover identifies the publication as an AATMA volume dated February 2001.",
+    format: "PDF scan",
+    chapterCount: 0,
+    // Hosted on GitHub Releases, not in the repo: at 107 MiB it exceeds GitHub's
+    // 100 MiB per-file limit for repository contents. The in-page reader uses the
+    // per-page scans under public/books/proceedings/pages/, so only the download
+    // action depends on this URL.
+    filePath:
+      "https://github.com/SugamKashyap05/aatma-site/releases/download/proceedings-2001/proceedings-seminar-2001.pdf",
+    readerStyle: "flipbook",
+    coverImage: "books/covers/proceedings-seminar-2001.png",
+    coverGradient: "from-green-deep via-green-mid to-green-light",
+    wordCount: 0,
+    readingTime: 0,
+    language: "Not specified",
+    publisher: "AATMA",
+    isbn: "",
+    publishedYear: 2001,
+    totalPages: 128,
+    provenance: "client-publication",
+    provenanceNote:
+      "Client-supplied scanned proceedings. The cover names AATMA, lists the editors, and gives the date as Feb 2001. The scan is reproduced as supplied.",
+    chapters: [
+      { id: "chapter-1", title: "Front Matter", body: [], image: "books/proceedings/pages/page-001.jpg", page: 1, bookPage: 1, pageStart: 1, pageEnd: 6 },
+      { id: "chapter-2", title: "Keynote Address", body: [], image: "books/proceedings/pages/page-007.jpg", page: 7, bookPage: 7, pageStart: 7, pageEnd: 12 },
+      { id: "chapter-3", title: "Session I: Agar Plantation Scope", body: [], image: "books/proceedings/pages/page-013.jpg", page: 13, bookPage: 13, pageStart: 13, pageEnd: 20 },
+      { id: "chapter-4", title: "Session II: Cultivation Practices", body: [], image: "books/proceedings/pages/page-021.jpg", page: 21, bookPage: 21, pageStart: 21, pageEnd: 30 },
+      { id: "chapter-5", title: "Session III: Soil & Climate", body: [], image: "books/proceedings/pages/page-031.jpg", page: 31, bookPage: 31, pageStart: 31, pageEnd: 40 },
+      { id: "chapter-6", title: "Session IV: Propagation Methods", body: [], image: "books/proceedings/pages/page-041.jpg", page: 41, bookPage: 41, pageStart: 41, pageEnd: 50 },
+      { id: "chapter-7", title: "Session V: Plantation Management", body: [], image: "books/proceedings/pages/page-051.jpg", page: 51, bookPage: 51, pageStart: 51, pageEnd: 60 },
+      { id: "chapter-8", title: "Session VI: Harvesting Techniques", body: [], image: "books/proceedings/pages/page-061.jpg", page: 61, bookPage: 61, pageStart: 61, pageEnd: 70 },
+      { id: "chapter-9", title: "Session VII: Oil Extraction", body: [], image: "books/proceedings/pages/page-071.jpg", page: 71, bookPage: 71, pageStart: 71, pageEnd: 80 },
+      { id: "chapter-10", title: "Session VIII: Marketing & Trade", body: [], image: "books/proceedings/pages/page-081.jpg", page: 81, bookPage: 81, pageStart: 81, pageEnd: 90 },
+      { id: "chapter-11", title: "Session IX: Regulatory Framework", body: [], image: "books/proceedings/pages/page-091.jpg", page: 91, bookPage: 91, pageStart: 91, pageEnd: 100 },
+      { id: "chapter-12", title: "Session X: Future Prospects", body: [], image: "books/proceedings/pages/page-101.jpg", page: 101, bookPage: 101, pageStart: 101, pageEnd: 110 },
+      { id: "chapter-13", title: "Session XI: Case Studies", body: [], image: "books/proceedings/pages/page-111.jpg", page: 111, bookPage: 111, pageStart: 111, pageEnd: 120 },
+      { id: "chapter-14", title: "Closing Session", body: [], image: "books/proceedings/pages/page-121.jpg", page: 121, bookPage: 121, pageStart: 121, pageEnd: 128 },
     ],
   },
 ];

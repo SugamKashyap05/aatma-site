@@ -4,6 +4,7 @@ import { BookLibrary } from "./BookLibrary";
 import { BookReader } from "./BookReader";
 import type { Book } from "@/data/books";
 import PageLayout from "@/components/ui/PageLayout";
+import { assetUrl } from "@/lib/utils";
 import { useDevice } from "@/context/DeviceContext";
 
 export function BooksPage() {
@@ -18,10 +19,10 @@ export function BooksPage() {
 
   const handleDownload = (b: Book) => {
     setDownloadingId(b.id);
-    const url = b.externalDownloadUrl || b.filePath;
+    const url = assetUrl(b.filePath);
     const a = document.createElement("a");
     a.href = url;
-    a.download = url.split("/").pop() || `${b.slug}.txt`;
+    a.download = url.split("/").pop() || `${b.slug}.pdf`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -56,10 +57,10 @@ export function BooksPage() {
       badgeIcon={<BookOpen size={14} />}
       title={
         <>
-          AATMA <span className="text-gold">Publications</span>
+          AATMA <span className="text-gold-light">Library</span>
         </>
       }
-      subtitle="Research, history, and policy documents from the association's work."
+      subtitle="Client-supplied publications are reproduced here with their provenance stated."
     >
       <div className="py-20 md:py-28">
         <BookLibrary

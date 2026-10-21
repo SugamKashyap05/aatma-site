@@ -17,7 +17,7 @@ const RE_EXPORT_T = 141;
 const EASTERN_IMPORT_PCT = 74;
 const EASTERN_RE_EXPORT_PCT = 92;
 
-const MAX_T = Math.max(IMPORT_T, RE_EXPORT_T);
+const MAX_T = 150;
 
 const W = 680;
 const H = 260;
@@ -36,7 +36,7 @@ const y = (v: number) => M.top + IH - (v / MAX_T) * IH;
 const ariaLabel = buildAriaSummary(
   "Paired bar chart of India's agarwood trade 2017 to 2021",
   [
-    { label: "Imported", value: `${IMPORT_T} tonnes` },
+    { label: "Imported", value: `over ${IMPORT_T} tonnes` },
     { label: "Re-exported", value: `${RE_EXPORT_T} tonnes` },
   ],
 );
@@ -50,14 +50,14 @@ export function TradeFlow() {
   return (
     <ChartFrame
       title="Agarwood trade flow, 2017–2021"
-      subtitle="India imported over 142 tonnes and re-exported 141 tonnes — a near-parity balance, with eastern India dominating both legs."
+      subtitle="India imported over 142 tonnes and re-exported 141 tonnes. The article attributes 74% of imports and 92% of re-exports to eastern India."
       ariaLabel={ariaLabel}
       source={{
         publication: "The Assam Tribune",
         date: "18 Nov 2024",
         isPressEstimate: true,
       }}
-      note="Import figure is 'over 142 tonnes' in the source. Eastern India share (74% imports, 92% re-exports) is the article's attribution, not a measured regional split."
+      note="The import bar is plotted at 142 tonnes as a lower bound; the source reports over 142. Eastern India shares are the article's attribution, not a measured regional split."
     >
       <svg
         viewBox={`0 0 ${W} ${H}`}
@@ -116,7 +116,7 @@ export function TradeFlow() {
                 fill={CHART_COLORS.cream}
                 fontFamily="Inter, system-ui, sans-serif"
               >
-                {g.value} t
+                {g.label === "Imported" ? `over ${g.value} t` : `${g.value} t`}
               </text>
               {/* X label */}
               <text

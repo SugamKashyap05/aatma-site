@@ -1,5 +1,5 @@
 import { ArrowLeft, List, Download, Sun, Moon } from "lucide-react";
-import { cn } from "@/lib/utils";
+
 import type { FontSize } from "@/hooks/useBookReader";
 import { FONT_SIZE_LABEL } from "@/hooks/useBookReader";
 
@@ -31,32 +31,32 @@ export function ReaderTopBar({
       <div className="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between gap-2">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-white/80 hover:text-gold transition-colors duration-200 text-sm font-medium min-h-[44px] px-2"
+          className="flex items-center gap-2 text-white/80 hover:text-gold-light transition-colors duration-200 text-sm font-medium min-h-[44px] px-2"
           aria-label="Back to books"
         >
           <ArrowLeft size={18} />
           <span className="hidden sm:inline">Books</span>
         </button>
 
-        <h1 className="font-display text-sm md:text-base text-white truncate flex-1 text-center">
+        <p className="font-display text-sm md:text-base text-white truncate flex-1 text-center">
           {title}
-        </h1>
+        </p>
 
         <div className="flex items-center gap-1">
           <button
             onClick={onDecreaseFont}
-            className="text-white/60 hover:text-gold transition-colors duration-200 p-1.5 min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="text-cream/75 hover:text-gold-light transition-colors duration-200 p-1.5 min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Decrease font size"
             title="Decrease font size"
           >
             <span className="text-xs font-bold">A-</span>
           </button>
-          <span className="text-gold text-xs font-semibold min-w-[2rem] text-center" aria-hidden="true">
+          <span className="text-gold-light text-xs font-semibold min-w-[2rem] text-center" aria-hidden="true">
             {FONT_SIZE_LABEL[fontSize]}
           </span>
           <button
             onClick={onIncreaseFont}
-            className="text-white/60 hover:text-gold transition-colors duration-200 p-1.5 min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="text-cream/75 hover:text-gold-light transition-colors duration-200 p-1.5 min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Increase font size"
             title="Increase font size"
           >
@@ -67,7 +67,7 @@ export function ReaderTopBar({
 
           <button
             onClick={onToggleDarkMode}
-            className="text-white/60 hover:text-gold transition-colors duration-200 p-1.5"
+            className="text-cream/75 hover:text-gold-light transition-colors duration-200 p-1.5 min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
             title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
           >
@@ -76,7 +76,7 @@ export function ReaderTopBar({
 
           <button
             onClick={onToggleToc}
-            className="text-white/60 hover:text-gold transition-colors duration-200 p-1.5 min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="text-cream/75 hover:text-gold-light transition-colors duration-200 p-1.5 min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Table of contents"
             title="Table of contents"
           >
@@ -84,7 +84,7 @@ export function ReaderTopBar({
           </button>
           <button
             onClick={onDownload}
-            className="text-white/60 hover:text-gold transition-colors duration-200 p-1.5 min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="text-cream/75 hover:text-gold-light transition-colors duration-200 p-1.5 min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Download book"
             title="Download book"
           >

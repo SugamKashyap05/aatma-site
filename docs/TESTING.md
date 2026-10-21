@@ -57,7 +57,7 @@ The product is presentation-heavy with little business logic. Genuinely testable
 **Status:** Not implemented. **Priority:** Medium.
 
 Worth testing once a runner exists:
-- `useBookReader` with a text book and a scanned-image book.
+- `useBookReader` with the scanned-image AGAR book and embedded-PDF proceedings book.
 - `DeviceContext` tier resolution at 375 / 900 / 1536 px.
 - `SpaRedirectHandler` path restoration from `?path=`.
 
@@ -113,13 +113,13 @@ tests/
 ### Flow 2 — Open a book and read it
 **Steps:**
 1. Navigate to `/books`
-2. Confirm the library lists all books from `src/data/books.ts`
-3. Select a text book → reader opens with chapters
-4. Advance a page → progress updates
+2. Confirm the library lists exactly the two client-supplied publications
+3. Open the AGAR scan; verify page 1 loads and the flipbook page-turn style is active
+4. Advance to page 2; verify the page image and progress update
 5. Return to the library
-6. Select a scanned book → page images render
+6. Open the seminar proceedings; verify the local PDF reader and download work
 
-**Expected result:** Both book formats read correctly; navbar and footer remain present (reader is wrapped in `PageLayout`).
+**Expected result:** Both client-supplied books open correctly; AGAR uses the configured flipbook page-turn effect; the proceedings PDF renders locally; the page remains navigable and downloads are local.
 
 ---
 
@@ -197,7 +197,8 @@ tests/
 | Build | `npm run build` | ✅ works |
 | Type check | `npm run build` (runs `tsc -b`) | ✅ works |
 | Lint | `npm run lint` | ✅ works locally, ❌ not in CI |
-| Test | *not defined* | ❌ |
+| Browser smoke test | `node scripts/smoke-test.mjs` | ✅ works (see §7a) |
+| Test (unit/E2E suite) | *not defined* | ❌ |
 | Dev server | `npm run dev` | ✅ works |
 | Preview built output | `npm run preview` | ✅ works |
 
@@ -205,6 +206,19 @@ tests/
 ```bash
 cd dist && python3 -m http.server 4173
 ```
+
+### §7a. Browser smoke test (scripted, runs)
+
+`scripts/smoke-test.mjs` visits every public route × 5 viewports (360×390, 390×844, 768×1024, 1366×768, 1920×1080) against the built site and records HTTP status, title, rendered content, console/page errors, failed requests, broken images, and overflow. Writes `scripts/smoke-test-results.json`.
+
+```bash
+npm run preview                     # terminal 1 — serves dist/ on :4173
+node scripts/smoke-test.mjs        # terminal 2 — full matrix (11 routes + 3 probes)
+```
+
+Env knobs: `SMOKE_ONLY=/,/books` (route filter for chunks), `SMOKE_TAG=chunk1` (output-file suffix), `SMOKE_SHOTS=1` (screenshot every combination, not just failures). **Must run in a foreground terminal** — Playwright's driver exits with "stdin is not a tty" when backgrounded.
+
+Latest full run: 2026-10-17 — 70 combinations, 35 PASS / 10 PASS⚠ / 20 FAIL. Findings + matrix: `docs/SMOKE_TEST_REPORT.md`.
 
 ### CI gap to close
 

@@ -43,7 +43,7 @@ export function TableOfContents({
             <h3 className="font-display font-bold text-white">Contents</h3>
             <button
               onClick={onClose}
-              className="text-white/60 hover:text-gold transition-colors p-1 lg:hidden min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="text-cream/75 hover:text-gold-light transition-colors p-1 lg:hidden min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label="Close table of contents"
             >
               <X size={18} />
@@ -57,12 +57,12 @@ export function TableOfContents({
                 className={cn(
                   "w-full text-left px-3 py-2 rounded-sm text-sm transition-colors min-h-[44px] flex items-center",
                   i === activeIndex
-                    ? "bg-gold/20 text-gold font-medium"
-                    : "text-white/60 hover:text-white hover:bg-white/5"
+                    ? "bg-gold/20 text-gold-light font-medium"
+                    : "text-cream/75 hover:text-white active:text-white hover:bg-white/5 active:bg-white/5"
                 )}
                 aria-current={i === activeIndex ? "true" : undefined}
               >
-                <span className="text-white/40 mr-2 text-xs">
+                <span className="text-cream/75 mr-2 text-xs">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 {ch.title}

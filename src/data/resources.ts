@@ -25,7 +25,7 @@ export interface ResourceDocument {
   docType: ResourceDocType;
   /** ISO date of the document itself. Omitted when the source is undated. */
   date?: string;
-  fileType: "PDF" | "DOCX" | "XLSX" | "PPTX" | "ZIP";
+  fileType: "PDF" | "DOCX" | "XLSX" | "PPTX" | "ZIP" | "JPEG";
   fileSize: string;
   /** Page count, where known. */
   pageCount?: number;
@@ -56,14 +56,13 @@ export const RESOURCE_CATEGORIES: ResourceCategory[] = [
   {
     id: "press-notes",
     label: "Press Notes",
-    description:
-      "AATMA's own media-facing material — press notes, the signed originals, and correspondence with the Government of Assam.",
+    description: "AATMA's media-facing material — press notes and correspondence with the Government of Assam.",
   },
   {
     id: "policy-documents",
     label: "Policy Documents",
     description:
-      "The Government of Assam gazette notifications that govern the agarwood trade, reproduced in full.",
+      "Gazette documents for the Wood-Based Industries and Trees Outside Forest rules.",
   },
   {
     id: "research-papers",
@@ -116,22 +115,7 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
     available: true,
     downloadPath: "resources/press-note-2023-01-14.pdf",
   },
-  {
-    id: "press-note-signed-2023",
-    title: "AATMA Press Note — Signed Copy (Hojai, 14 January 2023)",
-    category: "press-notes",
-    docType: "press",
-    date: "2023-01-14",
-    fileType: "PDF",
-    fileSize: "850 KB",
-    pageCount: 1,
-    tags: ["press-note", "signed", "2023"],
-    description:
-      "Scanned original of the 14 January 2023 press note, signed by AATMA's President and General Secretary.",
-    source: "AATMA press note (signed scan), 14 January 2023",
-    available: true,
-    downloadPath: "resources/press-note-signed-2023-01-14.pdf",
-  },
+
   {
     id: "letter-to-hcm-2023",
     title: "Letter to the Hon'ble Chief Minister of Assam",
@@ -161,7 +145,7 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
     pageCount: 67,
     tags: ["rules", "2022", "gazette", "regulatory"],
     description:
-      "The Assam Gazette (Extraordinary) notification No. 20, eCF No. 237152, dated 12 January 2023 — the rules that replaced the 2000 framework, classed agarwood units as secondary wood-based industries and made the regime fully CITES compliant. Includes the prescribed forms.",
+      "The Assam Gazette (Extraordinary) notification No. 20, eCF No. 237152, dated 12 January 2023 — rules that replaced the 2000 framework and classed agarwood units as secondary wood-based industries; the gazette includes the prescribed forms. AATMA's 14 January 2023 press note describes the rules as fully CITES compliant.",
     source: "Assam Gazette (Extraordinary), 12 January 2023",
     available: true,
     downloadPath: "resources/wbi-rules-2022-gazette.pdf",
@@ -177,25 +161,104 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
     pageCount: 25,
     tags: ["rules", "2022", "gazette", "plantation"],
     description:
-      "The gazette notification governing agar trees grown on non-forest land — plantation registration, felling and transit permits — notified alongside the wood-based industries rules.",
+      "The gazette notification governing agar trees grown on non-forest land — plantation registration, felling and transit permits.",
     source: "Assam Gazette (Extraordinary)",
     available: true,
     downloadPath: "resources/tof-rules-2022-gazette.pdf",
   },
 
+  // ── Press Notes (additional client-supplied) ───────────────────────────────
+  {
+    id: "atsa-press-release-2008",
+    title: "ATSA Press Release — 21 February 2008",
+    category: "press-notes",
+    docType: "press",
+    date: "2008-02-21",
+    fileType: "JPEG",
+    fileSize: "—",
+    tags: ["press-release", "cites", "2008"],
+    description:
+      "Press release from the Assam Agarbatti Traders and Agarbatti Oil Producers Association (ATSA) regarding CITES regulations, the 2005 rules, endangered species, and sandalwood.",
+    source: "Client-supplied ATSA press release, 21 February 2008",
+    available: true,
+    downloadPath: "resources/atsa-press-release-2008-02-21.jpeg",
+  },
+
+  // ── Policy Documents (additional client-supplied) ─────────────────────────
+  {
+    id: "gauhati-hc-writ-2007",
+    title: "Gauhati High Court Writ Petition — M/s North East Aromatics",
+    category: "policy-documents",
+    docType: "policy",
+    date: "2007-11-14",
+    fileType: "JPEG",
+    fileSize: "—",
+    tags: ["legal", "court", "2007"],
+    description:
+      "W.P(c) No. 6284/2007 — M/s North East Aromatics v. State of Assam & Ors. A legal filing concerning the agar trade and forest regulations.",
+    source: "Client-supplied legal document",
+    available: true,
+    downloadPath: "resources/gauhati-hc-writ-2007.jpeg",
+  },
+  {
+    id: "aatma-notice-2023",
+    title: "AATMA Official Notice — Registration Fee Table",
+    category: "policy-documents",
+    docType: "policy",
+    date: "2023-01-11",
+    fileType: "JPEG",
+    fileSize: "—",
+    tags: ["notice", "registration", "fees"],
+    description:
+      "AATMA notice regarding Assam Wood Based Industries Rules 2000 and Trees Outside Forest Rules 2022 registration fees, signed by the General Secretary.",
+    source: "Client-supplied official notice, 11 January 2023",
+    available: true,
+    downloadPath: "resources/aatma-notice-2023-01-11.jpeg",
+  },
+
   // ── Research Papers ────────────────────────────────────────────────────────
   {
+    id: "research-plantation-survey",
+    title: "Agarwood Plantation Survey — Salona, Nagaon (Page 41)",
+    category: "research-papers",
+    docType: "research",
+    date: "2026-07-24",
+    fileType: "JPEG",
+    fileSize: "—",
+    tags: ["survey", "plantation", "nagaon"],
+    description:
+      "Page 41 of a report titled 'Photographs of Agarwood plantation sites' — field photos from Salona, Nagaon, Assam with GPS coordinates.",
+    source: "Client-supplied field survey document, 24 July 2026",
+    available: true,
+    downloadPath: "research/plantation-survey-p41.jpeg",
+  },
+  {
+    id: "research-distillation-survey",
+    title: "Traditional Agarwood Oil Distillation Units — Annexure 2",
+    category: "research-papers",
+    docType: "research",
+    date: "2026-07-22",
+    fileType: "JPEG",
+    fileSize: "—",
+    tags: ["survey", "distillation", "field", "golaghat"],
+    description:
+      "Annexure 2: Photographs for the Field — Traditional agarwood oil distillation units in Golaghat, Jorhat, Sivasagar & Hojai districts.",
+    source: "Client-supplied field survey document, 22–26 July 2026",
+    available: true,
+    downloadPath: "research/distillation-survey-annexure.jpeg",
+  },
+  {
     id: "research-history-of-agar",
-    title: "A Brief History of Agar & the Agar Trade",
+    title: "A Brief History of Agar & the Agar Trade (Privacy-Edited Copy)",
     category: "research-papers",
     docType: "research",
     fileType: "PDF",
-    fileSize: "91 KB",
+    fileSize: "57.8 KB",
     pageCount: 4,
     tags: ["history", "trade", "reference"],
     description:
-      "AATMA's account of the agarwood trade — from the sanchi-paat era and the Hojai distillation trade through the 2000 rules and the campaign that led to the 2022 reforms.",
-    source: "AATMA reference note (client document, undated)",
+      "Privacy-edited text copy of AATMA's client-supplied reference note; full names of AATMA office-bearers are withheld in this public copy.",
+    source: "AATMA reference note (client document, undated; public copy privacy-edited)",
     available: true,
     downloadPath: "resources/brief-history-of-agar.pdf",
   },

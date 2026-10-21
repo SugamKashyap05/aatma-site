@@ -1,6 +1,7 @@
 import { Sprout, Users, Shield, Rocket, Handshake, TreePine } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { assetUrl } from "@/lib/utils";
+import { ProvenanceBadge } from "@/components/ui/provenance-badge";
 
 /**
  * ResearchSections — science-communication content blocks for the /research page.
@@ -51,21 +52,26 @@ function SectionHeading({
   icon,
   title,
   children,
+  provenance,
 }: {
   id: string;
   icon: React.ReactNode;
   title: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  provenance?: "site-summary" | "client-publication";
 }) {
   return (
     <Reveal variant="fade" delay={0}>
       <div className="mb-8 md:mb-10">
-        <span className="inline-flex items-center gap-2 text-gold text-sm font-semibold tracking-[0.25em] uppercase bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 rounded-sm mb-4">
+        <span className="glass-surface-subtle inline-flex items-center gap-2 text-gold-light text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-4">
           {icon}
         </span>
         <h2 id={id} className="font-display font-bold text-2xl md:text-3xl text-white mb-3 scroll-mt-24">
           {title}
         </h2>
+        {provenance && (
+          <ProvenanceBadge provenance={provenance} className="mb-3" />
+        )}
         {children && (
           <p className="text-white/70 text-base md:text-lg max-w-3xl leading-relaxed">
             {children}
@@ -79,8 +85,8 @@ function SectionHeading({
 function Callout({ children }: { children: React.ReactNode }) {
   return (
     <div className="mt-6 p-4 md:p-5 bg-gold/[0.06] border border-gold/20 rounded-sm">
-      <p className="text-white/60 text-sm leading-relaxed">
-        <span className="text-gold font-semibold">Note: </span>
+      <p className="text-cream/75 text-sm leading-relaxed">
+        <span className="text-gold-light font-semibold">Note: </span>
         {children}
       </p>
     </div>
@@ -94,6 +100,7 @@ export function RhizosphereSection() {
         id="rhizosphere-heading"
         icon={<Sprout size={14} />}
         title="Rhizosphere Mycoflora"
+        provenance="site-summary"
       >
         What are soil fungi?
       </SectionHeading>
@@ -130,6 +137,7 @@ export function MicrobialWorkforceSection() {
         id="microbial-workforce-heading"
         icon={<Users size={14} />}
         title="The Microbial Workforce"
+        provenance="site-summary"
       >
         Bacteria & Actinomycetes
       </SectionHeading>
@@ -143,7 +151,7 @@ export function MicrobialWorkforceSection() {
           </p>
           <div className="space-y-2">
             <p className="text-white/80 font-medium">Everyday analogies:</p>
-            <ul className="list-disc list-inside space-y-1 text-white/60">
+            <ul className="list-disc list-inside space-y-1 text-cream/75">
               <li><strong className="text-white/80">Bacteria</strong> = the recycling crew, converting waste into nutrients</li>
               <li><strong className="text-white/80">Actinomycetes</strong> = the soil's security team, guarding against disease-causing microbes</li>
             </ul>
@@ -170,6 +178,7 @@ export function BiopesticideSection() {
         id="biopesticide-heading"
         icon={<Shield size={14} />}
         title="Biopesticide Potential"
+        provenance="site-summary"
       >
         Nature's own pest control
       </SectionHeading>
@@ -200,6 +209,7 @@ export function PGPRSection() {
         id="pgpr-heading"
         icon={<Rocket size={14} />}
         title="PGPR for Cultivation"
+        provenance="site-summary"
       >
         Plant Growth-Promoting Rhizobacteria (PGPR)
       </SectionHeading>
@@ -210,13 +220,13 @@ export function PGPRSection() {
             <strong className="text-white/90">PGPR</strong> are friendly bacteria that live on root surfaces 
             and help plants grow better by:
           </p>
-          <ul className="list-disc list-inside space-y-1 text-white/60">
+          <ul className="list-disc list-inside space-y-1 text-cream/75">
             <li>Fixing nitrogen from the air</li>
             <li>Solubilizing locked-up phosphorus</li>
             <li>Producing growth-hormone-like substances</li>
           </ul>
           <p className="text-white/80 font-medium">Practical benefits for farmers:</p>
-          <ul className="list-disc list-inside space-y-1 text-white/60">
+          <ul className="list-disc list-inside space-y-1 text-cream/75">
             <li>Higher yields with less fertilizer</li>
             <li>Improved root development</li>
             <li>Greater tolerance to salty or dry conditions</li>
@@ -242,6 +252,7 @@ export function AAUPartnershipSection() {
         id="aau-heading"
         icon={<Handshake size={14} />}
         title="AAU Partnership"
+        provenance="site-summary"
       >
         Collaborating for knowledge
       </SectionHeading>
@@ -254,7 +265,7 @@ export function AAUPartnershipSection() {
         </p>
         <div className="space-y-2">
           <p className="text-white/80 font-medium">What the partnership does:</p>
-          <ul className="list-disc list-inside space-y-1 text-white/60">
+          <ul className="list-disc list-inside space-y-1 text-cream/75">
             <li>Translates complex microbiology into practical advice</li>
             <li>Tests local microbial isolates for suitability in Assam's agro-ecosystems</li>
             <li>Shares results via farmer-friendly materials and training sessions</li>
@@ -276,6 +287,7 @@ export function ConservationHabitatSection() {
         id="conservation-heading"
         icon={<Sprout size={14} />}
         title="Conservation & Habitat"
+        provenance="site-summary"
       >
         Protecting the wild Aquilaria
       </SectionHeading>
@@ -323,6 +335,7 @@ export function MarketPerfumerySection() {
         id="perfumery-heading"
         icon={<Rocket size={14} />}
         title="Agar Oil & Perfumery"
+        provenance="site-summary"
       >
         The golden essence
       </SectionHeading>
@@ -367,6 +380,7 @@ export function PlantationGrowthSection() {
         id="plantation-heading"
         icon={<TreePine size={14} />}
         title="Plantation Growth"
+        provenance="site-summary"
       >
         From forest to farm
       </SectionHeading>

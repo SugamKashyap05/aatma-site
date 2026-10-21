@@ -12,6 +12,7 @@ const PAGE_PATH_MAP: Record<string, string> = {
   "/research": "research",
   "/books": "books",
   "/news": "news",
+  "/resources": "resources",
 };
 
 /**
@@ -29,7 +30,7 @@ export function getPageFromPath(pathname: string): string | null {
  * Reactive hook that returns the current page identifier
  * based on the browser's route. Re-renders on route change.
  *
- * Returns: "home" | "press" | "history" | "policy" | "research" | "books" | "news" | null
+ * Returns: "home" | "press" | "history" | "policy" | "research" | "books" | "news" | "resources" | null
  */
 export function useCurrentRoute(): string | null {
   const location = useLocation();

@@ -35,7 +35,7 @@ Neither gate blocks Wave 0 or Wave 2.
 **Depends on:** nothing. **This is the highest-value card in the plan** — it converts two vague claims into primary-law-precise ones.
 
 ### P-03 · Verify AATMA leadership against `src/data/content.ts`
-**Build:** The HT clipping names **Ataur Rahman (President)** and **Helal Uddin (General Secretary)**, and credits **Chandra Mohan Patowary (Minister of Forests)**. Compare against `src/data/content.ts` and correct or confirm. Do not invent — if content.ts disagrees, report the conflict rather than silently overwriting (per `AGENTS.md` §8).
+**Build:** The HT clipping names **[REDACTED: AATMA member] (President)** and **Helal Uddin (General Secretary)**, and credits **Chandra Mohan Patowary (Minister of Forests)**. Compare against `src/data/content.ts` and correct or confirm. Do not invent — if content.ts disagrees, report the conflict rather than silently overwriting (per `AGENTS.md` §8).
 **Source:** research §3 — Hindustan Times, 17 Jan 2023.
 **Acceptance:** A short note stating for each named role whether content.ts matches the source; any mismatch raised as an explicit conflict for the user to decide.
 **Depends on:** nothing.

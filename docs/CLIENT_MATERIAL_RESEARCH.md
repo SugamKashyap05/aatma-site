@@ -11,10 +11,10 @@
 |---|------|------|------|--------|
 | 1 | `No. 20 eCF No. 237152 Dated 12-01-2023.pdf` | Gazette notification | 20.8 MB, 67 pp | ✅ Read (rendered, vision-read) |
 | 2 | `Assam ToF (SM) Rules, 2022.pdf` | Gazette notification | 21.4 MB, 25 pp | ✅ Read (rendered, vision-read) |
-| 3 | `WhatsApp Image ... 12.28.18 AM.jpeg` | Newspaper clipping | 697 KB | ✅ Transcribed verbatim |
-| 4 | `WhatsApp Image ... 12.28.18 AM (1).jpeg` | Newspaper clipping | 271 KB | ✅ Transcribed verbatim |
-| 5 | `WhatsApp Image ... 12.28.18 AM (2).jpeg` | Newspaper clipping | 76 KB | ⏳ Vision rate-limited (429) — **not yet read** |
-| 6 | `WhatsApp Image ... 12.30.17 AM.jpeg` | Newspaper clipping | 94 KB | ✅ Transcribed verbatim |
+| 3 | `WhatsApp Image ... 12.28.18 AM.jpeg` | Newspaper clipping | 697 KB | ✅ Key claims extracted; current `/news` entry is a checked summary, not a complete or verbatim article transcription. |
+| 4 | `WhatsApp Image ... 12.28.18 AM (1).jpeg` | Newspaper clipping | 271 KB | ✅ Key claims extracted; current `/news` entry is a checked summary, not a complete or verbatim article transcription. |
+| 5 | `WhatsApp Image ... 12.28.18 AM (2).jpeg` | Newspaper clipping | 76 KB | ⚠️ Partially inspected 19 Oct 2026. The image contains a press-meet banner dated 14 Jan 2023, but the newspaper outlet and publication date are not legible; article text is too small for a reliable transcription. Not included in `/news` pending a clearer source image or verified citation. |
+| 6 | `WhatsApp Image ... 12.30.17 AM.jpeg` | Newspaper clipping | 94 KB | ✅ Key claims extracted; current `/news` entry is a checked summary, not a complete or verbatim article transcription. |
 | 7 | Facebook post URL | Video | — | ✅ Downloaded + audio extracted |
 | 8 | `fb.watch/i3fNRuwuyW` | Video | — | ✅ Downloaded + audio extracted |
 
@@ -121,7 +121,7 @@
 - Government keen to notify a **separate investment promotion policy** for WBIs including individual artisans
 - A **web portal** for implementing the new rules was "slated to be launched very soon"
 
-> **Note for the site:** this article gives the **62-day** and **74-day** figures. These are precise, quotable, and *not currently on the site*.
+**Note for the site:** the current checked News summary includes the **62-day** and **74-day** figures and additional claims extracted from this clipping. It is a site-written summary, not a complete or verbatim article transcription. The remaining 11-image scan/page triage and completeness limits are in `docs/NEWS_RESEARCH_COMPLETENESS_REPORT.md`.
 
 ---
 
@@ -132,7 +132,7 @@
 ### This is the written record of the SAME press meet captured in both client videos.
 
 **Named people**
-- **Ataur Rahman** — President, AATMA
+- **[REDACTED: AATMA member]** — President, AATMA
 - **Helal Uddin** — General Secretary, AATMA
 - **Chandra Mohan Patowary** — Minister of Forests, Government of Assam (credited for the rules' notification)
 - **Dr Himanta Biswa Sarma** — Chief Minister
@@ -264,7 +264,7 @@
 >
 > **What is still recoverable without a transcript** — the video's on-screen text and context are fully readable and independently sufficient:
 > - The press-meet banner gives organisation, address, date, time, venue (§5)
-> - The **Hindustan Times clipping (§3) reports this exact press meet** — same date (14 Jan 2023), same venue (Hojai head office), same organisation, and quotes President Ataur Rahman and General Secretary Helal Uddin by name. The written record supplies the substance the audio would have carried.
+> - The **Hindustan Times clipping (§3) reports this exact press meet** — same date (14 Jan 2023), same venue (Hojai head office), same organisation, and quotes President [REDACTED: AATMA member] and General Secretary Helal Uddin by name. The written record supplies the substance the audio would have carried.
 > - Frames confirm the broadcasters, the mic array (News18, Pratidin, Asom First), and the seating.
 >
 > **To get a genuine transcript you need one of:**
@@ -307,7 +307,7 @@
 | Agar International Trade Centre, Golaghat | Assam Tribune 18 Nov 2024 | ⚠️ **New — infrastructure item** |
 | Market data (7.7% CAGR, $44.05bn → $64bn) | Assam Tribune 18 Nov 2024 | ⚠️ **New** |
 | Assam Agar International Trade Centre address "Main Road, Hojai – 782435" | Visible on the press-meet banner in both videos | ⚠️ **New — and it is AATMA's own contact address** |
-| AATMA leadership (Ataur Rahman, President; Helal Uddin, General Secretary) | HT article 17 Jan 2023 | ⚠️ **Named roles — verifies or corrects `src/data/content.ts`** |
+| AATMA leadership ([REDACTED: AATMA member], President; Helal Uddin, General Secretary) | HT article 17 Jan 2023 | ⚠️ **Named roles — verifies or corrects `src/data/content.ts`** |
 
 ---
 
@@ -329,7 +329,7 @@
 2. **A policy section upgraded from paraphrase to primary law** — exact unit-capacity thresholds, exact notification numbers and dates, the two hectare thresholds (§4)
 3. **A press/media archive** — three attributable newspaper articles with publication, date, author, and headline (§1, §2, §3)
 4. **A video press-meet feature** — two broadcasts of the 14 Jan 2023 Hojai press meet, with transcripts, giving the full spoken context the client explicitly asked for (§5)
-5. **Verified leadership attribution** — Ataur Rahman (President), Helal Uddin (General Secretary), plus ministerial credit to Chandra Mohan Patowary (§3)
+5. **Verified leadership attribution** — [REDACTED: AATMA member] (President), Helal Uddin (General Secretary), plus ministerial credit to Chandra Mohan Patowary (§3)
 6. **AATMA's own address** — Main Road, Hojai – 782435 — confirmed from the press-meet banner (§5)
 
 **Sequencing note:** items 1 and 2 above depend on finishing the gazette read (limitation §7.2) and reading item 5 (§7.1). Everything else can proceed now.

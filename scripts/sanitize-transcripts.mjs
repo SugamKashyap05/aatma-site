@@ -1,7 +1,7 @@
 /**
  * Sanitize transcript markdown files for web display.
- * Strips named individuals from spoken content — speaker labels S1/S2/S3 only.
- * Reads from docs/, writes sanitized copies to docs/web/.
+ * Keeps only speaker transcript blocks, strips named individuals, and omits
+ * internal research notes. Reads from docs/, writes public-safe copies to docs/web/.
  */
 import { readFileSync, writeFileSync, readdirSync } from "fs";
 import { join, dirname } from "path";
@@ -13,7 +13,7 @@ const outDir = join(__dirname, "..", "docs", "web");
 
 const NAMED_INDIVIDUALS = [
   // English variants
-  "Ataur Rahman",
+  "[REDACTED: AATMA member]",
   "Helal Uddin",
   "Anwar Hussain",
   "Ramesh Nath",
@@ -40,24 +40,51 @@ function sanitizeNames(text) {
   return result;
 }
 
+function extractSpeakerTranscript(text) {
+  const output = [];
+  let inSpeakerBlock = false;
+
+  for (const line of text.split(/\r?\n/)) {
+    if (/^#{1,6}\s+(?:Facts extracted|Verification summary|Speaker attribution|File locations|Still outstanding|Files|What this changes|Notes on this translation)/i.test(line)) {
+      break;
+    }
+
+    if (/^#{2,4}\s+(?:Speaker|वक्ता)\s*\d+\s*[—–-]/.test(line)) {
+      inSpeakerBlock = true;
+      output.push(line);
+      continue;
+    }
+
+    if (/^#{1,6}\s+/.test(line)) {
+      inSpeakerBlock = false;
+      continue;
+    }
+
+    if (inSpeakerBlock) output.push(line);
+  }
+
+  const transcript = output.join("\n").trim();
+  if (!transcript) throw new Error("No speaker transcript found; refusing to write empty public file.");
+  return `${transcript}\n`;
+}
+
 const files = readdirSync(docsDir).filter((f) =>
   f.startsWith("TRANSCRIPT_PRESS_MEET_2023-01-14") && f.endsWith(".md")
 );
 
 for (const file of files) {
   const raw = readFileSync(join(docsDir, file), "utf-8");
-  const sanitized = sanitizeNames(raw);
+  const sanitized = extractSpeakerTranscript(sanitizeNames(raw));
   const outPath = join(outDir, file);
   writeFileSync(outPath, sanitized, "utf-8");
 
-  // Report
   const remaining = NAMED_INDIVIDUALS.filter((name) =>
     sanitized.toLowerCase().includes(name.toLowerCase())
   );
   console.log(
-    `${file}: ${raw.length} -> ${sanitized.length} chars` +
+    `${file}: ${raw.length} -> ${sanitized.length} transcript chars` +
       (remaining.length ? ` (REMAINING: ${remaining.join(", ")})` : " [clean]")
   );
 }
 
-console.log(`\nWrote ${files.length} sanitized files to docs/web/`);
+console.log(`\nWrote ${files.length} transcript-only files to docs/web/`);

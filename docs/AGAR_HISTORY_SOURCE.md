@@ -45,8 +45,8 @@
 | Period | Event |
 |---|---|
 | **1905–06** | Agarwood was found abundantly in the forests of the North Eastern region, and people of **Sylhet** (now in Bangladesh) used it for extracting oil |
-| **Post-Independence** | Certain entrepreneurs of **Barpather** started an agarwood business in Barpather in their homesteads. They collected raw agarwood from the forest mahals of **Karbi Anglong and Naga Hills** |
-| **Following years** | Visionary people of the **Hojai** area entered the trade and started small-scale distillation at Hojai |
+| **After Independence of India** | Certain entrepreneurs of **Barpather** started an agarwood business in Barpather in their homesteads. They collected raw agarwood from the forest mahals of **Karbi Angong and Naga Hills** |
+| **Meanwhile (no year stated)** | “Meanwhile, several enthusiastic and visionary people of Hojai area entered in the trade and started small-scale distillation at Hojai.” |
 | **A few years later** | The agar trade and distillery business also began in **Naharani and other parts of Jorhat and Sibsagar districts**, using agarwood harvested from their own homegrown trees |
 | **Late 1960s** | A group from Hojai took leases of agar mahals in **NEFA and Bhutan**, collecting agar there and bringing it to Hojai |
 | **Until 1970** | The Government of Assam leased agarwood mahals for a fixed period. By this time agar trade had developed as a **cottage industry in the unorganised sector** |
@@ -65,14 +65,14 @@
 - The trade, being a cottage-based industry in the unorganised sector, suffered many obstacles — largely from a lack of knowledge on the part of traders as well as law-enforcing agencies, plus undue and uncalled-for interference.
 - It was felt by prominent Hojai traders **back in 1975–76** that some form of association or NGO was needed, to improve and expand the trade.
 - **The All Assam Agar Traders and Agaroil Manufacturers' Association (AATMA) was formed in 1976**, under the presidency and secretaryship of:
-  - **(L) Hazi Anfar Ali** — President
-  - **(L) Hazi Samsul Islam** — Secretary
-  - **(L) Binay Kumar Paul**
+  - **(L) [REDACTED: AATMA member]** — President
+  - **(L) [REDACTED: AATMA member]** — Secretary
+  - **(L) [REDACTED: AATMA member]**
 - **Head Office at Hojai**, duly registered vide **Reg. No. 664 of 1978–79**.
 - Since then the Association continuously fought legally and by submitting representations to government to remove interference and hurdles.
 - **In 2000, AATMA was reorganised** in a General Meeting at Hojai, with:
-  - **Ataur Rahman** as **President**
-  - **(L) Jamal Uddin Choudhury** as **General Secretary**
+  - **[REDACTED: AATMA member]** as **President**
+  - **(L) [REDACTED: AATMA member]** as **General Secretary**
   - and an Executive body.
 
 ## 6. National seminar on agarwood plantation
@@ -125,7 +125,7 @@
 
 > "Because the agar industry was never officially legalised or exempted under these rigid rules — largely due to the persistent unwillingness of the then Forest Minister up until 2016 — the everyday reality for those on the ground became a nightmare. Routine transportation of agar wood, even when legally harvested from private cultivated lands, was treated as a criminal act. Business personnel and local cultivators faced relentless harassment from both legal authority and forest department officials. This hostile environment led to numerous unjustified seizures of cultivated agar wood, causing immense financial distress and systemic disruption for the traders and farmers struggling to keep this traditional industry alive."
 
-- **24 August 2016** — an AATMA delegation led by **Humayun Chaudhury** met the then Forest Minister **Smt. Pramila Rani Brahma** at the **Hojai Forest Circuit House**. They submitted a memorandum on the challenges the industry faced under the 2000 Rules.
+- **24 August 2016** — an AATMA delegation led by **[REDACTED: AATMA member]** met the then Forest Minister **Smt. Pramila Rani Brahma** at the **Hojai Forest Circuit House**. They submitted a memorandum on the challenges the industry faced under the 2000 Rules.
 - She took a keen interest, and **at her behest a proposal was submitted to Government** to classify the agar wood industry as a **Secondary Wood Based Industry**, excluding it from the 2000 Rules.
 - Subsequently, under her initiative, the Assam Forest Department organised a **National Conference on "Agarwood & Oil Industries: Prospect & Possibilities"**, held on **28 October 2016 at NEDFi House, Guwahati**.
 
@@ -148,12 +148,12 @@
 
 | Name | Role | Status |
 |---|---|---|
-| **(L) Hazi Anfar Ali** | Founding **President**, 1976 | Deceased |
-| **(L) Hazi Samsul Islam** | Founding **Secretary**, 1976 | Deceased |
-| **(L) Binay Kumar Paul** | Founding office-bearer, 1976 | Deceased |
-| **(L) Jamal Uddin Choudhury** | **General Secretary** from 2000 reorganisation | Deceased |
-| **Ataur Rahman** | **President** from 2000 reorganisation | Current (per HT, Jan 2023) |
-| **Humayun Chaudhury** | Led the 24 Aug 2016 delegation | — |
+| **(L) [REDACTED: AATMA member]** | Founding **President**, 1976 | Deceased |
+| **(L) [REDACTED: AATMA member]** | Founding **Secretary**, 1976 | Deceased |
+| **(L) [REDACTED: AATMA member]** | Founding office-bearer, 1976 | Deceased |
+| **(L) [REDACTED: AATMA member]** | **General Secretary** from 2000 reorganisation | Deceased |
+| **[REDACTED: AATMA member]** | **President** from 2000 reorganisation | Current (per HT, Jan 2023) |
+| **[REDACTED: AATMA member]** | Led the 24 Aug 2016 delegation | — |
 | **Dr. P.K. Hajra** | Ex-Director, Botanical Survey of India; presided the Nov 2000 seminar | — |
 | **Shri Siv Kumar, IFS** | DFO Hojai, Oct 2005 — denied verification | Named critically |
 | **Smt. Pramila Rani Brahma** | Forest Minister, 2016 | Named appreciatively |
@@ -162,7 +162,7 @@
 
 ## Named places
 
-Sylhet (now Bangladesh) · Barpather · Karbi Anglong · Naga Hills · **Hojai** · Naharani · Jorhat · Sibsagar · NEFA · Bhutan · Manipur · Silchar · Bombay (Mumbai) · **Guwahati** (Administrative Staff College, Rabindra Bhavan, NEDFi House) · Malaysia · Indonesia · Thailand · Cambodia · Nagaland · Tripura · Meghalaya
+Sylhet (now Bangladesh) · Barpather · Karbi Angong · Naga Hills · **Hojai** · Naharani · Jorhat · Sibsagar · NEFA · Bhutan · Manipur · Silchar · Bombay (Mumbai) · **Guwahati** (Administrative Staff College, Rabindra Bhavan, NEDFi House) · Malaysia · Indonesia · Thailand · Cambodia · Nagaland · Tripura · Meghalaya
 
 ---
 

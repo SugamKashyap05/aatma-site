@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Download, FileText, Calendar, Tag } from "lucide-react";
 import { assetUrl } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
+import DocumentPreviewModal from "@/components/ui/DocumentPreviewModal";
 import type { ResourceDocument } from "@/data/resources";
 
 /** Format an ISO date for display; returns null when the source is undated. */
@@ -31,6 +33,7 @@ export function ResourceDocumentCard({
   const isAvailable = (doc.available ?? false) && Boolean(doc.downloadPath);
   const fileName = doc.downloadPath?.split("/").pop();
   const dateLabel = formatDate(doc.date);
+  const [previewOpen, setPreviewOpen] = useState(false);
 
   return (
     <Reveal variant="up" delay={Math.min(index, 4) * 80}>
@@ -38,7 +41,7 @@ export function ResourceDocumentCard({
         data-doc-type={doc.docType}
         data-doc-category={doc.category}
         data-doc-id={doc.id}
-        className="card-hover glass-surface group relative h-full flex flex-col rounded-sm overflow-hidden"
+        className="card-hover glass-card group relative h-full flex flex-col rounded-sm overflow-hidden"
       >
         {/* Header strip — file type + size */}
         <div className="px-5 py-2.5 flex items-center justify-between gap-3 border-b border-white/10 bg-glass-surface-subtle">
@@ -88,15 +91,28 @@ export function ResourceDocumentCard({
           {/* Action */}
           <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between gap-4">
             {isAvailable ? (
-              <a
-                href={assetUrl(doc.downloadPath as string)}
-                download={fileName}
-                className="inline-flex items-center gap-1.5 text-sm font-medium tracking-wide text-white/85 hover:text-gold-light transition-colors duration-300 group/dl rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-0"
-                aria-label={`Download ${doc.title} — ${doc.fileType}, ${doc.fileSize}`}
-              >
-                <Download size={14} aria-hidden="true" focusable="false" />
-                <span>Download</span>
-              </a>
+              <>
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setPreviewOpen(true)}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium tracking-wide text-white/85 hover:text-gold-light transition-colors duration-300 min-h-[44px] rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-0"
+                    aria-label={`Preview ${doc.title} — ${doc.fileType}, ${doc.fileSize}`}
+                  >
+                    <FileText size={14} aria-hidden="true" focusable="false" />
+                    <span>Preview</span>
+                  </button>
+                  <a
+                    href={assetUrl(doc.downloadPath as string)}
+                    download={fileName}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium tracking-wide text-white/70 hover:text-gold-light transition-colors duration-300 min-h-[44px] rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-0"
+                    aria-label={`Download ${doc.title} — ${doc.fileType}, ${doc.fileSize}`}
+                  >
+                    <Download size={14} aria-hidden="true" focusable="false" />
+                    <span>Download</span>
+                  </a>
+                </div>
+              </>
             ) : (
               <span className="inline-flex items-center gap-1.5 text-sm font-medium tracking-wide text-cream/75">
                 <FileText size={14} aria-hidden="true" focusable="false" />
@@ -105,6 +121,22 @@ export function ResourceDocumentCard({
             )}
           </div>
         </div>
+
+        {/* Preview modal */}
+        {isAvailable && (
+          <DocumentPreviewModal
+            open={previewOpen}
+            title={doc.title}
+            pdfUrl={assetUrl(doc.downloadPath as string)}
+            fileName={fileName}
+            meta={
+              [dateLabel, doc.pageCount ? `${doc.pageCount} pages` : null]
+                .filter(Boolean)
+                .join(" · ") || undefined
+            }
+            onClose={() => setPreviewOpen(false)}
+          />
+        )}
       </article>
     </Reveal>
   );

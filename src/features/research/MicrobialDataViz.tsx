@@ -250,11 +250,11 @@ function DonutChart() {
             <div className="w-3 h-3 rounded-sm flex-shrink-0" style={{ backgroundColor: s.color }} />
             <div>
               <span className="text-white/80 text-sm font-medium">{s.label}</span>
-              <span className="text-white/50 text-sm ml-2">{s.pct}%</span>
+              <span className="text-cream/75 text-sm ml-2">{s.pct}%</span>
             </div>
           </div>
         ))}
-        <p className="text-white/40 text-xs mt-1 max-w-[180px]">
+        <p className="text-cream/75 text-xs mt-1 max-w-[180px]">
           Share of total microbial population across all samples
         </p>
       </div>
@@ -275,14 +275,14 @@ export function MicrobialDataViz() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section heading */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs font-medium tracking-wide uppercase mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold-light text-xs font-medium tracking-wide uppercase mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-gold/60" />
             Sample Data Visualization
           </div>
           <h2 id="microbial-viz-heading" className="font-display font-bold text-white text-xl md:text-2xl tracking-wide mb-3">
             Microbial Populations in Rhizosphere Soil
           </h2>
-          <p className="text-white/50 text-sm max-w-2xl mx-auto leading-relaxed">
+          <p className="text-cream/75 text-sm max-w-2xl mx-auto leading-relaxed">
             Exploring the unseen world beneath agarwood trees — comparing fungal, bacterial, and actinomycetes
             populations across plantation zones. These soil microbes play crucial roles in nutrient cycling and plant health.
           </p>
@@ -291,17 +291,17 @@ export function MicrobialDataViz() {
         {/* Charts grid */}
         <div className="grid lg:grid-cols-5 gap-6">
           {/* Bar chart card */}
-          <div className="lg:col-span-3 bg-white/[0.08] backdrop-blur-sm border border-white/15 rounded-sm p-5 md:p-6 card-hover">
+          <div className="lg:col-span-3 glass-card card-hover rounded-sm p-5 md:p-6">
             <div className="flex items-start justify-between mb-4">
               <div>
                 <h3 className="font-display font-bold text-white text-base md:text-lg">
                   Population Comparison by Location
                 </h3>
-                <p className="text-white/40 text-xs mt-1">
+                <p className="text-cream/75 text-xs mt-1">
                   Colony-forming units (CFU) per gram of dry soil
                 </p>
               </div>
-              <span className="text-[10px] font-medium px-2.5 py-1 rounded-full bg-gold/15 text-gold/90 border border-gold/25 uppercase tracking-wider flex-shrink-0">
+              <span className="text-[10px] font-medium px-2.5 py-1 rounded-full bg-gold/15 text-gold-light border border-gold/25 uppercase tracking-wider flex-shrink-0">
                 Sample Data
               </span>
             </div>
@@ -309,17 +309,17 @@ export function MicrobialDataViz() {
           </div>
 
           {/* Donut chart card */}
-          <div className="lg:col-span-2 bg-white/[0.08] backdrop-blur-sm border border-white/15 rounded-sm p-5 md:p-6 card-hover">
+          <div className="lg:col-span-2 glass-card card-hover rounded-sm p-5 md:p-6">
             <div className="flex items-start justify-between mb-4">
               <div>
                 <h3 className="font-display font-bold text-white text-base md:text-lg">
                   Overall Composition
                 </h3>
-                <p className="text-white/40 text-xs mt-1">
+                <p className="text-cream/75 text-xs mt-1">
                   Share of total microbial population
                 </p>
               </div>
-              <span className="text-[10px] font-medium px-2.5 py-1 rounded-full bg-gold/15 text-gold/90 border border-gold/25 uppercase tracking-wider flex-shrink-0">
+              <span className="text-[10px] font-medium px-2.5 py-1 rounded-full bg-gold/15 text-gold-light border border-gold/25 uppercase tracking-wider flex-shrink-0">
                 Sample Data
               </span>
             </div>
@@ -328,31 +328,31 @@ export function MicrobialDataViz() {
         </div>
 
         {/* Data table for accessibility */}
-        <div className="mt-6 bg-white/[0.04] border border-white/10 rounded-sm p-5 md:p-6">
+        <div className="mt-6 glass-card rounded-sm p-5 md:p-6">
           <h3 className="font-display font-bold text-white text-base mb-4">Sample Data Table</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm" role="table" aria-label="Sample microbial count data in CFU per gram of soil">
               <thead>
                 <tr className="border-b border-white/10">
-                  <th className="text-left text-white/60 font-medium py-2.5 pr-4">Location</th>
-                  <th className="text-right text-white/60 font-medium py-2.5 px-4">Fungi (CFU/g)</th>
-                  <th className="text-right text-white/60 font-medium py-2.5 px-4">Bacteria (CFU/g)</th>
-                  <th className="text-right text-white/60 font-medium py-2.5 pl-4">Actinomycetes (CFU/g)</th>
+                  <th className="text-left text-cream/75 font-medium py-2.5 pr-4">Location</th>
+                  <th className="text-right text-cream/75 font-medium py-2.5 px-4">Fungi (CFU/g)</th>
+                  <th className="text-right text-cream/75 font-medium py-2.5 px-4">Bacteria (CFU/g)</th>
+                  <th className="text-right text-cream/75 font-medium py-2.5 pl-4">Actinomycetes (CFU/g)</th>
                 </tr>
               </thead>
               <tbody>
                 {SAMPLE_DATA.map((s) => (
                   <tr key={s.name} className="border-b border-white/5 last:border-0">
                     <td className="text-white/80 py-2.5 pr-4 font-medium">{s.name}</td>
-                    <td className="text-right text-white/60 py-2.5 px-4 tabular-nums">{s.fungi.toLocaleString()}</td>
-                    <td className="text-right text-white/60 py-2.5 px-4 tabular-nums">{s.bacteria.toLocaleString()}</td>
-                    <td className="text-right text-white/60 py-2.5 pl-4 tabular-nums">{s.actinomycetes.toLocaleString()}</td>
+                    <td className="text-right text-cream/75 py-2.5 px-4 tabular-nums">{s.fungi.toLocaleString()}</td>
+                    <td className="text-right text-cream/75 py-2.5 px-4 tabular-nums">{s.bacteria.toLocaleString()}</td>
+                    <td className="text-right text-cream/75 py-2.5 pl-4 tabular-nums">{s.actinomycetes.toLocaleString()}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="text-white/30 text-xs mt-3 italic">
+          <p className="text-cream/75 text-xs mt-3 italic">
             All values are sample data for illustration only — not real research findings.
           </p>
         </div>

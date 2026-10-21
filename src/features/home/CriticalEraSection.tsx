@@ -1,23 +1,26 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { cn, type ClassValue } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
 import { Stagger } from "@/components/ui/reveal";
-import { assetUrl } from "@/lib/utils";
 
 /**
- * CriticalEraSection — card-based section depicting the Critical Era of
- * AATMA's struggle (2000–2016).
+ * CriticalEraSection — selected milestones from the Critical Era of
+ * AATMA's struggle (2000–2016), as documented in the client's
+ * "A BRIEF HISTORY OF AGAR" (§3, pp.3–4).
  *
- * Six cards in a 3×2 responsive grid, each with a year badge, title,
- * description, and optional image. Content is exact from brief §6.
- * Government official names retained; AATMA member names anonymized.
+ * Four cards in a 2×2 responsive grid. Content is exact from the client
+ * source. No AATMA member names are used — the delegation is referenced
+ * generically. Government official names retained per client instruction.
+ *
+ * "Read the full story" links to the agar-story anchor, the dedicated section
+ * carrying the full agarwood trade narrative.
  */
 
 interface EraCard {
   year: string;
   title: string;
   description: string;
-  image?: string;
-  imageAlt?: string;
 }
 
 const ERA_CARDS: EraCard[] = [
@@ -25,35 +28,20 @@ const ERA_CARDS: EraCard[] = [
     year: "2000",
     title: "Rules Notified",
     description:
-      "The Govt. of Assam notified the Assam Wood Based Industries (Establishment and Regulation) Rules, 2000, classifying agar oil extracting units as wood based industries. Cottage industries were required to shift to industrial estates — practically infeasible for thousands of poor households dependent on agar oil distillation.",
-    image: assetUrl("history/critical-era.png"),
-    imageAlt: "Critical era — agar wood processing units",
+      "The Govt. of Assam framed the Assam Wood Based Industries (Establishment and Regulation) Rules, 2000, classifying agar oil extracting units as wood based industries. These rules plunged agar growers and traders into a period of deep uncertainties.",
+
   },
   {
     year: "2005",
     title: "Verification Denied",
     description:
-      "Forest authorities (DFO Hojai) denied verification of consignments. Seven processing units suffered massive financial losses. Several prominent business houses shifted operations to neighboring states like Meghalaya, as well as overseas.",
-  },
-  {
-    year: "2007",
-    title: "Writ Petition Filed",
-    description:
-      "M/s North East Aromatics, a prominent agarwood importing and exporting firm based in Hojai, with the backing of AATMA, filed Writ Petition W.P.(C) No. 6284/2007 in the Gauhati High Court against the State of Assam's Forest Department.",
-  },
-  {
-    year: "2010",
-    title: "Harassment Escalates",
-    description:
-      "Multi-agency alerts were coordinated across Guwahati Airport authorities, Assam Police, Assam Forest Department, and Maharashtra Forest Department to actively search for agar traders and seize their products. Hotel detentions in Maharashtra intensified the pressure on traders.",
-    image: assetUrl("history/critical-era-hardship.jpg"),
-    imageAlt: "Hardship faced by agar traders during the critical era",
+      "In October 2005, the then DFO of Hojai denied verification of consignments. Around seven processing units suffered massive financial losses. Several prominent business houses shifted operations to neighboring states like Meghalaya, as well as overseas.",
   },
   {
     year: "2016",
     title: "Minister's Initiative",
     description:
-      "An AATMA delegation met with the then Forest Minister Pramila Rani Brahma, who took a keen interest in the matter. A proposal was submitted to classify the Agar wood Industry as a Secondary Wood Based Industry by excluding it from the 2000 Rules.",
+      "On August 24, 2016, an AATMA delegation met with the then Forest Minister Pramila Rani Brahma, who took a keen interest in the matter. A proposal was submitted to classify the Agar wood Industry as a Secondary Wood Based Industry by excluding it from the 2000 Rules.",
   },
   {
     year: "2016",
@@ -68,10 +56,10 @@ function EraCardItem({ card, index }: { card: EraCard; index: number }) {
     <Reveal
       variant="up"
       delay={index * 80}
-      className="group relative bg-white rounded-xl border-t-4 border-gold shadow-[0_2px_12px_rgba(0,0,0,0.06)] p-6 md:p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
+      className="group relative bg-cream rounded-xl border-t-4 border-gold shadow-[0_2px_12px_rgba(0,0,0,0.06)] p-6 md:p-7 transition-all duration-300 hover:-translate-y-1 active:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] active:shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
     >
       {/* Year badge */}
-      <span className="inline-block bg-green-deep text-gold font-display font-bold text-sm tracking-wider px-3 py-1 rounded-full mb-4">
+      <span className="inline-block bg-green-deep text-gold-light font-display font-bold text-sm tracking-wider px-3 py-1 rounded-full mb-4">
         {card.year}
       </span>
 
@@ -83,16 +71,7 @@ function EraCardItem({ card, index }: { card: EraCard; index: number }) {
         {card.description}
       </p>
 
-      {card.image && (
-        <div className="mt-5 overflow-hidden rounded-lg">
-          <img
-            src={card.image}
-            alt={card.imageAlt ?? ""}
-            className="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-105"
-            loading="lazy"
-          />
-        </div>
-      )}
+
     </Reveal>
   );
 }
@@ -102,7 +81,7 @@ export function CriticalEraSection({ className }: { className?: ClassValue }) {
     <section
       id="critical-era"
       className={cn(
-        "relative py-20 md:py-28 scroll-mt-20 bg-cream-dark overflow-hidden",
+        "relative py-20 md:py-28 scroll-mt-20 overflow-hidden",
         className,
       )}
     >
@@ -116,7 +95,7 @@ export function CriticalEraSection({ className }: { className?: ClassValue }) {
             Critical Era · 2000–2016
           </span>
           <h2 className="font-display font-bold text-3xl md:text-5xl text-charcoal mb-6">
-            22 Years of Struggle
+            The Critical Era
           </h2>
           <p className="text-text-mute text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
             In the year 2000 the Govt. of Assam notified the Assam Wood Based
@@ -127,12 +106,29 @@ export function CriticalEraSection({ className }: { className?: ClassValue }) {
           </p>
         </Reveal>
 
-        {/* Card grid — 3×2 responsive */}
-        <Stagger staggerMs={100} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Card grid — 2×2 responsive */}
+        <Stagger staggerMs={100} className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {ERA_CARDS.map((card, i) => (
-            <EraCardItem key={`${card.year}-${card.title}`} card={card} index={i} />
+            <EraCardItem
+              key={`${card.year}-${card.title}`}
+              card={card}
+              index={i}
+            />
           ))}
         </Stagger>
+
+        {/* Read the full story link */}
+        <Reveal variant="up" delay={200} className="mt-12 text-center">
+          <Link
+            to="/#agar-story"
+            className="inline-flex items-center gap-2 text-green-deep text-sm font-medium tracking-wide underline decoration-gold/40 underline-offset-4 hover:decoration-gold active:decoration-gold transition-colors duration-300 group min-h-[44px] rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+          >
+            Read the full story
+            <span className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform duration-300">
+              <ArrowRight size={16} strokeWidth={2} />
+            </span>
+          </Link>
+        </Reveal>
       </div>
     </section>
   );

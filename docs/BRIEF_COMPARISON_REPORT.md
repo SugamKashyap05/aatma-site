@@ -57,7 +57,7 @@ Minor grammatical corrections. Content unchanged.
 | Old (1) | New (2) |
 |---------|---------|
 | "Among those the prominent persons were viz. **(L) Jhanu Sen, Bhusan sen, and Jogesh Deb** etc." | *Names removed entirely* — replaced with "certain entrepreneurs of Barpather started business" |
-| "specially **(L) Hazi Mastafauddin Gaoburha, (L) Ajmal Ali, (L) Hazi Anfar Ali** involved in the trade" | *Names removed* — replaced with "several enthusiastic and visionary people of Hojai area entered in the trade" |
+| "specially **(L) Hazi Mastafauddin Gaoburha, (L) Ajmal Ali, (L) [REDACTED: AATMA member]** involved in the trade" | *Names removed* — replaced with "several enthusiastic and visionary people of Hojai area entered in the trade" |
 
 **5 names removed from the trade section.** The new brief deliberately anonymizes the early traders.
 
@@ -143,12 +143,12 @@ New (2): ~15 paragraphs with:
 **AATMA members/office bearers (⚠️ client wants these removed):**
 | Name | Role |
 |------|------|
-| (L) Hazi Anfar Ali | AATMA founder (President/Secretary) |
-| (L) Hazi Samsul Islam | AATMA founder (Secretary) |
-| (L) Binay Kumar Paul | AATMA founder |
-| Ataur Rahman | AATMA President (2000 reorg) |
-| (L) Jamal Uddin Choudhury | AATMA General Secretary (2000 reorg) |
-| Humayun Chaudhury | AATMA delegation lead (2016) |
+| (L) [REDACTED: AATMA member] | AATMA founder (President/Secretary) |
+| (L) [REDACTED: AATMA member] | AATMA founder (Secretary) |
+| (L) [REDACTED: AATMA member] | AATMA founder |
+| [REDACTED: AATMA member] | AATMA President (2000 reorg) |
+| (L) [REDACTED: AATMA member] | AATMA General Secretary (2000 reorg) |
+| [REDACTED: AATMA member] | AATMA delegation lead (2016) |
 
 ### 4.3 Client directive on names
 > "The client has asked us to remove that section [listing names of everyone behind the organization]. Please verify that no names appear in the brief or document, and ensure that no full names of agency members are included, as the client does not want them."
@@ -208,10 +208,10 @@ The current homepage sections (About, AgarStory, Milestones, Members) were built
 ### 6.3 Name anonymization strategy
 | Brief says | Homepage says |
 |------------|---------------|
-| "(L) Hazi Anfar Ali, (L) Hazi Samsul Islam and (L) Binay Kumar Paul" | "AATMA's founding members" |
-| "Ataur Rahman as President" | "AATMA's President at the time" |
-| "(L) Jamal Uddin Choudhury as General Secretary" | "AATMA's General Secretary at the time" |
-| "Humayun Chaudhury led the delegation" | "An AATMA delegation led by its office bearers" |
+| "(L) [REDACTED: AATMA member], (L) [REDACTED: AATMA member] and (L) [REDACTED: AATMA member]" | "AATMA's founding members" |
+| "[REDACTED: AATMA member] as President" | "AATMA's President at the time" |
+| "(L) [REDACTED: AATMA member] as General Secretary" | "AATMA's General Secretary at the time" |
+| "[REDACTED: AATMA member] led the delegation" | "An AATMA delegation led by its office bearers" |
 | "S. Doley, PCCF" | Keep (government official, public record) |
 | "Smt. Pramila Rani Brahma" | Keep (government official, public record) |
 | "Dr. Himanta Biswa Sharma" | Keep (government official, public record) |

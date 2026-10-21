@@ -90,7 +90,7 @@ English
 | Micro/small/medium/large | ✅ | "ক্ষুদ্ৰ, মজলীয়া আৰু বৃহৎ" | ✅ |
 | Registration Committees at Conservator of Forests | ✅ | not stated | ✅ |
 | Units operate from present location | ✅ | not stated | ✅ |
-| Ataur Rahman / Helal Uddin | Speaker 2 = principal speaker | both named | both named ✅ |
+| [REDACTED: AATMA member] / Helal Uddin | Speaker 2 = principal speaker | both named | both named ✅ |
 | Himanta Biswa Sarma | "Dr. Himanta Vishwa Sharma" | ✅ | ✅ |
 
 **The English statement is the strongest single artefact in the whole collection.** It is a prepared, read-aloud text — not spontaneous speech — so it is far more reliable than the Assamese passages, and it independently confirms the HT clipping on eight separate points.
@@ -133,7 +133,7 @@ These facts appear in **both independent transcriptions**, which materially stre
 | Secondary wood-based classification | ✅ | ✅ |
 | ~1,000 industries | ✗ | ✅ (also in HT) |
 | Micro/small/medium/large categories | ✅ | ✅ |
-| Ataur Rahman, President | ✅ | ✅ |
+| [REDACTED: AATMA member], President | ✅ | ✅ |
 | Helal Uddin, General Secretary | ✅ | ✅ |
 | 23 years of struggle | ✅ | ✅ |
 | Five successive governments | ✅ | ✅ |
@@ -157,10 +157,10 @@ These facts appear in **both independent transcriptions**, which materially stre
 | Speaker | Role (inferred) |
 |---|---|
 | **Speaker 1** | The MC / second office-bearer — opens, and later reports the 11 January executive meeting and the three decisions. |
-| **Speaker 2** | The principal speaker. Gives the full history, the struggle account, and reads the English statement. Almost certainly **Ataur Rahman (President)** — he is described as "মাননীয় সভাপতি মহোদয়" (Honourable President) by Speaker 1, and the content matches what HT attributes to him. |
+| **Speaker 2** | The principal speaker. Gives the full history, the struggle account, and reads the English statement. Almost certainly **[REDACTED: AATMA member] (President)** — he is described as "মাননীয় সভাপতি মহোদয়" (Honourable President) by Speaker 1, and the content matches what HT attributes to him. |
 | **Speaker 3** | Two short interjections ("9 December", "veneer mill") — completing Speaker 2's sentences. |
 
-**The transcript never names speakers.** The inference that Speaker 2 is Ataur Rahman is well-supported but remains inference. **Do not attribute quotes to named individuals without confirmation.**
+**The transcript never names speakers.** The inference that Speaker 2 is [REDACTED: AATMA member] is well-supported but remains inference. **Do not attribute quotes to named individuals without confirmation.**
 
 ---
 

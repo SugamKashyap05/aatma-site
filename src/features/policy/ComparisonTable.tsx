@@ -47,7 +47,7 @@ const COMPARISON_DATA: ComparisonRow[] = [
   },
   {
     aspect: "Registration Authority",
-    rule2000: "Not specified in source documents (implied stricter centralized control)",
+    rule2000: "Not specified in source documents",
     rule2022: "Registration Committees at the level of Conservator of Forests concerned — local accessibility",
     trend: "improved",
     source: "Doc 2",
@@ -82,14 +82,14 @@ const COMPARISON_DATA: ComparisonRow[] = [
   },
   {
     aspect: "CITES Compliance",
-    rule2000: "CITES verification was a hurdle — DFO Hojai denied verification in Oct/Nov 2005 on alleged verbal instruction of Forest Minister",
-    rule2022: "Rules made fully CITES compliant — enables import, re-export, and export",
+    rule2000: "CITES verification was a hurdle — in October 2005, DFO Hojai denied verification, allegedly on verbal instruction of the Forest Minister",
+    rule2022: "AATMA's 14 January 2023 press note describes the Rules as fully CITES compliant and says they pave the way for import, re-export, and export",
     trend: "improved",
     source: "Doc 1, Doc 2",
   },
   {
     aspect: "Online Platform",
-    rule2000: "Not mentioned — implied manual processes with significant human interface",
+    rule2000: "Not mentioned in source documents",
     rule2022: "Complete and interactive end-to-end online platform for traders/planters; transparency, timely permissions, reduced human interface",
     trend: "new",
     source: "Doc 2",
@@ -104,7 +104,7 @@ const COMPARISON_DATA: ComparisonRow[] = [
   {
     aspect: "Number of Industries",
     rule2000: "Not specified",
-    rule2022: "About 1000 Agar Wood Based Industries in Assam",
+    rule2022: "AATMA's 14 January 2023 press note reports about 1,000 Agar Wood Based Industries in Assam",
     trend: "new",
     source: "Doc 2",
   },
@@ -173,14 +173,14 @@ const COMPARISON_DATA: ComparisonRow[] = [
   },
   {
     aspect: "DFO Verification Issue",
-    rule2000: "Oct/Nov 2005: DFO Hojai denied verification unlawfully; 6-7 units suffered huge loss",
+    rule2000: "Oct/Nov 2005: DFO Hojai denied verification unlawfully; around seven processing units suffered massive financial losses",
     rule2022: "Not applicable — 2022 rules fully CITES compliant with online platform",
     trend: "improved",
     source: "Doc 1, Doc 2",
   },
   {
     aspect: "Business Migration",
-    rule2000: "7-8 business houses shifted to Meghalaya and abroad",
+    rule2000: "Several prominent business houses shifted operations to neighboring Meghalaya and overseas",
     rule2022: "Not applicable — 2022 rules enable revival within Assam",
     trend: "improved",
     source: "Doc 1",
@@ -198,20 +198,20 @@ function TrendBadge({ trend }: { trend: ComparisonRow["trend"] }) {
     return (
       <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.5 rounded-full">
         <Check className="w-3 h-3" />
-        Improved
+        Client-source characterization
       </span>
     );
   }
   if (trend === "new") {
     return (
-      <span className="inline-flex items-center gap-1 text-xs font-semibold text-gold bg-gold/10 border border-gold/20 px-2 py-0.5 rounded-full">
+      <span className="inline-flex items-center gap-1 text-xs font-semibold text-gold-light bg-gold/10 border border-gold/20 px-2 py-0.5 rounded-full">
         <ArrowRight className="w-3 h-3" />
         New in 2022
       </span>
     );
   }
   return (
-    <span className="inline-flex items-center gap-1 text-xs font-semibold text-white/60 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
+    <span className="inline-flex items-center gap-1 text-xs font-semibold text-cream/75 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
       <AlertTriangle className="w-3 h-3" />
       Changed
     </span>
@@ -232,7 +232,7 @@ export function ComparisonTable() {
         <table className="w-full text-left text-sm">
           <thead>
             <tr className="bg-white/[0.06] border-b border-white/10">
-              <th className="px-5 py-4 font-display font-bold text-gold text-base tracking-wide w-[180px]">
+              <th className="px-5 py-4 font-display font-bold text-gold-light text-base tracking-wide w-[180px]">
                 Aspect
               </th>
               <th className="px-5 py-4 font-display font-bold text-white/90 text-base tracking-wide">
@@ -247,7 +247,7 @@ export function ComparisonTable() {
                   2022 Rules
                 </span>
               </th>
-              <th className="px-5 py-4 font-display font-bold text-white/50 text-sm tracking-wide w-[120px]">
+              <th className="px-5 py-4 font-display font-bold text-cream/75 text-sm tracking-wide w-[120px]">
                 Trend
               </th>
             </tr>
@@ -262,7 +262,7 @@ export function ComparisonTable() {
               >
                 <tr
                   className={cn(
-                    "border-b border-white/5 transition-colors hover:bg-white/[0.03]",
+                    "border-b border-white/5 transition-colors hover:bg-glass-card active:bg-glass-surface-subtle",
                     i % 2 === 0 ? "bg-white/[0.01]" : "bg-transparent"
                   )}
                 >
@@ -270,12 +270,12 @@ export function ComparisonTable() {
                     <span className="font-semibold text-white/90 text-sm leading-snug">
                       {row.aspect}
                     </span>
-                    <span className="block text-white/40 text-xs mt-1">
+                    <span className="block text-cream/75 text-xs mt-1">
                       {row.source}
                     </span>
                   </td>
                   <td className="px-5 py-4 align-top">
-                    <span className="text-white/60 text-sm leading-relaxed">
+                    <span className="text-cream/75 text-sm leading-relaxed">
                       {row.rule2000}
                     </span>
                   </td>
@@ -298,7 +298,7 @@ export function ComparisonTable() {
       <div className="md:hidden space-y-4">
         {COMPARISON_DATA.map((row, i) => (
           <Reveal key={row.aspect} variant="up" delay={i * 40} duration={500}>
-            <div className="bg-white/[0.04] border border-white/10 rounded-lg p-4 space-y-3">
+            <div className="glass-card rounded-lg p-4 space-y-3">
               <div className="flex items-start justify-between gap-3">
                 <h3 className="font-display font-bold text-white text-base leading-snug">
                   {row.aspect}
@@ -310,10 +310,10 @@ export function ComparisonTable() {
                 <div className="flex gap-2">
                   <X className="w-4 h-4 text-red-400 mt-0.5 shrink-0" />
                   <div>
-                    <span className="text-xs font-semibold text-white/50 uppercase tracking-wider">
+                    <span className="text-xs font-semibold text-cream/75 uppercase tracking-wider">
                       2000 Rules
                     </span>
-                    <p className="text-white/60 text-sm leading-relaxed mt-0.5">
+                    <p className="text-cream/75 text-sm leading-relaxed mt-0.5">
                       {row.rule2000}
                     </p>
                   </div>
@@ -322,7 +322,7 @@ export function ComparisonTable() {
                 <div className="flex gap-2">
                   <Check className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
                   <div>
-                    <span className="text-xs font-semibold text-white/50 uppercase tracking-wider">
+                    <span className="text-xs font-semibold text-cream/75 uppercase tracking-wider">
                       2022 Rules
                     </span>
                     <p className="text-white/80 text-sm leading-relaxed mt-0.5">
@@ -332,7 +332,7 @@ export function ComparisonTable() {
                 </div>
               </div>
 
-              <span className="text-white/30 text-xs">{row.source}</span>
+              <span className="text-cream/75 text-xs">{row.source}</span>
             </div>
           </Reveal>
         ))}
@@ -341,10 +341,10 @@ export function ComparisonTable() {
       {/* Footnotes */}
       <Reveal variant="fade" delay={200} duration={600}>
         <div className="mt-6 pt-4 border-t border-white/10">
-          <h4 className="text-gold text-xs font-semibold tracking-[0.2em] uppercase mb-3">
+          <h4 className="text-gold-light text-xs font-semibold tracking-[0.2em] uppercase mb-3">
             Notes
           </h4>
-          <ul className="space-y-1.5 text-white/50 text-xs leading-relaxed">
+          <ul className="space-y-1.5 text-cream/75 text-xs leading-relaxed">
             <li>
               <strong className="text-white/70">Doc 1:</strong> "A brief note on Agar Trade" — Historical narrative of agar trade in Assam
             </li>
@@ -354,8 +354,8 @@ export function ComparisonTable() {
             <li>
               <strong className="text-white/70">Doc 3:</strong> AATMA to HCM — Memorandum to Chief Minister of Assam
             </li>
-            <li className="pt-2 text-white/40 italic">
-              "Improved" indicates the 2022 rules are more favorable to the agar trade. "New" indicates provisions introduced in 2022. "Changed" indicates a neutral modification.
+            <li className="pt-2 text-cream/75 italic">
+              Trend labels describe the client-supplied source's characterization; they are not an independent legal assessment.
             </li>
           </ul>
         </div>

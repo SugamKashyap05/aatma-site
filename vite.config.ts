@@ -4,9 +4,12 @@ import tailwindcss from '@tailwindcss/vite'
 import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
-  // CI sets VITE_BASE_PATH=/aatma-site/ for GitHub Pages subpath deploys.
-  // Locally it stays './' so the dist folder works from any location.
-  base: process.env.VITE_BASE_PATH || './',
+  // Base must be ABSOLUTE for SPA deep routes to resolve. A relative base ('./')
+  // makes index.html emit "./assets/...", which a deep route like /news/:slug
+  // resolves against /news/ -> /news/assets/... -> 404 (blank page).
+  // Default '/' works for root-served static hosts and `vite preview`.
+  // CI overrides with VITE_BASE_PATH=/aatma-site/ for GitHub Pages subpath deploys.
+  base: process.env.VITE_BASE_PATH || '/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

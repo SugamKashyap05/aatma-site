@@ -115,8 +115,3 @@ aatma-site/
 Full detail in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 
 ---
-
-## Contact
-
-**AATMA** — Main Road, Hojai – 782435, Assam, India
-+91 94014 82133 · aatma20676@gmail.com

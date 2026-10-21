@@ -53,11 +53,11 @@ export function ChartFrame({
   note,
 }: ChartFrameProps) {
   return (
-    <figure className="my-10 rounded-xl border border-white/10 bg-white/[0.04] p-5 md:p-7 backdrop-blur-sm">
+    <figure className="my-10 glass-surface rounded-xl p-5 md:p-7">
       <figcaption className="mb-5">
         <h3 className="font-display text-lg text-cream md:text-xl">{title}</h3>
         {subtitle && (
-          <p className="mt-1 text-sm leading-relaxed text-cream/60">{subtitle}</p>
+          <p className="mt-1 text-sm leading-relaxed text-cream/75">{subtitle}</p>
         )}
       </figcaption>
 
@@ -83,18 +83,18 @@ export function ChartFrame({
 
       <div className="aatma-chart-enter">{children}</div>
 
-      {note && <p className="mt-4 text-xs leading-relaxed text-cream/45">{note}</p>}
+      {note && <p className="mt-4 text-xs leading-relaxed text-cream/75">{note}</p>}
 
-      <figcaption className="mt-5 border-t border-white/10 pt-3 text-xs leading-relaxed text-cream/40">
-        <span className="text-cream/55">Source:</span> {source.publication},{" "}
+      <figcaption className="mt-5 border-t border-white/10 pt-3 text-xs leading-relaxed text-cream/75">
+        <span className="text-cream">Source:</span> {source.publication},{" "}
         {source.date}
         {source.isPressEstimate && (
-          <span className="ml-2 inline-flex items-center rounded-full border border-gold/25 bg-gold/10 px-2 py-0.5 text-[10px] uppercase tracking-wide text-gold">
+          <span className="ml-2 inline-flex items-center rounded-full border border-gold/25 bg-gold/10 px-2 py-0.5 text-[10px] uppercase tracking-wide text-gold-light">
             press estimate
           </span>
         )}
         {source.isPressEstimate && (
-          <span className="mt-1 block text-cream/35">
+          <span className="mt-1 block text-cream/75">
             Reported figures from journalism, not AATMA's own research — cite with
             care.
           </span>
@@ -137,7 +137,7 @@ export const CHART_COLORS = {
   greenMid: "var(--color-green-mid)",
   cream: "var(--color-cream)",
   /** For muted text inside charts (gridlines, axis labels). */
-  creamSoft: "color-mix(in srgb, var(--color-cream) 55%, transparent)",
+  creamSoft: "color-mix(in srgb, var(--color-cream) 75%, transparent)",
   creamFaint: "color-mix(in srgb, var(--color-cream) 30%, transparent)",
   gridline: "color-mix(in srgb, var(--color-cream) 12%, transparent)",
 } as const;

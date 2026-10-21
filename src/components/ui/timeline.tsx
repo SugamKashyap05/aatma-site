@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { routeUrl } from "@/components/ui/Navbar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -113,7 +115,7 @@ export const Timeline = ({
         {/* Year selector — left column */}
         <div className="relative flex flex-col items-center shrink-0 w-full lg:w-auto lg:col-span-1 col-span-12">
           <div
-            className="flex flex-row lg:flex-col gap-3 lg:h-[500px] overflow-auto no-scrollbar md:snap-y snap-x lg:py-20 lg:px-0 px-20 snap-mandatory w-full"
+            className="flex flex-row lg:flex-col gap-3 lg:h-[500px] overflow-auto no-scrollbar snap-x lg:py-20 lg:px-0 px-4 sm:px-20 snap-proximity w-full"
             style={{ scrollBehavior: "smooth" }}
           >
             {items.map((item, index) => (
@@ -128,7 +130,7 @@ export const Timeline = ({
                   "rounded-full px-5! transition-all duration-300 shrink-0 snap-center",
                   activeIndex === index
                     ? "bg-gold text-green-deep border-gold shadow-lg shadow-gold/30"
-                    : "border-white/20 text-white/60 hover:text-white hover:border-gold/40"
+                    : "border-white/20 text-cream/75 hover:text-white hover:border-gold/40"
                 )}
               >
                 <span className="text-sm font-medium tracking-tight">
@@ -158,11 +160,11 @@ export const Timeline = ({
               <div className="flex-1 flex flex-col items-start gap-3 xl:ps-10 xl:pe-16 lg:col-span-6">
                 <Badge
                   variant="secondary"
-                  className="rounded-full h-6 px-3 py-1 font-normal bg-white/10 text-gold border border-gold/30"
+                  className="rounded-full h-6 px-3 py-1 font-normal bg-white/10 text-gold-light border border-gold/30"
                 >
                   {activeItem.badge}
                 </Badge>
-                <h2 className="text-5xl md:text-5xl lg:text-8xl font-medium tracking-tight text-gold font-display">
+                <h2 className="text-5xl md:text-5xl lg:text-8xl font-medium tracking-tight text-gold-light font-display">
                   {activeItem.year}
                 </h2>
                 <h3 className="text-2xl font-medium text-white leading-tight font-display">
@@ -202,20 +204,20 @@ export const Timeline = ({
                   <a
                     href={activeItem.link}
                     target="_blank"
-                    className="flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-light transition-colors group"
+                    className="flex items-center gap-2 text-sm font-medium text-gold-light hover:text-gold-light active:text-gold-light transition-colors group"
                   >
                     Learn More
-                    <ArrowRight className="w-4 h-4 group-hover:-rotate-45 duration-200 transition-all" />
+                    <ArrowRight className="w-4 h-4 group-hover:-rotate-45 group-active:-rotate-45 duration-200 transition-all" />
                   </a>
                 )}
                 {!activeItem.link && (
-                  <a
-                    href="/#contact"
-                    className="flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-light transition-colors text-left group"
+                  <Link
+                    to={routeUrl("/#contact")}
+                    className="flex items-center gap-2 text-sm font-medium text-gold-light hover:text-gold-light active:text-gold-light transition-colors duration-300 text-left group"
                   >
                     Learn More
-                    <ArrowRight className="w-4 h-4 group-hover:-rotate-45 duration-200 transition-all" />
-                  </a>
+                    <ArrowRight className="w-4 h-4 group-hover:-rotate-45 group-active:-rotate-45 duration-200 transition-all" />
+                  </Link>
                 )}
               </div>
             </motion.div>

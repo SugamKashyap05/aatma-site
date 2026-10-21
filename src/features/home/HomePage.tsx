@@ -1,4 +1,4 @@
-import { ParallaxHero } from "@/features/hero/ParallaxHero";
+import { AatmaHero } from "@/features/hero/AatmaHero";
 import { About } from "@/features/about/About";
 import { AgarStory } from "@/features/agarStory/AgarStory";
 import { SanchiPaatSection } from "@/features/home/SanchiPaatSection";
@@ -8,13 +8,14 @@ import { AchievementSection } from "@/features/home/AchievementSection";
 import { NdfFindingsSection } from "@/features/home/NdfFindingsSection";
 import { RulesSection } from "@/features/home/RulesSection";
 import { ChallengesSection } from "@/features/home/ChallengesSection";
-import { PressSection } from "@/features/news/PressSection";
+import { PressTeaser } from "@/features/home/PressTeaser";
 import { LatestNewsTeaser } from "@/features/news/LatestNewsTeaser";
-import { Contact } from "@/features/contact/Contact";
 import { Footer } from "@/features/footer/Footer";
-import { Navbar } from "@/components/ui/Navbar";
-import { GamosaBorder } from "@/components/ui/GamosaBorder";
+import { ImmersiveNavbar } from "@/components/ui/ImmersiveNavbar";
+import { VideoBackground } from "@/components/ui/VideoBackground";
+
 import { Reveal } from "@/components/ui/reveal";
+import { AmbientMotion } from "@/features/ambient/AmbientMotion";
 import { useDevice } from "@/context/DeviceContext";
 
 /**
@@ -27,64 +28,70 @@ import { useDevice } from "@/context/DeviceContext";
  * after first trigger, so animations fire once. Internal Reveal/Stagger
  * usage inside each section component is untouched — their timing and
  * staggering are preserved.
- *
- * GamosaBorder dividers separate major section groups:
- *   1. After Hero (hero → content transition)
- *   2. After Sanchi Paat (heritage → trade narrative)
- *   3. After Achievement (victory → ongoing work)
  */
 export function HomePage() {
   const { tier } = useDevice();
+  const isMobile = tier === "mobile";
 
   return (
     <>
-      <ParallaxHero />
-      <div className="relative z-10">
-        <Navbar />
-        <GamosaBorder />
-        {/* Positive rootMargin on Reveal wrappers ensures sections reach
-            opacity:1 before the browser's lazy-load threshold, so lazy images
-            inside actually load instead of being deferred forever. */}
-        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
-          <About deviceTier={tier} />
-        </Reveal>
-        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
-          <SanchiPaatSection />
-        </Reveal>
-        <GamosaBorder />
-        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
-          <AgarStory deviceTier={tier} />
-        </Reveal>
-        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
-          <FormationSection />
-        </Reveal>
-        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
-          <CriticalEraSection />
-        </Reveal>
-        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
-          <AchievementSection />
-        </Reveal>
-        <GamosaBorder />
-        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
-          <NdfFindingsSection />
-        </Reveal>
-        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
-          <RulesSection />
-        </Reveal>
-        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
-          <ChallengesSection />
-        </Reveal>
-        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
-          <PressSection deviceTier={tier} />
-        </Reveal>
-        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
-          <LatestNewsTeaser />
-        </Reveal>
-        <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
-          <Contact deviceTier={tier} />
-        </Reveal>
-        <Footer deviceTier={tier} />
-      </div>
+      <VideoBackground />
+      <ImmersiveNavbar />
+
+      <main id="main-content" tabIndex={-1}>
+        <AatmaHero />
+        <div className="relative z-10">
+          {/* Background system — subtle ambient motion behind all sections.
+              Integrates the AmbientMotion component from t_e9033508 to create
+              a cohesive forest-atmosphere experience across the home page.
+              Uses "green" theme to match the site's deep-green identity,
+              with reduced-motion support for accessibility. */}
+          <AmbientMotion
+            variant="fog"
+            theme="green"
+            layers={isMobile ? 1 : 2}
+            speed={isMobile ? 60 : 45}
+          />
+          {/* Home content flows directly from the hero without a decorative stripe. */}
+          {/* Positive rootMargin on Reveal wrappers ensures sections reach
+              opacity:1 before the browser's lazy-load threshold, so lazy images
+              inside actually load instead of being deferred forever. */}
+          <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
+            <About deviceTier={tier} />
+          </Reveal>
+          <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
+            <SanchiPaatSection />
+          </Reveal>
+          <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
+            <AgarStory deviceTier={tier} />
+          </Reveal>
+          <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
+            <FormationSection />
+          </Reveal>
+          <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
+            <CriticalEraSection />
+          </Reveal>
+          <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
+            <AchievementSection />
+          </Reveal>
+          <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
+            <NdfFindingsSection />
+          </Reveal>
+          <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
+            <RulesSection />
+          </Reveal>
+          <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
+            <ChallengesSection />
+          </Reveal>
+          <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
+            <PressTeaser />
+          </Reveal>
+          <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
+            <LatestNewsTeaser />
+          </Reveal>
+        </div>
+      </main>
+      <Footer deviceTier={tier} />
     </>
   );
 }

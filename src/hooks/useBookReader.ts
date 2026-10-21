@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import { assetUrl } from "@/lib/utils";
 import type { Book, Chapter } from "@/data/books";
 
 export type FontSize = "sm" | "md" | "lg" | "xl";
@@ -132,37 +133,13 @@ export function useBookReader(initialBook: Book | null = null): UseBookReaderRet
   }, []);
 
   const downloadBook = useCallback(() => {
-    if (!book) return;
-    // If an external download URL is available, use it directly
-    if (book.externalDownloadUrl) {
-      const a = document.createElement("a");
-      a.href = book.externalDownloadUrl;
-      a.download = `${book.slug}.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      return;
-    }
-    const content = [
-      `${book.title}`,
-      `by ${book.author}`,
-      "",
-      book.description,
-      "",
-      ...book.chapters.flatMap((ch) => [
-        "",
-        `${ch.title}${ch.subtitle ? ` — ${ch.subtitle}` : ""}`,
-        "",
-        ...ch.body,
-      ]),
-    ].join("\n");
-    const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${book.title.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}.txt`;
-    a.click();
-    URL.revokeObjectURL(url);
+    if (!book?.filePath) return;
+    const link = document.createElement("a");
+    link.href = assetUrl(book.filePath);
+    link.download = book.filePath.split("/").pop() ?? book.slug;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
   }, [book]);
 
   // Persist font size to localStorage

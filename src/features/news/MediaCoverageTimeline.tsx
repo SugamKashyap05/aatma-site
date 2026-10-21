@@ -9,82 +9,17 @@ import {
   Radio,
   Rss,
 } from "lucide-react";
+import { getAllNews, type NewsArticle, type OutletType } from "@/data/news";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export type MediaOutletType = "national" | "regional" | "trade" | "digital";
-
-export interface MediaCoverageItem {
-  id: string;
-  publication: string;
-  articleTitle: string;
-  date: string;
-  outletType: MediaOutletType;
-  excerpt?: string;
-  /**
-   * A real article permalink, or "" when none is available.
-   *
-   * PROVENANCE RULE — never set this to a publication's homepage. An earlier
-   * revision of this list linked eight bare homepages behind specific
-   * headlines, which read as citations but were unverifiable. When `url` is
-   * empty the card renders a printed citation instead of a link, which is
-   * honest about what we can prove.
-   *
-   * Every entry below is traced to a client-supplied clipping transcribed
-   * verbatim in docs/CLIENT_MATERIAL_RESEARCH.md (§1, §2, §3).
-   */
-  url: string;
-}
+export type MediaOutletType = OutletType;
 
 interface MediaCoverageTimelineProps {
-  items?: MediaCoverageItem[];
+  items?: NewsArticle[];
   className?: ClassValue;
   showHeader?: boolean;
 }
-
-// ─── Default data ─────────────────────────────────────────────────────────────
-//
-// Three verified clippings, transcribed verbatim from the client's WhatsApp
-// images. See docs/CLIENT_MATERIAL_RESEARCH.md §1–§3.
-//
-// A fourth image (item 5, 76 KB) is likely a further clipping but was never
-// read — vision analysis returned HTTP 429 on every attempt. It is NOT
-// represented here: guessing at its contents would defeat the purpose of a
-// verified list.
-
-const DEFAULT_MEDIA_COVERAGE: MediaCoverageItem[] = [
-  {
-    id: "coverage-2023-ht",
-    publication: "Hindustan Times",
-    articleTitle:
-      "AATMA thanks CM Sarma for restoring glory of agar wood-based industries in Assam",
-    date: "17 January 2023",
-    outletType: "national",
-    url: "",
-    excerpt:
-      "Reports the press conference held at the AATMA head office in Hojai on 14 January 2023. Members thanked the State government for repealing the WBI Rules 2000 and notifying the WBI (Promotion and Development) Rules 2022 on 12 January 2023, recognising agarwood units as Secondary Wood Based Industries.",
-  },
-  {
-    id: "coverage-2023-at-winds",
-    publication: "The Assam Tribune",
-    articleTitle: "Wood-based industries: Winds of change soon",
-    date: "2 August 2023",
-    outletType: "regional",
-    url: "",
-    excerpt:
-      "PJ Vijayakar traces the sector's contraction following the Supreme Court's Godavarman order, from 588 primary wood-based industries to roughly 206 today, and sets out the 62-day and 74-day registration limits under the 2022 Rules.",
-  },
-  {
-    id: "coverage-2024-at-prospects",
-    publication: "The Assam Tribune",
-    articleTitle: "Prospects of Assam's agarwood industry",
-    date: "18 November 2024",
-    outletType: "regional",
-    url: "",
-    excerpt:
-      "PJ Vijayakar reports on the Non-detriment Findings study submitted by the Botanical Survey of India in February 2024: Assam holds over 82% of India's agarwood trees, 11.437 crore outside forest areas, with Golaghat district alone at 4.5 crore.",
-  },
-];
 
 // ─── Icon map ─────────────────────────────────────────────────────────────────
 
@@ -95,18 +30,23 @@ const OUTLET_ICON: Record<MediaOutletType, typeof Globe> = {
   digital: Radio,
 };
 
+/** Long-form date for a card, derived from the verified ISO date on the clipping. */
+const dateFormatter = new Intl.DateTimeFormat("en-IN", { dateStyle: "long" });
+
 // ─── Timeline Card ───────────────────────────────────────────────────────────
 
 function CoverageCard({
-  item,
+  article,
   index,
   isLast,
 }: {
-  item: MediaCoverageItem;
+  article: NewsArticle;
   index: number;
   isLast: boolean;
 }) {
-  const Icon = OUTLET_ICON[item.outletType];
+  const Icon = OUTLET_ICON[article.outletType];
+  const formattedDate = dateFormatter.format(new Date(article.date));
+  const pageLabel = article.page ? `, p.${article.page}` : "";
 
   return (
     <Reveal variant="left" delay={index * 100}>
@@ -123,53 +63,66 @@ function CoverageCard({
         <div
           className={cn(
             "absolute left-0 top-1.5 w-[26px] h-[26px] md:w-[34px] md:h-[34px] rounded-full border-2 flex items-center justify-center transition-all duration-300",
-            "bg-green-deep group-hover:bg-gold/10",
-            "border-gold/50 group-hover:border-gold",
+            "bg-green-deep group-hover:bg-gold/10 group-active:bg-gold/10",
+            "border-gold/50 group-hover:border-gold group-active:border-gold",
           )}
         >
-          <Icon size={12} className="text-gold" />
+          <Icon size={12} className="text-gold-light" />
         </div>
 
         {/* Card */}
-        <article className="card-hover bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-sm p-4 md:p-5 group-hover:border-gold/25">
-          {/* Meta row */}
-          <div className="flex items-center justify-between gap-3 mb-2">
-            <div className="flex items-center gap-2">
-              <Icon size={13} className="text-gold/80" />
-              <span className="text-gold font-semibold text-xs md:text-sm tracking-wide uppercase">
-                {item.publication}
+        <article className="card-hover glass-surface rounded-sm p-4 md:p-5 group-hover:border-gold/25">
+          {/* Meta row — verified outlet and date, always shown together */}
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <Icon size={13} className="text-gold-light" />
+              <span className="text-gold-light font-semibold text-xs md:text-sm tracking-wide uppercase">
+                {article.outlet}
               </span>
+              {article.byline && (
+                <span className="text-cream/75 text-xs">· {article.byline}</span>
+              )}
             </div>
-            <div className="flex items-center gap-1.5 text-white/40 text-xs">
+            <div className="flex items-center gap-1.5 text-cream/75 text-xs">
               <Calendar size={11} />
-              <span>{item.date}</span>
+              <span>
+                {formattedDate}
+                {pageLabel}
+              </span>
             </div>
           </div>
 
           {/* Title */}
-          <h4 className="font-display font-bold text-white text-sm md:text-base leading-snug group-hover:text-gold transition-colors duration-300">
-            {item.articleTitle}
+          <h4 className="font-display font-bold text-white text-sm md:text-base leading-snug group-hover:text-gold-light group-active:text-gold-light transition-colors duration-300">
+            {article.headline}
           </h4>
 
           {/* Excerpt */}
-          {item.excerpt && (
-            <p className="mt-2 text-white/60 text-sm leading-relaxed">
-              {item.excerpt}
+          {article.excerpt && (
+            <p className="mt-2 text-cream/75 text-sm leading-relaxed">
+              {article.excerpt}
+            </p>
+          )}
+
+          {/* Adjacent-story exclusion — stated plainly when it applies */}
+          {article.adjacentStoryExcluded && article.adjacentStoryNote && (
+            <p className="mt-3 text-white/45 text-xs leading-relaxed border-l-2 border-gold/40 pl-3">
+              {article.adjacentStoryNote}
             </p>
           )}
 
           {/* Source — link only when a real permalink exists */}
           <div className="mt-4 pt-3 border-t border-white/10">
-            {item.url ? (
+            {article.sourceUrl ? (
               <a
-                href={item.url}
+                href={article.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
                   "inline-flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors duration-300",
-                  "text-gold hover:text-gold-light",
+                  "text-gold-light hover:text-gold-light active:text-gold-light",
                 )}
-                aria-label={`Read article: ${item.articleTitle}`}
+                aria-label={`Read article: ${article.headline}`}
               >
                 <ExternalLink size={13} />
                 <span>Read Article</span>
@@ -179,9 +132,8 @@ function CoverageCard({
                 />
               </a>
             ) : (
-              <p className="text-white/40 text-xs leading-relaxed">
-                {item.publication}, {item.date} — supplied by AATMA. No online
-                archive copy available.
+              <p className="text-cream/75 text-xs leading-relaxed">
+                {article.sourceNote}
               </p>
             )}
           </div>
@@ -194,10 +146,12 @@ function CoverageCard({
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export function MediaCoverageTimeline({
-  items = DEFAULT_MEDIA_COVERAGE,
+  items,
   className,
   showHeader = true,
 }: MediaCoverageTimelineProps) {
+  const articles = items ?? getAllNews();
+
   return (
     <div className={cn("w-full", className)}>
       {showHeader && (
@@ -212,16 +166,22 @@ export function MediaCoverageTimeline({
         </Reveal>
       )}
 
-      <div className="mt-4">
-        {items.map((item, i) => (
-          <CoverageCard
-            key={item.id}
-            item={item}
-            index={i}
-            isLast={i === items.length - 1}
-          />
-        ))}
-      </div>
+      {articles.length === 0 ? (
+        <p className="text-cream/75 text-sm">
+          No client-supplied coverage has been published yet.
+        </p>
+      ) : (
+        <div className="mt-4">
+          {articles.map((article, i) => (
+            <CoverageCard
+              key={article.id}
+              article={article}
+              index={i}
+              isLast={i === articles.length - 1}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

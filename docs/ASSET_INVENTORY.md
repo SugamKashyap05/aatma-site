@@ -3,6 +3,9 @@
 **Purpose:** the definitive list of every chart, image and SVG needed before any Kanban task is written.
 **Method:** audited against the live codebase (`find public`, `find src`, route and component inspection) — counts below are the **true delta**, not a restatement of what exists.
 
+> **Status note (18 October 2026):** This document is a planning snapshot compiled on 12 October 2026, not a live inventory. Use `docs/ACTIVE_ASSET_PROVENANCE_REGISTER.md` for the current rendered-image map; Phase 3 claim-source audit remains open until the independent route reviews are reconciled.
+
+
 ---
 
 ## What already exists — audited
@@ -135,7 +138,7 @@ All paths routed through `assetUrl()` and rendered inside `<picture>` + `srcset`
 | **SVG-07** | `research/cites-compliance-chain.svg` | `/research` | Flow | Forest permit → registration → CITES permit → export |
 | **SVG-08** | `research/agar-plant-anatomy.svg` | `/research` | Illustration | *Aquilaria malaccensis* — resin formation, *sanchi* bark labelled |
 | **SVG-09** | `press-meet/press-meet-banner.svg` | `/press-meet-2023` | Reproduction | The actual banner text, redrawn as vector |
-| **SVG-10** | `history/governance-1976.svg` | `/history` | Org diagram | Founding structure — Anfar Ali, Samsul Islam, Binay Kumar Paul |
+| **SVG-10** | `history/governance-1976.svg` | `/history` | Org diagram | Founding structure — Anfar Ali, Samsul Islam, [REDACTED: AATMA member] |
 | **SVG-11** | `research/agar-value-chain.svg` | `/research` | Flow | Cultivation → harvest → distillation → chips/oil → export |
 
 **SVG subtotal: 11 files**
@@ -163,7 +166,15 @@ All paths routed through `assetUrl()` and rendered inside `<picture>` + `srcset`
 | **Total distinct assets to create** | **40** | 14 AI + 3 grabs + 12 charts + 11 SVGs |
 | **Total files landing in the repo** | **70** | 59 images + 11 SVGs (charts are inline, not files) |
 
-### By route
+## Phase 4 reconciled implementation update — 18 October 2026
+
+- Homepage hero: `src/features/home/HomePage.tsx` uses static `src/features/hero/AatmaHero.tsx`, with the client-supplied 1000×800 photo at `public/client-images/aatma-tree-plantation.jpg`. It renders within a bounded split frame (up to 576 px wide) and is not upscaled into a full-bleed desktop image. Caption/alt text are limited to visible rows of trees and a grassy path; species/location are not inferred.
+- Background bundle: 40 responsive/crop variants are present (4 full-frame sizes plus 36 focal crops), each encoded as AVIF, WebP, and JPEG: 120 derivative files, plus one source JPEG and `manifest.json` (122 files total in the background directory).
+- `ForestBackground` uses `<picture>` with small/mobile/tablet/desktop focal crops and `assetUrl("assets/backgrounds")`, rather than always using `FOREST_FULL[0]`. The Kaziranga source remains decorative-only and credited; the client photo is a separate homepage hero, not a replacement or a visual source claim.
+- The retired parallax hero module (`ParallaxHero`) and its layer bundle remain in the repository but are not rendered on `/`. On 18 October 2026, 48 project-created raster illustrations (11,346,742 bytes) were moved out of `public/` into `docs/retired-project-illustrations/`, so they are not copied into the static site. Current active image routes, alts/captions and provenance are recorded in `docs/ACTIVE_ASSET_PROVENANCE_REGISTER.md`. The source-derived trade schematic and the approved, attributed Wikimedia background remain active; the older planning counts above are not a live inventory.
+
+
+### By route (original planned distribution)
 
 | Route | Images | Charts | SVGs |
 |---|---|---|---|
@@ -208,7 +219,7 @@ Select from the 8 frames already extracted, crop, convert, place.
 |---|---|---|
 | **GATE A** | Read the 4th WhatsApp image (76 KB) — vision still 429 | Final press-archive scope, **not** any asset above |
 | **GATE B** | Finish gazette read — WBI pp. 620–682, ToF pp. 3–25 | CH-04, CH-08, SVG-05, SVG-06 accuracy |
-| **GATE D** | Confirm Speaker 2 = Ataur Rahman | Any named quote in `/press-meet-2023` |
+| **GATE D** | Confirm Speaker 2 = [REDACTED: AATMA member] | Any named quote in `/press-meet-2023` |
 | **GATE E** | Decide video hosting — 125 MB total, too large for git | `/press-meet-2023` route |
 
 **No gate blocks image, SVG or frame-grab creation.** Only four charts and two SVGs depend on GATE B, and those can ship with newspaper citation in the interim.

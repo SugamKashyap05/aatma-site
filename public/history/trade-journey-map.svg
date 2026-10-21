@@ -1,13 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img"
      aria-labelledby="svg02-title svg02-desc">
-  <title id="svg02-title">The agar trade journey, 1905 to Bombay</title>
-  <desc id="svg02-desc">A route map showing nine stops in the early agarwood
-    trade: Sylhet (1905–06), Barpather, Karbi Anglong, Naga Hills, Hojai,
-    Naharani and Jorhat–Sibsagar, NEFA and Bhutan, Manipur, and Bombay
-    (Mumbai), connected in sequence along a winding path.</desc>
+  <title id="svg02-title">Client-described agar trade chronology and supply relationships</title>
+  <desc id="svg02-desc">A schematic, not-geographic diagram. The gold path shows a simplified trade chronology. Pale dashed links show relationships stated in the client history: Karbi Angong and Naga Hills forest mahals used by Barpather entrepreneurs; NEFA and Bhutan mahals leased by Hojai traders and brought to Hojai; and Manipur supply processed at Hojai and Silchar. Naharani, Jorhat and Sibsagar are shown as a separate trade and distillation area using homegrown trees.</desc>
 
   <defs>
-    <!-- Token-backed: no raw hex anywhere in this file -->
+    <!-- Palette values are mirrored in the root style for standalone image embeds. -->
     <linearGradient id="svg02-path" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%"   stop-color="var(--color-gold)" stop-opacity="0.25"/>
       <stop offset="50%"  stop-color="var(--color-gold)" stop-opacity="0.85"/>
@@ -22,116 +19,124 @@
   <!-- Background panel -->
   <rect width="800" height="500" fill="none"/>
 
-  <!-- The main route: Sylhet -> Barpather -> Hojai -> Bombay -->
-  <path d="M 60 400 C 130 355, 175 395, 230 350 S 320 300, 375 320
-           S 430 275, 490 295 S 555 250, 610 235 S 690 195, 745 160"
+  <!-- Simplified chronology, not a geographic trade route. -->
+  <path d="M 60 400 C 130 355, 175 395, 230 350 C 330 350, 475 280, 610 235
+           S 690 195, 745 160"
         fill="none" stroke="url(#svg02-path)" stroke-width="2.5"
         stroke-linecap="round" stroke-dasharray="7 6"/>
 
-  <!-- Branch routes: raw-material sources that fed INTO Hojai, drawn as
-       fainter spurs so their supporting role is unambiguous. Without these
-       the Manipur and Naharani nodes read as orphaned stops on the main line. -->
-  <g stroke="var(--color-green-light)" stroke-opacity="0.5" stroke-width="1.6"
+  <!-- Pale dashed links show only client-described raw-material relationships. -->
+  <g stroke="var(--map-source)" stroke-opacity="0.5" stroke-width="1.6"
      fill="none" stroke-linecap="round" stroke-dasharray="4 5">
-    <!-- Karbi Anglong & Naga Hills -> Hojai (forest mahals) -->
-    <path d="M 375 320 C 450 300, 520 268, 610 235"/>
+    <!-- Karbi Angong & Naga Hills -> Barpather (forest mahals) -->
+    <path d="M 340 220 C 330 260, 280 320, 230 350"/>
+    <path d="M 470 180 C 420 245, 320 320, 230 350"/>
     <!-- Manipur -> Hojai (forest transit pass) -->
     <path d="M 180 250 C 300 245, 450 240, 610 235"/>
-    <!-- Naharani / Jorhat-Sibsagar -> Hojai (homegrown trees) -->
-    <path d="M 330 410 C 430 380, 520 310, 610 235"/>
+
+    <!-- NEFA / Bhutan -> Hojai (leased agar mahals) -->
+    <path d="M 650 105 C 635 145, 620 190, 610 235"/>
   </g>
 
   <!-- Dashed segments animate on hover only; static by default for reduced motion -->
   <style>
+    /* Standalone SVG image embeds do not inherit page CSS variables. */
+    :root {
+      --color-gold: #c9a84c;
+      --color-gold-light: #e0c878;
+      --color-cream: #f5f0e8;
+      --map-source: #f5f0e8;
+      --font-sans: "Inter", system-ui, sans-serif;
+    }
     @media (prefers-reduced-motion: no-preference) {
       .svg02-dash { animation: svg02-flow 26s linear infinite; }
       @keyframes svg02-flow { to { stroke-dashoffset: -260; } }
     }
     .svg02-node:hover circle { r: 9; }
   </style>
-  <path d="M 60 400 C 130 355, 175 395, 230 350 S 320 300, 375 320
-           S 430 275, 490 295 S 555 250, 610 235 S 690 195, 745 160"
+  <path d="M 60 400 C 130 355, 175 395, 230 350 C 330 350, 475 280, 610 235
+           S 690 195, 745 160"
         fill="none" stroke="var(--color-gold-light)" stroke-width="1.5"
         stroke-linecap="round" stroke-dasharray="3 12" class="svg02-dash"
         opacity="0.75"/>
 
-  <!-- Nine stops. Order follows the trade chronology in docs/AGAR_HISTORY_SOURCE.md §3 -->
+  <!-- Locations and events from docs/AGAR_HISTORY_SOURCE.md §3; not geographic positions. -->
   <g class="svg02-node" font-family="var(--font-sans)">
     <!-- 1. Sylhet -->
     <g transform="translate(60,400)">
       <circle r="6" fill="var(--color-gold)" filter="url(#svg02-glow)"/>
       <circle r="11" fill="none" stroke="var(--color-gold)" stroke-opacity="0.35" stroke-width="1"/>
-      <text x="0" y="34" text-anchor="start" fill="var(--color-cream)" font-size="13" font-weight="600">Sylhet</text>
-      <text x="0" y="50" text-anchor="start" fill="var(--color-gold)" font-size="10" letter-spacing="0.08em">1905–06</text>
-      <text x="0" y="64" text-anchor="start" fill="var(--color-cream)" fill-opacity="0.55" font-size="9.5">now Bangladesh</text>
+      <text x="14" y="-8" text-anchor="start" fill="var(--color-cream)" font-size="13" font-weight="600">Sylhet</text>
+      <text x="14" y="6" text-anchor="start" fill="var(--color-gold)" font-size="10" letter-spacing="0.08em">1905–06</text>
+      <text x="14" y="20" text-anchor="start" fill="var(--color-cream)" fill-opacity="0.82" font-size="9.5">now Bangladesh</text>
     </g>
     <!-- 2. Barpather -->
     <g transform="translate(230,350)">
       <circle r="5.5" fill="var(--color-gold)"/>
       <text x="0" y="30" text-anchor="middle" fill="var(--color-cream)" font-size="12.5" font-weight="600">Barpather</text>
-      <text x="0" y="45" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.55" font-size="9.5">homestead trade</text>
+      <text x="0" y="45" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="9.5">homestead trade</text>
     </g>
-    <!-- 3. Karbi Anglong -->
-    <g transform="translate(375,320)">
-      <circle r="5" fill="var(--color-green-light)"/>
-      <text x="0" y="28" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.8" font-size="11.5">Karbi Anglong</text>
+    <!-- 3. Karbi Angong -->
+    <g transform="translate(340,220)">
+      <circle r="5" fill="var(--map-source)"/>
+      <text x="0" y="-12" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="11.5">Karbi Angong</text>
     </g>
     <!-- 4. Naga Hills -->
-    <g transform="translate(490,295)">
-      <circle r="5" fill="var(--color-green-light)"/>
-      <text x="0" y="30" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.8" font-size="11.5">Naga Hills</text>
+    <g transform="translate(470,180)">
+      <circle r="5" fill="var(--map-source)"/>
+      <text x="0" y="-12" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="11.5">Naga Hills</text>
     </g>
     <!-- 5. Hojai -->
     <g transform="translate(610,235)">
       <circle r="8" fill="var(--color-gold-light)" filter="url(#svg02-glow)"/>
       <circle r="15" fill="none" stroke="var(--color-gold-light)" stroke-opacity="0.4" stroke-width="1"/>
       <text x="0" y="36" text-anchor="middle" fill="var(--color-gold-light)" font-size="14" font-weight="700">Hojai</text>
-      <text x="0" y="51" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.6" font-size="9.5">distillation begins</text>
+      <text x="0" y="51" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="9.5">distillation begins</text>
     </g>
     <!-- 6. Naharani / Jorhat–Sibsagar -->
     <g transform="translate(330,410)">
-      <circle r="5" fill="var(--color-green-light)"/>
-      <text x="0" y="26" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.8" font-size="11">Naharani · Jorhat · Sibsagar</text>
-      <text x="0" y="40" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.5" font-size="9">homegrown trees</text>
+      <circle r="5" fill="var(--color-gold)"/>
+      <text x="0" y="26" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="11">Naharani · Jorhat · Sibsagar</text>
+      <text x="0" y="40" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="9">homegrown trees</text>
     </g>
     <!-- 7. NEFA / Bhutan -->
-    <g transform="translate(700,120)">
-      <circle r="5" fill="var(--color-green-light)"/>
-      <text x="0" y="-14" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.8" font-size="11.5">NEFA · Bhutan</text>
-      <text x="0" y="26" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.5" font-size="9">late 1960s leases</text>
+    <g transform="translate(650,105)">
+      <circle r="5" fill="var(--map-source)"/>
+      <text x="0" y="-14" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="11.5">NEFA · Bhutan</text>
+      <text x="0" y="26" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="9">late 1960s leases</text>
     </g>
     <!-- 8. Manipur -->
     <g transform="translate(180,250)">
-      <circle r="5" fill="var(--color-green-light)"/>
-      <text x="0" y="-12" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.8" font-size="11.5">Manipur</text>
-      <text x="0" y="24" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.5" font-size="9">1970s–80s, transit pass</text>
+      <circle r="5" fill="var(--map-source)"/>
+      <text x="0" y="-12" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="11.5">Manipur</text>
+      <text x="0" y="24" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="9">1970s–80s, transit pass</text>
     </g>
     <!-- 9. Bombay -->
     <g transform="translate(745,160)">
       <circle r="6" fill="var(--color-gold)" filter="url(#svg02-glow)"/>
       <text x="0" y="-16" text-anchor="end" fill="var(--color-cream)" font-size="13" font-weight="600">Bombay</text>
       <text x="0" y="30" text-anchor="middle" fill="var(--color-gold)" font-size="9.5" letter-spacing="0.06em">MUMBAI · SALE</text>
-      <text x="0" y="44" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.5" font-size="9">under Lieu T.P.</text>
+      <text x="0" y="44" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="9">under Lieu T.P.</text>
     </g>
   </g>
 
   <!-- Legend -->
   <g transform="translate(60,470)" font-family="var(--font-sans)" font-size="10">
     <circle cx="6" cy="-4" r="5" fill="var(--color-gold)"/>
-    <text x="20" y="0" fill="var(--color-cream)" fill-opacity="0.7">Trade origin / final market</text>
-    <circle cx="215" cy="-4" r="5" fill="var(--color-green-light)"/>
-    <text x="229" y="0" fill="var(--color-cream)" fill-opacity="0.7">Raw material source</text>
-    <circle cx="410" cy="-4" r="6" fill="var(--color-gold-light)"/>
-    <text x="424" y="0" fill="var(--color-cream)" fill-opacity="0.7">Hojai — processing centre</text>
-    <line x1="600" y1="-4" x2="626" y2="-4" stroke="var(--color-gold)" stroke-width="2.5" stroke-dasharray="5 4"/>
-    <text x="632" y="0" fill="var(--color-cream)" fill-opacity="0.7">Trade route</text>
-    <line x1="700" y1="-4" x2="726" y2="-4" stroke="var(--color-green-light)" stroke-width="1.6" stroke-dasharray="4 4"/>
-    <text x="732" y="0" fill="var(--color-cream)" fill-opacity="0.7">Supply to Hojai</text>
+    <text x="20" y="0" fill="var(--color-cream)" fill-opacity="0.85">Trade / market node</text>
+    <circle cx="130" cy="-4" r="5" fill="var(--map-source)"/>
+    <text x="143" y="0" fill="var(--color-cream)" fill-opacity="0.85">Raw-material source</text>
+    <circle cx="270" cy="-4" r="6" fill="var(--color-gold-light)"/>
+    <text x="284" y="0" fill="var(--color-cream)" fill-opacity="0.85">Hojai processing</text>
+    <line x1="430" y1="-4" x2="454" y2="-4" stroke="var(--color-gold)" stroke-width="2.5" stroke-dasharray="5 4"/>
+    <text x="460" y="0" fill="var(--color-cream)" fill-opacity="0.85">Timeline sequence</text>
+    <line x1="575" y1="-4" x2="599" y2="-4" stroke="var(--map-source)" stroke-width="1.6" stroke-dasharray="4 4"/>
+    <text x="605" y="0" fill="var(--color-cream)" fill-opacity="0.85">Reported supply link</text>
   </g>
 
   <!-- Source line: every claim traces to the client's own history document -->
-  <text x="60" y="492" font-family="var(--font-sans)" font-size="8.5"
-        fill="var(--color-cream)" fill-opacity="0.4" letter-spacing="0.04em">
-    Source: A Brief History of Agar (client document), §3 — the early trade, 1905–1970
+  <text x="60" y="488" font-family="var(--font-sans)" font-size="10"
+        fill="var(--color-cream)" fill-opacity="0.82" letter-spacing="0.04em">
+    Source: A Brief History of Agar (client document), §3 — schematic, not to geographic scale
   </text>
 </svg>

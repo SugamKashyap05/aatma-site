@@ -229,7 +229,8 @@ export function ParallaxHero({
             <img
               ref={(el) => { if (el) layerRefs.current[index] = el; }}
               src={layer.image.fallback}
-              alt={layer.alt}
+              alt=""
+              aria-hidden="true"
               width={layer.image.variants[layer.image.variants.length - 1]?.w}
               height={Math.round(
                 (layer.image.variants[layer.image.variants.length - 1]?.w ?? 1) /
@@ -272,9 +273,7 @@ export function ParallaxHero({
         <span className="inline-block self-start mb-4 px-4 py-1.5 text-[11px] font-semibold tracking-[0.2em] uppercase bg-white/10 backdrop-blur-sm border border-white/20 rounded-sm text-cream-dark">
           Est. 1976 · Hojai, Assam
         </span>
-        <p className="mb-3 text-lg md:text-xl font-light tracking-wide text-cream-dark/90">
-          অসমৰ আগাৰৱুডি কারুকলা
-        </p>
+
         <h1 className="font-display font-bold text-[clamp(2.5rem,7vw,6.5rem)] leading-[0.85] max-md:text-[clamp(1.8rem,5vw,4rem)] max-sm:text-[clamp(1.2rem,3.5vw,2.8rem)] drop-shadow-lg">
           All Assam Agar Traders<br />& Agaroil Manufacturers'
           <span className="block md:inline font-normal text-[0.42em] mt-2 md:mt-0 md:ml-3 tracking-[0.18em] uppercase text-gold-light">
@@ -282,20 +281,14 @@ export function ParallaxHero({
           </span>
         </h1>
         <p className="mt-6 max-w-lg text-center text-white/70 text-sm md:text-base font-light leading-relaxed drop-shadow">
-          Five decades representing the agarwood trade and agaroil manufacturing sector of Assam — from the distillation hub of Hojai to the global markets of the Middle East.
+          Representing the agarwood trade and agaroil manufacturing sector of Assam.
         </p>
         <div className="mt-8 flex flex-wrap gap-4 justify-center">
           <a
             href="#about"
-            className="inline-flex items-center gap-2 px-7 py-3 bg-gold text-green-deep font-semibold text-sm tracking-wider uppercase rounded-sm hover:bg-gold-light transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-gold/30"
+            className="inline-flex items-center gap-2 px-7 py-3 bg-gold text-green-deep font-semibold text-sm tracking-wider uppercase rounded-sm hover:bg-gold-light active:bg-gold-light transition-all duration-300 hover:-translate-y-0.5 active:-translate-y-0.5 hover:shadow-lg hover:shadow-gold/30 min-h-[44px]"
           >
             Discover AATMA
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-7 py-3 bg-transparent text-white border border-white/30 font-semibold text-sm tracking-wider uppercase rounded-sm hover:bg-white/10 hover:border-gold/50 transition-all duration-300 hover:-translate-y-0.5"
-          >
-            Get in Touch
           </a>
         </div>
       </div>
