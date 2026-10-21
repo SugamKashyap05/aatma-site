@@ -1,4 +1,5 @@
 import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { cn, type ClassValue } from "@/lib/utils";
 import { useRef, useState } from "react";
 import { AmbientMotion } from "@/features/ambient/AmbientMotion";
@@ -84,6 +85,13 @@ export function About({ className, deviceTier }: AboutProps) {
                     {lang === "en" ? "অসমীয়াত পঢ়ক" : "Read in English"}
                     <ChevronRight size={16} />
                   </button>
+                  <Link
+                    to="/about"
+                    className="mt-6 mb-6 inline-flex items-center gap-2 text-agar-label text-sm font-medium tracking-wide self-center bg-glass-card backdrop-blur-xl border border-gold/50 hover:border-gold hover:bg-green-deep/95 px-5 py-2.5 rounded-sm transition-all duration-300 min-h-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light"
+                  >
+                    Read the complete brief
+                    <ChevronRight size={16} />
+                  </Link>
                 </div>
               </div>
             </div>

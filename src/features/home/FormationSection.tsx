@@ -42,16 +42,14 @@ interface FormationSectionProps {
  *     -> "AATMA's General Secretary at the time"
  * No AATMA member or office-holder name appears in this component.
  *
- * "Learn more" target: there is no `/about` route. `src/App.tsx` declares only
- * /, /books, /press, /history, /policy, /research, /news, /news/:slug,
- * /resources and the catch-all NotFoundPage, so `/about` would render
- * NotFoundPage; `docs/MASTER_IMPLEMENTATION_PLAN.md` §"New routes" recommends
- * folding About into History rather than adding a route. About is the `#about`
- * section of the home page (`src/features/about/About.tsx`), which is how the
- * site's own footer links it (`src/features/footer/Footer.tsx` -> "/#about"),
+ * "Learn more" target: the dedicated `/about` page
+ * (`src/features/about/AboutPage.tsx`), which carries the complete client
+ * brief in ten sequential sections. About is also the `#about` section of
+ * the home page (`src/features/about/About.tsx`), which is how the site's
+ * own footer links it (`src/features/footer/Footer.tsx` -> "/#about"),
  * and Navbar's hash effect scrolls it into view
- * (`src/components/ui/Navbar.tsx`, lines 67-80). The full formation chronology
- * lives at `/history`.
+ * (`src/components/ui/Navbar.tsx`, lines 67-80). The full formation
+ * chronology lives at `/history`.
  */
 export function FormationSection({ className }: FormationSectionProps) {
   return (

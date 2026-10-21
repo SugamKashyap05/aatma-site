@@ -73,7 +73,7 @@ const ROUTE_META: Record<string, RouteMeta> = {
   "/about": {
     title: `About — ${AATMA.shortName}`,
     description:
-      "AATMA represents the agarwood trade and agaroil manufacturing sector of Assam, established in 1976.",
+      "The Association's complete account of the Assam agar trade in ten sequential sections, each linking to the site pages that expand it.",
   },
   "/contact": {
     title: `Contact — ${AATMA.shortName}`,

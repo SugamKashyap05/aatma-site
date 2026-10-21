@@ -40,6 +40,16 @@ The first pass of this ledger did not list **[BRIEF2]** in the source key and th
 
 **Still open — same omission, not yet re-checked:** other rows whose only source is brief (2) remain under-classified: #58 (Writ Petition W.P.(C) 6284/2007), #59 (2010 multi-agency harassment), #64 (800+ industries), #69 / #72 (Stakeholders Conference, 14 Feb 2023), #86–#91 (ongoing challenges, AIDC workshop 26 Aug 2026), #142–#145 (policy cards), #196–#202 (milestones). Each needs the same re-check against brief (2) before this ledger can be called complete.
 
+### Ledger update — 2026-10-21 (/about brief reader — verbatim spine)
+
+The dedicated `/about` page (`src/features/about/AboutPage.tsx`, data `src/data/about-spine.ts`) now reproduces **[BRIEF2] in full** per the client directive ("the client wants the complete brief to be used as it is"): all ten headed sections, 31 paragraphs, 3,880 words, in sequential order. Site-authored additions are limited to (a) connecting words permitted by the directive — none used; (b) the byline, Contents panel, and per-block "Explore on this site" link chips.
+
+Everything formerly under-classified for lack of a [BRIEF2] citation is now published verbatim on `/about`, so the "still open" rows above are **resolved in practice** for the brief-sourced copy: #58 (W.P.(C) 6284/2007), #59 (2010 harassment), #69/#72 (Stakeholders Conference Feb 2023), #86–#91 (ongoing challenges, incl. AIDC workshop), and the §3 Exim Policy, 2005 PCCF letter, 2005–2016 stalemate, and SC WP(C) 171/1996 context that appear only in the full brief. Status: `verified` — source is [BRIEF2] verbatim (word/paragraph pins asserted by `scripts/about-spine-smoke.mjs`). Rows #64 (800+ industries) and #142–#145, #196–#202 remain unchanged — those are paraphrases on other pages, not brief text.
+
+**Two publication flags (client review):**
+1. **Office-bearer names now appear on a public page.** [BRIEF2] §4 (FORMATION) names the founding office-bearers — "(L) [REDACTED: AATMA member]", "(L) [REDACTED: AATMA member]", "(L) [REDACTED: AATMA member]", Humayun Chaudhury — and the client's latest directive ("complete brief as it is") overrides the earlier site rule of role descriptions only. `/about` is now the only public page carrying these names. Irreversible once pushed.
+2. **Source slips are preserved intentionally.** The brief's "Achivement" (§7 heading), "Augast", "Occtober", "Thiland", "Combodia", "abumdantly" render on an official page. The live Critical Era dialog uses corrected dates, so the two treatments visibly differ — deliberate, not silently reconciled. A smoke assertion guards against anyone "fixing" them.
+
 ---
 
 ## Decorative / Non-Factual Assets

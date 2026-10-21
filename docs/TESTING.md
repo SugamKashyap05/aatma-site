@@ -189,6 +189,23 @@ tests/
 
 ---
 
+### Flow 9 — /about brief reader fidelity
+
+**Steps:**
+1. Open `/about` and verify the page renders the byline, a Contents panel, and ten reading blocks in brief order (I–X).
+2. Verify every heading and every paragraph matches `src/data/about-spine.ts` exactly — the client brief is reproduced verbatim, including source slips ("Achivement", "Augast", "Occtober", "Thiland", "Combodia", "abumdantly"). These slips are **deliberate**: the client instructed the brief be used as it is.
+3. Verify the four office-bearer names appear (publication per client instruction, latest directive).
+4. Click a Contents anchor and confirm the scroll lands under the fixed navbar.
+5. Confirm each block's "Explore on this site" deep-dive chips link to the right homepage section or route.
+6. Check agar tokens on blocks and the 44 px touch target on chips; check overflow at 320–1366 px.
+7. On the homepage, confirm the About section has exactly one link to `/about`.
+
+**Expected result:** Ten blocks, 31 paragraphs, 3,880 words — text identical to the data module; nothing corrected or paraphrased.
+
+**Automation:** `node scripts/about-spine-smoke.mjs` (set `ABOUT_SMOKE_BASE_URL` to the dev or preview origin; default `http://127.0.0.1:4174`).
+
+---
+
 ## 6. Coverage
 
 **Target:** Practical, not a percentage. Every route and every critical flow above must be covered by at least one E2E check.
