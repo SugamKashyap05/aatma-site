@@ -122,6 +122,9 @@ regulators, researchers, and trade partners.
 - [ ] Navbar shows 6 section links (`about`, `agar-story`, `milestones`, `members`, `press`, `contact`) plus 5 page links plus logo.
 - [ ] Anchor scrolling works with `scroll-mt` offset under the fixed navbar.
 - [ ] Parallax hero does not animate when `prefers-reduced-motion` is set.
+- [ ] Each Critical Era card opens its matching client-sourced detail dialog; the dialog is keyboard- and touch-accessible, viewport-bounded, and internally scrollable for long copy.
+- [ ] The dialog moves focus on open, traps focus, restores focus on close, and closes with Escape, the close button, or backdrop activation.
+- [ ] “Read the full story” navigates directly to `/history`.
 
 **Edge cases:**
 - Direct navigation to `/#contact` from a non-home route must land on the section.

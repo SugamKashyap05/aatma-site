@@ -6,7 +6,7 @@
 
 ---
 
-## ⚠️ Current State: No Tests Exist
+## ⚠️ Current State: No Persistent Test Suite Exists
 
 This is an honest statement of the gap, not a description of intent.
 
@@ -20,9 +20,9 @@ This is an honest statement of the gap, not a description of intent.
 | Lint step in CI | ❌ Not in `deploy.yml` (lint exists locally but never runs in CI) |
 
 **What exists:**
-- `playwright` is listed in `devDependencies` but is unused.
+- `playwright` is listed in `devDependencies` and powers the focused `scripts/critical-era-dialog-smoke.mjs` check; it is not registered as a persistent test command or CI job.
 - `npm run build` (`tsc -b && vite build`) provides type checking and compilation as a side effect.
-- Verification has been performed manually through browser automation in agent sessions — **this does not persist** and leaves no regression protection.
+- Verification has been performed manually through browser automation in agent sessions — **this does not persist** unless a smoke script is kept and run; the focused script covers the Critical Era dialog journey only.
 
 **Consequence:** nothing prevents a route from breaking, an image from going missing, or a link from 404ing between deploys.
 
@@ -171,6 +171,21 @@ tests/
    Testing the bare `/history` path passes while production is broken.
 
 **Expected result:** `404.html` redirects into the SPA and the history route renders.
+
+---
+
+### Flow 8 — Critical Era detail dialogs and History link
+
+**Steps:**
+1. Open each of the four Critical Era cards using mouse, touch, Enter, and Space.
+2. Verify the dialog title and card-specific copy; confirm the source attribution is visible.
+3. Verify initial focus, focus trapping, focus restoration, Escape/close-button/backdrop closing, and body-scroll restoration.
+4. Check the page and dialog at 320, 390, 768, and 1366 px; verify the close button stays visible and long text scrolls inside the dialog without horizontal overflow.
+5. Activate “Read the full story.”
+
+**Expected result:** Every card shows its matching content, the dialog remains usable at all tested widths, and the link opens `/history`.
+
+**Automation:** `node scripts/critical-era-dialog-smoke.mjs` (set `CRITICAL_ERA_BASE_URL` to the dev or preview origin).
 
 ---
 

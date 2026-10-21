@@ -1,103 +1,68 @@
+import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { cn, type ClassValue } from "@/lib/utils";
-import { Reveal } from "@/components/ui/reveal";
-import { Stagger } from "@/components/ui/reveal";
+import { Reveal, Stagger } from "@/components/ui/reveal";
+import { CRITICAL_ERA_CARDS } from "@/data/critical-era";
+import type { CriticalEraCard } from "@/data/critical-era";
+import { CriticalEraDetailDialog } from "@/features/home/CriticalEraDetailDialog";
 
-/**
- * CriticalEraSection — selected milestones from the Critical Era of
- * AATMA's struggle (2000–2016), as documented in the client's
- * "A BRIEF HISTORY OF AGAR" (§3, pp.3–4).
- *
- * Four cards in a 2×2 responsive grid. Content is exact from the client
- * source. No AATMA member names are used — the delegation is referenced
- * generically. Government official names retained per client instruction.
- *
- * "Read the full story" links to the agar-story anchor, the dedicated section
- * carrying the full agarwood trade narrative.
- */
-
-interface EraCard {
-  year: string;
-  title: string;
-  description: string;
+interface EraCardItemProps {
+  card: CriticalEraCard;
+  index: number;
+  onSelect: (card: CriticalEraCard) => void;
 }
 
-const ERA_CARDS: EraCard[] = [
-  {
-    year: "2000",
-    title: "Rules Notified",
-    description:
-      "The Govt. of Assam framed the Assam Wood Based Industries (Establishment and Regulation) Rules, 2000, classifying agar oil extracting units as wood based industries. These rules plunged agar growers and traders into a period of deep uncertainties.",
-
-  },
-  {
-    year: "2005",
-    title: "Verification Denied",
-    description:
-      "In October 2005, the then DFO of Hojai denied verification of consignments. Around seven processing units suffered massive financial losses. Several prominent business houses shifted operations to neighboring states like Meghalaya, as well as overseas.",
-  },
-  {
-    year: "2016",
-    title: "Minister's Initiative",
-    description:
-      "On August 24, 2016, an AATMA delegation met with the then Forest Minister Pramila Rani Brahma, who took a keen interest in the matter. A proposal was submitted to classify the Agar wood Industry as a Secondary Wood Based Industry by excluding it from the 2000 Rules.",
-  },
-  {
-    year: "2016",
-    title: "National Conference",
-    description:
-      "The Assam Forest Department organized a National Conference on Agarwood & Oil Industries: Prospect & Possibilities on October 28, 2016, at NEDFi House in Guwahati.",
-  },
-];
-
-function EraCardItem({ card, index }: { card: EraCard; index: number }) {
+function EraCardItem({ card, index, onSelect }: EraCardItemProps) {
   return (
-    <Reveal
-      variant="up"
-      delay={index * 80}
-      className="group relative bg-cream rounded-xl border-t-4 border-gold shadow-[0_2px_12px_rgba(0,0,0,0.06)] p-6 md:p-7 transition-all duration-300 hover:-translate-y-1 active:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] active:shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
-    >
-      {/* Year badge */}
-      <span className="inline-block bg-green-deep text-gold-light font-display font-bold text-sm tracking-wider px-3 py-1 rounded-full mb-4">
-        {card.year}
-      </span>
+    <Reveal variant="up" delay={index * 80} className="h-full">
+      <button
+        type="button"
+        data-critical-era-trigger={card.id}
+        aria-haspopup="dialog"
+        aria-label={`Read more about ${card.title}, ${card.year}`}
+        onClick={() => onSelect(card)}
+        className="group relative flex h-full w-full flex-col rounded-xl border-t-4 border-gold bg-cream p-6 text-left shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] active:-translate-y-1 active:shadow-[0_8px_32px_rgba(0,0,0,0.12)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold md:p-7"
+      >
+        <span className="mb-4 inline-block rounded-full bg-green-deep px-3 py-1 font-display text-sm font-bold tracking-wider text-gold-light">
+          {card.year}
+        </span>
 
-      <h3 className="font-display font-bold text-green-deep text-lg mb-3 leading-snug">
-        {card.title}
-      </h3>
+        <h3 className="mb-3 font-display text-lg font-bold leading-snug text-green-deep">
+          {card.title}
+        </h3>
 
-      <p className="text-text-mute text-sm leading-relaxed">
-        {card.description}
-      </p>
+        <p className="text-sm leading-relaxed text-text-mute">{card.description}</p>
 
-
+        <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-gold-deep">
+          Read details
+          <ArrowRight size={16} aria-hidden="true" focusable="false" />
+        </span>
+      </button>
     </Reveal>
   );
 }
 
 export function CriticalEraSection({ className }: { className?: ClassValue }) {
+  const [selectedCard, setSelectedCard] = useState<CriticalEraCard | null>(null);
+  const closeDialog = useCallback(() => setSelectedCard(null), []);
+
   return (
     <section
       id="critical-era"
-      className={cn(
-        "relative py-20 md:py-28 scroll-mt-20 overflow-hidden",
-        className,
-      )}
+      className={cn("relative overflow-hidden py-20 md:py-28 scroll-mt-20", className)}
     >
-      {/* Subtle texture overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(201,168,76,0.06)_0%,rgba(0,0,0,0)_60%)] pointer-events-none" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(201,168,76,0.06)_0%,rgba(0,0,0,0)_60%)]" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Section header */}
-        <Reveal variant="fade" delay={0} className="text-center mb-14">
-          <span className="inline-block text-gold-deep text-sm font-semibold tracking-[0.25em] uppercase mb-4">
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
+        <Reveal variant="fade" delay={0} className="mb-14 text-center">
+          <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-[0.25em] text-gold-deep">
             Critical Era · 2000–2016
           </span>
-          <h2 className="font-display font-bold text-3xl md:text-5xl text-charcoal mb-6">
+          <h2 className="mb-6 font-display text-3xl font-bold text-charcoal md:text-5xl">
             The Critical Era
           </h2>
-          <p className="text-text-mute text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-base leading-relaxed text-text-mute md:text-lg">
             In the year 2000 the Govt. of Assam notified the Assam Wood Based
             Industries (Establishment and Regulation) Rules, 2000, classifying
             agar oil extracting units as wood based industries. These rules
@@ -106,30 +71,33 @@ export function CriticalEraSection({ className }: { className?: ClassValue }) {
           </p>
         </Reveal>
 
-        {/* Card grid — 2×2 responsive */}
-        <Stagger staggerMs={100} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {ERA_CARDS.map((card, i) => (
+        <Stagger staggerMs={100} className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {CRITICAL_ERA_CARDS.map((card, index) => (
             <EraCardItem
-              key={`${card.year}-${card.title}`}
+              key={card.id}
               card={card}
-              index={i}
+              index={index}
+              onSelect={setSelectedCard}
             />
           ))}
         </Stagger>
 
-        {/* Read the full story link */}
         <Reveal variant="up" delay={200} className="mt-12 text-center">
           <Link
-            to="/#agar-story"
-            className="inline-flex items-center gap-2 text-green-deep text-sm font-medium tracking-wide underline decoration-gold/40 underline-offset-4 hover:decoration-gold active:decoration-gold transition-colors duration-300 group min-h-[44px] rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+            to="/history"
+            className="group inline-flex min-h-[44px] items-center gap-2 rounded-sm text-sm font-medium tracking-wide text-green-deep underline decoration-gold/40 underline-offset-4 transition-colors duration-300 hover:decoration-gold active:decoration-gold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
           >
             Read the full story
-            <span className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform duration-300">
-              <ArrowRight size={16} strokeWidth={2} />
+            <span className="transition-transform duration-300 group-hover:translate-x-1 group-active:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-active:translate-x-0">
+              <ArrowRight size={16} strokeWidth={2} aria-hidden="true" focusable="false" />
             </span>
           </Link>
         </Reveal>
       </div>
+
+      {selectedCard && (
+        <CriticalEraDetailDialog card={selectedCard} onClose={closeDialog} />
+      )}
     </section>
   );
 }
