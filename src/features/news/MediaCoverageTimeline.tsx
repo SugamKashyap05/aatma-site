@@ -168,7 +168,7 @@ export function MediaCoverageTimeline({
 
       {articles.length === 0 ? (
         <p className="text-cream/75 text-sm">
-          No client-supplied coverage has been published yet.
+          No media coverage has been published yet.
         </p>
       ) : (
         <div className="mt-4">

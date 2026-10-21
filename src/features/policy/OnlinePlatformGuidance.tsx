@@ -20,19 +20,17 @@ import {
 // ─── Provenance ───────────────────────────────────────────────────────────────
 
 /**
- * Every claim in this section is tagged with where it came from, and the tag is
- * rendered visibly rather than kept as an internal field.
+ * Claims that are general practice or known gaps are tagged visibly with a
+ * neutral label so visitors can see what is documented for this platform and
+ * what is not. Tags naming AATMA's internal source documents were removed from
+ * the public copy; provenance is retained in the code and project docs only.
  *
- * The distinction matters: "Inferred from Doc 2" means a human read AATMA's
- * source document and reconstructed a plausible procedure from it. It is NOT a
- * transcription of the document, and it is not an official publication of the
- * Assam Forest Department. Presenting inference as documented fact is the exact
- * failure this tagging exists to prevent.
+ * Note: this section is reconstructed guidance, not a transcription, and it is
+ * not an official publication of the Assam Forest Department. Presenting
+ * inference as documented fact is the exact failure the labels exist to
+ * prevent.
  */
 const PROVENANCE_STYLES: Record<string, string> = {
-  // Reconstructed from AATMA's documents — amber, because it needs scrutiny.
-  "Inferred from Doc 2":
-    "bg-amber-400/10 text-amber-300/90 border-amber-400/25",
   "Reconstructed — not in source docs":
     "bg-amber-400/10 text-amber-300/90 border-amber-400/25",
   // Not documented anywhere — neutral, because it claims nothing.
@@ -40,9 +38,6 @@ const PROVENANCE_STYLES: Record<string, string> = {
     "bg-white/10 text-white/70 border-white/20",
   "Gap noted":
     "bg-white/10 text-white/70 border-white/20",
-  // Transcribed from a named source — green, because it is verifiable.
-  "Source: Doc 2":
-    "bg-emerald-400/10 text-emerald-300/90 border-emerald-400/25",
 };
 
 function ProvenanceTag({ source }: { source: string }) {
@@ -76,16 +71,16 @@ const PLATFORM_OVERVIEW = {
 
 const WORKFLOWS = [
   { category: "Wood Based Industries Rules 2022", items: [
-    { name: "Unit Registration", desc: "Register a new agar wood based industry unit (Micro/Small/Medium/Large) with the Registration Committee", source: "Inferred from Doc 2" },
-    { name: "Registration Renewal", desc: "Renew an existing registration before its 5-year expiry", source: "Inferred from Doc 2" },
+    { name: "Unit Registration", desc: "Register a new agar wood based industry unit (Micro/Small/Medium/Large) with the Registration Committee" },
+    { name: "Registration Renewal", desc: "Renew an existing registration before its 5-year expiry" },
     { name: "Unit Category Change", desc: "Apply to change unit category (e.g., Small to Medium) if capacity changes", source: "General Guidance" },
     { name: "CITES Compliance Reporting", desc: "Submit periodic reports on import/re-export activities for CITES compliance", source: "General Guidance" },
     { name: "Certificate Download", desc: "Download registration certificates and compliance reports", source: "General Guidance" },
   ]},
   { category: "Trees Outside Forest Rules 2022", items: [
-    { name: "Plantation Registration", desc: "Register an agar tree plantation on non-forest land", source: "Inferred from Doc 2" },
-    { name: "Felling Permit", desc: "Apply for permission to fell agar trees from registered plantations", source: "Inferred from Doc 2" },
-    { name: "Transportation Permit", desc: "Apply for permits to transport harvested agar wood to processing units", source: "Inferred from Doc 2" },
+    { name: "Plantation Registration", desc: "Register an agar tree plantation on non-forest land" },
+    { name: "Felling Permit", desc: "Apply for permission to fell agar trees from registered plantations" },
+    { name: "Transportation Permit", desc: "Apply for permits to transport harvested agar wood to processing units" },
     { name: "Certificate Download", desc: "Download plantation registration certificates and permits", source: "General Guidance" },
   ]},
 ];
@@ -250,12 +245,10 @@ export function OnlinePlatformGuidance() {
                 Reconstructed guidance — verify before relying on it
               </p>
               <p className="text-white/70 text-sm leading-relaxed">
-                This section is compiled from AATMA&rsquo;s source documents and general
-                regulatory practice. It is <strong className="text-white/90">not an official
+                This guidance is reconstructed rather than transcribed. It is <strong className="text-white/90">not an official
                 publication of the Assam Forest Department</strong>, and the platform&rsquo;s
-                actual screens, field names, fees, and timelines may differ. Items marked{" "}
-                <ProvenanceTag source="Inferred from Doc 2" /> were reconstructed from AATMA&rsquo;s
-                correspondence rather than transcribed from it; items marked{" "}
+                actual screens, field names, fees, and timelines may differ. Some items were
+                reconstructed from correspondence rather than transcribed from it; items marked{" "}
                 <ProvenanceTag source="General Guidance" /> reflect standard practice for
                 comparable registration systems and are not documented for this platform at all.
                 Confirm current procedures with the Forest Department before acting.
@@ -273,8 +266,7 @@ export function OnlinePlatformGuidance() {
             </h3>
             <div className="glass-card rounded-lg p-6">
               <p className="text-white/70 text-sm leading-relaxed mb-4">
-                {PLATFORM_OVERVIEW.what}{" "}
-                <ProvenanceTag source="Source: Doc 2" />
+                {PLATFORM_OVERVIEW.what}
               </p>
               <div className="grid sm:grid-cols-3 gap-4 mb-6">
                 {PLATFORM_OVERVIEW.objectives.map((obj, i) => (
@@ -358,9 +350,11 @@ export function OnlinePlatformGuidance() {
                         <div>
                           <p className="text-white/80 text-sm font-medium">{item.name}</p>
                           <p className="text-cream/75 text-xs">{item.desc}</p>
-                          <div className="mt-1.5">
-                            <ProvenanceTag source={item.source} />
-                          </div>
+                          {item.source ? (
+                            <div className="mt-1.5">
+                              <ProvenanceTag source={item.source} />
+                            </div>
+                          ) : null}
                         </div>
                       </li>
                     ))}
@@ -507,8 +501,7 @@ export function OnlinePlatformGuidance() {
                 </li>
               </ul>
               <p className="mt-4 text-cream/75 text-xs">
-                Renewal reminders sent 90/60/30 days before expiry. Registration valid for 5 years.{" "}
-                <ProvenanceTag source="Source: Doc 2" />
+                Renewal reminders sent 90/60/30 days before expiry. Registration valid for 5 years.
               </p>
             </div>
           </div>
@@ -581,8 +574,7 @@ export function OnlinePlatformGuidance() {
                 </p>
                 <p>
                   <strong className="text-white/90">Registration Committee</strong> — At the level of
-                  Conservator of Forests concerned{" "}
-                  <ProvenanceTag source="Source: Doc 2" />
+                  Conservator of Forests concerned.
                 </p>
                 <p>
                   <strong className="text-white/90">AATMA</strong> — Agar Wood Traders and Manufacturers

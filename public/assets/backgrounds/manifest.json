@@ -1051,13 +1051,13 @@
     "token": "--color-green-deep",
     "description": "Deep forest green (--color-green-deep) fallback when the decorative wallpaper image is unavailable",
     "clientHomepageHero": {
-      "summary": "The client-supplied 1000×800 tree-and-path photograph is used separately in the bounded homepage split hero; it does not replace or change the attribution of this decorative wallpaper.",
+      "summary": "The 1000×800 tree-and-path photograph is used separately in the bounded homepage split hero; it does not replace or change the attribution of this decorative wallpaper.",
       "assets": [
         "WhatsApp Image 2026-09-26 at 7.13.00 PM.jpeg — 1000×800 (selected)",
         "WhatsApp Image 2026-09-26 at 7.12.59 PM.jpeg — 758×606 (not selected)"
       ],
       "assessment": "The selected photo displays at up to 576 px wide in the split hero. Alt text and caption describe only visible rows of trees and a grassy path; species and location are not inferred.",
-      "status": "1000×800 client-supplied photo selected for bounded homepage hero; full-resolution original not required for this use"
+      "status": "1000×800 photo selected for bounded homepage hero; full-resolution original not required for this use"
     }
   }
 }

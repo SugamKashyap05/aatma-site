@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { ScrollText, Building2, Scale, Globe, AlertTriangle } from "lucide-react";
+import { ScrollText, Building2, Scale, Globe } from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -107,12 +107,6 @@ export function PolicyNav() {
             </li>
           ))}
         </ul>
-        <div className="mt-4 pt-3 border-t border-white/10">
-          <div className="flex items-center gap-2 text-cream/75 text-xs">
-            <AlertTriangle className="w-3 h-3" />
-            <span>Source: 3 AATMA documents</span>
-          </div>
-        </div>
       </div>
     </nav>
   );

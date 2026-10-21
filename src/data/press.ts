@@ -19,8 +19,7 @@
  * to the UAE worth ₹2.35 crore) are recorded in
  * docs/APPROVED_CONTENT_LEDGER.md (#167, #174, #179) as `exclude` — no client
  * source. They were removed rather than presented as AATMA publications. If
- * the client supplies the underlying documents, add them back here with their
- * `sourceDocument` recorded.
+ * the underlying documents are supplied, add them back here.
  */
 
 export type PressReleaseCategory = "Press Release" | "Official Letter";
@@ -44,11 +43,6 @@ export interface PressRelease {
    */
   available?: boolean;
   featured?: boolean;
-  /**
-   * The client document this release was produced from, so a visitor can see
-   * the original file. Every entry here has one.
-   */
-  sourceDocument: string;
 }
 
 export const PRESS_RELEASES: PressRelease[] = [
@@ -66,7 +60,6 @@ export const PRESS_RELEASES: PressRelease[] = [
     fileName: "AATMA-Press-Note-2023-01-14.pdf",
     size: "5.6 KB",
     featured: true,
-    sourceDocument: "Client-supplied AATMA press note",
   },
   {
     id: "letter-to-hcm-2023",
@@ -81,7 +74,6 @@ export const PRESS_RELEASES: PressRelease[] = [
     available: true,
     fileName: "AATMA-Letter-to-HCM-2023-01-14.pdf",
     size: "5.7 KB",
-    sourceDocument: "Client-supplied AATMA letter to the Chief Minister",
   },
 ];
 

@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import type { PublicationProvenance } from "@/data/books";
 
 /**
- * ProvenanceBadge — distinguishes client publications, client-supplied documents,
+ * ProvenanceBadge — distinguishes AATMA publications, association documents,
  * press estimates, and website-authored summaries.
  */
 interface ProvenanceMeta {
@@ -15,26 +15,26 @@ interface ProvenanceMeta {
 
 const PROVENANCE_META: Record<PublicationProvenance, ProvenanceMeta> = {
   "client-publication": {
-    label: "Client publication",
-    description: "Client-supplied material reproduced on this site.",
+    label: "AATMA publication",
+    description: "AATMA material reproduced on this site.",
     Icon: BadgeCheck,
     className: "border-gold/50 bg-gold/15 text-white",
   },
   "client-press-estimate": {
-    label: "Client-supplied press estimate",
-    description: "Reported in a client-supplied news clipping; not an AATMA-authored statistic.",
+    label: "Press estimate",
+    description: "Reported in a news clipping; not an AATMA-authored statistic.",
     Icon: Newspaper,
     className: "border-white/30 bg-white/10 text-white",
   },
   "client-supplied-document": {
-    label: "Client-supplied document",
-    description: "A source document supplied for this project.",
+    label: "Association document",
+    description: "A source document from the association.",
     Icon: FileText,
     className: "border-white/30 bg-white/10 text-white",
   },
   "site-summary": {
     label: "Site summary",
-    description: "Website-authored summary; not a client publication.",
+    description: "Website-authored summary; not an AATMA publication.",
     Icon: PenLine,
     className: "border-white/30 bg-white/10 text-white",
   },

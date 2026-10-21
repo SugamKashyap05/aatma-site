@@ -76,13 +76,13 @@ export function NewsIndex() {
           News &amp; <span className="text-gold-light">Media</span>
         </>
       }
-      subtitle="Selected checked claims from the newspaper clippings the association supplied. Full article scans are not displayed."
+      subtitle="Selected checked claims from the newspaper clippings in the association's archive. Full article scans are not displayed."
     >
       <section className="relative pb-20">
         <div className="max-w-7xl mx-auto px-6">
           {/* ── Provenance note ──────────────────────────────────────── */}
           <p className="text-cream/50 text-sm leading-relaxed mb-10 max-w-3xl">
-            Each entry is based on a clipping supplied by the client and shows
+            Each entry is based on a clipping from the association's archive and shows
             the verified outlet and publication date. The text is a checked
             summary, not a complete article transcription, and original scans
             are not displayed. Any unrelated neighbouring story is excluded

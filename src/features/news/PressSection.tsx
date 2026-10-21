@@ -80,11 +80,6 @@ function PressReleaseCard({
             {release.summary}
           </p>
 
-          {/* Provenance — which client document this was produced from */}
-          <p className="mt-3 text-cream/75 text-xs leading-relaxed">
-            Source document: {release.sourceDocument}
-          </p>
-
           {/* Meta + actions */}
           <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between gap-4">
             <div className="flex items-center gap-2 text-cream/75 text-xs">
@@ -203,8 +198,7 @@ export function PressSection({
           <Reveal variant="fade" delay={200}>
             <p className="text-green-deep/80 text-base md:text-lg max-w-2xl mx-auto">
               Press releases and official letters issued by AATMA, alongside
-              newspaper coverage of its work — each labelled with the source it
-              came from.
+              newspaper coverage of its work.
             </p>
           </Reveal>
         </div>

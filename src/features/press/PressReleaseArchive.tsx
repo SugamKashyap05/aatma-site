@@ -78,11 +78,6 @@ function PressReleaseCard({
             {release.summary}
           </p>
 
-          {/* Provenance — which client document this was produced from */}
-          <p className="mt-3 text-cream/75 text-xs leading-relaxed">
-            Source document: {release.sourceDocument}
-          </p>
-
           {/* Meta + actions */}
           <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between gap-4">
             <div className="flex items-center gap-2 text-cream/75 text-xs">

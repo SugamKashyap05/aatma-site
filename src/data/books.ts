@@ -80,7 +80,7 @@ export const BOOKS: Book[] = [
     totalPages: 31,
     provenance: "client-publication",
     provenanceNote:
-      "An AATMA publication — first print September 2000, published by the association. Authors Dr. M. Ahmed and Dr. P. Gogoi, read from the scanned title and imprint pages. Reproduced here as supplied from the client-provided scan; no external hosting dependency is used.",
+      "An AATMA publication — first print September 2000, published by the association. Authors Dr. M. Ahmed and Dr. P. Gogoi, read from the scanned title and imprint pages. Reproduced here from the association's scan; no external hosting dependency is used.",
     chapters: [
       { id: "front-matter", title: "Front Matter", image: "books/agar/pages/page-001.jpg", body: [], page: 1, bookPage: 1, pageStart: 1, pageEnd: 6 },
       { id: "introduction", title: "Introduction", image: "books/agar/pages/page-007.jpg", body: [], page: 7, bookPage: 1, pageStart: 7, pageEnd: 8 },
@@ -137,7 +137,7 @@ export const BOOKS: Book[] = [
     totalPages: 128,
     provenance: "client-publication",
     provenanceNote:
-      "Client-supplied scanned proceedings. The cover names AATMA, lists the editors, and gives the date as Feb 2001. The scan is reproduced as supplied.",
+      "Scanned proceedings. The cover names AATMA, lists the editors, and gives the date as Feb 2001. Reproduced unaltered.",
     chapters: [
       { id: "chapter-1", title: "Front Matter", body: [], image: "books/proceedings/pages/page-001.jpg", page: 1, bookPage: 1, pageStart: 1, pageEnd: 6 },
       { id: "chapter-2", title: "Keynote Address", body: [], image: "books/proceedings/pages/page-007.jpg", page: 7, bookPage: 7, pageStart: 7, pageEnd: 12 },

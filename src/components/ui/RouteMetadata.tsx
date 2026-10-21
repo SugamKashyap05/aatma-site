@@ -38,37 +38,37 @@ const ROUTE_META: Record<string, RouteMeta> = {
   "/books": {
     title: `Books & Publications — ${AATMA.shortName}`,
     description:
-      "Client-supplied publications: the AGAR scan and seminar proceedings, available to browse and download.",
+      "AATMA's publications: the AGAR scan and seminar proceedings, available to browse and download.",
   },
   "/press": {
     title: `Press & Media — ${AATMA.shortName}`,
     description:
-      "Client-supplied AATMA press note, letter, and press-meet material, presented with separate source labels.",
+      "AATMA's press notes, official letters, and press-meet coverage.",
   },
   "/history": {
     title: `History & Timeline — ${AATMA.shortName}`,
     description:
-      "AATMA's client-supplied history and timeline, from formation in 1976 through milestones recorded in 2026.",
+      "AATMA's history and timeline, from formation in 1976 through milestones recorded in 2026.",
   },
   "/policy": {
     title: `Policy & Regulation — ${AATMA.shortName}`,
     description:
-      "Client-supplied policy documents and AATMA material about the WBI Rules, ToF Rules, and CITES.",
+      "AATMA material on the WBI Rules, ToF Rules, and CITES compliance.",
   },
   "/research": {
     title: `Research & Digital Library — ${AATMA.shortName}`,
     description:
-      "Client-supplied newspaper figures and AATMA material on agarwood research and trade, with source labels.",
+      "Newspaper figures and AATMA material on agarwood research and trade.",
   },
   "/news": {
     title: `News & Media Coverage — ${AATMA.shortName}`,
     description:
-      "Client-supplied newspaper clippings and summaries; publication details are stated only where verified.",
+      "Newspaper clippings and summaries; publication details are stated only where verified.",
   },
   "/resources": {
     title: `Resource Center — ${AATMA.shortName}`,
     description:
-      "Client-supplied rules, forms, a history note, and seminar abstracts available to read and download.",
+      "Assam government rules, forms, a history note, and seminar abstracts available to read and download.",
   },
   "/about": {
     title: `About — ${AATMA.shortName}`,

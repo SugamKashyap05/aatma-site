@@ -159,7 +159,7 @@ export const FOREST_SOURCE = {
  */
 export const CLIENT_OWNED_FALLBACK = {
   path: "client-images/aatma-tree-plantation.jpg",
-  description: "Client-supplied photograph showing rows of trees and a grassy path",
+  description: "Photograph showing rows of trees and a grassy path",
   status: "selected for the bounded homepage hero; full-resolution originals were not needed for this use",
   assessment:
     "The selected 1000×800 image renders within a max-width 576 px split-hero frame; the 758×606 alternative is not selected. The image is not used as an edge-to-edge desktop background.",

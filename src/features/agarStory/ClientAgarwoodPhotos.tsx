@@ -5,35 +5,35 @@ const PHOTOS = [
   {
     path: "client-images/agarwood/agarwood-raw-pieces.jpg",
     alt: "Irregular pieces of dark agarwood arranged on a white surface.",
-    caption: "A client-supplied photograph of agarwood pieces.",
+    caption: "Photograph of agarwood pieces.",
     width: 960,
     height: 1280,
   },
   {
     path: "client-images/agarwood/distillation-vessel.jpg",
     alt: "A large covered vessel and connected equipment inside a small processing building.",
-    caption: "A client-supplied photograph of distillation equipment.",
+    caption: "Photograph of distillation equipment.",
     width: 2252,
     height: 4000,
   },
   {
     path: "client-images/agarwood/agarwood-chips-hand.jpg",
     alt: "A hand holding several dark wood chips above a larger pile of similar pieces.",
-    caption: "A client-supplied close-up of agarwood chips.",
+    caption: "Close-up of agarwood chips.",
     width: 1024,
     height: 768,
   },
   {
     path: "client-images/agarwood/agarwood-chips-white.jpg",
     alt: "Raw agarwood chips arranged on a white fabric surface.",
-    caption: "A client-supplied photograph of raw agarwood chips.",
+    caption: "Photograph of raw agarwood chips.",
     width: 960,
     height: 1280,
   },
   {
     path: "client-images/agarwood/agarwood-chips-hand-2.jpg",
     alt: "A hand holding a pile of dark agarwood chips.",
-    caption: "A client-supplied close-up of agarwood chips in hand.",
+    caption: "Close-up of agarwood chips in hand.",
     width: 1024,
     height: 768,
   },
@@ -43,14 +43,14 @@ const NATURE_PHOTOS = [
   {
     path: "client-images/nature/forest-1.jpg",
     alt: "Dense forest plantation with tall trees and green canopy.",
-    caption: "A client-supplied photograph of an agarwood plantation.",
+    caption: "Photograph of an agarwood plantation.",
     width: 1280,
     height: 720,
   },
   {
     path: "client-images/nature/forest-2.jpg",
     alt: "Dense forest plantation with tall trees and a dirt path.",
-    caption: "A client-supplied photograph of a forest plantation.",
+    caption: "Photograph of a forest plantation.",
     width: 1280,
     height: 720,
   },
@@ -64,7 +64,7 @@ export function ClientAgarwoodPhotos() {
       <Reveal variant="fade" delay={0}>
         <div className="mb-6 max-w-3xl">
           <h3 id="client-agarwood-photos-heading" className="font-display text-xl font-bold text-white md:text-2xl">
-            Client-supplied agarwood photographs
+            Agarwood photographs
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-cream/75">
             Captions describe only visible subject matter. No grade, quality, origin, or performance claim is inferred from these images.

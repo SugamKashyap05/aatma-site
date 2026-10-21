@@ -178,7 +178,7 @@ tests/
 
 **Steps:**
 1. Open each of the four Critical Era cards using mouse, touch, Enter, and Space.
-2. Verify the dialog title and card-specific copy; confirm the source attribution is visible.
+2. Verify the dialog title and card-specific copy.
 3. Verify initial focus, focus trapping, focus restoration, Escape/close-button/backdrop closing, and body-scroll restoration.
 4. Check the page and dialog at 320, 390, 768, and 1366 px; verify the close button stays visible and long text scrolls inside the dialog without horizontal overflow.
 5. Activate “Read the full story.”

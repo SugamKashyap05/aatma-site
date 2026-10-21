@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 900" role="img" aria-labelledby="map-title map-desc">
   <title id="map-title">Agar trade chronology and source relationships</title>
-  <desc id="map-desc">A vertical schematic based on the client history, not a geographic map or to scale. It presents the early trade chronology and client-described places and relationships.</desc>
+  <desc id="map-desc">A vertical schematic based on the association's history, not a geographic map or to scale. It presents the early trade chronology and the places and relationships described there.</desc>
   <style>
     :root { --gold:#c9a84c; --gold-light:#e0c878; --cream:#f5f0e8; --muted:#d7d1c8; --green:#1a3c2a; --sans:Inter,system-ui,sans-serif; }
     text { font-family:var(--sans); }
@@ -41,7 +41,7 @@
   </g>
 
   <line x1="24" y1="780" x2="456" y2="780" stroke="var(--cream)" stroke-opacity=".28"/>
-  <text x="24" y="814" fill="var(--gold-light)" font-family="var(--sans)" font-size="16" font-weight="700">Client-described trade chronology</text>
+  <text x="24" y="814" fill="var(--gold-light)" font-family="var(--sans)" font-size="16" font-weight="700">Trade chronology</text>
   <text x="24" y="842" fill="var(--muted)" font-family="var(--sans)" font-size="14">Schematic, not geographic or to scale.</text>
-  <text x="24" y="872" fill="var(--muted)" font-family="var(--sans)" font-size="13">Source: A Brief History of Agar (client document), §3.</text>
+  <text x="24" y="872" fill="var(--muted)" font-family="var(--sans)" font-size="13">Schematic — not to geographic scale</text>
 </svg>

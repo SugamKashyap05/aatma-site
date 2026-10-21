@@ -179,7 +179,7 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
     tags: ["press-release", "cites", "2008"],
     description:
       "Press release from the Assam Agarbatti Traders and Agarbatti Oil Producers Association (ATSA) regarding CITES regulations, the 2005 rules, endangered species, and sandalwood.",
-    source: "Client-supplied ATSA press release, 21 February 2008",
+    source: "ATSA press release, 21 February 2008",
     available: true,
     downloadPath: "resources/atsa-press-release-2008-02-21.jpeg",
   },
@@ -196,7 +196,7 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
     tags: ["legal", "court", "2007"],
     description:
       "W.P(c) No. 6284/2007 — M/s North East Aromatics v. State of Assam & Ors. A legal filing concerning the agar trade and forest regulations.",
-    source: "Client-supplied legal document",
+    source: "Legal document",
     available: true,
     downloadPath: "resources/gauhati-hc-writ-2007.jpeg",
   },
@@ -211,7 +211,7 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
     tags: ["notice", "registration", "fees"],
     description:
       "AATMA notice regarding Assam Wood Based Industries Rules 2000 and Trees Outside Forest Rules 2022 registration fees, signed by the General Secretary.",
-    source: "Client-supplied official notice, 11 January 2023",
+    source: "Official notice, 11 January 2023",
     available: true,
     downloadPath: "resources/aatma-notice-2023-01-11.jpeg",
   },
@@ -228,7 +228,7 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
     tags: ["survey", "plantation", "nagaon"],
     description:
       "Page 41 of a report titled 'Photographs of Agarwood plantation sites' — field photos from Salona, Nagaon, Assam with GPS coordinates.",
-    source: "Client-supplied field survey document, 24 July 2026",
+    source: "Field survey document, 24 July 2026",
     available: true,
     downloadPath: "research/plantation-survey-p41.jpeg",
   },
@@ -243,7 +243,7 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
     tags: ["survey", "distillation", "field", "golaghat"],
     description:
       "Annexure 2: Photographs for the Field — Traditional agarwood oil distillation units in Golaghat, Jorhat, Sivasagar & Hojai districts.",
-    source: "Client-supplied field survey document, 22–26 July 2026",
+    source: "Field survey document, 22–26 July 2026",
     available: true,
     downloadPath: "research/distillation-survey-annexure.jpeg",
   },
@@ -257,8 +257,8 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
     pageCount: 4,
     tags: ["history", "trade", "reference"],
     description:
-      "Privacy-edited text copy of AATMA's client-supplied reference note; full names of AATMA office-bearers are withheld in this public copy.",
-    source: "AATMA reference note (client document, undated; public copy privacy-edited)",
+      "Privacy-edited text copy of AATMA's reference note; full names of AATMA office-bearers are withheld in this public copy.",
+    source: "AATMA reference note (undated; public copy privacy-edited)",
     available: true,
     downloadPath: "resources/brief-history-of-agar.pdf",
   },

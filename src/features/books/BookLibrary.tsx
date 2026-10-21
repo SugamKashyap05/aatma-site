@@ -56,7 +56,7 @@ export function BookLibrary({ onRead, onDownload, downloadingId, showHeader = tr
           </Reveal>
           <Reveal variant="fade" delay={200}>
             <p className="text-white/70 text-base md:text-lg max-w-2xl mx-auto">
-              The client's supplied publications, reproduced on the site with their source stated.
+              AATMA's own publications, reproduced on the site with their source stated.
             </p>
           </Reveal>
         </div>

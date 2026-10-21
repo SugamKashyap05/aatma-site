@@ -39,7 +39,7 @@ export function AatmaHero() {
           <div className="relative aspect-[5/4] overflow-hidden border border-gold/35 bg-green-deep">
             <img
               src={assetUrl("client-images/aatma-tree-plantation.jpg")}
-              alt="Client-supplied photograph showing rows of trees and a grassy path"
+              alt="Photograph showing rows of trees and a grassy path"
               width={1000}
               height={800}
               fetchPriority="high"
@@ -52,7 +52,7 @@ export function AatmaHero() {
             />
           </div>
           <figcaption className="mt-3 border-l border-gold/60 pl-3 text-xs leading-relaxed text-cream/65">
-            Client-supplied photograph showing rows of trees and a grassy path
+            Photograph showing rows of trees and a grassy path
           </figcaption>
         </figure>
       </div>

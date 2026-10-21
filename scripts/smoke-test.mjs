@@ -43,7 +43,7 @@ const PUBLIC_ROUTES = [
   { path: '/policy', label: 'Policy' },
   { path: '/research', label: 'Research' },
   { path: '/news', label: 'News index' },
-  { path: '/news/aatma-thanks-cm-sarma-2023', label: 'News article 1' },
+  { path: '/news/aatma-thanks-cm-2023-01-17', label: 'News article 1' },
   { path: '/news/winds-of-change-2023', label: 'News article 2' },
   { path: '/news/prospects-assam-agarwood-2024', label: 'News article 3' },
   { path: '/resources', label: 'Resources' },

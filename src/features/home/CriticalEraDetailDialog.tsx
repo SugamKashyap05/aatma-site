@@ -125,9 +125,6 @@ export function CriticalEraDetailDialog({
           {card.detailParagraphs.map((paragraph, index) => (
             <p key={`${card.id}-detail-${index}`}>{paragraph}</p>
           ))}
-          <p className="border-t border-border pt-4 text-sm text-text-mute">
-            Source: {card.sourceReference}.
-          </p>
         </div>
       </div>
     </div>,

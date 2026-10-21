@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img"
      aria-labelledby="svg02-title svg02-desc">
-  <title id="svg02-title">Client-described agar trade chronology and supply relationships</title>
-  <desc id="svg02-desc">A schematic, not-geographic diagram. The gold path shows a simplified trade chronology. Pale dashed links show relationships stated in the client history: Karbi Angong and Naga Hills forest mahals used by Barpather entrepreneurs; NEFA and Bhutan mahals leased by Hojai traders and brought to Hojai; and Manipur supply processed at Hojai and Silchar. Naharani, Jorhat and Sibsagar are shown as a separate trade and distillation area using homegrown trees.</desc>
+  <title id="svg02-title">Agar trade chronology and supply relationships</title>
+  <desc id="svg02-desc">A schematic, not-geographic diagram. The gold path shows a simplified trade chronology. Pale dashed links show relationships stated in the association's history: Karbi Angong and Naga Hills forest mahals used by Barpather entrepreneurs; NEFA and Bhutan mahals leased by Hojai traders and brought to Hojai; and Manipur supply processed at Hojai and Silchar. Naharani, Jorhat and Sibsagar are shown as a separate trade and distillation area using homegrown trees.</desc>
 
   <defs>
     <!-- Palette values are mirrored in the root style for standalone image embeds. -->
@@ -25,7 +25,7 @@
         fill="none" stroke="url(#svg02-path)" stroke-width="2.5"
         stroke-linecap="round" stroke-dasharray="7 6"/>
 
-  <!-- Pale dashed links show only client-described raw-material relationships. -->
+  <!-- Pale dashed links show only raw-material relationships described in the history document. -->
   <g stroke="var(--map-source)" stroke-opacity="0.5" stroke-width="1.6"
      fill="none" stroke-linecap="round" stroke-dasharray="4 5">
     <!-- Karbi Angong & Naga Hills -> Barpather (forest mahals) -->
@@ -133,9 +133,9 @@
     <text x="605" y="0" fill="var(--color-cream)" fill-opacity="0.85">Reported supply link</text>
   </g>
 
-  <!-- Source line: every claim traces to the client's own history document -->
+  <!-- Schematic disclaimer -->
   <text x="60" y="488" font-family="var(--font-sans)" font-size="10"
         fill="var(--color-cream)" fill-opacity="0.82" letter-spacing="0.04em">
-    Source: A Brief History of Agar (client document), §3 — schematic, not to geographic scale
+    Schematic — not to geographic scale
   </text>
 </svg>

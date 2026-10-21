@@ -9,28 +9,24 @@ const CITES_TIMELINE = [
     status: "LPC issued",
     description:
       "Local forest authorities issued LPCs for re-export products derived from imported agar wood to comply with CITES provisions",
-    source: "AATMA-supplied brief, §5",
   },
   {
     period: "Oct 2005",
     status: "Disrupted",
     description:
       "DFO Hojai denied CITES verification on alleged verbal instruction of the then Forest Minister. Around seven processing units suffered massive financial losses; several prominent business houses shifted operations to neighbouring states like Meghalaya and overseas.",
-    source: "A Brief History of Agar, §7",
   },
   {
     period: "Jan 2023",
     status: "Rules notified",
     description:
       "Assam Wood Based Industries (Promotion and Development) Rules 2022 were notified on 12 January 2023 and described by AATMA as fully CITES compliant.",
-    source: "AATMA press note, 14 Jan 2023",
   },
   {
     period: "2023+",
     status: "Trade provisions",
     description:
-      "AATMA's supplied press note says the Rules paved the way for import and re-export, as well as export of domestic agarwood products.",
-    source: "AATMA press note, 14 Jan 2023",
+      "AATMA's press note says the Rules paved the way for import and re-export, as well as export of domestic agarwood products.",
   },
 ];
 
@@ -39,7 +35,7 @@ const CITES_KEY_FACTS = [
   "DFO (Divisional Forest Officer) was the authority responsible for CITES verification",
   "Around seven processing units suffered massive financial losses after the October 2005 denial of CITES verification by DFO Hojai",
   "AATMA's 14 January 2023 press note describes the Assam Wood Based Industries (Promotion and Development) Rules 2022 as fully CITES compliant",
-  "AATMA's supplied press note says the 2022 rules paved the way for import and re-export, as well as export of domestic agar wood products",
+  "AATMA's press note says the 2022 rules paved the way for import and re-export, as well as export of domestic agar wood products",
   "Registration under the 2022 rules is valid for 5 years",
   "The 2022 rules replaced the 2000 rules that had imposed legal hurdles blocking import and re-export",
 ];
@@ -65,7 +61,7 @@ export function CitesCompliance() {
               CITES <span className="text-gold-light">Compliance</span>
             </h2>
             <p className="text-white/70 text-base md:text-lg max-w-3xl">
-              Client documents describe the verification process, the 2005 disruption, and the 2022 Rules.
+              AATMA's records describe the verification process, the 2005 disruption, and the 2022 Rules.
             </p>
           </div>
         </Reveal>
@@ -120,9 +116,6 @@ export function CitesCompliance() {
                           >
                             {item.status}
                           </span>
-                          <span className="text-cream/75 text-xs">
-                            [{item.source}]
-                          </span>
                         </div>
                         <p className="text-cream/75 text-sm leading-relaxed">
                           {item.description}
@@ -153,9 +146,6 @@ export function CitesCompliance() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 text-cream/75 text-xs leading-relaxed">
-                Sources: AATMA-supplied brief, §5; A Brief History of Agar, §7; AATMA press note, 14 January 2023.
-              </p>
             </div>
           </Reveal>
 

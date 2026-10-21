@@ -67,7 +67,6 @@ try {
     const body = dialog.locator("[data-critical-era-dialog-content]");
     const bodyText = await body.innerText();
     assert.ok(bodyText.includes(card.expected), `${card.id} is missing expected client detail`);
-    assert.ok(bodyText.includes("Source: AATMA-supplied brief"), "dialog source attribution is missing");
     assert.equal(await page.evaluate(() => document.body.style.overflow), "hidden");
 
     if (index === 0) {
