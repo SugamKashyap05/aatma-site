@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { cn, type ClassValue, assetUrl } from "@/lib/utils";
-import { AmbientMotion } from "@/features/ambient/AmbientMotion";
 import { Reveal } from "@/components/ui/reveal";
 import { ClientAgarwoodPhotos } from "@/features/agarStory/ClientAgarwoodPhotos";
 import {
@@ -36,7 +35,7 @@ const MILESTONES: Milestone[] = [
     icon: <TreePine className="w-5 h-5" strokeWidth={1.5} />,
     title: "Sylhet oil extraction",
     description:
-      "Agarwood was found abundantly in the forests of the North Eastern region, and people of Sylhet (now in Bangladesh) used it for extracting oil.",
+      "Agarwood was found abundantly in the forests of the North Eastern region, and people of Sylhet used it for extracting oil.",
   },
   {
     year: "Date not stated",
@@ -92,14 +91,10 @@ const MILESTONES: Milestone[] = [
 const TRADING_ROUTE =
   "From 1970 to 1980s the entrepreneurs of Hojai & Silchar collected Agarwood from the Mahalders of Manipur State (under Forest Transit Pass) which were processed & distilled for oil at Hojai and Silchar. These products were subsequently taken to Bombay (Mumbai) under Lieu T.P. issued by Forest Deptt. Of Assam for sale.";
 
-export function AgarStory({
-  className,
-  deviceTier,
-}: {
+export function AgarStory({ className }: {
   className?: ClassValue;
   deviceTier?: "mobile" | "tablet" | "desktop";
 }) {
-  const isMobile = deviceTier === "mobile";
 
   return (
     <section
@@ -109,12 +104,7 @@ export function AgarStory({
         className
       )}
     >
-      <AmbientMotion
-        variant="fog"
-        theme="dark"
-        layers={isMobile ? 1 : 2}
-        speed={isMobile ? 75 : 60}
-      />
+
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(201,168,76,0.08)_0%,rgba(0,0,0,0)_60%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">

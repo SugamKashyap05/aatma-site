@@ -21,23 +21,23 @@ export function SanchiPaatSection({ className }: { className?: ClassValue }) {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* ---- Text content ---- */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1 bg-glass-card backdrop-blur-xl border border-white/20 rounded-xl p-6 md:p-8 shadow-lg">
             <Reveal variant="fade" delay={0}>
-              <span className="inline-block text-gold-deep text-sm font-semibold tracking-[0.25em] uppercase mb-4">
+              <span className="inline-block text-agar-label text-sm font-semibold tracking-[0.25em] uppercase mb-4">
                 Ancient Tradition
               </span>
             </Reveal>
 
             <Reveal variant="up" delay={100}>
-              <h2 className="font-display font-bold text-3xl md:text-5xl text-charcoal mb-6">
+              <h2 className="font-display font-bold text-3xl md:text-5xl text-agar-title mb-6">
                 Sanchi Paat
               </h2>
             </Reveal>
 
             <Reveal variant="fade" delay={200}>
-              <p className="text-text-mute text-base md:text-lg leading-relaxed mb-6">
+              <p className="text-agar-body text-base md:text-lg leading-relaxed mb-6">
                 Bark of the agar tree — called{" "}
-                <em className="text-charcoal font-medium">sanchi paat</em> — was
+                <em className="text-agar-title font-medium">sanchi paat</em> — was
                 used for writing scriptures. The renowned Vaishnav saints of Assam
                 — Srimanta Sankar Dev, Madhav Deb, and Damudar Deb — used
                 Sanchipat for writing scriptures.

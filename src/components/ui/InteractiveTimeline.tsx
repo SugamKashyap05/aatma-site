@@ -19,19 +19,18 @@ export interface Era {
   id: string;
   label: string;
   range: string;
-  color: string;
 }
 
 // ─── Default Eras ────────────────────────────────────────────────────────────
 
 export const DEFAULT_ERAS: Era[] = [
-  { id: "ancient", label: "Ancient Roots", range: "pre-1905", color: "#8B7355" },
-  { id: "early-trade", label: "Early Trade", range: "1905–1975", color: "#C9A84C" },
-  { id: "formation", label: "AATMA Formation", range: "1976", color: "#D4A843" },
-  { id: "growth", label: "Growth", range: "1977–1999", color: "#B8944A" },
-  { id: "critical", label: "Critical Era", range: "2000–2022", color: "#A67C3D" },
-  { id: "modern", label: "Modern", range: "2023–2026", color: "#C9A84C" },
-  { id: "undated", label: "Undated source passage", range: "No date stated", color: "#C9A84C" },
+  { id: "ancient", label: "Ancient Roots", range: "pre-1905" },
+  { id: "early-trade", label: "Early Trade", range: "1905–1975" },
+  { id: "formation", label: "AATMA Formation", range: "1976" },
+  { id: "growth", label: "Growth", range: "1977–1999" },
+  { id: "critical", label: "Critical Era", range: "2000–2022" },
+  { id: "modern", label: "Modern", range: "2023–2026" },
+  { id: "undated", label: "Undated source passage", range: "No date stated" },
 ];
 
 // ─── Default Events (client-supplied source documents) ───────────────────────
@@ -330,24 +329,18 @@ function DesktopTimeline({
               return (
                 <div key={`era-${item.era.id}`} className="flex flex-col items-center shrink-0 mx-4">
                   <div
-                    className="w-1 h-8 rounded-full mb-2"
-                    style={{ backgroundColor: item.era.color }}
+                    className="w-1 h-8 rounded-full mb-2 bg-agar-icon"
                   />
-                  <span
-                    className="text-xs font-semibold tracking-wider uppercase whitespace-nowrap"
-                    style={{ color: item.era.color }}
-                  >
+                  <span className="text-agar-label text-xs font-semibold tracking-wider uppercase whitespace-nowrap">
                     {item.era.label}
                   </span>
-                  <span className="text-[10px] text-cream/75 mt-0.5">{item.era.range}</span>
+                  <span className="text-[10px] text-agar-body mt-0.5">{item.era.range}</span>
                 </div>
               );
             }
 
             const { event, index } = item;
             const isActive = index === activeIndex;
-            const era = eras.find((e) => e.id === event.era);
-            const eraColor = era?.color || "#C9A84C";
 
             return (
               <button
@@ -367,16 +360,15 @@ function DesktopTimeline({
                   className={cn(
                     "w-4 h-4 rounded-full border-2 transition-all duration-300 mb-3",
                     isActive
-                      ? "border-gold bg-gold shadow-lg shadow-gold/40"
-                      : "border-white/30 bg-white/10 group-hover:border-gold/60 group-active:border-gold/60 group-hover:bg-gold/20 group-active:bg-gold/20"
+                      ? "border-agar-icon bg-agar-icon shadow-lg shadow-gold/40"
+                      : "border-white/30 bg-white/10 group-hover:border-agar-icon/60 group-active:border-agar-icon/60 group-hover:bg-agar-icon/20 group-active:bg-agar-icon/20"
                   )}
-                  style={isActive ? { borderColor: eraColor, backgroundColor: eraColor } : undefined}
                 />
                 {/* Year */}
                 <span
                   className={cn(
                     "text-sm font-bold tracking-tight transition-colors duration-300 mb-1",
-                    isActive ? "text-gold-light" : "text-cream/75 group-hover:text-white/80 group-active:text-white/80"
+                    isActive ? "text-agar-label" : "text-agar-label group-hover:text-agar-title group-active:text-agar-title"
                   )}
                 >
                   {event.year}
@@ -385,7 +377,7 @@ function DesktopTimeline({
                 <span
                   className={cn(
                     "text-xs text-center max-w-[120px] leading-tight transition-colors duration-300",
-                    isActive ? "text-white" : "text-cream/75 group-hover:text-white/70 group-active:text-white/70"
+                    isActive ? "text-agar-title" : "text-agar-body group-hover:text-agar-title group-active:text-agar-title"
                   )}
                 >
                   {event.title}
@@ -404,7 +396,7 @@ function DesktopTimeline({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -12 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="mt-6 mx-4 md:mx-12 glass-surface rounded-xl p-6"
+          className="mt-6 mx-4 md:mx-12 bg-glass-card backdrop-blur-xl border border-white/20 rounded-xl p-6 shadow-lg"
           aria-live="polite"
         >
           {(() => {
@@ -415,21 +407,15 @@ function DesktopTimeline({
               <div className="flex flex-col md:flex-row md:items-start gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span
-                      className="text-xs font-bold tracking-widest uppercase px-2 py-0.5 rounded-full"
-                      style={{
-                        color: era?.color || "#C9A84C",
-                        backgroundColor: `${era?.color || "#C9A84C"}20`,
-                      }}
-                    >
+                    <span className="text-agar-label text-xs font-bold tracking-widest uppercase px-2 py-0.5 rounded-full border border-gold/20 bg-gold/10">
                       {era?.label || event.era}
                     </span>
-                    <span className="text-gold-light text-sm font-semibold">{event.year}</span>
+                    <span className="text-agar-label text-sm font-semibold">{event.year}</span>
                   </div>
-                  <h3 className="text-white text-lg md:text-xl font-semibold mb-2 font-display">
+                  <h3 className="text-agar-title text-lg md:text-xl font-semibold mb-2 font-display">
                     {event.title}
                   </h3>
-                  <p className="text-white/65 text-sm md:text-base leading-relaxed">
+                  <p className="text-agar-body text-sm md:text-base leading-relaxed">
                     {event.description}
                   </p>
                 </div>
@@ -480,17 +466,13 @@ function MobileTimeline({
             {/* Era header */}
             <div className="flex items-center gap-3 mb-4">
               <div
-                className="w-3 h-3 rounded-full -ml-6 border-2 border-green-deep"
-                style={{ backgroundColor: era.color }}
+                className="w-3 h-3 rounded-full -ml-6 border-2 border-green-deep bg-agar-icon"
               />
               <div>
-                <span
-                  className="text-xs font-bold tracking-widest uppercase"
-                  style={{ color: era.color }}
-                >
+                <span className="text-agar-label text-xs font-bold tracking-widest uppercase">
                   {era.label}
                 </span>
-                <span className="text-[10px] text-cream/75 ml-2">{era.range}</span>
+                <span className="text-[10px] text-agar-body ml-2">{era.range}</span>
               </div>
             </div>
 
@@ -505,33 +487,29 @@ function MobileTimeline({
                   aria-selected={isActive}
                   aria-label={`${event.year}: ${event.title}`}
                   onClick={() => onSelect(globalIndex)}
-                  className={cn(
-                    "w-full text-left pl-6 pb-6 relative group cursor-pointer transition-all duration-300",
-                    isActive ? "opacity-100" : "opacity-70 hover:opacity-100"
-                  )}
+                  className="w-full text-left pl-6 pb-6 relative group cursor-pointer transition-all duration-300"
                 >
                   {/* Dot on the line */}
                   <div
                     className={cn(
-                      "absolute left-[-13px] top-1 w-3 h-3 rounded-full border-2 border-green-deep transition-all duration-300",
-                      isActive ? "scale-125" : "group-hover:scale-110 group-active:scale-110"
+                      "absolute left-[-13px] top-1 w-3 h-3 rounded-full border-2 border-green-deep bg-agar-icon transition-all duration-300",
+                      isActive ? "scale-125" : "opacity-60 group-hover:scale-110 group-hover:opacity-100 group-active:scale-110 group-active:opacity-100"
                     )}
-                    style={{ backgroundColor: isActive ? era.color : `${era.color}60` }}
                   />
 
                   <div
                     className={cn(
                       "p-4 rounded-lg border transition-all duration-300",
                       isActive
-                        ? "bg-white/10 border-gold/30"
-                        : "bg-glass-surface-subtle border-glass-border group-hover:bg-glass-surface-hover"
+                        ? "bg-green-deep border-gold/30"
+                        : "bg-glass-card border-white/20 group-hover:border-gold/30 group-active:border-gold/30"
                     )}
                   >
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-gold-light text-xs font-bold">{event.year}</span>
+                      <span className="text-agar-label text-xs font-bold">{event.year}</span>
                     </div>
-                    <h4 className="text-white text-sm font-semibold mb-1">{event.title}</h4>
-                    <p className="text-cream/75 text-xs leading-relaxed line-clamp-2">
+                    <h4 className="text-agar-title text-sm font-semibold mb-1">{event.title}</h4>
+                    <p className="text-agar-body text-xs leading-relaxed line-clamp-2">
                       {event.description}
                     </p>
                   </div>
@@ -601,11 +579,8 @@ export function InteractiveTimeline({
       <div className="flex flex-wrap gap-3 mb-6 justify-center">
         {eras.map((era) => (
           <div key={era.id} className="flex items-center gap-1.5">
-            <div
-              className="w-2.5 h-2.5 rounded-full"
-              style={{ backgroundColor: era.color }}
-            />
-            <span className="text-[10px] text-cream/75 tracking-wide uppercase">
+            <div className="w-2.5 h-2.5 rounded-full bg-agar-icon" />
+            <span className="text-[10px] text-agar-body tracking-wide uppercase">
               {era.label}
             </span>
           </div>
@@ -629,7 +604,7 @@ export function InteractiveTimeline({
       )}
 
       {/* Keyboard hint */}
-      <p className="text-center text-cream/75 text-[10px] mt-4">
+      <p className="text-center text-agar-body text-[10px] mt-4">
         Use arrow keys to navigate, Home/End to jump to start/end
       </p>
     </div>

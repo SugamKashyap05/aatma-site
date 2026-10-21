@@ -59,7 +59,7 @@ export function FormationSection({ className }: FormationSectionProps) {
       id="formation"
       className={cn(
         "relative py-20 md:py-28 overflow-hidden scroll-mt-20",
-        "text-charcoal",
+        "text-agar-body",
         className
       )}
     >
@@ -67,12 +67,12 @@ export function FormationSection({ className }: FormationSectionProps) {
         {/* Section header — client's own section title, [HIST] p.2 */}
         <div className="max-w-4xl mx-auto text-center mb-14 md:mb-18">
           <Reveal variant="fade" delay={0}>
-            <span className="inline-block text-gold-deep text-sm font-semibold tracking-[0.25em] uppercase bg-green-deep/10 px-4 py-1.5 rounded-sm mb-4">
+            <span className="glass-surface-subtle inline-block text-agar-label text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-4">
               Formation
             </span>
           </Reveal>
           <Reveal variant="up" delay={100}>
-            <h2 className="font-display font-bold text-3xl md:text-5xl lg:text-6xl leading-tight text-green-deep">
+            <h2 className="font-display font-bold text-3xl md:text-5xl lg:text-6xl leading-tight text-agar-title">
               Formation of AATMA
             </h2>
           </Reveal>
@@ -82,8 +82,8 @@ export function FormationSection({ className }: FormationSectionProps) {
         <div className="grid grid-cols-1 gap-10 md:gap-12">
           {/* Text card — [HIST] p.2, member names replaced with role descriptions */}
           <Reveal variant="fade" delay={0}>
-            <div className="mx-auto max-w-4xl bg-white rounded-sm p-6 md:p-8 shadow-lg border border-cream-dark space-y-5">
-              <p className="text-charcoal text-base md:text-lg leading-relaxed">
+            <div className="mx-auto max-w-4xl bg-glass-card backdrop-blur-xl rounded-sm p-6 md:p-8 shadow-lg border border-white/20 space-y-5">
+              <p className="text-agar-body text-base md:text-lg leading-relaxed">
                 The trade being a cottage based industry in unorganized sector
                 has suffered many obstacles largely due to lack of knowledge on
                 the part of traders as well as law enforcing agency, and there
@@ -93,21 +93,21 @@ export function FormationSection({ className }: FormationSectionProps) {
                 some sort of association for the improvement and expansion of
                 the trade.
               </p>
-              <p className="text-charcoal text-base md:text-lg leading-relaxed">
+              <p className="text-agar-body text-base md:text-lg leading-relaxed">
                 In the pursuit of which{" "}
-                <strong className="text-green-deep">
+                <strong className="text-agar-title">
                   ALL ASSAM AGAR TRADERS AND AGAR OIL MANUFACTURERS, ASSOCIATION
                   (AATMA)
                 </strong>{" "}
                 was formed under the presidentship and secretaryship of{" "}
-                <strong className="text-green-deep">
+                <strong className="text-agar-title">
                   AATMA&rsquo;s founding members
                 </strong>{" "}
-                in <strong className="text-green-deep">1976</strong> with its
+                in <strong className="text-agar-label">1976</strong> with its
                 H.O. at Hojai, which was duly registered vide{" "}
-                <strong className="text-green-deep">664 of 1978-79</strong>.
+                <strong className="text-agar-label">664 of 1978-79</strong>.
               </p>
-              <p className="text-charcoal text-base md:text-lg leading-relaxed">
+              <p className="text-agar-body text-base md:text-lg leading-relaxed">
                 Since then the Association continuously fought legally as well
                 as by submitting different representations before the govt to
                 remove unnecessary interference and hurdle in the interest of

@@ -201,7 +201,7 @@ Only one form exists (`Contact.tsx`).
 
 Standard card recipe:
 
-The dark video background makes dark-green card text low contrast. Agar-story cards use the stronger `glass-card` dark evergreen surface with `agar-title`, `agar-body`, `agar-label`, and `agar-icon` foreground tokens so variable bright video patches do not wash out text.
+The dark video background makes dark-green text low contrast. Homepage About, Formation, and Sanchi Paat sections, agar-story, and the interactive history timeline use the stronger `glass-card` dark evergreen surface with `agar-title` for headings, `agar-body` for paragraphs, `agar-label` for labels and dates, and `agar-icon` for icons and timeline markers so variable bright video patches do not wash out text.
 
 ```
 bg-white/[0.08] backdrop-blur-sm border border-white/15 rounded-xl p-6 md:p-8

@@ -32,7 +32,7 @@ export function About({ className, deviceTier }: AboutProps) {
     <section
       id="about"
       className={cn(
-        "relative min-h-screen flex flex-col items-center pt-20 pb-16 overflow-hidden scroll-mt-20 text-green-deep",
+        "relative min-h-screen flex flex-col items-center pt-20 pb-16 overflow-hidden scroll-mt-20 text-agar-body",
         className
       )}
     >
@@ -51,21 +51,21 @@ export function About({ className, deviceTier }: AboutProps) {
       <div className="max-w-6xl mx-auto w-full px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           <Reveal variant="fade" delay={0}>
-            <span className="glass-surface-subtle inline-block text-gold-light text-xs md:text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-6">
+            <span className="glass-surface-subtle inline-block text-agar-label text-xs md:text-sm font-semibold tracking-[0.25em] uppercase px-4 py-1.5 rounded-sm mb-6">
               About AATMA
             </span>
           </Reveal>
 
           <Reveal variant="up" delay={100} rootMargin="0px 0px 300px 0px">
-            <div className="glass-surface rounded-sm p-6 md:p-8">
-              <h2 className="font-display font-bold text-3xl md:text-5xl lg:text-6xl leading-tight max-w-3xl text-center mb-6 drop-shadow-lg">
+            <div className="bg-glass-card backdrop-blur-xl border border-white/20 rounded-sm p-6 md:p-8 shadow-lg">
+              <h2 className="font-display font-bold text-3xl md:text-5xl lg:text-6xl leading-tight max-w-3xl text-center mb-6 drop-shadow-lg text-agar-title">
                 A Precious Gift<br />
-                <span className="text-gold-light">of Nature</span>
+                <span className="text-agar-label">of Nature</span>
               </h2>
               <div className="grid">
                 <div
                   className={cn(
-                    "text-sm md:text-base leading-relaxed text-green-deep/95 transition-all duration-700 ease-out",
+                    "text-sm md:text-base leading-relaxed text-agar-body transition-all duration-700 ease-out",
                     "opacity-100 translate-y-0"
                   )}
                 >
@@ -79,7 +79,7 @@ export function About({ className, deviceTier }: AboutProps) {
                   </p>
                   <button
                     onClick={() => setLang(lang === "en" ? "as" : "en")}
-                    className="mt-6 mb-6 inline-flex items-center gap-2 text-gold-light text-sm font-medium tracking-wide self-center glass-surface-subtle hover:bg-glass-surface-hover px-5 py-2.5 rounded-sm transition-all duration-300 min-h-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light"
+                    className="mt-6 mb-6 inline-flex items-center gap-2 text-agar-label text-sm font-medium tracking-wide self-center glass-surface-subtle hover:bg-glass-surface-hover px-5 py-2.5 rounded-sm transition-all duration-300 min-h-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light"
                   >
                     {lang === "en" ? "অসমীয়াত পঢ়ক" : "Read in English"}
                     <ChevronRight size={16} />
@@ -99,16 +99,16 @@ export function About({ className, deviceTier }: AboutProps) {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="card-hover glass-surface relative group rounded-sm p-5 md:p-6 text-center"
+              className="card-hover bg-glass-card backdrop-blur-xl border border-white/20 shadow-lg relative group rounded-sm p-5 md:p-6 text-center"
             >
-              <div className="font-display text-3xl md:text-4xl text-gold-light font-bold mb-1">
+              <div className="font-display text-3xl md:text-4xl text-agar-label font-bold mb-1">
                 {stat.value}
               </div>
-              <div className="text-green-deep/70 text-xs md:text-sm font-medium tracking-wide uppercase">
+              <div className="text-agar-body text-xs md:text-sm font-medium tracking-wide uppercase">
                 {stat.label}
               </div>
 
-              <div className="mt-3 text-white/20 group-hover:text-gold-light/40 group-active:text-gold-light/40 transition-colors duration-300 text-2xl">
+              <div className="mt-3 text-agar-icon group-hover:text-agar-label group-active:text-agar-label transition-colors duration-300 text-2xl">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="inline-block w-5 h-5" aria-hidden="true" focusable="false">
                   <path d="M12 2 L15 8 L22 9 L17 14 L18 21 L12 18 L6 21 L7 14 L2 9 L9 8 Z" />
                 </svg>
@@ -146,10 +146,10 @@ function SealCard() {
         </g>
         <path d="M33 72 Q50 60 67 72 L64 79 Q50 72 36 79 Z" fill="var(--color-gold)" />
       </svg>
-      <span className="font-display text-xs text-gold-light text-center leading-tight tracking-wide">
+      <span className="font-display text-xs text-agar-label text-center leading-tight tracking-wide">
         AATMA
         <br />
-        <span className="text-cream/75 text-[10px]">Est. 1976 · Hojai</span>
+        <span className="text-agar-body text-[10px]">Est. 1976 · Hojai</span>
       </span>
     </div>
   );
