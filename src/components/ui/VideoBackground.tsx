@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { cn } from "@/lib/utils";
+import { assetUrl, cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -88,7 +88,7 @@ export function VideoBackground({ className }: VideoBackgroundProps) {
         }}
       >
         <source
-          src="/assets/backgrounds/misty-pine-dawn-web.mp4"
+          src={assetUrl("assets/backgrounds/misty-pine-dawn-web.mp4")}
           type="video/mp4"
         />
       </video>
