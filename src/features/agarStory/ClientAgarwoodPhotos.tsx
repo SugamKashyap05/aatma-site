@@ -24,41 +24,23 @@ const PHOTOS = [
     height: 768,
   },
   {
-    path: "client-images/agarwood/agarwood-chips-white.jpg",
-    alt: "Raw agarwood chips arranged on a white fabric surface.",
-    caption: "Photograph of raw agarwood chips.",
+    path: "client-images/agarwood/agarwood-liquid-dark-sample.jpg",
+    alt: "A graduated glass flask containing a dark liquid sample, set on a white counter.",
+    caption: "Dark liquid sample in a graduated flask.",
     width: 960,
     height: 1280,
   },
   {
-    path: "client-images/agarwood/agarwood-chips-hand-2.jpg",
-    alt: "A hand holding a pile of dark agarwood chips.",
-    caption: "Close-up of agarwood chips in hand.",
-    width: 1024,
-    height: 768,
-  },
-];
-
-const NATURE_PHOTOS = [
-  {
-    path: "client-images/nature/forest-1.jpg",
-    alt: "Dense forest plantation with tall trees and green canopy.",
-    caption: "Photograph of an agarwood plantation.",
-    width: 1280,
-    height: 720,
-  },
-  {
-    path: "client-images/nature/forest-2.jpg",
-    alt: "Dense forest plantation with tall trees and a dirt path.",
-    caption: "Photograph of a forest plantation.",
-    width: 1280,
-    height: 720,
+    path: "client-images/agarwood/agarwood-liquid-amber-samples.jpg",
+    alt: "Two graduated glass bottles filled with amber and pale liquid samples.",
+    caption: "Amber and pale liquid samples in graduated glass bottles.",
+    width: 960,
+    height: 1280,
   },
 ];
 
 /** Safe, object-focused photos from the client-supplied asset set. */
 export function ClientAgarwoodPhotos() {
-  const allPhotos = [...PHOTOS, ...NATURE_PHOTOS];
   return (
     <section className="mb-16" aria-labelledby="client-agarwood-photos-heading">
       <Reveal variant="fade" delay={0}>

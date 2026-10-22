@@ -4,6 +4,7 @@ import { cn, type ClassValue } from "@/lib/utils";
 import { AmbientMotion } from "@/features/ambient/AmbientMotion";
 import { NAV_PAGE_LINKS, NAV_HOME_SECTIONS } from "@/data/navigation";
 import { routeUrl } from "@/components/ui/Navbar";
+import { AatmaLogo } from "@/components/ui/AatmaLogo";
 
 /** Footer labels for the home-page section anchors (see src/data/navigation.ts). */
 const HOME_SECTION_LINKS = NAV_HOME_SECTIONS.map((section) => ({
@@ -29,28 +30,7 @@ export function Footer({ className, deviceTier }: { className?: ClassValue; devi
           {/* Brand block */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <svg viewBox="0 0 100 100" className="w-9 h-9" aria-hidden="true" focusable="false">
-                <circle cx="50" cy="50" r="46" fill="none" stroke="var(--color-gold)" strokeWidth="1.5" />
-                <circle cx="50" cy="50" r="38" fill="none" stroke="var(--color-green-deep)" strokeWidth="0.75" />
-                <g fill="var(--color-gold)">
-                  <circle cx="50" cy="18" r="2" />
-                  <circle cx="50" cy="42" r="2" />
-                  <circle cx="50" cy="58" r="2" />
-                  <circle cx="50" cy="82" r="2" />
-                  <circle cx="82" cy="50" r="2" />
-                  <circle cx="18" cy="50" r="2" />
-                  <circle cx="69" cy="31" r="2" />
-                  <circle cx="31" cy="31" r="2" />
-                  <circle cx="69" cy="69" r="2" />
-                  <circle cx="31" cy="69" r="2" />
-                </g>
-                <circle cx="50" cy="38" r="4.5" fill="var(--color-gold)" />
-                <g stroke="var(--color-gold)" strokeWidth="1" fill="none">
-                  <path d="M50 42 L50 38 M50 38 L50 34 M50 34 Q60 30 72 38" />
-                  <path d="M50 42 L50 38 M50 38 L50 34 M50 34 Q40 30 28 38" />
-                </g>
-                <path d="M33 72 Q50 60 67 72 L64 79 Q50 72 36 79 Z" fill="var(--color-gold)" />
-              </svg>
+              <AatmaLogo alt="" className="h-12 w-10 flex-shrink-0" />
               <span className="font-display text-base font-semibold text-gold-light">
                 {AATMA.shortName}
               </span>

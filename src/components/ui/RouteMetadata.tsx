@@ -1,6 +1,7 @@
 import { useEffect, type ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import { AATMA } from "@/data/content";
+import { assetUrl } from "@/lib/utils";
 
 /**
  * RouteMetadata — per-route `<title>` and meta tags.
@@ -138,7 +139,13 @@ export function RouteMetadata({
     setMeta("og:url", getCanonicalUrl(location.pathname), "property");
     setMeta("og:type", "website", "property");
     setMeta("og:site_name", AATMA.shortName, "property");
+    const logoUrl = new URL(assetUrl("brand/aatma-logo.jpg"), window.location.origin).href;
+    setMeta("og:image", logoUrl, "property");
+    setMeta("og:image:alt", "AATMA organization logo", "property");
+    setMeta("og:image:type", "image/jpeg", "property");
     setMeta("twitter:card", "summary");
+    setMeta("twitter:image", logoUrl);
+    setMeta("twitter:image:alt", "AATMA organization logo");
 
     return () => {
       document.title = HOME_TITLE;
