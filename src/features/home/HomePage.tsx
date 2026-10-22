@@ -1,5 +1,5 @@
 import { AatmaHero } from "@/features/hero/AatmaHero";
-import { About } from "@/features/about/About";
+import { AboutOverview as About } from "@/features/about/AboutOverview";
 import { AgarStory } from "@/features/agarStory/AgarStory";
 import { SanchiPaatSection } from "@/features/home/SanchiPaatSection";
 import { FormationSection } from "@/features/home/FormationSection";

@@ -1,5 +1,7 @@
 # Homepage Redesign — Implementation Plan
 
+> **Superseded for the current client-approved redesign.** This 2026-10-16 proposal was based on an earlier brief/demo and includes content corrections/anonymization and section decisions that must not be carried forward automatically. The authoritative current plan is `docs/FINAL_BRIEF_HOMEPAGE_REDESIGN_PLAN.md`, based on the client’s final PDF and the requirement that no brief content be omitted. Retained below as historical context only; do not implement conflicting directions from this document.
+
 **Date:** 2026-10-16  
 **Source brief:** `A brief note on Agar Trade (2).docx` (34 KB, 58 sections)  
 **Design demo:** `cache/scratch/aatma-homepage-demo.html`  

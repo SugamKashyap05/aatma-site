@@ -109,28 +109,48 @@ regulators, researchers, and trade partners.
 
 ### Feature 1 — Home page (single-scroll institutional overview)
 
-**Purpose:** Present AATMA's identity, story, milestones, members, press, and contact in one scroll.
+**Purpose:** Present AATMA's identity, history, trade, advocacy, research, press, and current brief-sourced topics in one scroll.
 
-**User flow:** Land on `/` → parallax hero → scroll through About → Agar Story → Milestones → Members → Press & Media → Contact → Footer.
+**User flow:** Land on `/` → hero → About → Sanchi Paat → Agar Story → Formation → Critical Era → Achievement → NDF Findings → Rules → Challenges → Press teaser → Latest News teaser → Footer.
 
 **Inputs:** None (static content).
 
-**Outputs:** Six anchored sections; navbar highlights the active section while scrolling.
+**Outputs:** The homepage hero and ordered content sections render; section links navigate to valid IDs, and the navbar reflects its documented active-section behavior.
 
 **Acceptance criteria:**
-- [ ] `/` renders hero, About, AgarStory, Milestones, Members, PressSection, Contact, Footer.
-- [ ] Navbar shows 6 section links (`about`, `agar-story`, `milestones`, `members`, `press`, `contact`) plus 5 page links plus logo.
+- [ ] `/` renders the current content composition: `AatmaHero`, About, Sanchi Paat, Agar Story, Formation, Critical Era, Achievement, NDF Findings, Rules, Challenges, Press teaser, Latest News teaser, and Footer.
+- [ ] Navbar section links resolve to the current rendered homepage section IDs; route links resolve to implemented pages.
 - [ ] Anchor scrolling works with `scroll-mt` offset under the fixed navbar.
 - [ ] Parallax hero does not animate when `prefers-reduced-motion` is set.
 - [ ] Each Critical Era card opens its matching client-sourced detail dialog; the dialog is keyboard- and touch-accessible, viewport-bounded, and internally scrollable for long copy.
 - [ ] The dialog moves focus on open, traps focus, restores focus on close, and closes with Escape, the close button, or backdrop activation.
 - [ ] “Read the full story” navigates directly to `/history`.
+- [ ] Future homepage redesign acceptance criteria are specified in “Planned revision” below; current render is not claimed to meet them until implemented and verified.
 
 **Edge cases:**
-- Direct navigation to `/#contact` from a non-home route must land on the section.
-- Contact section (last on page) may not scroll to viewport top — accepted limitation.
+- Direct navigation to `/#<existing-section-id>` from a non-home route must land on that homepage section.
 
 **Source:** `src/features/home/HomePage.tsx`, `src/features/hero/ParallaxHero.tsx`
+
+### Planned revision — final-brief homepage overview-to-detail experience
+
+**About pilot:** implemented locally on 2026-10-22 and awaiting user review. Remaining story-bearing homepage sections and their final-PDF red-passage mappings are still pending.
+
+The client-approved direction is to make About and the other story-bearing homepage sections scannable through topic cards and accessible details, using the Critical Era interaction as the reference. Keep the hero, Press, and News in their distinct roles; do not force every area into the same grid. The final client PDF `A brief note on Agar Trade (2) (2).pdf` is the authoritative source for its red-marked additions and must be reconciled against the entire existing brief before implementation.
+
+**Completeness requirement:** every paragraph of the final PDF, not only red additions, must appear in source order in the complete `/about` reader; every red-marked passage must also be mapped to its appropriate homepage topic. Homepage summaries/cards do not replace the full text. No truncation, silent copy correction, unsupported additions, or merging of conflicting source versions. Final-PDF source counts are validated by `scripts/about-spine-smoke.mjs`.
+
+**About behavior:** the homepage About section retains its seal and bilingual introduction. “Read more” expands an in-place, connected sequence containing the editorial and ten source-ordered brief sections. Each card opens a complete, source-exact chapter dialog with previous/next navigation; the visitor remains on the homepage. The dedicated `/about` full reader stays available for existing links and bookmarks. Keep member identities out of card labels and summaries; the full-text dialogs mirror the source passages already in the reader without adding identity claims.
+
+**Acceptance criteria for the redesign:**
+- [x] The complete final-PDF text remains on `/about` in source order; paragraph/word pins are checked by the reader smoke.
+- [x] About pilot provides all eleven full-text items through the in-place sequence and chapter dialogs, with source text derived from canonical data.
+- [x] Details support keyboard/touch, focus management, Escape/close behavior, internal scrolling, and narrow-screen layouts.
+- [ ] Remaining homepage cards/details are source-traceable and each red-marked passage has an appropriate section destination.
+- [ ] User review gate for the implemented About pilot is complete before migrating remaining story sections.
+- [ ] Full rendered-text fidelity, other-section red-passage coverage, route integrity, and whole-site accessibility are browser-tested before release.
+
+Implementation sequence and full topic map: `docs/FINAL_BRIEF_HOMEPAGE_REDESIGN_PLAN.md`.
 
 ---
 

@@ -7,7 +7,8 @@
 ## Client-source key
 
 - **[HIST]** — `documents/A BRIEF HISTORY OF AGAR.pdf` (client-authored history)
-- **[BRIEF2]** — `documents/A brief note on Agar Trade (2).docx` (latest client brief; exact-hash duplicate also present in the user-specified `assestes images/` folder)
+- **[BRIEF2]** — `documents/A brief note on Agar Trade (2).docx` (the prior DOCX-backed brief used for the existing `/about` spine; compare against the final PDF before treating its wording/counts as current)
+- **[BRIEF2-PDF-FINAL]** — client-provided attachment `A brief note on Agar Trade (2) (2).pdf` (10 pages; visually marked red passages). This is the newest supplied brief for the redesign. Full paragraph/formatting reconciliation against the DOCX and rendered site is **pending**; do not infer completion from the previous `/about` reader.
 - **[BRIEF1]** — `documents/A brief note on Agar Trade (1).docx` (older, unique alternate in the separate `documents/` folder; it gives 2017 for the Forest Minister meeting, while [HIST] and [BRIEF2] give 2016; authority not yet confirmed, so do not use it for public copy)
 - **[HCM]** — `documents/AATMA to HCM.docx` (client-authored letter)
 - **[PRESS]** — `documents/AATMA press note Rev.docx` (client-authored press note)
@@ -16,6 +17,12 @@
 - **[SEMINAR]** — `public/resources/seminar-abstracts-2000.pdf` (client-supplied seminar abstracts; cover page identifies dates and venue)
 
 `verified` means a client-authored/supplied primary document directly supports the claim. `press estimate` is a separate provenance class. `needs confirmation` means only partial, secondary, composite, or unsupported wording remains. `exclude` means no client primary source was found in the reconciliation pass; it is not a verified falsehood.
+
+## 0.1 Final-PDF full-reader fidelity — verified; homepage destination map pending
+
+The user-approved homepage redesign is planned in `docs/FINAL_BRIEF_HOMEPAGE_REDESIGN_PLAN.md`. The final 10-page PDF was extracted and compared with `src/data/about-spine.ts`: the reader includes an opening editorial plus 10 headed sections, with 36 paragraphs (3 editorial + 33 section paragraphs) and 4,343 whitespace-delimited words. The red-font scan found 185 text spans across pages 2–3 and 6–10; rendered inspection of those pages confirmed the red-marked passages and their topic context. All 36 source paragraphs match the PDF text layer after normalizing only whitespace, zero-width formatting characters, and spaces before punctuation. The source-text scan covers the complete paragraph content, including red-formatted headings and passages.
+
+**Scope boundary:** this verifies the full-text reader and the About pilot only. The four About cards cover cultural context, formation, advocacy, and the 2022–2023 framework. Red additions intended for Agar Story, Formation/Seminar, Critical Era, Achievement, NDF, Rules, and Challenges still need their destination-by-destination current-route review and implementation. Do not treat 185 source-text matches as proof that every homepage topic is complete.
 
 ## 1. Current public-route map
 

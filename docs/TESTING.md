@@ -104,7 +104,7 @@ tests/
 **Steps:**
 1. Navigate to `/`
 2. Wait for the hero to render
-3. Scroll through About → Agar Story → Milestones → Members → Press & Media → Contact
+3. Scroll through About → Sanchi Paat → Agar Story → Formation → Critical Era → Achievement → NDF Findings → Rules → Challenges → Press → Latest News.
 
 **Expected result:** All sections render with content; navbar highlights the active section; no console errors.
 
@@ -189,20 +189,40 @@ tests/
 
 ---
 
-### Flow 9 — /about brief reader fidelity
+### Flow 9 — /about complete-brief reader fidelity (final PDF baseline)
 
-**Steps:**
-1. Open `/about` and verify the page renders the byline, a Contents panel, and ten reading blocks in brief order (I–X).
-2. Verify every heading and every paragraph matches `src/data/about-spine.ts` exactly — the client brief is reproduced verbatim, including source slips ("Achivement", "Augast", "Occtober", "Thiland", "Combodia", "abumdantly"). These slips are **deliberate**: the client instructed the brief be used as it is.
-3. Verify the four office-bearer names appear (publication per client instruction, latest directive).
-4. Click a Contents anchor and confirm the scroll lands under the fixed navbar.
-5. Confirm each block's "Explore on this site" deep-dive chips link to the right homepage section or route.
-6. Check agar tokens on blocks and the 44 px touch target on chips; check overflow at 320–1366 px.
-7. On the homepage, confirm the About section has exactly one link to `/about`.
+**Verified source baseline:** the 10-page final PDF has 10 headed sections and 36 paragraphs (3 editorial + 33 section paragraphs), totalling 4,343 whitespace-delimited words. `scripts/about-spine-smoke.mjs` compares the rendered reader to `src/data/about-spine.ts`; PDF reconciliation separately confirms 36/36 paragraph substrings and 185/185 detected red text spans represented in the reader. These figures replace—not combine with—the historical DOCX baseline of 31 paragraphs / 3,880 words.
 
-**Expected result:** Ten blocks, 31 paragraphs, 3,880 words — text identical to the data module; nothing corrected or paraphrased.
+**Regression steps:**
+1. Open `/about`; verify every final-PDF heading and paragraph appears in source order.
+2. Compare normalized rendered paragraph text against a paragraph-level extraction of the authoritative final PDF; record only explicitly permitted transport normalization. Do not omit passages or use prior DOCX counts as the expected result.
+3. Verify every red-coloured/red-underlined addition from the PDF is present in the full reader and mapped in the reconciliation manifest.
+4. Verify Contents anchors and homepage deep-dive links land under the fixed navbar at the correct section.
+5. Check long paragraphs, source wording, and source slips against the final PDF; no silent corrections or truncation.
+6. Check responsive overflow at 320/375/390/768/900/1024/1366/1536 px and verify the current publication/privacy decision for member identities.
 
-**Automation:** `node scripts/about-spine-smoke.mjs` (set `ABOUT_SMOKE_BASE_URL` to the dev or preview origin; default `http://127.0.0.1:4174`).
+**Expected result:** complete, ordered, paragraph-for-paragraph final-PDF representation on `/about`; all 36 paragraphs and detected red-formatted text runs are accounted for in the reader. Homepage topic destinations for red additions are a separate gate and remain pending beyond the About pilot.
+
+**Automation:** `scripts/about-spine-smoke.mjs` asserts final-PDF paragraph/word pins, section order and deep-dive links, and compares the rendered reader with source data. A separate PDF reconciliation run verifies source paragraphs/red text spans against the supplied PDF; keep both checks current.
+
+### Flow 10 — Homepage About sequence and remaining story-section source coverage
+
+**About pilot steps:**
+1. Open `/` and verify the initial About view is collapsed, retains the seal and bilingual intro, and shows a semantic “Read more” button.
+2. Activate “Read more”; confirm the route remains `/`, the button becomes “Show less,” and eleven connected cards appear in final-PDF order (editorial + ten headed sections).
+3. Open each card by mouse/touch and keyboard. Compare dialog heading, every source paragraph, editorial byline, and sequence index against `src/data/about-spine.ts`.
+4. Verify Previous/Next, first/last disabled states, Escape/close/backdrop, focus entry/trap/restore, body scroll/inert restoration, and internal scroll for long sections.
+5. Test expansion, cards and dialog at 320/375/390/768/900/1024/1366/1536 px; check no horizontal overflow and reduced-motion usability.
+6. Collapse the sequence; confirm focus returns to “Read more” and the control does not navigate to `/about`.
+7. Open `/about` directly and by its existing route; verify the full reader and its section anchors remain intact.
+
+**Remaining full redesign steps:** visit Sanchi Paat, Agar Story, Formation/Seminar, Critical Era, Achievement, NDF, Rules, and Challenges; map every final-PDF red passage to the appropriate rendered destination. Keep Press/News provenance distinct. This is a separate outstanding phase, not covered by the About smoke.
+
+**Expected result:** all 36 final-PDF paragraphs (4,343 whitespace-delimited words) are available through the in-place About sequence with exact source text; the legacy `/about` route remains complete. Other homepage red-addition destinations are not complete until separately verified.
+
+**Automation:** `node scripts/about-redesign-smoke.mjs` checks all eleven sequence items against parsed canonical source text, expansion/collapse, modal navigation, focus/scroll behavior, responsive widths, and `/about` compatibility. `node scripts/about-spine-smoke.mjs` checks the complete full-reader route and its collapsed homepage CTA contract.
+
+**About pilot — 2026-10-22:** implemented locally and awaiting user review. Other sections remain pending.
 
 ---
 

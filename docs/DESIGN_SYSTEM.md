@@ -303,3 +303,25 @@ These exist today and should be fixed when the file is next touched. They are
 
 **Total: 29 hardcoded hex values across `src/**/*.tsx`.** New code must use
 tokens. When fixing these, add the missing values to `@theme` first.
+
+---
+
+## 17. Homepage overview-to-detail story sections
+
+**Status:** About pilot implemented locally and awaiting user review; remaining story-bearing sections are pending. See `docs/ABOUT_READ_MORE_IMPLEMENTATION_PLAN.md` for the About interaction contract and `docs/FINAL_BRIEF_HOMEPAGE_REDESIGN_PLAN.md` for whole-site source mapping.
+
+For homepage About, the sequence is an explicit variation on the general overview-to-detail pattern:
+
+1. Keep the association intro, seal, and current bilingual toggle in the collapsed section.
+2. A semantic **Read more** disclosure expands a connected, vertical, ordered sequence in place—no route change.
+3. Eleven card buttons represent the opening editorial and ten sections in final-PDF order. Their short labels and paragraph counts are interface metadata; full copy remains in `src/data/about-spine.ts`.
+4. Each card opens the complete source text in the modal. Previous/Next controls traverse adjacent items without closing the modal; end controls are disabled.
+5. `/about` remains available as the full-reader route for existing bookmarks, while homepage About itself exposes the complete brief via the sequence/dialogs.
+
+Other homepage sections continue to follow the planned shared contract: sourced heading/orientation → content-appropriate topic presentation → accessible details or existing destination. Do not force every subject into About’s vertical sequence. Reuse existing dialog behavior and design tokens; do not add a dependency or duplicate modal primitive.
+
+**Content rules:** all final-PDF paragraphs remain in source order and verbatim in the full reader and About dialogs. Do not duplicate the body text in story-card data; derive it from `ABOUT_EDITORIAL` and `ABOUT_SPINE`. Keep card summaries free of private/member identities and do not expand identity publication beyond existing full-reader copy. Other section red-addition mapping remains pending until individually verified.
+
+**Dialog requirements:** keyboard-operable trigger; meaningful accessible name; focus moved into dialog, contained while open, and restored on close; Escape, visible close button, and supported backdrop close; body scrolling restored; long detail scrolls within viewport; close and navigation controls remain visible; support reduced motion and 44×44 px touch targets. Use the same contrast and visible-focus requirements as §15.
+
+**Responsive behavior:** one-column connected sequence at all breakpoints, bounded dialog at mobile/tablet/desktop, no horizontal overflow at 320 px, and no loss of source content. Verify at 320, 375/390, 768/900, 1024, and 1366/1536 px.

@@ -2,17 +2,13 @@ import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen } from "lucide-react";
 import PageLayout from "@/components/ui/PageLayout";
 import { Reveal } from "@/components/ui/reveal";
-import { ABOUT_SPINE, ABOUT_BYLINE } from "@/data/about-spine";
+import { ABOUT_SPINE, ABOUT_EDITORIAL } from "@/data/about-spine";
 
 /**
- * AboutPage — the complete client brief, in sequential order.
- *
- * The client directive was to present the entire brief as it is
- * (documents/A brief note on Agar Trade (2).docx): all ten headed sections,
- * 31 paragraphs, verbatim. `ABOUT_SPINE` is the only source of body text —
- * nothing is paraphrased or corrected here, including source slips. Each
- * block ends with links into the homepage sections and routes that expand
- * that part of the story.
+ * AboutPage renders the final client PDF in order: its opening editorial and
+ * byline followed by all ten headed sections. `ABOUT_EDITORIAL` and
+ * `ABOUT_SPINE` hold the source text; this component only adds navigation and
+ * links to related site sections.
  */
 export function AboutPage() {
   return (
@@ -24,22 +20,51 @@ export function AboutPage() {
     >
       <div className="py-16 md:py-20">
         <div className="max-w-5xl mx-auto px-6 space-y-12 md:space-y-16">
-          <Reveal variant="fade" delay={0}>
-            <p className="text-center text-agar-label text-sm md:text-base tracking-wide">
-              {ABOUT_BYLINE}
-            </p>
+          <Reveal variant="up" delay={0}>
+            <article
+              id="brief-editorial"
+              className="scroll-mt-24 bg-glass-card backdrop-blur-xl border border-white/20 rounded-sm p-6 md:p-10 shadow-lg"
+            >
+              <h2 className="mb-6 font-display text-2xl font-bold leading-tight text-agar-title md:text-3xl">
+                {ABOUT_EDITORIAL.heading}
+              </h2>
+              <div className="max-w-3xl space-y-5">
+                {ABOUT_EDITORIAL.paragraphs.map((paragraph, index) => (
+                  <p
+                    key={`editorial-${index}`}
+                    data-about-editorial-paragraph
+                    className="text-agar-body text-base leading-relaxed md:text-lg"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              <footer className="mt-8 border-t border-white/10 pt-6 text-agar-label">
+                <div className="font-display font-semibold">{ABOUT_EDITORIAL.author}</div>
+                <div className="text-sm">{ABOUT_EDITORIAL.role}</div>
+              </footer>
+            </article>
           </Reveal>
 
-          {/* Contents — the brief's ten sections in sequential order */}
+          {/* Editorial plus the ten headed sections, in final-PDF order. */}
           <Reveal variant="up" delay={100}>
             <nav
-              aria-label="Contents — the brief's ten sections"
+              aria-label="Contents — editorial and ten sections"
               className="bg-glass-card backdrop-blur-xl border border-white/20 rounded-sm p-6 md:p-8 shadow-lg"
             >
               <span className="text-agar-label text-xs md:text-sm font-semibold tracking-[0.25em] uppercase">
                 Contents
               </span>
-              <ol className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-x-10">
+              <ol className="mt-5 grid list-none grid-cols-1 gap-x-10 md:grid-cols-2">
+                <li>
+                  <a
+                    href="#brief-editorial"
+                    className="group flex min-h-[44px] items-baseline gap-3 rounded-sm py-2 text-agar-body text-sm md:text-base transition-colors duration-200 hover:text-agar-label focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                  >
+                    <span className="font-display text-agar-label tabular-nums">—</span>
+                    <span className="leading-snug">Editorial</span>
+                  </a>
+                </li>
                 {ABOUT_SPINE.map((section) => (
                   <li key={section.num}>
                     <a

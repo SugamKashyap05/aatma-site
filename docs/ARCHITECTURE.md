@@ -296,3 +296,28 @@ aatma-site/
 | **Book file missing** | Reader must degrade gracefully — show an unavailable message, not a crash. |
 
 **Not implemented:** error boundaries, retry logic, offline support, analytics-based failure detection.
+
+---
+
+## 13. Planned homepage full-brief redesign (not implemented)
+
+This is the approved target architecture for the next homepage content redesign; current code remains authoritative for what is live until the implementation is completed and verified. The phase plan and detailed content map are in `docs/FINAL_BRIEF_HOMEPAGE_REDESIGN_PLAN.md`.
+
+### Content/data boundary
+
+- Keep final client brief text in a typed data module, separate from card labels, summaries, ordering, and deep-link metadata.
+- Give each source paragraph a stable identifier and source reference (PDF page, heading, paragraph order). Keep a reconciliation manifest so every paragraph is accounted for and every red-marked passage has a homepage destination.
+- Keep the complete final-PDF copy in sequential order on `/about`. Homepage cards are overview/navigation; they do not replace the complete text.
+- Keep source-backed claim content separate from site-authored interface copy. Do not import feature components into data modules.
+
+### Presentation/component boundary
+
+- `HomePage` remains the composition layer for the hero, story sections, press/news teasers, and footer.
+- Each story feature owns its topic-specific cards and detail mapping; use shared UI primitives for card and dialog mechanics rather than a single oversized homepage component.
+- Reuse/refactor the Critical Era dialog only after verifying its existing focus, scroll, and close contracts. Shared UI primitives must not import feature data/components; data remains pure and feature-independent.
+- Details that are too long for a dialog link directly to the corresponding `/about` block. Use route/anchor links already supported by `ScrollManager` where possible.
+- Preserve lazy loading, responsive device-tier behavior, and reduced-motion support; avoid a new dependency unless justified.
+
+### Migration and compatibility
+
+Implementation is staged: final-PDF census → content/data contract → About pilot and review → remaining story features → full fidelity/regression verification. Existing homepage IDs/deep links, navbar behavior, `/about` URL, `/history`, `/policy`, `/resources`, `/press`, and `/news` must remain valid or receive an explicit migration plan. No Firebase/deployment architecture change is implied by this redesign.
