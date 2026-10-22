@@ -20,9 +20,10 @@ This is an honest statement of the gap, not a description of intent.
 | Lint step in CI | ❌ Not in `deploy.yml` (lint exists locally but never runs in CI) |
 
 **What exists:**
-- `playwright` is listed in `devDependencies` and powers the focused `scripts/critical-era-dialog-smoke.mjs` check; it is not registered as a persistent test command or CI job.
+- `playwright` is listed in `devDependencies` and powers the focused `scripts/critical-era-dialog-smoke.mjs` check for card order, 2016/2011 details, LPC omission, and dialog interactions.
+- `scripts/homepage-claims-smoke.mjs` checks the rendered homepage for known unsupported legacy strings, verifies source-grounded Achievement wording and About expansion, and checks browser errors and 390px overflow. Both scripts are reproducible locally but are not yet registered as package scripts or CI jobs.
 - `npm run build` (`tsc -b && vite build`) provides type checking and compilation as a side effect.
-- Verification has been performed manually through browser automation in agent sessions — **this does not persist** unless a smoke script is kept and run; the focused script covers the Critical Era dialog journey only.
+- Browser verification remains separate from CI: the kept Playwright smoke scripts provide reproducible local checks but are not automatically run by the deploy workflow.
 
 **Consequence:** nothing prevents a route from breaking, an image from going missing, or a link from 404ing between deploys.
 

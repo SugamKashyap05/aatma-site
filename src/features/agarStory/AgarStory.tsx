@@ -9,7 +9,6 @@ import {
   Globe,
   Landmark,
   Sprout,
-  Scale,
   Ship,
 } from "lucide-react";
 
@@ -22,8 +21,10 @@ interface Milestone {
 
 /**
  * The agar trade timeline — client-supplied A BRIEF HISTORY OF AGAR.pdf
- * §§3–4 (early trade and Far East import era), §6 (national seminar), and the
- * client-supplied Agar Trade note §5 (Legal Procurement Certificate).
+ * §§3–4 (early trade and Far East import era) and §6 (national seminar).
+ * The standalone LPC item is intentionally omitted at the client's request;
+ * the brief's LPC wording remains in the complete reader and the separate
+ * Critical Era account of the 2000 Rules.
  *
  * Preserve the source's own wording: the Hojai passage says "Meanwhile" but
  * gives no year, and the Far East import-era passage is undated. Only the
@@ -73,13 +74,6 @@ const MILESTONES: Milestone[] = [
     description:
       "In November 2000, AATMA organized a National level seminar on Scope & Dimension of Agar (Aquilaria spp.) plantation in North Eastern Region at Administrative staff college, Guwahati, which was attended by several scientist from different parts of India and was presided over by Dr. P.K. Hajra, Ex Director of the Botanical Survey of India.",
 
-  },
-  {
-    year: "LPC",
-    icon: <Scale className="w-5 h-5" strokeWidth={1.5} />,
-    title: "Legal Procurement Certificate",
-    description:
-      "Local forest authorities used to issue 'Legal Procurement Certificate (LPC)' of the products to be re-exported that are derived from the imported materials to comply with the CITES provisions.",
   },
 ];
 

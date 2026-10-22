@@ -3,11 +3,20 @@ import { chromium } from "playwright";
 
 const baseUrl = process.env.CRITICAL_ERA_BASE_URL ?? "http://127.0.0.1:5173";
 const cards = [
-  { id: "rules-notified", title: "Rules Notified", expected: "Legal Procurement Certificate" },
-  { id: "verification-denied", title: "Verification Denied", expected: "W.P.(c) No. 6284/2007" },
-  { id: "ministers-initiative", title: "Minister's Initiative", expected: "August 24, 2016" },
-  { id: "national-conference", title: "National Conference", expected: "NEDFi House" },
+  { id: "rules-notified", title: "Rules Notified", expected: ["Legal Procurement Certificate"] },
+  { id: "verification-denied", title: "Verification Denied", expected: ["W.P.(c) No. 6284/2007"] },
+  {
+    id: "minister-conference-2016",
+    title: "Minister's Initiative & National Conference",
+    expected: ["August 24, 2016", "October 28, 2016", "NEDFi House", "Secondary Wood Based Industry"],
+  },
+  {
+    id: "national-appeal",
+    title: "National Meeting on Agarwood Conservation",
+    expected: ["December 20, 2011", "Paryavaran Bhawan", "Additional Director General (Wildlife)", "Shri A. Rahman", "strictly a State matter"],
+  },
 ];
+const expectedCardOrder = cards.map((card) => card.id);
 
 const browser = await chromium.launch({ headless: true, channel: "chrome" });
 const context = await browser.newContext({
@@ -21,6 +30,16 @@ try {
   await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
   const section = page.locator("#critical-era");
   await section.scrollIntoViewIfNeeded();
+
+  const renderedCardIds = await section.locator("[data-critical-era-trigger]").evaluateAll((nodes) =>
+    nodes.map((node) => node.getAttribute("data-critical-era-trigger")),
+  );
+  assert.deepEqual(renderedCardIds, expectedCardOrder, "Critical Era should show one combined 2016 card before the new 2011 client-update card");
+  assert.equal(await section.locator('[data-critical-era-trigger="national-conference"]').count(), 0);
+
+  const agarStory = page.locator("#agar-story");
+  assert.equal(await agarStory.getByRole("heading", { name: "Legal Procurement Certificate" }).count(), 0, "standalone LPC card should be removed from Agar Trade");
+  assert.equal(await agarStory.getByText(/Local forest authorities used to issue 'Legal Procurement Certificate/).count(), 0, "LPC copy should be absent from Agar Trade");
 
   await page.emulateMedia({ reducedMotion: "reduce" });
   const firstTrigger = page.locator('[data-critical-era-trigger="rules-notified"]');
@@ -66,7 +85,9 @@ try {
     assert.equal(await page.locator("#critical-era-dialog-title").innerText(), card.title);
     const body = dialog.locator("[data-critical-era-dialog-content]");
     const bodyText = await body.innerText();
-    assert.ok(bodyText.includes(card.expected), `${card.id} is missing expected client detail`);
+    for (const expected of card.expected) {
+      assert.ok(bodyText.includes(expected), `${card.id} is missing expected client detail: ${expected}`);
+    }
     assert.equal(await page.evaluate(() => document.body.style.overflow), "hidden");
 
     if (index === 0) {

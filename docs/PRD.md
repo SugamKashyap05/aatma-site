@@ -134,13 +134,15 @@ regulators, researchers, and trade partners.
 
 ### Planned revision — final-brief homepage overview-to-detail experience
 
-**About pilot:** implemented locally on 2026-10-22 and awaiting user review. Remaining story-bearing homepage sections and their final-PDF red-passage mappings are still pending.
+**About pilot and targeted homepage follow-up:** The About pilot was deployed in commit `39b00d6` after build and interaction checks. The Critical Era 2011 addition / combined 2016 card, LPC omission, and source-grounded Achievement wording are implemented and locally verified. Other story-bearing homepage sections and their final-PDF red-passage mappings remain pending.
 
 The client-approved direction is to make About and the other story-bearing homepage sections scannable through topic cards and accessible details, using the Critical Era interaction as the reference. Keep the hero, Press, and News in their distinct roles; do not force every area into the same grid. The final client PDF `A brief note on Agar Trade (2) (2).pdf` is the authoritative source for its red-marked additions and must be reconciled against the entire existing brief before implementation.
 
 **Completeness requirement:** every paragraph of the final PDF, not only red additions, must appear in source order in the complete `/about` reader; every red-marked passage must also be mapped to its appropriate homepage topic. Homepage summaries/cards do not replace the full text. No truncation, silent copy correction, unsupported additions, or merging of conflicting source versions. Final-PDF source counts are validated by `scripts/about-spine-smoke.mjs`.
 
-**About behavior:** the homepage About section retains its seal and bilingual introduction. “Read more” expands an in-place, connected sequence containing the editorial and ten source-ordered brief sections. Each card opens a complete, source-exact chapter dialog with previous/next navigation; the visitor remains on the homepage. The dedicated `/about` full reader stays available for existing links and bookmarks. Keep member identities out of card labels and summaries; the full-text dialogs mirror the source passages already in the reader without adding identity claims.
+- **About behavior:** the homepage About section retains its seal and bilingual introduction. “Read more” expands an in-place, connected sequence containing the editorial and ten source-ordered brief sections. Each card opens a complete, source-exact chapter dialog with previous/next navigation; the visitor remains on the homepage. The dedicated `/about` full reader stays available for existing links and bookmarks. Keep member identities out of card labels and summaries; the full-text dialogs mirror the source passages already in the reader without adding identity claims.
+
+**Targeted homepage content:** the Critical Era has a 2011 card and one combined 2016 card; the standalone LPC item is absent from Agar Story per the client instruction. The complete brief remains accessible via the expandable About sequence and `/about`; other topical coverage gaps remain open (see `docs/HOMEPAGE_BRIEF_GAP_AUDIT.md`).
 
 **Acceptance criteria for the redesign:**
 - [x] The complete final-PDF text remains on `/about` in source order; paragraph/word pins are checked by the reader smoke.

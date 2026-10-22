@@ -2,21 +2,20 @@ import { cn, type ClassValue } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
 
 /**
- * AchievementSection — celebrates AATMA's hard-won victory after 22 years
- * of struggle: the 2021 CM meeting, the 2022 WBI Rules, and the 2023
- * Stakeholders Conference.
+ * AchievementSection — summarizes the 2021 CM meeting, notification of the
+ * 2022 WBI Rules in January 2023, and the February 2023 Stakeholders Conference.
  *
- * Layout: header → stats row (1976 / 800+ / 22 / 2022) → achievement timeline.
- *
- * Anonymization (plan §3.3): government officials retained
- * (Mr. Sirajuddin Ajmal, MLA; Dr. Himanta Biswa Sharma, CM of Assam).
- * No AATMA member names are used — the delegation is referenced
- * generically.
+ * The final client brief supports more than 800 cottage industries on the
+ * ground and describes 22 years of struggle. The 22-year phrase is sourced
+ * from the brief; it is not calculated from the 2000–2016 Critical Era dates.
+ * The 2021 passage spells the Chief Minister's surname “Sharma”, while §9
+ * and AATMA's press note/letter use “Sarma”; this summary follows the latter.
+ * Government officials are retained; no AATMA member names are used.
  */
 
 const STATS = [
   { value: "1976", label: "AATMA formed" },
-  { value: "800+", label: "Household Units in Brief" },
+  { value: ">800", label: "Agarwood cottage industries on the ground" },
   { value: "22", label: "Years of Struggle" },
   { value: "2022", label: "WBI Rules" },
 ] as const;
@@ -25,12 +24,12 @@ const EVENTS = [
   {
     date: "July 19, 2021",
     title: "Memorandum to the Chief Minister",
-    body: "An AATMA delegation accompanied by Mr. Sirajuddin Ajmal, MLA, met the Chief Minister of Assam, Dr. Himanta Biswa Sharma, and submitted a memorandum apprising him of the ongoing problems faced by the agar industries for the last 21 years. The Chief Minister patiently listened to the delegation, acknowledged the memorandum, and assured them he would work on resolving the matter.",
+    body: "An AATMA delegation accompanied by Mr. Sirajuddin Ajmal, MLA, met the Chief Minister of Assam, Dr. Himanta Biswa Sarma, and submitted a memorandum apprising him of the ongoing problems faced by the agar industries for the last 21 years. The Chief Minister patiently listened to the delegation, acknowledged the memorandum, and assured them he would work on resolving the matter.",
   },
   {
     date: "January 12, 2023",
-    title: "WBI Rules 2022 Enacted",
-    body: "The Assam Wood Based Industries (Promotion & Development) Rules, 2022 were enacted. The old licensing regime was done away with — units need only register with the forest department and can function legally at their present location.",
+    title: "WBI Rules 2022 Notified",
+    body: "The Assam Wood Based Industries (Promotion & Development) Rules, 2022 were notified. The old licensing regime was done away with — units need only register with the forest department and can function legally at their present location.",
   },
   {
     date: "February 14, 2023",
@@ -71,15 +70,15 @@ export function AchievementSection({ className }: { className?: ClassValue }) {
             <p className="text-agar-body text-base md:text-lg leading-relaxed">
               Following this on 19 July 2021, an AATMA delegation accompanied
               by Mr. Sirajuddin Ajmal, MLA, met with the Chief Minister of
-              Assam, Dr. Himanta Biswa Sharma, to submit a memorandum apprising
+              Assam, Dr. Himanta Biswa Sarma, to submit a memorandum apprising
               him of the ongoing problems faced by the agar industries for the
               last 21 years. The Chief Minister patiently listened to the
               delegation, acknowledged the memorandum, and assured them he would
               work on resolving the matter. True to his assurance, the
               Chief Minister of Assam and his government took a fresh, positive
               approach to the long-standing, vexed issue — and the association
-              extends its sincere thanks to Sri Himanta Biswa Sharma for
-              enacting the Assam Wood Based Industries (Promotion &amp;
+              extends its sincere thanks to Dr. Himanta Biswa Sarma for
+              notifying the Assam Wood Based Industries (Promotion &amp;
               Development) Rules, 2022 on 12 January 2023.
             </p>
           </div>
