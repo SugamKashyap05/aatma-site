@@ -4,7 +4,7 @@ import { Reveal } from "@/components/ui/reveal";
 
 /**
  * SanchiPaatSection — a section about the client-documented use of agar bark
- * for writing scriptures. Displays the AI-generated manuscript illustration.
+ * for writing scriptures. Displays the original manuscript image from the book.
  */
 export function SanchiPaatSection({ className }: { className?: ClassValue }) {
   return (
@@ -45,7 +45,7 @@ export function SanchiPaatSection({ className }: { className?: ClassValue }) {
             </Reveal>
           </div>
 
-          {/* ---- Book icon in a decorative frame ---- */}
+          {/* ---- Original book image in a decorative frame ---- */}
           <div className="order-1 lg:order-2">
             <Reveal variant="scale" delay={200} rootMargin="0px 0px 300px 0px">
               <div className="relative mx-auto max-w-md lg:max-w-full">
@@ -54,15 +54,23 @@ export function SanchiPaatSection({ className }: { className?: ClassValue }) {
                   <div className="border-2 border-gold/40 p-5 md:p-7 bg-cream-dark/50">
                     <div className="border border-gold/30 p-3">
                       <div className="border border-gold/20 p-2">
-                        <div className="flex flex-col items-center gap-4 bg-white/60 p-3 text-center">
+                        <figure className="flex flex-col items-center gap-4 bg-white/60 p-3 text-center">
                           <img
-                            src={assetUrl("history/sanchi-paat-manuscript.jpg")}
-                            alt="Sanchi Paat — aged bark manuscript with Assamese script"
+                            src={assetUrl("history/sanchi-paat-original.png")}
+                            alt="Original book image of a Sanchiputhi manuscript written on Sanchipat."
                             className="w-full h-auto rounded shadow-lg"
                             loading="eager"
+                            decoding="async"
                           />
-                          <span className="font-display text-xl md:text-2xl text-charcoal">Sanchi Paat</span>
-                        </div>
+                          <figcaption className="max-w-full font-sans text-xs leading-relaxed text-charcoal/75 md:text-sm">
+                            <span className="block font-medium">
+                              255-year-old “Sanchiputhi” written on Sanchipat.
+                            </span>
+                            <span className="block">
+                              Courtesy: Sri Sri Narowa Balisatra Parichalana Samiti, P.O. Balisatra, Dist. Nagaon, Assam.
+                            </span>
+                          </figcaption>
+                        </figure>
                       </div>
                     </div>
                   </div>

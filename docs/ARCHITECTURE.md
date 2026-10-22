@@ -25,10 +25,12 @@ GitHub Pages (static files from dist/)
   ├── 404.html ──► redirects deep links back into the SPA via ?path=
   │
   └── public/ static assets
-        ├── books/   (two client publications, scanned page images, and cover art)
-        ├── history/ (9 generated images)
-        ├── research/(3 SVG illustrations)
-        └── press/   (download assets)
+        ├── brand/         (client-supplied AATMA logo)
+        ├── books/         (two client publications, scanned page images, and cover art)
+        ├── client-images/ (client-supplied agarwood photographs)
+        ├── history/       (illustrations and the original Sanchi Paat scan)
+        ├── research/      (SVG illustrations)
+        └── press/         (download assets)
 ```
 
 ---
@@ -88,7 +90,9 @@ statically hosted site.
 
 ### Static-asset responsibilities
 - `public/books/` — the two client publications, scanned AGAR page images, and the local proceedings PDF.
-- `public/history/` — hero banner and section illustrations.
+- `public/brand/` — the client-supplied logo used in site branding and social previews.
+- `public/client-images/` — client-supplied agarwood photographs.
+- `public/history/` — hero banner, section illustrations, and the original Sanchi Paat scan.
 - `public/research/` — SVG illustrations.
 - `public/press/` — downloadable assets.
 - `public/404.html` — SPA deep-link recovery.

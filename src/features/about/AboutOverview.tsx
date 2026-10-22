@@ -7,6 +7,7 @@ import { AmbientMotion } from "@/features/ambient/AmbientMotion";
 import { ABOUT_INTRO_COPY } from "@/data/about-copy";
 import { ABOUT_STORY_ITEMS, type AboutStoryItem } from "@/data/about-stories";
 import { cn, type ClassValue } from "@/lib/utils";
+import { AatmaLogo } from "@/components/ui/AatmaLogo";
 
 interface AboutProps {
   className?: ClassValue;
@@ -173,28 +174,7 @@ export function AboutOverview({ className, deviceTier }: AboutProps) {
 function SealCard() {
   return (
     <div className="flex flex-col items-center gap-2" aria-label="AATMA seal, established 1976 in Hojai">
-      <svg viewBox="0 0 100 100" className="h-20 w-20 lg:h-24 lg:w-24" aria-hidden="true" focusable="false">
-        <circle cx="50" cy="50" r="46" fill="none" stroke="var(--color-gold)" strokeWidth="1.5" />
-        <circle cx="50" cy="50" r="38" fill="none" stroke="var(--color-green-deep)" strokeWidth="0.75" />
-        <g fill="var(--color-gold)">
-          <circle cx="50" cy="18" r="2" />
-          <circle cx="50" cy="42" r="2" />
-          <circle cx="50" cy="58" r="2" />
-          <circle cx="50" cy="82" r="2" />
-          <circle cx="82" cy="50" r="2" />
-          <circle cx="18" cy="50" r="2" />
-          <circle cx="69" cy="31" r="2" />
-          <circle cx="31" cy="31" r="2" />
-          <circle cx="69" cy="69" r="2" />
-          <circle cx="31" cy="69" r="2" />
-        </g>
-        <circle cx="50" cy="38" r="4.5" fill="var(--color-gold)" />
-        <g stroke="var(--color-gold)" strokeWidth="1" fill="none">
-          <path d="M50 42 L50 38 M50 38 L50 34 M50 34 Q60 30 72 38" />
-          <path d="M50 42 L50 38 M50 38 L50 34 M50 34 Q40 30 28 38" />
-        </g>
-        <path d="M33 72 Q50 60 67 72 L64 79 Q50 72 36 79 Z" fill="var(--color-gold)" />
-      </svg>
+      <AatmaLogo alt="" className="h-20 w-16 lg:h-24 lg:w-20" />
       <span className="font-display text-[10px] leading-tight tracking-wide text-agar-label">
         AATMA · Hojai
       </span>

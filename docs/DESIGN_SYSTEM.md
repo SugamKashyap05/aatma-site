@@ -32,7 +32,7 @@ clouds), never playful.
 | Brand name | AATMA |
 | Full name | All Assam Agar Traders & Agaroil Manufacturers' Association |
 | Assamese name | সদৌ অসম আগৰ ব্যৱসায়ী আৰু আগৰতেল উৎপাদনকাৰী সংস্থা |
-| Logo | `public/favicon.svg`; inline SVG seal used in `About.tsx` |
+| Logo | Client-supplied `public/brand/aatma-logo.jpg`, rendered via `AatmaLogo`; `public/favicon.svg` remains a legacy asset |
 | Brand voice | Formal, factual, institutional. Third person. No marketing superlatives. |
 
 **Voice rules:**

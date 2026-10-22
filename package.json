@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
+    "smoke:client-assets": "node scripts/client-assets-smoke.mjs",
     "hero:optimize": "node scripts/optimize-hero-images.mjs",
     "hero:assets": "node scripts/generate-hero-assets.mjs",
     "hero:build": "npm run hero:optimize && npm run hero:assets",
