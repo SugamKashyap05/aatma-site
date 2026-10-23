@@ -42,6 +42,16 @@ const VARIANT_VISIBLE: Record<RevealVariant, string> = {
   fade: "opacity-100",
 };
 
+/**
+ * Bounded delay after which a Reveal reveals anyway. Chrome does not deliver
+ * IntersectionObserver callbacks to a hidden or unfocused tab, so a Reveal
+ * mounted above the fold can sit at opacity:0 indefinitely and the page
+ * renders as blank. The fallback makes invisible content impossible; the cost
+ * is that below-fold sections revealed this way lose their entrance
+ * animation, which is preferable to unreachable content.
+ */
+const REVEAL_FALLBACK_MS = 2500;
+
 // ─── Reveal component ─────────────────────────────────────────────────────────
 
 export function Reveal({
@@ -66,10 +76,26 @@ export function Reveal({
     const el = ref.current;
     if (!el) return;
 
+    let fallback = 0;
+    const show = () => {
+      window.clearTimeout(fallback);
+      setVisible(true);
+    };
+
+    // Reveal immediately when the element is already on screen at mount. The
+    // observer would normally cover this, but it is the path that breaks in
+    // hidden tabs, embedded webviews and print-to-PDF.
+    const rect = el.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < viewportHeight && rect.bottom > 0) {
+      show();
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true);
+          show();
           observer.disconnect();
         }
       },
@@ -77,7 +103,12 @@ export function Reveal({
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
+    fallback = window.setTimeout(show, REVEAL_FALLBACK_MS);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, [reduced, threshold, rootMargin]);
 
   // For reduced motion, render without animation classes

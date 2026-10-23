@@ -10,32 +10,13 @@ import { TimelineEventDensity } from "@/components/charts/TimelineEventDensity";
  * The counts were derived by reading the `era:` tag on each of the 16 events in
  * src/components/ui/InteractiveTimeline.tsx. The "Ancient Roots" era legitimately
  * has zero dated entries and is shown at zero rather than omitted.
+ *
+ * Renders no heading of its own: the /history page supplies the section
+ * wrapper, so an h2 here would duplicate it.
  */
 export function HistoryDataSection() {
   return (
-    <section
-      className="relative pb-16 md:pb-20"
-      aria-labelledby="history-data-heading"
-    >
-      <Reveal variant="fade" delay={0}>
-        <div className="flex items-center gap-3 mb-8">
-          <div
-            className="h-px flex-1 bg-gradient-to-r from-transparent to-gold/30"
-            aria-hidden="true"
-          />
-          <h2
-            id="history-data-heading"
-            className="font-display font-bold text-white text-lg md:text-xl tracking-wide"
-          >
-            Where the Timeline Concentrates
-          </h2>
-          <div
-            className="h-px flex-1 bg-gradient-to-l from-transparent to-gold/30"
-            aria-hidden="true"
-          />
-        </div>
-      </Reveal>
-
+    <div className="relative">
       <Reveal variant="up" delay={60}>
         <p className="text-cream/75 text-sm leading-relaxed mb-10 max-w-3xl">
           The archive is not evenly distributed across the association&apos;s
@@ -45,7 +26,7 @@ export function HistoryDataSection() {
       </Reveal>
 
       <TimelineEventDensity />
-    </section>
+    </div>
   );
 }
 
