@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { cn } from "@/lib/utils";
+import { assetUrl, cn } from "@/lib/utils";
 import { useDevice } from "@/context/DeviceContext";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -12,6 +12,8 @@ export interface TimelineEvent {
   description: string;
   era: string;
   image?: string;
+  /** Alt text for `image`; falls back to the title when absent. */
+  imageAlt?: string;
   link?: string;
 }
 
@@ -188,6 +190,9 @@ export const DEFAULT_EVENTS: TimelineEvent[] = [
     description:
       "AATMA participated in a one-day stakeholders’ workshop organized by the Assam Industrial Development Corporation Limited, in the presence of the Forest, Agriculture, and Industry Ministers. Discussions covered relaxations for the agarwood trade and industry.",
     era: "modern",
+    image: assetUrl("events/aidc-workshop-2026-hall.jpg"),
+    imageAlt:
+      "The hall at the AIDC stakeholders' workshop, showing the stage and the event backdrop",
   },
 ];
 
@@ -420,11 +425,13 @@ function DesktopTimeline({
                   </p>
                 </div>
                 {event.image && (
-                  <div className="w-full md:w-48 h-32 rounded-lg overflow-hidden shrink-0">
+                  <div className="w-full md:w-40 rounded-lg overflow-hidden shrink-0 border border-white/10">
                     <img
                       src={event.image}
-                      alt={event.title}
-                      className="w-full h-full object-cover"
+                      alt={event.imageAlt ?? event.title}
+                      className="w-full aspect-[3/4] object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 )}
@@ -512,6 +519,15 @@ function MobileTimeline({
                     <p className="text-agar-body text-xs leading-relaxed line-clamp-2">
                       {event.description}
                     </p>
+                    {event.image && (
+                      <img
+                        src={event.image}
+                        alt={event.imageAlt ?? event.title}
+                        className="mt-3 w-32 aspect-[3/4] object-cover rounded-md border border-white/10"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
                   </div>
                 </button>
               );

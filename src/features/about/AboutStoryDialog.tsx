@@ -138,6 +138,16 @@ export function AboutStoryDialog({
           data-about-story-content
           className="min-h-0 flex-1 space-y-5 overflow-y-auto overscroll-contain px-5 py-6 text-base leading-relaxed text-agar-body focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-gold sm:px-7 sm:py-8 sm:text-lg"
         >
+          {item.image && (
+            <img
+              src={item.image}
+              alt={item.imageAlt ?? ""}
+              className="w-44 sm:w-56 aspect-[3/4] object-cover rounded-sm border border-white/10"
+              data-about-story-image
+              loading="lazy"
+              decoding="async"
+            />
+          )}
           {item.detailParagraphs.map((paragraph, paragraphIndex) => (
             <p key={`${item.id}-detail-${paragraphIndex}`} data-about-source-paragraph>
               {paragraph}

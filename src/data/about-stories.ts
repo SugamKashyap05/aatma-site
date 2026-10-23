@@ -8,6 +8,9 @@ export interface AboutStoryItem {
   detailParagraphs: readonly string[];
   author?: string;
   role?: string;
+  /** Client-supplied photograph of an event this section describes, if any. */
+  image?: string;
+  imageAlt?: string;
 }
 
 /**
@@ -24,5 +27,7 @@ export const ABOUT_STORY_ITEMS: readonly AboutStoryItem[] = ABOUT_SPINE.map(
     title: section.heading,
     description: `${section.paragraphs.length} ${section.paragraphs.length === 1 ? "paragraph" : "paragraphs"} · Open the complete section`,
     detailParagraphs: section.paragraphs,
+    image: section.image,
+    imageAlt: section.imageAlt,
   }),
 );

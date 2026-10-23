@@ -60,7 +60,7 @@ const DEEP_DIVE_HREFS = {
   V: ["/history", "/resources"],
   VI: ["/#critical-era", "/history"],
   VII: ["/#achievement"],
-  VIII: ["/#challenges"],
+  VIII: ["/#challenges", "/press"],
   IX: ["/#ndf-findings"],
   X: ["/#rules", "/policy"],
 };

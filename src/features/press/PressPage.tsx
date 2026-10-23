@@ -6,7 +6,7 @@ import { ClippingCard } from "@/features/press/ClippingCard";
 import { PressReleaseArchive } from "@/features/press/PressReleaseArchive";
 import { PressMeetGallery } from "@/features/press/PressMeetGallery";
 import { PressMeetSection } from "@/features/press/PressMeetSection";
-import { EVENT_PHOTOS } from "@/data/events";
+import { AIDC_WORKSHOP, AIDC_WORKSHOP_PHOTOS, EVENT_PHOTOS } from "@/data/events";
 import { Reveal } from "@/components/ui/reveal";
 import PageLayout from "@/components/ui/PageLayout";
 
@@ -123,6 +123,52 @@ export function PressPage() {
                 <figcaption className="p-4">
                   <div className="text-xs text-gold-light font-medium mb-1">{photo.date}</div>
                   <div className="text-sm text-cream/80 leading-relaxed">{photo.caption}</div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* AIDC stakeholders' workshop — 26 August 2026.
+          Given its own block rather than folded into the events grid above:
+          these are 3:4 portrait frames, and that grid renders a fixed
+          192px-tall landscape strip which would crop the stage and backdrop
+          out of every one of them. */}
+      <div className="py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <Reveal variant="fade" delay={0}>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gold/30" />
+              <h3 className="font-display font-bold text-white text-base md:text-lg tracking-wide">
+                AIDC Stakeholders&rsquo; Workshop
+              </h3>
+              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gold/30" />
+            </div>
+          </Reveal>
+          <p className="mb-8 max-w-3xl text-sm md:text-base leading-relaxed text-cream/70">
+            AATMA participated in a one-day stakeholders&rsquo; workshop organised
+            by the {AIDC_WORKSHOP.organiser} on {AIDC_WORKSHOP.date},{" "}
+            {AIDC_WORKSHOP.attendeeNote}. Discussions covered relaxations for the
+            agarwood trade and industry.
+          </p>
+          <div className="grid gap-6 sm:grid-cols-3">
+            {AIDC_WORKSHOP_PHOTOS.map((photo) => (
+              <figure
+                key={photo.id}
+                className="bg-glass-card backdrop-blur-xl border border-white/20 rounded-lg overflow-hidden shadow-2xl"
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  className="w-full aspect-[3/4] object-cover"
+                  loading="eager"
+                  decoding="async"
+                />
+                <figcaption className="p-4">
+                  <div className="text-sm text-cream/80 leading-relaxed">
+                    {photo.caption}
+                  </div>
                 </figcaption>
               </figure>
             ))}

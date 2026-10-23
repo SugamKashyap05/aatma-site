@@ -10,6 +10,8 @@
  * homepage sections and routes that expand each part of the brief.
  */
 
+import { assetUrl } from "@/lib/utils";
+
 export type SpineNum =
   | "I" | "II" | "III" | "IV" | "V"
   | "VI" | "VII" | "VIII" | "IX" | "X";
@@ -29,6 +31,13 @@ export interface SpineSection {
   paragraphs: string[];
   /** Existing site surfaces that expand this part of the brief. */
   deepDives: SpineLink[];
+  /**
+   * Optional client-supplied photograph of an event the section describes.
+   * Supplementary to the verbatim text, never a substitute for it — only
+   * section X (the 26 August 2026 AIDC workshop) carries one.
+   */
+  image?: string;
+  imageAlt?: string;
 }
 
 export interface AboutEditorial {
@@ -176,7 +185,11 @@ const SOURCE_SPINE: SpineSection[] = [
     ],
     deepDives: [
       { label: "Ongoing Challenges & the Way Forward", href: "/#challenges" },
-    ]
+      { label: "AIDC workshop photographs", href: "/press" },
+    ],
+    image: assetUrl("events/aidc-workshop-2026-hall.jpg"),
+    imageAlt:
+      "The hall at the AIDC stakeholders' workshop, showing the stage and the event backdrop",
   },
 ];
 

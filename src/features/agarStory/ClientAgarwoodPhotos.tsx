@@ -26,7 +26,7 @@ const PHOTOS = [
   {
     path: "client-images/agarwood/agarwood-liquid-dark-sample.jpg",
     alt: "A graduated glass flask containing a dark liquid sample, set on a white counter.",
-    caption: "Agaroil Boya",
+    caption: "Agar Oil super",
     width: 960,
     height: 1280,
   },

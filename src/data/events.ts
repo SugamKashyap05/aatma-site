@@ -45,3 +45,49 @@ export const EVENT_PHOTOS: EventPhoto[] = [
     caption: "19/07/2021 delegation meet CM Assam",
   },
 ];
+
+/**
+ * Photographs of the one-day stakeholders' workshop AATMA attended on
+ * 26 August 2026, organised by the Assam Industrial Development Corporation
+ * Limited. Client-supplied images of the event.
+ *
+ * Kept separate from `EVENT_PHOTOS` because these are 3:4 portrait frames:
+ * the shared gallery renders a fixed 192px-tall landscape strip, which would
+ * crop the stage and backdrop out of every one of them.
+ */
+export interface WorkshopPhoto {
+  id: string;
+  src: string;
+  alt: string;
+  caption: string;
+}
+
+export const AIDC_WORKSHOP_PHOTOS: WorkshopPhoto[] = [
+  {
+    id: "aidc-workshop-2026-hall",
+    src: assetUrl("events/aidc-workshop-2026-hall.jpg"),
+    alt: "The hall at the AIDC stakeholders' workshop, showing the stage and the event backdrop",
+    caption:
+      "The workshop hall. The backdrop names the Assam Wood Based Industries (Promotion & Development) Rules, 2022 and the Assam Trees Outside Forest (Sustainable Management) Rules, 2022.",
+  },
+  {
+    id: "aidc-workshop-2026-podium",
+    src: assetUrl("events/aidc-workshop-2026-podium.jpg"),
+    alt: "A speaker addressing the AIDC stakeholders' workshop from the podium",
+    caption: "A speaker addressing the workshop from the podium.",
+  },
+  {
+    id: "aidc-workshop-2026-speaker",
+    src: assetUrl("events/aidc-workshop-2026-speaker.jpg"),
+    alt: "A speaker at the podium during the AIDC stakeholders' workshop, with a guest seated on stage",
+    caption: "A speaker at the podium, with a guest seated on stage.",
+  },
+];
+
+/** The AIDC stakeholders' workshop — date and organiser, as the client brief states. */
+export const AIDC_WORKSHOP = {
+  date: "26 August 2026",
+  organiser: "Assam Industrial Development Corporation Limited",
+  attendeeNote:
+    "in the presence of the Minister of Forest, the Minister of Agriculture and the Minister of Industry",
+} as const;

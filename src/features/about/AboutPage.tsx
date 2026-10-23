@@ -69,6 +69,15 @@ export function AboutPage() {
                     {section.heading}
                   </h2>
                 </div>
+                {section.image && (
+                  <img
+                    src={section.image}
+                    alt={section.imageAlt ?? ""}
+                    className="w-56 md:w-72 aspect-[3/4] object-cover rounded-sm border border-white/10 mb-8"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
                 <div className="space-y-5 max-w-3xl">
                   {section.paragraphs.map((paragraph, index) => (
                     <p

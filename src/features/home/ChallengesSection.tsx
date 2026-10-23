@@ -1,4 +1,4 @@
-import { cn, type ClassValue } from "@/lib/utils";
+import { cn, assetUrl, type ClassValue } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
 import { Stagger } from "@/components/ui/reveal";
 import {
@@ -31,6 +31,9 @@ interface Challenge {
   icon: LucideIcon;
   title: string;
   body: string;
+  /** Optional client-supplied photograph of the event the item describes. */
+  image?: string;
+  imageAlt?: string;
 }
 
 const CHALLENGES: Challenge[] = [
@@ -48,6 +51,9 @@ const CHALLENGES: Challenge[] = [
     icon: CalendarDays,
     title: "August 26, 2026 — AIDC Workshop",
     body: "AATMA participated in a one-day stakeholders' workshop organized by the Assam Industrial Development Corporation Limited, in the presence of Honorable Minister of Forest, Minister of Agriculture and Minister of Industry.",
+    image: assetUrl("events/aidc-workshop-2026-hall.jpg"),
+    imageAlt:
+      "The hall at the AIDC stakeholders' workshop, showing the stage and the event backdrop",
   },
 ];
 
@@ -64,7 +70,7 @@ function ChallengeItem({ challenge, index }: { challenge: Challenge; index: numb
         <Icon className="h-5 w-5" aria-hidden="true" focusable="false" />
       </span>
 
-      <div className="min-w-0">
+      <div className="min-w-0 flex-1">
         <h3 className="font-display font-bold text-lg leading-snug text-agar-title mb-2">
           {challenge.title}
         </h3>
@@ -72,6 +78,16 @@ function ChallengeItem({ challenge, index }: { challenge: Challenge; index: numb
           {challenge.body}
         </p>
       </div>
+
+      {challenge.image && (
+        <img
+          src={challenge.image}
+          alt={challenge.imageAlt ?? ""}
+          className="w-20 sm:w-24 md:w-32 aspect-[3/4] object-cover rounded-md shrink-0 border border-white/10"
+          loading="lazy"
+          decoding="async"
+        />
+      )}
     </Reveal>
   );
 }
