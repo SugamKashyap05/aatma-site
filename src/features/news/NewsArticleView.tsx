@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Calendar, ExternalLink, Newspaper } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, ExternalLink, Newspaper, ZoomIn } from "lucide-react";
 import PageLayout from "@/components/ui/PageLayout";
+import { ClippingLightbox } from "@/components/ui/ClippingLightbox";
+import { assetUrl } from "@/lib/utils";
 import NotFoundPage from "@/features/notFound/NotFoundPage";
 import { Reveal } from "@/components/ui/reveal";
 import { AATMA } from "@/data/content";
@@ -18,6 +20,7 @@ import { getAllNews, getNewsBySlug } from "@/data/news";
 export function NewsArticleView() {
   const { slug } = useParams<{ slug: string }>();
   const article = slug ? getNewsBySlug(slug) : undefined;
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   /**
    * Per-article metadata. The route-level title is set in App.tsx, so this
@@ -87,6 +90,16 @@ export function NewsArticleView() {
   });
   const pageLabel = article.page ? `, page ${article.page}` : "";
 
+  const citationLine = [
+    article.outlet,
+    article.page ? `page ${article.page}` : null,
+    formattedDate,
+    article.language,
+    article.byline ? `By ${article.byline}` : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+
   return (
     <PageLayout badge="News" title={article.headline} subtitle={article.excerpt}>
       <section className="relative pb-20">
@@ -134,11 +147,34 @@ export function NewsArticleView() {
             </div>
           </Reveal>
 
-          {/* Checked summary — not a full article transcription */}
+          {/* The clipping itself — the scan is the content */}
           <Reveal variant="up" delay={100}>
-            <div className="text-cream/80 text-base md:text-lg leading-relaxed whitespace-pre-line">
-              {article.transcription}
-            </div>
+            {article.imagePath ? (
+              <button
+                type="button"
+                onClick={() => setLightboxOpen(true)}
+                className="group relative block w-full cursor-zoom-in rounded-sm border border-glass-border focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                aria-label={`Enlarge the clipping: ${article.headline}`}
+              >
+                <img
+                  src={assetUrl(article.imagePath)}
+                  alt={article.imageAlt ?? article.headline}
+                  className="w-full rounded-sm transition-transform duration-300 group-hover:scale-[1.01]"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-green-deep/85 via-transparent to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                  <span className="inline-flex items-center gap-1.5 rounded-sm bg-green-deep/90 px-2.5 py-1.5 text-xs font-medium text-gold-light">
+                    <ZoomIn size={13} aria-hidden="true" focusable="false" />
+                    Click to enlarge
+                  </span>
+                </span>
+              </button>
+            ) : (
+              <p className="text-sm italic text-white/50">
+                No scan of this clipping is available to display.
+              </p>
+            )}
           </Reveal>
 
           {/* Adjacent-story exclusion — stated when it applies */}
@@ -208,6 +244,17 @@ export function NewsArticleView() {
           )}
         </div>
       </section>
+
+      {article.imagePath && (
+        <ClippingLightbox
+          open={lightboxOpen}
+          src={assetUrl(article.imagePath)}
+          alt={article.imageAlt ?? article.headline}
+          title={article.headline}
+          meta={citationLine}
+          onClose={() => setLightboxOpen(false)}
+        />
+      )}
     </PageLayout>
   );
 }

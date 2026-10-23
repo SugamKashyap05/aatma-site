@@ -1,8 +1,8 @@
 import { ArrowRight, Newspaper } from "lucide-react";
 import { Link } from "react-router-dom";
-import { assetUrl } from "@/lib/utils";
 import { MediaCoverageTimeline } from "@/features/news/MediaCoverageTimeline";
 import { NEWS_ARTICLES, type NewsArticle } from "@/data/news";
+import { ClippingCard } from "@/features/press/ClippingCard";
 import { PressReleaseArchive } from "@/features/press/PressReleaseArchive";
 import { PressMeetGallery } from "@/features/press/PressMeetGallery";
 import { PressMeetSection } from "@/features/press/PressMeetSection";
@@ -65,42 +65,23 @@ export function PressPage() {
         </div>
       </div>
 
-      {/* Verified newspaper coverage */}
+      {/* Newspaper clippings — image plus a readable transcription */}
       <div className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center gap-3 mb-8">
+          <div className="flex items-center gap-3 mb-4">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gold/30" />
             <h3 className="font-display font-bold text-white text-base md:text-lg tracking-wide">
-              Verified press coverage
+              Newspaper coverage of AATMA
             </h3>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gold/30" />
           </div>
+          <p className="mb-8 max-w-3xl text-sm md:text-base leading-relaxed text-cream/70">
+            Scans of the newspaper clippings the association holds. Select any
+            clipping to enlarge it and read the page at full size.
+          </p>
           <div className="grid md:grid-cols-2 gap-6">
-            {NEWS_ARTICLES.map((article: NewsArticle) => (
-              <Link
-                key={article.id}
-                to={`/news/${article.slug}`}
-                className="block rounded-sm focus-visible:outline-2 focus-visible:outline-gold focus-visible:-outline-offset-2"
-              >
-                <article className="card-hover glass-surface h-full overflow-hidden rounded-sm">
-                  {article.imagePath && (
-                    <img
-                      src={assetUrl(article.imagePath)}
-                      alt={article.imageAlt ?? article.headline}
-                      className="h-44 w-full object-cover border-b border-white/10"
-                      loading="eager"
-                    />
-                  )}
-                  <div className="p-5">
-                    <div className="flex items-center justify-between gap-3 text-xs text-cream/70">
-                      <span className="font-semibold uppercase tracking-wide text-gold-light">{article.outlet}</span>
-                      <time dateTime={article.date}>{article.date}</time>
-                    </div>
-                    <h4 className="mt-2 font-display text-base font-semibold text-white">{article.headline}</h4>
-                    <p className="mt-2 line-clamp-3 text-sm text-cream/75">{article.excerpt}</p>
-                  </div>
-                </article>
-              </Link>
+            {NEWS_ARTICLES.map((article: NewsArticle, index: number) => (
+              <ClippingCard key={article.id} article={article} index={index} />
             ))}
           </div>
         </div>

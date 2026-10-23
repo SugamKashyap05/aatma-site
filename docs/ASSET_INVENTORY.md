@@ -70,9 +70,9 @@ Already extracted to `scratch/client_videos/`. To be selected, cropped and moved
 |---|---|---|---|
 | **IMG-P02** | `press-meet/press-meet-hero.jpg` | `frame_v2_*.png` | Wide hero — press meet, mic bank, banner visible. **720p source** |
 | **IMG-P03** | `press-meet/speakers-table.jpg` | `frame_v2_150s.png` | Speakers at table, 3 men, banner readable |
-| **IMG-P04** | `press-meet/banner-detail.jpg` | `frame_v2_*` | Close crop of the PRESS MEET banner — date, time, venue legible |
+| **IMG-P04** | ~~`press-meet/banner-detail.jpg`~~ **removed** | `frame_v2_*` | Close crop of the PRESS MEET banner — withdrawn at the client's request: a 1280x240 strip in which the banner heading is cut off at both edges and only the tops of the speakers' heads are visible. File deleted from `public/press-meet/` and dropped from `PressMeetGallery`. |
 
-**Frame-grab subtotal: 3 images** (source frames already on disk)
+**Frame-grab subtotal: 2 images** (source frames already on disk; IMG-P04 withdrawn at the client's request)
 
 ## 1C. Format pipeline — per AI-generated image
 

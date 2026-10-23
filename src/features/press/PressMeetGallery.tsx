@@ -2,14 +2,16 @@ import { assetUrl } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
 
 /**
- * PressMeetGallery — mounts the three client-supplied frame grabs from the 14 Jan 2023
- * press meet video into the /press page.
+ * PressMeetGallery — mounts the two complete client-supplied frame grabs from the
+ * 14 Jan 2023 press meet video into the /press page.
  *
  * Each image uses a <picture> element with WebP → JPEG fallback so every
  * browser gets a supported format. All paths go through
  * assetUrl() to resolve correctly under the GitHub Pages subpath.
  *
- * IMG-P04 alt transcribes the actual banner text (verified legible).
+ * A third frame, IMG-P04_banner-detail, was removed at the client's request: it
+ * was a thin crop (1280x240) in which the banner heading is cut off at both
+ * edges and only the tops of the speakers' heads are visible.
  *
  * When t_a1c29289 (press-meet video section) lands, IMG-P02 doubles as the
  * <video> poster attribute.
@@ -34,12 +36,6 @@ const FRAME_GRABS: FrameGrab[] = [
     alt: "A wider view of attendees seated at the AATMA press-meet table",
     width: 1280,
     height: 720,
-  },
-  {
-    slug: "IMG-P04_banner-detail",
-    alt: "Banner detail from the AATMA press meet reading: PRESS MEET — Date - 14th January 2023 (Saturday) Time : 6-00 PM — VENUE : HEAD OFFICE, HOJAI",
-    width: 1280,
-    height: 240,
   },
 ];
 
