@@ -19,21 +19,21 @@ const PHOTOS = [
   {
     path: "client-images/agarwood/agarwood-chips-hand.jpg",
     alt: "A hand holding several dark wood chips above a larger pile of similar pieces.",
-    caption: "Close-up of agarwood chips.",
+    caption: "Assams super AGARWOOD",
     width: 1024,
     height: 768,
   },
   {
     path: "client-images/agarwood/agarwood-liquid-dark-sample.jpg",
     alt: "A graduated glass flask containing a dark liquid sample, set on a white counter.",
-    caption: "Dark liquid sample in a graduated flask.",
+    caption: "Agaroil Boya",
     width: 960,
     height: 1280,
   },
   {
     path: "client-images/agarwood/agarwood-liquid-amber-samples.jpg",
     alt: "Two graduated glass bottles filled with amber and pale liquid samples.",
-    caption: "Amber and pale liquid samples in graduated glass bottles.",
+    caption: "Agaroil Boya",
     width: 960,
     height: 1280,
   },
@@ -49,7 +49,7 @@ export function ClientAgarwoodPhotos() {
             Agarwood photographs
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-cream/75">
-            Captions describe only visible subject matter. No grade, quality, origin, or performance claim is inferred from these images.
+            Photographs supplied by the association; captions are the client&rsquo;s own labels for these images.
           </p>
         </div>
       </Reveal>
