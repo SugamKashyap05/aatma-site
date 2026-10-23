@@ -19,9 +19,9 @@ export const EVENT_PHOTOS: EventPhoto[] = [
   {
     id: "national-conference",
     src: assetUrl("events/national-conference.jpg"),
-    alt: "National Conference on Agarwood & Oil — dignitaries seated at the event",
-    date: "2024",
-    caption: "National Conference on Agarwood & Oil",
+    alt: "National Conference on Agarwood & Oil Industries — prospects and possibilities, 28 October 2016, NEDFi House, Guwahati",
+    date: "2016",
+    caption: "National conference On AGARWOOD & OIL INDUSTRIES Prospect & Possibilities On 28/10/2016, at NREDFI. House Guwahati",
   },
   {
     id: "aatma-special-meeting-2018",
@@ -33,15 +33,15 @@ export const EVENT_PHOTOS: EventPhoto[] = [
   {
     id: "aatma-meeting-1",
     src: assetUrl("events/aatma-meeting-1.jpg"),
-    alt: "AATMA office meeting with officials",
-    date: "2026",
-    caption: "AATMA office meeting",
+    alt: "AATMA delegation meeting the Chief Minister of Assam",
+    date: "2021",
+    caption: "19/07/2021 delegation meet CM Assam",
   },
   {
     id: "aatma-meeting-2",
     src: assetUrl("events/aatma-meeting-2.jpg"),
-    alt: "AATMA office meeting — alternate angle",
-    date: "2026",
-    caption: "AATMA office meeting — alternate view",
+    alt: "AATMA delegation meeting the Chief Minister of Assam — alternate view",
+    date: "2021",
+    caption: "19/07/2021 delegation meet CM Assam",
   },
 ];
