@@ -1,141 +1,101 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img"
-     aria-labelledby="svg02-title svg02-desc">
-  <title id="svg02-title">Agar trade chronology and supply relationships</title>
-  <desc id="svg02-desc">A schematic, not-geographic diagram. The gold path shows a simplified trade chronology. Pale dashed links show relationships stated in the association's history: Karbi Angong and Naga Hills forest mahals used by Barpather entrepreneurs; NEFA and Bhutan mahals leased by Hojai traders and brought to Hojai; and Manipur supply processed at Hojai and Silchar. Naharani, Jorhat and Sibsagar are shown as a separate trade and distillation area using homegrown trees.</desc>
-
-  <defs>
-    <!-- Palette values are mirrored in the root style for standalone image embeds. -->
-    <linearGradient id="svg02-path" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"   stop-color="var(--color-gold)" stop-opacity="0.25"/>
-      <stop offset="50%"  stop-color="var(--color-gold)" stop-opacity="0.85"/>
-      <stop offset="100%" stop-color="var(--color-gold-light)" stop-opacity="0.45"/>
-    </linearGradient>
-    <filter id="svg02-glow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="3.5" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-  </defs>
-
-  <!-- Background panel -->
-  <rect width="800" height="500" fill="none"/>
-
-  <!-- Simplified chronology, not a geographic trade route. -->
-  <path d="M 60 400 C 130 355, 175 395, 230 350 C 330 350, 475 280, 610 235
-           S 690 195, 745 160"
-        fill="none" stroke="url(#svg02-path)" stroke-width="2.5"
-        stroke-linecap="round" stroke-dasharray="7 6"/>
-
-  <!-- Pale dashed links show only raw-material relationships described in the history document. -->
-  <g stroke="var(--map-source)" stroke-opacity="0.5" stroke-width="1.6"
-     fill="none" stroke-linecap="round" stroke-dasharray="4 5">
-    <!-- Karbi Angong & Naga Hills -> Barpather (forest mahals) -->
-    <path d="M 340 220 C 330 260, 280 320, 230 350"/>
-    <path d="M 470 180 C 420 245, 320 320, 230 350"/>
-    <!-- Manipur -> Hojai (forest transit pass) -->
-    <path d="M 180 250 C 300 245, 450 240, 610 235"/>
-
-    <!-- NEFA / Bhutan -> Hojai (leased agar mahals) -->
-    <path d="M 650 105 C 635 145, 620 190, 610 235"/>
-  </g>
-
-  <!-- Dashed segments animate on hover only; static by default for reduced motion -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600" role="img" aria-labelledby="route-title route-desc">
+  <title id="route-title">Agar trade route and supply relationships — client-drawn path</title>
+  <desc id="route-desc">Schematic, not to geographic scale. The client-drawn route connects Sylhet to Hojai, then Barpather, Naharani, Jorhat and Sibsagar, with trade back toward Hojai. Hojai also connects to Karbi Angong and Naga Hills. The market route continues from Hojai through Bombay to the Middle East countries. Pale dashed links show separate reported supply relationships.</desc>
   <style>
-    /* Standalone SVG image embeds do not inherit page CSS variables. */
-    :root {
-      --color-gold: #c9a84c;
-      --color-gold-light: #e0c878;
-      --color-cream: #f5f0e8;
-      --map-source: #f5f0e8;
-      --font-sans: "Inter", system-ui, sans-serif;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .svg02-dash { animation: svg02-flow 26s linear infinite; }
-      @keyframes svg02-flow { to { stroke-dashoffset: -260; } }
-    }
-    .svg02-node:hover circle { r: 9; }
+    :root { --color-gold:#c9a84c; --color-gold-light:#e0c878; --color-cream:#f5f0e8; --map-source:#f5f0e8; --font-sans:Inter,system-ui,sans-serif; }
+    text { font-family:var(--font-sans); }
   </style>
-  <path d="M 60 400 C 130 355, 175 395, 230 350 C 330 350, 475 280, 610 235
-           S 690 195, 745 160"
-        fill="none" stroke="var(--color-gold-light)" stroke-width="1.5"
-        stroke-linecap="round" stroke-dasharray="3 12" class="svg02-dash"
-        opacity="0.75"/>
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="trade-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="var(--color-gold)"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="600" fill="none"/>
 
-  <!-- Locations and events from docs/AGAR_HISTORY_SOURCE.md §3; not geographic positions. -->
-  <g class="svg02-node" font-family="var(--font-sans)">
-    <!-- 1. Sylhet -->
-    <g transform="translate(60,400)">
-      <circle r="6" fill="var(--color-gold)" filter="url(#svg02-glow)"/>
-      <circle r="11" fill="none" stroke="var(--color-gold)" stroke-opacity="0.35" stroke-width="1"/>
-      <text x="14" y="-8" text-anchor="start" fill="var(--color-cream)" font-size="13" font-weight="600">Sylhet</text>
-      <text x="14" y="6" text-anchor="start" fill="var(--color-gold)" font-size="10" letter-spacing="0.08em">1905–06</text>
-    </g>
-    <!-- 2. Barpather -->
-    <g transform="translate(230,350)">
-      <circle r="5.5" fill="var(--color-gold)"/>
-      <text x="0" y="30" text-anchor="middle" fill="var(--color-cream)" font-size="12.5" font-weight="600">Barpather</text>
-      <text x="0" y="45" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="9.5">homestead trade</text>
-    </g>
-    <!-- 3. Karbi Angong -->
-    <g transform="translate(340,220)">
-      <circle r="5" fill="var(--map-source)"/>
-      <text x="0" y="-12" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="11.5">Karbi Angong</text>
-    </g>
-    <!-- 4. Naga Hills -->
-    <g transform="translate(470,180)">
-      <circle r="5" fill="var(--map-source)"/>
-      <text x="0" y="-12" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="11.5">Naga Hills</text>
-    </g>
-    <!-- 5. Hojai -->
-    <g transform="translate(610,235)">
-      <circle r="8" fill="var(--color-gold-light)" filter="url(#svg02-glow)"/>
-      <circle r="15" fill="none" stroke="var(--color-gold-light)" stroke-opacity="0.4" stroke-width="1"/>
-      <text x="0" y="36" text-anchor="middle" fill="var(--color-gold-light)" font-size="14" font-weight="700">Hojai</text>
-      <text x="0" y="51" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="9.5">distillation begins</text>
-    </g>
-    <!-- 6. Naharani / Jorhat–Sibsagar -->
-    <g transform="translate(330,410)">
-      <circle r="5" fill="var(--color-gold)"/>
-      <text x="0" y="26" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="11">Naharani · Jorhat · Sibsagar</text>
-      <text x="0" y="40" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="9">homegrown trees</text>
-    </g>
-    <!-- 7. NEFA / Bhutan -->
-    <g transform="translate(650,105)">
-      <circle r="5" fill="var(--map-source)"/>
-      <text x="0" y="-14" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="11.5">NEFA · Bhutan</text>
-      <text x="0" y="26" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="9">late 1960s leases</text>
-    </g>
-    <!-- 8. Manipur -->
-    <g transform="translate(180,250)">
-      <circle r="5" fill="var(--map-source)"/>
-      <text x="0" y="-12" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="11.5">Manipur</text>
-      <text x="0" y="24" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="9">1970s–80s, transit pass</text>
-    </g>
-    <!-- 9. Bombay -->
-    <g transform="translate(745,160)">
-      <circle r="6" fill="var(--color-gold)" filter="url(#svg02-glow)"/>
-      <text x="0" y="-16" text-anchor="end" fill="var(--color-cream)" font-size="13" font-weight="600">Bombay</text>
-      <text x="0" y="30" text-anchor="middle" fill="var(--color-gold)" font-size="9.5" letter-spacing="0.06em">MUMBAI · SALE</text>
-      <text x="0" y="44" text-anchor="middle" fill="var(--color-cream)" fill-opacity="0.82" font-size="9">under Lieu T.P.</text>
-    </g>
+  <!-- Client-drawn trade and market routes. -->
+  <g fill="none" stroke="var(--color-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Sylhet to Hojai, then the eastern corridor. -->
+    <path d="M70 430 C135 407 205 382 270 360"/>
+    <path d="M270 360 C310 348 345 332 380 320 C412 307 442 296 475 287 C508 278 535 267 565 258 C600 248 632 237 665 224" marker-end="url(#trade-arrow)"/>
+    <!-- Return trade from the regional corridor to Hojai. -->
+    <path d="M665 224 C640 330 480 425 275 365" marker-end="url(#trade-arrow)"/>
+    <!-- Hojai links to Karbi Angong and Naga Hills; arrows at both ends show two-way trade. -->
+    <path d="M276 354 C305 285 344 224 386 188" stroke-width="2.2" marker-start="url(#trade-arrow)" marker-end="url(#trade-arrow)"/>
+    <path d="M278 351 C336 267 410 187 485 149" stroke-width="2.2" marker-start="url(#trade-arrow)" marker-end="url(#trade-arrow)"/>
+    <!-- Market route: Hojai to Bombay, then Bombay to the Middle East. -->
+    <path d="M278 354 C360 310 456 235 575 165" marker-end="url(#trade-arrow)"/>
+    <path d="M582 158 C644 116 729 76 805 52" stroke-opacity=".82" marker-end="url(#trade-arrow)"/>
   </g>
 
-  <!-- Legend -->
-  <g transform="translate(60,470)" font-family="var(--font-sans)" font-size="10">
-    <circle cx="6" cy="-4" r="5" fill="var(--color-gold)"/>
-    <text x="20" y="0" fill="var(--color-cream)" fill-opacity="0.85">Trade / market node</text>
-    <circle cx="130" cy="-4" r="5" fill="var(--map-source)"/>
-    <text x="143" y="0" fill="var(--color-cream)" fill-opacity="0.85">Raw-material source</text>
-    <circle cx="270" cy="-4" r="6" fill="var(--color-gold-light)"/>
-    <text x="284" y="0" fill="var(--color-cream)" fill-opacity="0.85">Hojai processing</text>
-    <line x1="430" y1="-4" x2="454" y2="-4" stroke="var(--color-gold)" stroke-width="2.5" stroke-dasharray="5 4"/>
-    <text x="460" y="0" fill="var(--color-cream)" fill-opacity="0.85">Timeline sequence</text>
-    <line x1="575" y1="-4" x2="599" y2="-4" stroke="var(--map-source)" stroke-width="1.6" stroke-dasharray="4 4"/>
-    <text x="605" y="0" fill="var(--color-cream)" fill-opacity="0.85">Reported supply link</text>
+  <!-- Distinct reported supply relationships. -->
+  <g fill="none" stroke="var(--map-source)" stroke-opacity=".55" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="5 7">
+    <path d="M390 184 C390 225 386 274 380 320"/>
+    <path d="M490 145 C465 205 420 267 380 320"/>
+    <path d="M165 266 C202 296 235 331 270 360"/>
+    <path d="M140 315 C185 326 224 342 270 360"/>
   </g>
 
-  <!-- Schematic disclaimer -->
-  <text x="60" y="488" font-family="var(--font-sans)" font-size="10"
-        fill="var(--color-cream)" fill-opacity="0.82" letter-spacing="0.04em">
-    Schematic — not to geographic scale
-  </text>
+  <!-- Reported raw-material sources. -->
+  <g fill="var(--color-cream)" fill-opacity=".9" font-size="14">
+    <circle cx="390" cy="184" r="5"/><text x="390" y="164" text-anchor="middle">Karbi Angong</text>
+    <circle cx="490" cy="145" r="5"/><text x="490" y="124" text-anchor="middle">Naga Hills</text>
+    <circle cx="165" cy="266" r="5"/><text x="165" y="246" text-anchor="middle">NEFA · Bhutan</text>
+    <circle cx="140" cy="315" r="5"/><text x="140" y="296" text-anchor="middle">Manipur</text>
+  </g>
+
+  <!-- Main corridor and regional nodes. -->
+  <g>
+    <circle cx="70" cy="430" r="7" fill="var(--color-gold)" filter="url(#glow)"/><circle cx="70" cy="430" r="13" fill="none" stroke="var(--color-gold)" stroke-opacity=".4"/>
+    <text x="70" y="458" text-anchor="middle" fill="var(--color-cream)" font-size="16" font-weight="700">Sylhet</text>
+    <text x="70" y="475" text-anchor="middle" fill="var(--color-gold-light)" font-size="12">1905–06</text>
+
+    <circle cx="270" cy="360" r="9" fill="var(--color-gold-light)" filter="url(#glow)"/><circle cx="270" cy="360" r="17" fill="none" stroke="var(--color-gold-light)" stroke-opacity=".45"/>
+    <text x="270" y="397" text-anchor="middle" fill="var(--color-gold-light)" font-size="16" font-weight="700">Hojai</text>
+    <text x="270" y="414" text-anchor="middle" fill="var(--color-cream)" fill-opacity=".85" font-size="12">distillation</text>
+
+    <circle cx="380" cy="320" r="6" fill="var(--color-gold)"/>
+    <text x="380" y="350" text-anchor="middle" fill="var(--color-cream)" font-size="16" font-weight="600">Barpather</text>
+    <text x="380" y="366" text-anchor="middle" fill="var(--color-cream)" fill-opacity=".8" font-size="12">homestead trade</text>
+
+    <circle cx="475" cy="287" r="5.5" fill="var(--color-gold)"/>
+    <text x="475" y="317" text-anchor="middle" fill="var(--color-cream)" font-size="16">Naharani</text>
+
+    <circle cx="565" cy="258" r="5.5" fill="var(--color-gold)"/>
+    <text x="565" y="288" text-anchor="middle" fill="var(--color-cream)" font-size="16">Jorhat</text>
+
+    <circle cx="665" cy="224" r="6" fill="var(--color-gold)"/>
+    <text x="665" y="254" text-anchor="middle" fill="var(--color-cream)" font-size="16">Sibsagar</text>
+    <text x="665" y="270" text-anchor="middle" fill="var(--color-cream)" fill-opacity=".8" font-size="12">homegrown trees</text>
+  </g>
+
+  <!-- Explicit return-trade label for the reverse corridor. -->
+  <text x="485" y="445" text-anchor="middle" fill="var(--color-gold-light)" font-size="12">Trade back to Hojai</text>
+
+  <!-- Market destinations. -->
+  <g>
+    <circle cx="575" cy="165" r="7" fill="var(--color-gold)" filter="url(#glow)"/>
+    <text x="575" y="142" text-anchor="middle" fill="var(--color-cream)" font-size="16" font-weight="700">Bombay</text>
+    <text x="592" y="183" text-anchor="start" fill="var(--color-gold-light)" font-size="12">MUMBAI · SALE</text>
+    <text x="592" y="199" text-anchor="start" fill="var(--color-cream)" fill-opacity=".85" font-size="12">under Lieu T.P.</text>
+
+    <circle cx="805" cy="52" r="6" fill="var(--color-gold-light)"/>
+    <text x="822" y="43" text-anchor="start" fill="var(--color-cream)" font-size="16" font-weight="600">Middle East</text>
+    <text x="822" y="60" text-anchor="start" fill="var(--color-cream)" font-size="16" font-weight="600">countries</text>
+  </g>
+
+  <!-- Legend and provenance note. -->
+  <g transform="translate(70 530)" font-size="12">
+    <line x1="0" y1="0" x2="30" y2="0" stroke="var(--color-gold)" stroke-width="2.5" marker-end="url(#trade-arrow)"/>
+    <text x="39" y="4" fill="var(--color-cream)" fill-opacity=".9">Route path</text>
+    <line x1="124" y1="0" x2="154" y2="0" stroke="var(--color-gold)" stroke-width="2.5" marker-start="url(#trade-arrow)" marker-end="url(#trade-arrow)"/>
+    <text x="163" y="4" fill="var(--color-cream)" fill-opacity=".9">Two-way trade</text>
+    <circle cx="287" cy="0" r="5" fill="var(--color-gold)"/><text x="300" y="4" fill="var(--color-cream)" fill-opacity=".9">Trade / market node</text>
+    <circle cx="475" cy="0" r="5" fill="var(--map-source)"/><text x="488" y="4" fill="var(--color-cream)" fill-opacity=".9">Raw-material source</text>
+    <line x1="682" y1="0" x2="716" y2="0" stroke="var(--map-source)" stroke-opacity=".65" stroke-width="1.8" stroke-dasharray="5 6"/>
+    <text x="725" y="4" fill="var(--color-cream)" fill-opacity=".9">Reported supply link</text>
+  </g>
+  <text x="70" y="568" font-family="var(--font-sans)" font-size="12" fill="var(--color-cream)" fill-opacity=".82">Source: client-provided CamScanner 10-23-2026 14.02.pdf, p. 1 · schematic, not to geographic scale</text>
 </svg>

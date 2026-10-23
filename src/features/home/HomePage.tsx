@@ -9,6 +9,7 @@ import { NdfFindingsSection } from "@/features/home/NdfFindingsSection";
 import { RulesSection } from "@/features/home/RulesSection";
 import { ChallengesSection } from "@/features/home/ChallengesSection";
 import { PressTeaser } from "@/features/home/PressTeaser";
+import { PresidentMessage } from "@/features/home/PresidentMessage";
 import { LatestNewsTeaser } from "@/features/news/LatestNewsTeaser";
 import { Footer } from "@/features/footer/Footer";
 import { ImmersiveNavbar } from "@/components/ui/ImmersiveNavbar";
@@ -88,6 +89,9 @@ export function HomePage() {
           </Reveal>
           <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
             <LatestNewsTeaser />
+          </Reveal>
+          <Reveal variant="fade" delay={0} rootMargin="0px 0px 300px 0px">
+            <PresidentMessage />
           </Reveal>
         </div>
       </main>

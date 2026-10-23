@@ -19,13 +19,16 @@ const ZOOM_STEP = 0.5;
 const SWIPE_THRESHOLD = 50;
 
 /**
- * Derive the image path for a specific page number from a template path.
+ * Derive the image path for a specific page number from a template path,
+ * preserving the template's extension.
  * E.g., "books/agar/pages/page-007.jpg" -> "books/agar/pages/page-012.jpg"
+ *      "books/abstracts/pages/page-007.png" -> "books/abstracts/pages/page-012.png"
  */
 function getPageImagePath(template: string, pageNum: number): string {
+  const ext = template.match(/\.(jpe?g|png)$/i)?.[1].toLowerCase() ?? "jpg";
   return template.replace(
-    /page-\d+\.jpg$/,
-    `page-${String(pageNum).padStart(3, "0")}.jpg`
+    /page-\d+\.(jpe?g|png)$/i,
+    `page-${String(pageNum).padStart(3, "0")}.${ext}`
   );
 }
 

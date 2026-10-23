@@ -13,8 +13,8 @@
 - **[HCM]** — `documents/AATMA to HCM.docx` (client-authored letter)
 - **[PRESS]** — `documents/AATMA press note Rev.docx` (client-authored press note)
 - **[CLIPPING]** — client-supplied newspaper clippings; only verified items are public in `src/data/news.ts`, with held candidates documented in this ledger
-- **[BOOKS]** — the two client-supplied publications: `public/books/agar.pdf` and `public/books/proceedings-seminar-2001.pdf`
-- **[SEMINAR]** — `public/resources/seminar-abstracts-2000.pdf` (client-supplied seminar abstracts; cover page identifies dates and venue)
+- **[BOOKS]** — the three client-supplied publications: `public/books/agar.pdf`, `public/books/abstracts-2000.pdf` and `public/books/proceedings-seminar-2001.pdf`
+- **[SEMINAR]** — `public/books/abstracts-2000.pdf` (client-supplied seminar abstracts; cover page identifies dates and venue)
 
 `verified` means a client-authored/supplied primary document directly supports the claim. `press estimate` is a separate provenance class. `needs confirmation` means only partial, secondary, composite, or unsupported wording remains. `exclude` means no client primary source was found in the reconciliation pass; it is not a verified falsehood.
 

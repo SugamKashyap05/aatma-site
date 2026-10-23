@@ -65,35 +65,14 @@ const GAZETTE_FACTS = [
   },
 ];
 
-const PRESS_SOURCED_FACTS = [
-  {
-    label: "Registration limit",
-    value: "62 days to register a secondary WBI unit",
-    source: "The Assam Tribune, 2 Aug 2023",
-  },
-  {
-    label: "Processing limit",
-    value: "74 days to process a primary WBI unit",
-    source: "The Assam Tribune, 2 Aug 2023",
-  },
-  {
-    label: "Primary WBI count",
-    value: "588 → 206 (66% decline)",
-    source: "The Assam Tribune, 2 Aug 2023",
-  },
-];
-
 // ─── Component ────────────────────────────────────────────────────────────────
 
 /**
  * GazetteCitations — Section 5 for the /policy page.
  *
- * Presents cited Gazette information, distinguishes LPC FORM-XXV from Certificate of Origin,
- * and separates press-sourced figures from Gazette material.
+ * Presents cited Gazette information and distinguishes LPC FORM-XXV from Certificate of Origin.
  *
- * This section complements the charts (CH-04, CH-08, CH-10) and SVGs
- * mounted by t_ea757e9d — it provides the legal citations and provenance
- * that the visualisations cannot carry.
+ * Newspaper estimates are not presented here as data sources.
  */
 export function GazetteCitations() {
   return (
@@ -110,7 +89,7 @@ export function GazetteCitations() {
               Gazette <span className="text-gold-light">Citations</span>
             </h2>
             <p className="text-white/70 text-base md:text-lg max-w-3xl">
-              Client-supplied Gazette notifications and press-reported figures are listed separately, with citations for each.
+              Client-supplied Gazette notifications are listed with their legal citations.
             </p>
           </div>
         </Reveal>
@@ -142,37 +121,7 @@ export function GazetteCitations() {
             </Reveal>
           ))}
 
-          {/* Press-sourced facts */}
-          <Reveal variant="fade" delay={400}>
-            <div className="glass-card rounded-lg p-6">
-              <h3 className="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
-                <FileText className="w-4 h-4 text-gold-light" />
-                Press-Sourced Facts
-              </h3>
-              <p className="text-white/70 text-sm mb-4">
-                The following figures are from newspaper reports, not from the
-                gazette. They are labelled as press estimates.
-              </p>
-              <div className="space-y-3">
-                {PRESS_SOURCED_FACTS.map((fact, i) => (
-                  <div
-                    key={i}
-                    className="flex items-start gap-3 glass-card rounded-sm p-3"
-                  >
-                    <span className="text-gold-light font-display font-bold text-sm shrink-0">
-                      {fact.label}
-                    </span>
-                    <div>
-                      <p className="text-white/80 text-sm">{fact.value}</p>
-                      <p className="text-cream/75 text-xs mt-1">
-                        Source: {fact.source} — press estimate
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
+
 
         </div>
       </div>

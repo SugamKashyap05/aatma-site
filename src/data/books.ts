@@ -8,6 +8,7 @@ export type PublicationProvenance =
   | "client-publication"
   | "client-press-estimate"
   | "client-supplied-document"
+  | "client-verified-study"
   | "site-summary";
 
 export interface Chapter {
@@ -153,6 +154,42 @@ export const BOOKS: Book[] = [
       { id: "chapter-12", title: "Session X: Future Prospects", body: [], image: "books/proceedings/pages/page-101.jpg", page: 101, bookPage: 101, pageStart: 101, pageEnd: 110 },
       { id: "chapter-13", title: "Session XI: Case Studies", body: [], image: "books/proceedings/pages/page-111.jpg", page: 111, bookPage: 111, pageStart: 111, pageEnd: 120 },
       { id: "chapter-14", title: "Closing Session", body: [], image: "books/proceedings/pages/page-121.jpg", page: 121, bookPage: 121, pageStart: 121, pageEnd: 128 },
+    ],
+  },
+  {
+    id: "seminar-abstracts-2000",
+    slug: "seminar-abstracts-2000",
+    title:
+      "Seminar on Scope & Dimension of Agar (Aquilaria spp.) Plantation in N.E. Region — Abstracts of Papers",
+    author: "AATMA",
+    description:
+      "Abstracts of the thirteen papers presented at the seminar held 22–23 November 2000 at the Assam Administrative Staff College, Khanapara, Guwahati. The contents page lists them across two technical sessions.",
+    format: "PDF scan",
+    chapterCount: 4,
+    filePath: "books/abstracts-2000.pdf",
+    readerStyle: "flipbook",
+    coverImage: "books/abstracts/pages/page-001.png",
+    coverGradient: "from-green-deep via-green-mid to-green-light",
+    wordCount: 0,
+    readingTime: 0,
+    language: "English",
+    publisher: "AATMA",
+    isbn: "",
+    publishedYear: 2000,
+    totalPages: 15,
+    provenance: "client-publication",
+    provenanceNote:
+      "An AATMA publication — abstracts of papers presented at the seminar held 22–23 November 2000 at the Assam Administrative Staff College, Khanapara, Guwahati, organised by the association. Reproduced here from the association's scan; no external hosting dependency is used.",
+    // Page scans are the association's 200 ppi bilevel images, served as PNG:
+    // the source has only two pixel values, so JPEG cannot represent it
+    // losslessly and costs ~9x the bytes for a near-identical result.
+    // `page` is the printed page number; `pageStart`/`pageEnd` are the
+    // scan-page range the reader navigates (cover and contents are unnumbered).
+    chapters: [
+      { id: "cover", title: "Cover", body: [], image: "books/abstracts/pages/page-001.png", page: 1, pageStart: 1, pageEnd: 1 },
+      { id: "contents", title: "Contents", body: [], image: "books/abstracts/pages/page-002.png", page: 2, pageStart: 2, pageEnd: 2 },
+      { id: "session-i", title: "Technical Session I — 22 November 2000", body: [], image: "books/abstracts/pages/page-003.png", page: 1, pageStart: 3, pageEnd: 8 },
+      { id: "session-ii", title: "Technical Session II — 23 November 2000", body: [], image: "books/abstracts/pages/page-009.png", page: 7, pageStart: 9, pageEnd: 15 },
     ],
   },
 ];

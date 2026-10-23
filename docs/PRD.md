@@ -111,14 +111,16 @@ regulators, researchers, and trade partners.
 
 **Purpose:** Present AATMA's identity, history, trade, advocacy, research, press, and current brief-sourced topics in one scroll.
 
-**User flow:** Land on `/` → hero → About → Sanchi Paat → Agar Story → Formation → Critical Era → Achievement → NDF Findings → Rules → Challenges → Press teaser → Latest News teaser → Footer.
+**User flow:** Land on `/` → hero → About → Sanchi Paat → Agar Story → Formation → Critical Era → Achievement → NDF Findings → Rules → Challenges → Press teaser → Latest News teaser → Message from the President → Footer.
 
 **Inputs:** None (static content).
 
 **Outputs:** The homepage hero and ordered content sections render; section links navigate to valid IDs, and the navbar reflects its documented active-section behavior.
 
 **Acceptance criteria:**
-- [ ] `/` renders the current content composition: `AatmaHero`, About, Sanchi Paat, Agar Story, Formation, Critical Era, Achievement, NDF Findings, Rules, Challenges, Press teaser, Latest News teaser, and Footer.
+- [ ] `/` renders the current content composition: `AatmaHero`, About, Sanchi Paat, Agar Story, Formation, Critical Era, Achievement, NDF Findings, Rules, Challenges, Press teaser, Latest News teaser, Message from the President, and Footer.
+- [ ] “Message from the President” is the final homepage section, renders above the footer, and carries the client's message text verbatim with the President's byline.
+- [ ] The Critical Era cards render in chronological order (2000, 2005, 2011, 2016).
 - [ ] Navbar section links resolve to the current rendered homepage section IDs; route links resolve to implemented pages.
 - [ ] Anchor scrolling works with `scroll-mt` offset under the fixed navbar.
 - [ ] Parallax hero does not animate when `prefers-reduced-motion` is set.
@@ -136,17 +138,21 @@ regulators, researchers, and trade partners.
 
 **About pilot and targeted homepage follow-up:** The About pilot was deployed in commit `39b00d6` after build and interaction checks. The Critical Era 2011 addition / combined 2016 card, LPC omission, and source-grounded Achievement wording are implemented and locally verified. Other story-bearing homepage sections and their final-PDF red-passage mappings remain pending.
 
+**Client content revision (2026-10-23):** the client retired the brief's opening editorial and replaced it with the President's message, which now closes the homepage above the footer as “Message from the President” (`src/features/home/PresidentMessage.tsx`). The editorial is rendered nowhere: it is gone from the `/about` reader and from the homepage About “Read more” sequence, which now opens on the ten brief sections. The data module still carries the editorial text, so the brief's paragraph and word pins hold for the data module alone. The Critical Era cards were also reordered into chronological sequence (2000 → 2005 → 2011 → 2016), reversing the earlier deliberate 2016-before-2011 placement, and the 2016 card is retitled “Minister Initiative and National Conference”.
+
 The client-approved direction is to make About and the other story-bearing homepage sections scannable through topic cards and accessible details, using the Critical Era interaction as the reference. Keep the hero, Press, and News in their distinct roles; do not force every area into the same grid. The final client PDF `A brief note on Agar Trade (2) (2).pdf` is the authoritative source for its red-marked additions and must be reconciled against the entire existing brief before implementation.
 
 **Completeness requirement:** every paragraph of the final PDF, not only red additions, must appear in source order in the complete `/about` reader; every red-marked passage must also be mapped to its appropriate homepage topic. Homepage summaries/cards do not replace the full text. No truncation, silent copy correction, unsupported additions, or merging of conflicting source versions. Final-PDF source counts are validated by `scripts/about-spine-smoke.mjs`.
 
-- **About behavior:** the homepage About section retains its seal and bilingual introduction. “Read more” expands an in-place, connected sequence containing the editorial and ten source-ordered brief sections. Each card opens a complete, source-exact chapter dialog with previous/next navigation; the visitor remains on the homepage. The dedicated `/about` full reader stays available for existing links and bookmarks. Keep member identities out of card labels and summaries; the full-text dialogs mirror the source passages already in the reader without adding identity claims.
+*Exception, client instruction 2026-10-23:* the opening editorial is excluded from the `/about` reader per the client's revision above. It remains in the data module, so the 36-paragraph / 4,343-word pins still hold for the data module; the homepage About sequence now carries the ten sections only (33 paragraphs / 4,098 words), and the `/about` reader smoke asserts the editorial block is absent rather than present.
 
-**Targeted homepage content:** the Critical Era has a 2011 card and one combined 2016 card; the standalone LPC item is absent from Agar Story per the client instruction. The complete brief remains accessible via the expandable About sequence and `/about`; other topical coverage gaps remain open (see `docs/HOMEPAGE_BRIEF_GAP_AUDIT.md`).
+- **About behavior:** the homepage About section retains its seal and bilingual introduction. “Read more” expands an in-place, connected sequence containing the ten source-ordered brief sections. Each card opens a complete, source-exact chapter dialog with previous/next navigation; the visitor remains on the homepage. The dedicated `/about` full reader stays available for existing links and bookmarks. Keep member identities out of card labels and summaries; the full-text dialogs mirror the source passages already in the reader without adding identity claims.
+
+**Targeted homepage content:** the Critical Era has four cards in chronological order — 2000 Rules Notified, 2005 Verification Denied, 2011 National Meeting on Agarwood Conservation, and 2016 Minister Initiative and National Conference; the standalone LPC item is absent from Agar Story per the client instruction. The complete brief remains accessible via the expandable About sequence and `/about`; other topical coverage gaps remain open (see `docs/HOMEPAGE_BRIEF_GAP_AUDIT.md`).
 
 **Acceptance criteria for the redesign:**
-- [x] The complete final-PDF text remains on `/about` in source order; paragraph/word pins are checked by the reader smoke.
-- [x] About pilot provides all eleven full-text items through the in-place sequence and chapter dialogs, with source text derived from canonical data.
+- [x] The final-PDF text remains on `/about` in source order, minus the opening editorial the client retired; paragraph/word pins are checked by the reader smoke.
+- [x] About pilot provides all ten full-text items through the in-place sequence and chapter dialogs, with source text derived from canonical data.
 - [x] Details support keyboard/touch, focus management, Escape/close behavior, internal scrolling, and narrow-screen layouts.
 - [ ] Remaining homepage cards/details are source-traceable and each red-marked passage has an appropriate section destination.
 - [ ] User review gate for the implemented About pilot is complete before migrating remaining story sections.
@@ -234,23 +240,17 @@ Implementation sequence and full topic map: `docs/FINAL_BRIEF_HOMEPAGE_REDESIGN_
 
 ### Feature 6 — Research & Knowledge (`/research`)
 
-**Purpose:** Present AATMA's research publications and soil-science communication.
+**Purpose:** Present client publications and the client-supplied NDF study findings.
 
-**User flow:** `/research` → hero → sticky nav → five science sections → data visualization → research cards → digital library.
-
-**Sections:** Rhizosphere Mycoflora · Microbial Workforce · Biopesticide Potential · PGPR for Cultivation · AAU Partnership · Data Visualization.
+**Current composition:** `/research` includes publication overview cards, population estimates (state and Assam district), Assam/Tripura comparison, market statements, trade records, product valuations, NDF study context and a download link to the full client PDF. The page cites the MoEF&CC-commissioned study prepared by BSI (submitted February 2024); the client confirms its figures are verified by their organization. Newspaper estimates are not used as data sources.
 
 **Acceptance criteria:**
-- [ ] All five science sections render with working scroll-spy navigation.
-- [ ] Data visualizations render and are **explicitly labelled as sample data**.
-- [ ] Digital library links to the books route.
+- [x] NDF findings displayed with source citations on charts/tables.
+- [x] Full client-supplied PDF downloadable from Research Papers in `/resources`.
+- [x] Domestic and international prices retain their source units; no unit conversions.
+- [ ] Verify all visualizations and downloads in a real browser after each content update.
 
-**Critical constraint — sample data:** the microbial charts contain **illustrative sample values only**. They are not research findings. Every chart and table must carry a visible "Sample Data — for illustration only" label. Do not remove these labels. Do not present these values as real measurements.
-
-**Open question:** several science sections describe research topics for which the
-source book contains **no content** (verified: the book covers resin formation,
-distillation, markets, cultivation economics, and policy — not microbiology).
-See §11.
+**Legacy microbiology sections:** These are not mounted on the current route and must not be presented as measured research findings without client-provided source material.
 
 **Source:** `src/features/research/*`
 
@@ -353,8 +353,7 @@ The following are intentionally **not** part of this product:
 
 ## 11. Open Questions
 
-- [ ] **Research page source data.** The science sections (rhizosphere mycoflora, microbial workforce, biopesticide potential, PGPR) describe topics that the source book does not cover. Is there an external source for this content, or should these sections be reframed or removed?
-- [ ] **Sample data in charts.** Should real microbial count data be sourced, or do the illustrative charts stay permanently (with labels)?
+- [x] Legacy microbiology/demo sections and illustrative charts are not mounted on the current Research route; the current page uses the client-confirmed NDF source.
 - [ ] **Press downloads.** `PressDownloads` ships 4 placeholder entries with no files. What real assets should exist?
 - [ ] **Sitemap coverage.** `public/sitemap.xml` lists only 2 of 6 routes and references `sugamkashyap.github.io`, which does not match the live host `sugamkashyap05.github.io`.
 - [ ] **AAU partnership.** No source document contains Assam Agricultural University partnership details. Is this a real programme?

@@ -130,7 +130,7 @@ All paths routed through `assetUrl()` and rendered inside `<picture>` + `srcset`
 | # | File | Route | Type | Purpose |
 |---|---|---|---|---|
 | **SVG-01** | `history/sanchi-paat-manuscript.svg` | `/history` | Illustration | *Sanchi paat* bark sheet with script, decorative |
-| **SVG-02** | `history/trade-journey-map.svg` | `/history` | **Interactive map** | 1905→Bombay route — Sylhet, Barpather, Karbi Anglong, Naga Hills, NEFA, Bhutan, Manipur, Silchar, Bombay. 9 stops |
+| **SVG-02** | `history/trade-journey-map.svg` | `/history` | Diagram | Client-drawn trade route: Sylhet–Hojai; Hojai links to Karbi Angong and Naga Hills; eastern corridor through Barpather, Naharani, Jorhat and Sibsagar with return trade toward Hojai; Hojai–Bombay–Middle East. Supply links shown separately; schematic, not to scale |
 | **SVG-03** | `history/far-east-import-routes.svg` | `/history` | Diagram | Malaysia, Indonesia, Thailand, Cambodia → Hojai |
 | **SVG-04** | `history/advocacy-gantt.svg` | `/history` | Diagram | 23-year struggle, 5 governments, key dates |
 | **SVG-05** | `policy/lpc-vs-origin-flow.svg` | `/policy` | **Decision flow** | LPC (FORM- XXV) vs Certificate of Origin — two different documents, currently conflated |
@@ -237,3 +237,12 @@ Once assets exist, each triage card should point at the **already-created file p
 > **Acceptance:** section renders at 375px and ≥1280px, image loads with `assetUrl()`, no console errors, `npm run build` + `npm run lint` exit 0.
 
 This is the pattern that avoids the false-completion history — **the asset exists on disk before the card is written**, and the card names the file it must use.
+
+
+## Active research data source update — 23 October 2026
+
+The former CH-01–CH-07 entries above were planning notes that cited newspaper estimates. They are superseded for active research data by the client-supplied `Agar NDF Note 2024.pdf`. The client confirmed that its PDF figures are to be used as verified by the organization; no newspaper estimate is used as a data source on `/research` or for the policy quota visualization. See `docs/NDF_SUMMARY_SOURCE.md`.
+
+- `/research`: national cultivated-tree table (15 entries), Assam district population bars (16 entries), Assam/Tripura comparison, separated global-market statements, CITES/WCCB trade findings, six domestic product values and international valuations; all cite the MoEF&CC-commissioned BSI NDF study (February 2024).
+- `/policy`: eight-state proposed export quota table cites the same NDF study; WBI unit categories continue to cite the Gazette. Newspaper-sourced registration-time chart and press-fact panel were removed from the active page.
+- Resource Center `/resources`: the complete 3-page, 297.4 KB client NDF summary is available under Research Papers at `public/resources/agar-ndf-summary-2024.pdf`.

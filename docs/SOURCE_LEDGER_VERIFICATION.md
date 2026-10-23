@@ -115,7 +115,6 @@
 | `policy-wbi-rules-2022` | CLIENT_MATERIAL_RESEARCH.md §4a | ✅ Match |
 | `policy-tof-rules-2022` | CLIENT_MATERIAL_RESEARCH.md §4b | ✅ Match |
 | `research-history-of-agar` | Not directly in ledger | ⚠️ Unsupported |
-| `research-seminar-abstracts-2000` | Not directly in ledger | ⚠️ Unsupported |
 | `form-xvii-registration` | CLIENT_MATERIAL_RESEARCH.md §4a | ✅ Match |
 | `cites-form-xxv-lpc` | CLIENT_MATERIAL_RESEARCH.md §4a | ✅ Match |
 

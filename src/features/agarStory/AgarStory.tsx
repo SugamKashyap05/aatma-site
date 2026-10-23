@@ -131,7 +131,7 @@ export function AgarStory({ className }: {
               />
               <img
                 src={assetUrl("history/trade-journey-map.svg")}
-                alt="Schematic of client-described agar trade chronology and supply relationships; not a geographic map or to scale"
+                alt="Trade-route schematic, not to scale: Sylhet links to Hojai, then Barpather, Naharani, Jorhat and Sibsagar. A return-trade path runs from the eastern corridor back to Hojai. Hojai also links to Karbi Angong, Naga Hills and Bombay; Bombay connects to the Middle East. Dashed lines show reported supply links."
                 className="block w-full h-auto"
                 loading="eager"
                 decoding="async"

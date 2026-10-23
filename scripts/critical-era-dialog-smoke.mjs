@@ -6,14 +6,14 @@ const cards = [
   { id: "rules-notified", title: "Rules Notified", expected: ["Legal Procurement Certificate"] },
   { id: "verification-denied", title: "Verification Denied", expected: ["W.P.(c) No. 6284/2007"] },
   {
-    id: "minister-conference-2016",
-    title: "Minister's Initiative & National Conference",
-    expected: ["August 24, 2016", "October 28, 2016", "NEDFi House", "Secondary Wood Based Industry"],
-  },
-  {
     id: "national-appeal",
     title: "National Meeting on Agarwood Conservation",
     expected: ["December 20, 2011", "Paryavaran Bhawan", "Additional Director General (Wildlife)", "Shri A. Rahman", "strictly a State matter"],
+  },
+  {
+    id: "minister-conference-2016",
+    title: "Minister Initiative and National Conference",
+    expected: ["August 24, 2016", "October 28, 2016", "NEDFi House", "Secondary Wood Based Industry"],
   },
 ];
 const expectedCardOrder = cards.map((card) => card.id);
@@ -34,7 +34,7 @@ try {
   const renderedCardIds = await section.locator("[data-critical-era-trigger]").evaluateAll((nodes) =>
     nodes.map((node) => node.getAttribute("data-critical-era-trigger")),
   );
-  assert.deepEqual(renderedCardIds, expectedCardOrder, "Critical Era should show one combined 2016 card before the new 2011 client-update card");
+  assert.deepEqual(renderedCardIds, expectedCardOrder, "Critical Era should show the four incidents in chronological order: 2000, 2005, 2011, 2016");
   assert.equal(await section.locator('[data-critical-era-trigger="national-conference"]').count(), 0);
 
   const agarStory = page.locator("#agar-story");

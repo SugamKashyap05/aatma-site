@@ -2,15 +2,13 @@ import { CHART_COLORS, ChartFrame, buildAriaSummary } from "./ChartFrame";
 
 /**
  * CH-02 — Assam vs Tripura tree count (comparative bar)
- * Route: /research · Source: The Assam Tribune, 18 Nov 2024
+ * Route: /research · Source: client NDF summary, February 2024
  *
- * Both figures are stated exactly in the source, so both bars are measured.
- * The "over 82% of India's agarwood trees" claim is carried in the subtitle
- * because it is the article's framing of the same two numbers.
+ * Both state figures and the Assam share are reproduced from the NDF summary.
  */
 
 const ROWS = [
-  { name: "Assam", crore: 11.437, note: "outside forest areas" },
+  { name: "Assam", crore: 11.437, note: "cultivated agar trees" },
   { name: "Tripura", crore: 1.515, note: "second nationally" },
 ];
 
@@ -25,7 +23,7 @@ const PLOT_W = W - LABEL_W - VALUE_W;
 const H = ROWS.length * ROW_H + 24;
 
 const ariaLabel = buildAriaSummary(
-  "Comparative bar chart of agarwood trees outside forest areas",
+  "Comparison of NDF estimates of cultivated agar trees",
   ROWS.map((r) => ({ label: r.name, value: `${r.crore} crore` })),
 );
 
@@ -36,14 +34,14 @@ export function AssamVsTripuraTrees() {
   return (
     <ChartFrame
       title="Assam against the next state"
-      subtitle={`Calculated from the two reported press estimates, Assam's count is ${ratio}× Tripura's. The article also reports over 82% of India's agarwood trees in Assam.`}
+      subtitle={`Calculated from the two NDF estimates, Assam's count is ${ratio}× Tripura's. The study states 82.38% for Assam.`}
       ariaLabel={ariaLabel}
       source={{
-        publication: "The Assam Tribune",
-        date: "18 Nov 2024",
-        isPressEstimate: true,
+        publication: "MoEF&CC-commissioned NDF study (Botanical Survey of India)",
+        date: "February 2024",
+        provenanceLabel: "Client-verified NDF study",
       }}
-      note="Figures count agarwood trees outside forest areas, as reported by the article."
+      note="Figures count agarwood trees cultivated agar trees, as stated in the NDF summary."
     >
       <svg
         viewBox={`0 0 ${W} ${H}`}

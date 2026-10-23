@@ -333,3 +333,8 @@
 6. **AATMA's own address** — Main Road, Hojai – 782435 — confirmed from the press-meet banner (§5)
 
 **Sequencing note:** items 1 and 2 above depend on finishing the gazette read (limitation §7.2) and reading item 5 (§7.1). Everything else can proceed now.
+
+
+## Source-of-record correction — 23 October 2026
+
+The client clarified that the newspaper estimate previously used in the research audit was not supplied by the client and must not be cited as a source for site findings. For research and quota figures, the client-supplied `Agar NDF Note 2024.pdf` is now the source of record; the client confirms the figures in that PDF are verified by its organization. This correction supersedes earlier statements in this document that treated the 18 November 2024 newspaper article as client-supplied or as corroboration. Newspaper clippings may still be displayed as archival content, but their untranscribed images are not data-source citations.

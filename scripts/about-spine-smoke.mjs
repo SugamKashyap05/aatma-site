@@ -8,6 +8,11 @@
  * and errors remain deliberate. Also checks contents, deep-dive links, theme
  * tokens, mobile overflow, and the homepage About control.
  *
+ * The editorial is asserted to still exist in the data module but to be
+ * rendered nowhere: the client retired it and replaced it with the President's
+ * message, which closes the homepage. The /about reader smoke asserts its
+ * absence rather than its presence.
+ *
  * Usage: npm run build && npm run preview, then
  *   node scripts/about-spine-smoke.mjs
  * Env: ABOUT_SMOKE_BASE_URL (default http://127.0.0.1:4174),
@@ -155,16 +160,10 @@ try {
   await page.goto(`${baseUrl}/about`, { waitUntil: "domcontentloaded" });
   await page.locator('article[id^="spine-"]').last().scrollIntoViewIfNeeded();
 
-  // 2. The opening editorial and source byline are rendered before the contents.
-  const renderedEditorial = await page.locator("#brief-editorial").evaluate((article) => ({
-    heading: article.querySelector("h2")?.textContent?.trim() ?? "",
-    paragraphs: [...article.querySelectorAll("[data-about-editorial-paragraph]")].map((p) => p.textContent?.trim() ?? ""),
-    byline: [...article.querySelectorAll("footer div")].map((node) => node.textContent?.trim() ?? ""),
-  }));
-  assert.equal(renderedEditorial.heading, EDITORIAL.heading, "editorial heading renders");
-  assert.deepStrictEqual(renderedEditorial.paragraphs, EDITORIAL.paragraphs, "editorial text matches source");
-  assert.deepStrictEqual(renderedEditorial.byline, [EDITORIAL.author, EDITORIAL.role], "editorial byline matches source");
-  passed.push("opening editorial: all paragraphs and the byline match the final PDF data");
+  // 2. The brief's opening editorial is no longer rendered on /about — the
+  //    client replaced it with the President's message, which closes the
+  //    homepage. The data module still carries it for the homepage sequence.
+  assert.equal(await page.locator("#brief-editorial").count(), 0, "editorial block is removed from /about");
 
   // 3. Rendered section DOM matches the data module exactly (order, text, links).
   const rendered = await page.evaluate(() => {
@@ -191,7 +190,7 @@ try {
   assert.ok((await page.title()).includes("About"), "route title is About");
   passed.push("route metadata: title present");
 
-  // 5. Contents panel: editorial plus ten anchors, all resolving.
+  // 5. Contents panel: ten anchors, all resolving.
   const contents = await page.evaluate(() => {
     const nav = document.querySelector('nav[aria-label^="Contents"]');
     const links = [...nav?.querySelectorAll("a[href^='#']") ?? []];
@@ -200,14 +199,14 @@ try {
       resolves: document.querySelector(a.getAttribute("href")) !== null,
     }));
   });
-  assert.equal(contents.length, 11, "contents panel lists the editorial and ten sections");
+  assert.equal(contents.length, 10, "contents panel lists the ten sections");
   assert.ok(contents.every((item) => item.resolves), "every contents anchor resolves");
   assert.deepEqual(
     contents.map((item) => item.href),
-    ["#brief-editorial", ...SPINE.map((section) => `#spine-${section.num.toLowerCase()}`)],
+    SPINE.map((section) => `#spine-${section.num.toLowerCase()}`),
     "contents order matches the final PDF",
   );
-  passed.push("contents panel: editorial plus ten section anchors in PDF order, all resolve");
+  passed.push("contents panel: ten section anchors in PDF order, all resolve");
 
   // 5. Contents click scrolls to the block (deep-linking works in-page).
   await page.locator('a[href="#spine-vi"]').first().click();

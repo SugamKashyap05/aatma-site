@@ -61,3 +61,25 @@ scripts/.opt*.log
 # The in-page reader does not use this file: it renders the per-page scans
 # under public/books/proceedings/pages/, which ARE committed.
 /public/books/proceedings-seminar-2001.pdf
+
+# Ad-hoc verification scratch. These are throwaway probes and captured
+# screenshots/JSON reports, not project code — keep them out of the repo.
+/.kanban-scratch/
+/_verify*.mjs
+/_verify*.json
+/_verify*.txt
+/dom-inspect*.cjs
+/dom-inspection*.json
+/diag-*.cjs
+/final-check.cjs
+/verify-home*.cjs
+/verify-home*.json
+/smoke-test-*.json
+/scripts/smoke-screenshots/
+/scripts/verify-press-news.mjs
+/docs/_scratch_*.md
+
+# Local-only working copies of the client scans (164 MB, incl. a 112 MB PDF
+# above GitHub's 100 MiB per-file limit). The publishable files live under
+# public/; these are the raw originals kept out of the repository.
+/assestes images/

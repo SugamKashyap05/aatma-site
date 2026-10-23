@@ -68,7 +68,7 @@ export const RESOURCE_CATEGORIES: ResourceCategory[] = [
     id: "research-papers",
     label: "Research Papers",
     description:
-      "AATMA's reference material on the agarwood trade and its published seminar proceedings.",
+      "AATMA's field survey material and reference notes on the agarwood trade.",
   },
   {
     id: "registration-forms",
@@ -263,20 +263,18 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
     downloadPath: "resources/brief-history-of-agar.pdf",
   },
   {
-    id: "research-seminar-abstracts-2000",
-    title: "Seminar on Scope & Dimension of Agar (Aquilaria spp.) Plantation in NE Region — Abstracts of Papers",
+    id: "research-agar-ndf-summary-2024",
+    title: "Summary of Non-Detriment Findings of Agar Trees (Aquilaria malaccensis)",
     category: "research-papers",
     docType: "research",
-    date: "2000-11-22",
     fileType: "PDF",
-    fileSize: "840 KB",
-    pageCount: 15,
-    tags: ["seminar", "2000", "abstracts", "plantation"],
-    description:
-      "Collected abstracts of papers presented at the seminar held 22–23 November 2000 at Assam Administrative Staff College, Khanapara, Guwahati.",
-    source: "AATMA seminar publication, 22–23 November 2000",
+    fileSize: "297.4 KB",
+    pageCount: 3,
+    tags: ["NDF", "agarwood", "population", "trade", "2024"],
+    description: "Client-supplied summary of the MoEF&CC-commissioned Non-Detriment Findings study prepared by the Botanical Survey of India. Includes population estimates, proposed export quotas, product valuations and trade findings.",
+    source: "MoEF&CC-commissioned study; Botanical Survey of India report submitted February 2024. Client confirms the PDF figures are to be used as verified by the organization.",
     available: true,
-    downloadPath: "resources/seminar-abstracts-2000.pdf",
+    downloadPath: "resources/agar-ndf-summary-2024.pdf",
   },
 
   // ── Registration Forms ─────────────────────────────────────────────────────

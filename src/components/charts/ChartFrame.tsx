@@ -6,9 +6,8 @@ import { type ReactNode } from "react";
  * Enforces the five non-negotiable requirements from docs/ASSET_INVENTORY.md
  * Part 2 in one place, so no individual chart can ship without them:
  *
- *   1. Visible source citation naming publication and date.
- *   2. Press estimates labelled as such — CH-01…CH-07 are a journalist's 2024
- *      figures, NOT AATMA's own research.
+ *   1. Visible source citation naming the document and date.
+ *   2. Press estimates are labelled only when explicitly identified as press.
  *   3. aria-label derived from the caller's data summary (never hardcoded).
  *   4. Entrance animation gated on prefers-reduced-motion (handled in CSS below).
  *   5. No raw hex — every colour comes from a design token.
@@ -17,15 +16,15 @@ import { type ReactNode } from "react";
  */
 
 export interface ChartSource {
-  /** Publication name, e.g. "The Assam Tribune" */
+  /** Named source document or issuing organization. */
   publication: string;
-  /** Publication date as printed, e.g. "18 Nov 2024" */
+  /** Source/report date as stated. */
   date: string;
   /**
-   * True when the figures are a journalist's estimate rather than AATMA's own
-   * research or a gazette. Renders the visible "press estimate" caveat.
+   * Set only for figures explicitly sourced to a press estimate.
    */
   isPressEstimate?: boolean;
+  provenanceLabel?: string;
 }
 
 interface ChartFrameProps {
@@ -53,7 +52,7 @@ export function ChartFrame({
   note,
 }: ChartFrameProps) {
   return (
-    <figure className="my-10 glass-surface rounded-xl p-5 md:p-7">
+    <figure aria-label={ariaLabel} className="my-10 glass-surface rounded-xl p-5 md:p-7">
       <figcaption className="mb-5">
         <h3 className="font-display text-lg text-cream md:text-xl">{title}</h3>
         {subtitle && (
@@ -88,12 +87,12 @@ export function ChartFrame({
       <figcaption className="mt-5 border-t border-white/10 pt-3 text-xs leading-relaxed text-cream/75">
         <span className="text-cream">Source:</span> {source.publication},{" "}
         {source.date}
-        {source.isPressEstimate && (
+        {(source.provenanceLabel || source.isPressEstimate) && (
           <span className="ml-2 inline-flex items-center rounded-full border border-gold/25 bg-gold/10 px-2 py-0.5 text-[10px] uppercase tracking-wide text-gold-light">
-            press estimate
+            {source.provenanceLabel || "press estimate"}
           </span>
         )}
-        {source.isPressEstimate && (
+        {source.isPressEstimate && !source.provenanceLabel && (
           <span className="mt-1 block text-cream/75">
             Reported figures from journalism, not AATMA's own research — cite with
             care.

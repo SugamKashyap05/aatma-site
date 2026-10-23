@@ -1,47 +1,102 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 900" role="img" aria-labelledby="map-title map-desc">
-  <title id="map-title">Agar trade chronology and source relationships</title>
-  <desc id="map-desc">A vertical schematic based on the association's history, not a geographic map or to scale. It presents the early trade chronology and the places and relationships described there.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="1080" viewBox="0 0 520 1080" role="img" aria-labelledby="mobile-title mobile-desc">
+  <title id="mobile-title">Agar trade route and supply relationships</title>
+  <desc id="mobile-desc">Vertical mobile schematic, not to geographic scale. Sylhet connects to Hojai. The Hojai corridor continues through Barpather, Naharani, Jorhat and Sibsagar, with trade in both directions. Hojai also links to Karbi Angong, Naga Hills, Bombay, NEFA and Bhutan, and Manipur; Bombay connects onward to Middle East countries.</desc>
   <style>
-    :root { --gold:#c9a84c; --gold-light:#e0c878; --cream:#f5f0e8; --muted:#d7d1c8; --green:#1a3c2a; --sans:Inter,system-ui,sans-serif; }
-    text { font-family:var(--sans); }
+    :root { --color-gold:#c9a84c; --color-gold-light:#e0c878; --color-cream:#f5f0e8; --color-cream-dark:#e8e0d0; --color-green-deep:#1a3c2a; --map-source:#f5f0e8; --font-sans:Inter,system-ui,sans-serif; }
+    text { font-family:var(--font-sans); }
   </style>
-  <rect width="480" height="900" rx="12" fill="var(--green)"/>
-  <path d="M42 75 V758" fill="none" stroke="var(--gold)" stroke-width="3" stroke-dasharray="8 8" opacity=".85"/>
+  <defs>
+    <marker id="mobile-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="var(--color-gold)"/>
+    </marker>
+    <filter id="mobile-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="520" height="1080" rx="12" fill="var(--color-green-deep)"/>
 
-  <g fill="var(--gold-light)" stroke="var(--green)" stroke-width="3">
-    <circle cx="42" cy="88" r="9"/><circle cx="42" cy="205" r="9"/>
-    <circle cx="42" cy="322" r="9"/><circle cx="42" cy="439" r="9"/>
-    <circle cx="42" cy="556" r="9"/><circle cx="42" cy="673" r="9"/>
+  <!-- Main route and market branch. -->
+  <g fill="none" stroke="var(--color-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M102 155 C155 192 213 254 252 300"/>
+    <path d="M260 340 V817" marker-start="url(#mobile-arrow)" marker-end="url(#mobile-arrow)"/>
+    <path d="M270 316 C324 283 368 245 414 224" marker-end="url(#mobile-arrow)"/>
+    <path d="M420 211 V132" marker-end="url(#mobile-arrow)" stroke-opacity=".82"/>
+    <!-- Hojai's two-way trade links to Karbi Angong and Naga Hills. -->
+    <path d="M250 314 C210 330 153 357 99 390" stroke-width="2.2" marker-start="url(#mobile-arrow)" marker-end="url(#mobile-arrow)"/>
+    <path d="M251 326 C204 365 151 431 99 486" stroke-width="2.2" marker-start="url(#mobile-arrow)" marker-end="url(#mobile-arrow)"/>
   </g>
 
-  <g fill="var(--cream)">
-    <text x="76" y="82" font-size="19" font-weight="700">1905–06 · Sylhet</text>
-    <text x="76" y="105" font-size="15" fill="var(--muted)">Agarwood used for extracting oil.</text>
-
-    <text x="76" y="199" font-size="19" font-weight="700">Post-Independence · Barpather</text>
-    <text x="76" y="222" font-size="15" fill="var(--muted)">Homestead business; raw agarwood from the</text>
-    <text x="76" y="243" font-size="15" fill="var(--muted)">forest mahals of Karbi Angong and Naga Hills.</text>
-
-    <text x="76" y="316" font-size="19" font-weight="700">No year stated · Hojai</text>
-    <text x="76" y="339" font-size="15" fill="var(--muted)">Small-scale distillation began.</text>
-
-    <text x="76" y="433" font-size="19" font-weight="700">A few years later · Naharani,</text>
-    <text x="76" y="455" font-size="19" font-weight="700">Jorhat and Sibsagar</text>
-    <text x="76" y="478" font-size="15" fill="var(--muted)">Trade and distillery business using agarwood</text>
-    <text x="76" y="499" font-size="15" fill="var(--muted)">harvested from homegrown trees.</text>
-
-    <text x="76" y="550" font-size="19" font-weight="700">Late 1960s · NEFA and Bhutan</text>
-    <text x="76" y="573" font-size="15" fill="var(--muted)">A Hojai group leased agar mahals, collected</text>
-    <text x="76" y="594" font-size="15" fill="var(--muted)">agar there and brought it to Hojai.</text>
-
-    <text x="76" y="667" font-size="19" font-weight="700">1970–1980s · Manipur</text>
-    <text x="76" y="690" font-size="15" fill="var(--muted)">Hojai and Silchar entrepreneurs collected</text>
-    <text x="76" y="711" font-size="15" fill="var(--muted)">Manipur agar for processing and distillation.</text>
-    <text x="76" y="732" font-size="15" fill="var(--muted)">Products went to Bombay under a Lieu T.P.</text>
+  <!-- Reported supply relationships remain distinct and dashed. -->
+  <g fill="none" stroke="var(--map-source)" stroke-opacity=".66" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="5 7">
+    <path d="M101 391 C154 418 205 451 252 470"/>
+    <path d="M101 487 C153 477 205 472 252 470"/>
+    <path d="M106 590 C180 520 220 414 253 326"/>
+    <path d="M106 700 C189 588 226 438 253 326"/>
   </g>
 
-  <line x1="24" y1="780" x2="456" y2="780" stroke="var(--cream)" stroke-opacity=".28"/>
-  <text x="24" y="814" fill="var(--gold-light)" font-family="var(--sans)" font-size="16" font-weight="700">Trade chronology</text>
-  <text x="24" y="842" fill="var(--muted)" font-family="var(--sans)" font-size="14">Schematic, not geographic or to scale.</text>
-  <text x="24" y="872" fill="var(--muted)" font-family="var(--sans)" font-size="13">Schematic — not to geographic scale</text>
+  <!-- Sylhet origin. -->
+  <g>
+    <circle cx="100" cy="154" r="7" fill="var(--color-gold)" filter="url(#mobile-glow)"/>
+    <circle cx="100" cy="154" r="13" fill="none" stroke="var(--color-gold)" stroke-opacity=".4"/>
+    <text x="100" y="123" text-anchor="middle" fill="var(--color-cream)" font-size="18" font-weight="700">Sylhet</text>
+    <text x="100" y="180" text-anchor="middle" fill="var(--color-gold-light)" font-size="14">1905–06</text>
+  </g>
+
+  <!-- Hojai hub and its routes. -->
+  <g>
+    <circle cx="260" cy="320" r="10" fill="var(--color-gold-light)" filter="url(#mobile-glow)"/>
+    <circle cx="260" cy="320" r="18" fill="none" stroke="var(--color-gold-light)" stroke-opacity=".45"/>
+    <text x="260" y="278" text-anchor="middle" fill="var(--color-gold-light)" font-size="19" font-weight="700">Hojai</text>
+    <text x="260" y="298" text-anchor="middle" fill="var(--color-cream)" fill-opacity=".88" font-size="15">distillation begins</text>
+  </g>
+
+  <!-- Regional source nodes. -->
+  <g fill="var(--color-cream)" fill-opacity=".92" font-size="15">
+    <circle cx="90" cy="390" r="5.5"/><text x="90" y="366" text-anchor="middle">Karbi Angong</text>
+    <circle cx="90" cy="486" r="5.5"/><text x="90" y="462" text-anchor="middle">Naga Hills</text>
+    <circle cx="100" cy="590" r="5.5"/><text x="100" y="566" text-anchor="middle">NEFA · Bhutan</text>
+    <circle cx="100" cy="700" r="5.5"/><text x="100" y="676" text-anchor="middle">Manipur</text>
+  </g>
+
+  <!-- Market destinations: Bombay connects onward to the Middle East. -->
+  <g>
+    <circle cx="420" cy="222" r="7" fill="var(--color-gold)"/>
+    <text x="420" y="194" text-anchor="middle" fill="var(--color-cream)" font-size="17" font-weight="700">Bombay</text>
+    <text x="420" y="250" text-anchor="middle" fill="var(--color-gold-light)" font-size="14">MUMBAI · SALE</text>
+    <text x="420" y="267" text-anchor="middle" fill="var(--color-cream)" fill-opacity=".85" font-size="14">under Lieu T.P.</text>
+    <circle cx="420" cy="118" r="6" fill="var(--color-gold-light)"/>
+    <text x="420" y="77" text-anchor="middle" fill="var(--color-cream)" font-size="16" font-weight="600">Middle East</text>
+    <text x="420" y="97" text-anchor="middle" fill="var(--color-cream)" font-size="16" font-weight="600">countries</text>
+  </g>
+
+  <!-- Corridor nodes, all connected along the two-way Hojai trade route. -->
+  <g>
+    <circle cx="260" cy="470" r="7" fill="var(--color-gold)"/>
+    <text x="295" y="466" fill="var(--color-cream)" font-size="17" font-weight="700">Barpather</text>
+    <text x="295" y="486" fill="var(--color-cream)" fill-opacity=".84" font-size="15">homestead trade</text>
+
+    <circle cx="260" cy="590" r="6" fill="var(--color-gold)"/>
+    <text x="295" y="596" fill="var(--color-cream)" font-size="17">Naharani</text>
+
+    <circle cx="260" cy="710" r="6" fill="var(--color-gold)"/>
+    <text x="295" y="716" fill="var(--color-cream)" font-size="17">Jorhat</text>
+
+    <circle cx="260" cy="830" r="7" fill="var(--color-gold)"/>
+    <text x="295" y="826" fill="var(--color-cream)" font-size="17">Sibsagar</text>
+    <text x="295" y="846" fill="var(--color-cream)" fill-opacity=".84" font-size="15">homegrown trees</text>
+  </g>
+
+  <!-- Legend and provenance. -->
+  <g font-size="15">
+    <line x1="38" y1="900" x2="78" y2="900" stroke="var(--color-gold)" stroke-width="2.5" marker-start="url(#mobile-arrow)" marker-end="url(#mobile-arrow)"/>
+    <text x="92" y="905" fill="var(--color-cream)" fill-opacity=".92">Two-way trade route</text>
+    <circle cx="44" cy="936" r="5" fill="var(--color-gold)"/>
+    <text x="58" y="941" fill="var(--color-cream)" fill-opacity=".92">Trade / market node</text>
+    <circle cx="260" cy="936" r="5" fill="var(--map-source)"/>
+    <text x="274" y="941" fill="var(--color-cream)" fill-opacity=".92">Raw-material source</text>
+    <line x1="38" y1="972" x2="78" y2="972" stroke="var(--map-source)" stroke-opacity=".7" stroke-width="1.8" stroke-dasharray="5 6"/>
+    <text x="92" y="977" fill="var(--color-cream)" fill-opacity=".92">Reported supply link</text>
+  </g>
+  <text x="24" y="1016" fill="var(--color-cream)" fill-opacity=".85" font-size="14">Source: client-provided CamScanner 10-23-2026 14.02.pdf, p. 1</text>
+  <text x="24" y="1038" fill="var(--color-cream)" fill-opacity=".82" font-size="14">Schematic, not geographic or to scale.</text>
 </svg>

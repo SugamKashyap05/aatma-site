@@ -1,19 +1,12 @@
 import { Reveal } from "@/components/ui/reveal";
 import { AssamExportQuota } from "@/components/charts/AssamExportQuota";
-import { RegistrationTimeline } from "@/components/charts/RegistrationTimeline";
 import { UnitCapacityCategories } from "@/components/charts/UnitCapacityCategories";
 
 /**
  * Regulatory Framework Data — /policy
  *
- * Mounts the three policy-route charts:
- *   CH-04 Assam's export quota share   (press estimate)
- *   CH-08 Statutory time windows       (press estimate)
- *   CH-10 Unit capacity categories     (PRIMARY LAW — no press badge)
- *
- * The provenance differs deliberately. CH-10 is drawn from Rule 2 of the
- * notified 2022 Rules and carries no press-estimate badge; the other two are
- * reported figures and do. The framing prose keeps that distinction visible.
+ * Mounts quota figures from the client NDF summary and unit categories from
+ * Rule 2 of the notified 2022 Rules. Newspaper estimates are excluded.
  */
 export function PolicyDataSection() {
   return (
@@ -42,16 +35,12 @@ export function PolicyDataSection() {
 
       <Reveal variant="up" delay={60}>
         <p className="text-cream/75 text-sm leading-relaxed mb-10 max-w-3xl">
-          The charts distinguish Gazette rule text from figures reported by newspapers.
-          Unit capacity thresholds are read from the WBI Gazette (Rule 2, No. 20,
-          eCF No. 237152, 12-01-2023) — primary law, no press-estimate badge. The
-          registration time windows and quota share are as reported in the press.
+          The unit-capacity thresholds are read from Rule 2 of the WBI Gazette (No. 20, eCF No. 237152, 12 January 2023). The proposed state-wise export quotas are reproduced from the client-supplied MoEF&amp;CC-commissioned NDF summary prepared by BSI (February 2024).
         </p>
       </Reveal>
 
       <div className="space-y-2">
         <UnitCapacityCategories />
-        <RegistrationTimeline />
         <AssamExportQuota />
       </div>
     </section>

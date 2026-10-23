@@ -20,18 +20,11 @@ const expectedSections = sectionOrder.map((sourceNum, index) => {
   assert.ok(section, `source section ${sourceNum} exists`);
   return { ...section, displayNum: ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"][index] };
 });
-const editorialBlock = source.slice(source.indexOf("export const ABOUT_EDITORIAL"), source.indexOf("const SOURCE_SPINE"));
-const editorialParagraphsBlock = editorialBlock.match(/paragraphs:\s*\[([\s\S]*?)\],\s*author:/)?.[1] ?? "";
-const expectedEditorial = {
-  heading: JSON.parse(editorialBlock.match(/heading:\s*("(?:[^"\\]|\\.)*")/)?.[1] ?? '""'),
-  paragraphs: [...editorialParagraphsBlock.matchAll(stringPattern)].map((match) => JSON.parse(`"${match[1]}"`)),
-  author: JSON.parse(editorialBlock.match(/author:\s*("(?:[^"\\]|\\.)*")/)?.[1] ?? '""'),
-  role: JSON.parse(editorialBlock.match(/role:\s*("(?:[^"\\]|\\.)*")/)?.[1] ?? '""'),
-};
-const expectedItems = [
-  { id: "editorial", title: expectedEditorial.heading, paragraphs: expectedEditorial.paragraphs, author: expectedEditorial.author, role: expectedEditorial.role },
-  ...expectedSections.map((section) => ({ id: `section-${section.displayNum.toLowerCase()}`, title: section.heading, paragraphs: section.paragraphs })),
-];
+const expectedItems = expectedSections.map((section) => ({
+  id: `section-${section.displayNum.toLowerCase()}`,
+  title: section.heading,
+  paragraphs: section.paragraphs,
+}));
 const browser = await chromium.launch({ headless: true, channel: "chrome" });
 const page = await browser.newPage({ viewport: { width: 1366, height: 768 } });
 const errors = [];
@@ -52,11 +45,11 @@ try {
   assert.equal(page.url(), initialUrl, "Read more does not navigate away");
   const triggers = about.locator("[data-about-story-trigger]");
   const allSourceParagraphs = expectedItems.flatMap((item) => item.paragraphs);
-  assert.equal(allSourceParagraphs.length, 36, "complete About sequence contains every final-PDF paragraph");
-  assert.equal(allSourceParagraphs.join(" ").split(/\s+/).filter(Boolean).length, 4343, "complete About sequence preserves the final-PDF word count");
+  assert.equal(allSourceParagraphs.length, 33, "complete About sequence contains every brief section paragraph");
+  assert.equal(allSourceParagraphs.join(" ").split(/\s+/).filter(Boolean).length, 4098, "complete About sequence preserves the brief section word count");
   assert.equal(await readMore.getAttribute("aria-expanded"), "true");
   assert.equal((await readMore.textContent())?.trim(), "Show less");
-  assert.equal(await triggers.count(), expectedItems.length, "expanded sequence contains editorial and ten sections");
+  assert.equal(await triggers.count(), expectedItems.length, "expanded sequence contains the ten brief sections");
   assert.deepEqual(
     await triggers.evaluateAll((nodes) => nodes.map((node) => node.getAttribute("data-about-story-trigger"))),
     expectedItems.map((item) => item.id),
@@ -135,9 +128,9 @@ try {
   assert.equal(await about.getByText("Humayun Chaudhury").count(), 0);
 
   await page.goto(`${baseUrl}/about`, { waitUntil: "domcontentloaded" });
-  const editorial = page.locator("#brief-editorial");
-  await editorial.waitFor();
-  assert.equal(await editorial.locator("p").count(), 3);
+  // The brief's opening editorial is no longer rendered here; the client
+  // replaced it with the President's message, which closes the homepage.
+  assert.equal(await page.locator("#brief-editorial").count(), 0);
   assert.equal(await page.locator('article[id^="spine-"]').count(), 10);
   assert.ok(await page.getByText(/Conservation of Agarwood in India/).count());
   assert.ok(await page.getByText(/AATMA recently participated in a one-day stakeholders' workshop/).count());

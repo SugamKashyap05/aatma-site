@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/ui/reveal";
 import { TreePopulationByDistrict } from "@/components/charts/TreePopulationByDistrict";
+import { NationalTreePopulation } from "@/components/charts/NationalTreePopulation";
 import { AssamVsTripuraTrees } from "@/components/charts/AssamVsTripuraTrees";
 import { GlobalMarketGrowth } from "@/components/charts/GlobalMarketGrowth";
 import { TradeFlow } from "@/components/charts/TradeFlow";
@@ -13,15 +14,10 @@ import { AgarwoodPriceRanges } from "@/components/charts/AgarwoodPriceRanges";
  *   resource (trees) → scale (Assam vs Tripura) → market (growth)
  *   → movement (trade flow) → value (prices)
  *
- * Every chart carries its own source citation and, for the four drawn from
- * newspaper reporting, a press-estimate badge. This component adds framing
- * prose only — it never restates a figure the chart does not itself cite.
+ * Every chart cites the client-supplied MoEF&CC / BSI NDF summary (February 2024).
  *
- * The integrated narrative below combines the conservation and market prose
- * drafted in parallel. Every figure traces to The Assam Tribune, 18 Nov 2024,
- * PJ Vijayakar. Jorhat, Sivasagar, Karimganj, and Cachar are named without
- * figures — matching CH-01's "no figure reported" tracks. Chips (kg) and
- * oil (tola) units are kept separate with no cross-conversion.
+ * Values are reproduced from the client PDF; the client has confirmed its
+ * figures are to be used as verified by their organization.
  */
 export function TradeDataSection() {
   return (
@@ -51,14 +47,17 @@ export function TradeDataSection() {
 
       <Reveal variant="up" delay={60}>
         <p className="text-cream/75 text-sm leading-relaxed mb-10 max-w-3xl">
-          The following charts use figures reported in the client-supplied 18
-          November 2024 article; they are presented as press estimates, not
-          audited AATMA statistics.
+          This section reproduces figures from the client-supplied summary of
+          the MoEF&amp;CC-commissioned Non-Detriment Findings study, prepared by
+          the Botanical Survey of India and submitted in February 2024. The
+          client confirms the PDF figures are to be used as verified by the
+          organization.
         </p>
       </Reveal>
 
 
       <div className="space-y-2">
+        <NationalTreePopulation />
         <TreePopulationByDistrict />
         <AssamVsTripuraTrees />
         <GlobalMarketGrowth />

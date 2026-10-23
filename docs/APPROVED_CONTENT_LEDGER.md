@@ -538,3 +538,8 @@ The following claims have **no client source found in any primary or secondary c
 ---
 
 *End of ledger.*
+
+
+## Source-of-record correction — 23 October 2026
+
+The client clarified that the newspaper estimate previously used in the research audit was not supplied by the client and must not be cited as a source for site findings. For research and quota figures, the client-supplied `Agar NDF Note 2024.pdf` is now the source of record; the client confirms the figures in that PDF are verified by its organization. This correction supersedes earlier statements in this document that treated the 18 November 2024 newspaper article as client-supplied or as corroboration. Newspaper clippings may still be displayed as archival content, but their untranscribed images are not data-source citations.

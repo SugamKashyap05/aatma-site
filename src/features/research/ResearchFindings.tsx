@@ -1,130 +1,20 @@
-import { useState } from "react";
-import { Eye, FileText, MapPinned, Scale, TrendingUp } from "lucide-react";
+import { FileText, Microscope, TreePine, Globe2 } from "lucide-react";
 import { ProvenanceBadge } from "@/components/ui/provenance-badge";
-import { assetUrl } from "@/lib/utils";
-import DocumentPreviewModal from "@/components/ui/DocumentPreviewModal";
 
-const SOURCE = "The Assam Tribune, 18 November 2024 — client-supplied clipping";
-
-const POLICY_DOCUMENTS = [
-  {
-    label: "Wood-Based Industries Rules, 2022 (Assam Gazette, 12 Jan 2023)",
-    href: "resources/wbi-rules-2022-gazette.pdf",
-  },
-  {
-    label: "Trees Outside Forest Rules, 2022 (Assam Gazette)",
-    href: "resources/tof-rules-2022-gazette.pdf",
-  },
-];
-
-/** Additional reported findings not shown in the five data charts. */
 export function ResearchFindings() {
-  const [previewOpen, setPreviewOpen] = useState(false);
-  const [previewDoc, setPreviewDoc] = useState<{ label: string; href: string } | null>(null);
   return (
     <section className="mx-auto max-w-7xl px-6 pb-20 md:pb-28" aria-labelledby="research-findings-heading">
       <div className="mb-8 max-w-3xl">
-        <h2 id="research-findings-heading" className="font-display text-2xl font-bold text-white md:text-3xl">
-          Reported policy, quota &amp; compliance findings
-        </h2>
-        <p className="mt-3 text-sm leading-relaxed text-cream/75">
-          These additional points are reported in the client-supplied newspaper clipping. They are press claims, not independently audited AATMA data.
-        </p>
-        <ProvenanceBadge provenance="client-press-estimate" className="mt-4" />
+        <h2 id="research-findings-heading" className="font-display text-2xl font-bold text-white md:text-3xl">NDF study: scope and additional findings</h2>
+        <p className="mt-3 text-sm leading-relaxed text-cream/75">Source: client-supplied summary of the Non-Detriment Findings study commissioned by the Ministry of Environment, Forest and Climate Change (MoEF&amp;CC) through the Botanical Survey of India (BSI). BSI submitted the report in February 2024; the study had a four-month project tenure and a budget of ₹30.60 lakh. The client confirms that figures from the PDF are to be used as verified by the organization.</p>
+        <ProvenanceBadge provenance="client-verified-study" className="mt-4" />
       </div>
-
       <div className="grid gap-5 md:grid-cols-2">
-        <article className="glass-card rounded-sm p-5 md:p-6">
-          <div className="flex items-center gap-3">
-            <Scale className="text-gold-light" aria-hidden="true" />
-            <h3 className="font-display text-lg font-semibold text-white">Export quota reported for Assam</h3>
-          </div>
-          <ul className="mt-4 space-y-2 text-sm leading-relaxed text-cream/80">
-            <li>79% of the national export quota for agarwood and agar oil.</li>
-            <li>1.194 lakh kg of agarwood chips per year.</li>
-            <li>5,560 kg of agar oil per year.</li>
-          </ul>
-          <p className="mt-4 text-xs text-cream/70">Source: {SOURCE}. Quota figures are reported by the article as based on the NDF study.</p>
-        </article>
-
-        <article className="glass-card rounded-sm p-5 md:p-6">
-          <div className="flex items-center gap-3">
-            <FileText className="text-gold-light" aria-hidden="true" />
-            <h3 className="font-display text-lg font-semibold text-white">NDF and conservation context</h3>
-          </div>
-          <p className="mt-4 text-sm leading-relaxed text-cream/80">
-            The newspaper reports that the Ministry of Environment, Forest and Climate Change commissioned a Non-detriment Findings study, submitted by the Botanical Survey of India in February 2024. It also reports agarwood's IUCN Critically Endangered status and CITES Appendix II listing.
-          </p>
-          <p className="mt-4 text-xs text-cream/70">Source: {SOURCE}. This card reports the article's account; it is not a substitute for the underlying NDF or conservation-listing documents.</p>
-        </article>
-
-        <article className="glass-card rounded-sm p-5 md:p-6">
-          <div className="flex items-center gap-3">
-            <TrendingUp className="text-gold-light" aria-hidden="true" />
-            <h3 className="font-display text-lg font-semibold text-white">International price estimates</h3>
-          </div>
-          <ul className="mt-4 space-y-2 text-sm leading-relaxed text-cream/80">
-            <li>High-quality agarwood: about ₹1 lakh per kg.</li>
-            <li>Agar oil: up to ₹80,000 per kg.</li>
-          </ul>
-          <p className="mt-4 text-xs text-cream/70">Source: {SOURCE}. The report separately gives domestic ranges in the chart above; these estimates are not directly interchangeable.</p>
-        </article>
-
-        <article className="glass-card rounded-sm p-5 md:p-6">
-          <div className="flex items-center gap-3">
-            <MapPinned className="text-gold-light" aria-hidden="true" />
-            <h3 className="font-display text-lg font-semibold text-white">Proposed trade centre</h3>
-          </div>
-          <p className="mt-4 text-sm leading-relaxed text-cream/80">
-            The article reports a plan to establish an Assam Agar International Trade Centre in Golaghat district, with the stated aim of giving farmers and traders direct access to national and international buyers.
-          </p>
-          <p className="mt-4 text-xs text-cream/70">Source: {SOURCE}. This is reported as a plan, not as a completed facility.</p>
-        </article>
-
-        <article className="glass-card rounded-sm p-5 md:p-6">
-          <div className="flex items-center gap-3">
-            <FileText className="text-gold-light" aria-hidden="true" />
-            <h3 className="font-display text-lg font-semibold text-white">Registration issue reported</h3>
-          </div>
-          <p className="mt-4 text-sm leading-relaxed text-cream/80">
-            The article describes industry response to the rules as tepid and reports that many existing units had yet to register. It attributes tax evasion and reduced profits for farmers and traders to the situation.
-          </p>
-          <p className="mt-4 text-xs text-cream/70">Source: {SOURCE}. These are statements reported by the newspaper, not independently verified measurements.</p>
-        </article>
+        <article className="glass-card rounded-sm p-5 md:p-6"><div className="flex items-center gap-3"><Microscope className="text-gold-light" aria-hidden="true"/><h3 className="font-display text-lg font-semibold text-white">Study method and conservation listing</h3></div><p className="mt-4 text-sm leading-relaxed text-cream/80">The summary says the study followed the CITES Non-Detriment Findings Guidance for Perennial Plants (Wolf et al., 2016). It records Aquilaria malaccensis as Critically Endangered on the IUCN Red List and listed in CITES Appendix II with effect from 16 February 1995.</p></article>
+        <article className="glass-card rounded-sm p-5 md:p-6"><div className="flex items-center gap-3"><TreePine className="text-gold-light" aria-hidden="true"/><h3 className="font-display text-lg font-semibold text-white">Field coverage</h3></div><p className="mt-4 text-sm leading-relaxed text-cream/80">The study surveyed major agarwood markets in Hojai, Assam, and Calicut, Kerala. Processing and other agarwood-based units were visited in Assam, Karnataka, Kerala, Manipur, Nagaland, and Tripura.</p></article>
+        <article className="glass-card rounded-sm p-5 md:p-6"><div className="flex items-center gap-3"><Globe2 className="text-gold-light" aria-hidden="true"/><h3 className="font-display text-lg font-semibold text-white">Other global market figures (as stated)</h3></div><ul className="mt-4 space-y-2 text-sm leading-relaxed text-cream/80"><li>Agarwood chips market: 7.7% CAGR during 2018–2022; valuation US$44,050.7 million in 2023 (approximately ₹3,52,405.6 crore).</li><li>Global agarwood-chip sales: stated 7.1% CAGR, reaching US$86,467.6 million (approximately ₹6,91,740.8 crore) “by the end of 2023,” as printed.</li><li>The summary separately estimates the global agarwood market at US$32 billion and projects US$64 billion by the end of 2029 (approximately ₹5,12,000 crore).</li></ul><p className="mt-3 text-xs text-cream/65">All statements are reproduced from the client PDF; the year attached to the US$86,467.6 million figure is shown exactly as printed.</p></article>
+        <article className="glass-card rounded-sm p-5 md:p-6"><div className="flex items-center gap-3"><FileText className="text-gold-light" aria-hidden="true"/><h3 className="font-display text-lg font-semibold text-white">Download the client NDF summary</h3></div><p className="mt-4 text-sm leading-relaxed text-cream/80">The complete three-page client-supplied summary is available in the Resource Center under Research Papers.</p><a className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-sm border border-gold/40 px-4 py-2 text-sm text-cream hover:text-gold-light focus-visible:outline-2 focus-visible:outline-gold-light" href={`${import.meta.env.BASE_URL}resources/agar-ndf-summary-2024.pdf`} download="agar-ndf-summary-2024.pdf"><FileText size={15} aria-hidden="true"/>Download NDF summary (PDF)</a></article>
       </div>
-
-      <div className="mt-8 glass-card rounded-sm p-5 md:p-6">
-        <h3 className="font-display text-lg font-semibold text-white">Client-supplied policy documents</h3>
-        <p className="mt-2 text-sm leading-relaxed text-cream/75">
-          The client-supplied gazette scans are linked here and listed in Resources.
-        </p>
-        <ul className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          {POLICY_DOCUMENTS.map((document) => (
-            <li key={document.href}>
-              <button
-                type="button"
-                onClick={() => {
-                  setPreviewDoc(document);
-                  setPreviewOpen(true);
-                }}
-                className="inline-flex min-h-11 items-center gap-1.5 rounded-sm border border-glass-border px-4 py-2 text-sm text-cream hover:text-gold-light hover:border-gold/30 transition-colors focus-visible:outline-2 focus-visible:outline-gold-light"
-              >
-                <Eye size={14} />
-                {document.label}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {previewDoc && (
-        <DocumentPreviewModal
-          open={previewOpen}
-          title={previewDoc.label}
-          pdfUrl={assetUrl(previewDoc.href)}
-          onClose={() => setPreviewOpen(false)}
-        />
-      )}
     </section>
   );
 }

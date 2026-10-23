@@ -1,4 +1,4 @@
-import { BadgeCheck, FileText, Newspaper, PenLine, type LucideIcon } from "lucide-react";
+import { BadgeCheck, FileText, Newspaper, PenLine, Microscope, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { PublicationProvenance } from "@/data/books";
 
@@ -27,10 +27,16 @@ const PROVENANCE_META: Record<PublicationProvenance, ProvenanceMeta> = {
     className: "border-white/30 bg-white/10 text-white",
   },
   "client-supplied-document": {
-    label: "Association document",
-    description: "A source document from the association.",
+    label: "Client-supplied document",
+    description: "A source document supplied by the client.",
     Icon: FileText,
     className: "border-white/30 bg-white/10 text-white",
+  },
+  "client-verified-study": {
+    label: "Client-verified NDF study",
+    description: "Findings reproduced from the client-supplied NDF study; the client confirms the figures are verified by its organization.",
+    Icon: Microscope,
+    className: "border-gold/50 bg-gold/15 text-white",
   },
   "site-summary": {
     label: "Site summary",

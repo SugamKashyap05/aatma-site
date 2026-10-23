@@ -26,7 +26,7 @@ GitHub Pages (static files from dist/)
   │
   └── public/ static assets
         ├── brand/         (client-supplied AATMA logo)
-        ├── books/         (two client publications, scanned page images, and cover art)
+        ├── books/         (three client publications, scanned page images, and cover art)
         ├── client-images/ (client-supplied agarwood photographs)
         ├── history/       (illustrations and the original Sanchi Paat scan)
         ├── research/      (SVG illustrations)
@@ -80,7 +80,7 @@ statically hosted site.
 - Render six routes and a not-found route.
 - Manage client-side navigation and scroll restoration.
 - Detect device tier and adapt layout and animation cost.
-- Serve exactly two client-supplied book publications: a scanned page-image AGAR book and an embedded proceedings PDF.
+- Serve exactly three client-supplied book publications: the AGAR book, the November 2000 seminar abstracts, and the February 2001 seminar proceedings.
 - Serve as the sole source of truth for content presentation.
 
 ### Build responsibilities
@@ -89,7 +89,7 @@ statically hosted site.
 - Apply `base` so assets resolve under `/aatma-site/` on Pages.
 
 ### Static-asset responsibilities
-- `public/books/` — the two client publications, scanned AGAR page images, and the local proceedings PDF.
+- `public/books/` — the three client publications, scanned AGAR page images, the abstracts page scans, and the local proceedings PDF.
 - `public/brand/` — the client-supplied logo used in site branding and social previews.
 - `public/client-images/` — client-supplied agarwood photographs.
 - `public/history/` — hero banner, section illustrations, and the original Sanchi Paat scan.
@@ -157,8 +157,8 @@ statically hosted site.
 4. `SpaRedirectHandler` reads `path` from the query string and calls `navigate(redirectPath, { replace: true })`.
 
 ### Book reading
-1. `/books` renders the two client-supplied publications from `BOOKS` (`src/data/books.ts`).
-2. The AGAR scan uses its 31 local page images and the configured `flipbook` page-turn style; the seminar proceedings use the embedded local PDF.
+1. `/books` renders the three client-supplied publications from `BOOKS` (`src/data/books.ts`).
+2. The AGAR scan uses its 31 local page images and the configured `flipbook` page-turn style; the seminar proceedings use the embedded local PDF; the seminar abstracts use their 15 bilevel page scans.
 3. Reader state (current page and navigation) is managed by the book-reading hooks/components.
 
 ---

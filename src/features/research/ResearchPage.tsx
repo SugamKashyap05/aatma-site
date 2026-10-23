@@ -2,7 +2,6 @@ import { BookOpen, Microscope, FileText, TreePine } from "lucide-react";
 import { BentoGrid } from "@/components/ui/bento-grid";
 import { BentoCard } from "@/components/ui/bento-card";
 import PageLayout from "@/components/ui/PageLayout";
-import { Reveal } from "@/components/ui/reveal";
 import { ProvenanceBadge } from "@/components/ui/provenance-badge";
 import type { PublicationProvenance } from "@/data/books";
 import { TradeDataSection } from "@/features/research/TradeDataSection";
@@ -27,8 +26,8 @@ const RESEARCH_CARDS: ResearchCard[] = [
   {
     icon: <TreePine className="w-6 h-6" strokeWidth={1.5} />,
     title: "Cultivation & market data",
-    provenance: "client-press-estimate",
-    body: "Tree counts, district shares, export figures and commodity prices for Assam's agarwood sector. Every figure is taken from the client-supplied Assam Tribune report of 18 November 2024 and labelled on the page as a press estimate — not as AATMA research.",
+    provenance: "client-verified-study",
+    body: "Tree population, district estimates, export quotas, trade records, and product valuations reproduced from the client-supplied summary of the MoEF&CC-commissioned NDF study prepared by the Botanical Survey of India (February 2024). The client has confirmed these PDF figures are to be used as verified by the organization.",
   },
   {
     icon: <FileText className="w-6 h-6" strokeWidth={1.5} />,
@@ -40,9 +39,9 @@ const RESEARCH_CARDS: ResearchCard[] = [
 
 /**
  * Research page — dedicated route for client-supplied research material.
- * Contains only client publications, the client-supplied 18 Nov 2024 press
- * report figures (labelled as press estimates), and the policy documents
- * supplied by AATMA. No site-authored science prose is included.
+ * Presents the client-supplied MoEF&CC / BSI NDF summary and its figures,
+ * confirmed by the client as verified for publication, plus client publications
+ * and policy documents. Newspaper estimates are not used as data sources.
  */
 export function ResearchPage() {
   return (
@@ -50,7 +49,7 @@ export function ResearchPage() {
       badge="Research & Publications"
       badgeIcon={<BookOpen size={14} />}
       title={<>Research &amp; <span className="text-gold-light">Knowledge</span></>}
-      subtitle="Client-supplied publications, documents, and labelled press estimates. Nothing else is presented as AATMA research."
+      subtitle="Client-supplied publications, documents, and findings from the MoEF&CC-commissioned Non-Detriment Findings study prepared by the Botanical Survey of India."
       heroPaddingBottom="pb-12"
     >
       <section className="relative pb-16 overflow-hidden" aria-label="Research publications overview">
@@ -71,24 +70,8 @@ export function ResearchPage() {
         </div>
       </section>
 
-      <section className="relative pb-20 md:pb-28" aria-labelledby="trade-data-heading">
-        <div className="max-w-7xl mx-auto px-6">
-          <Reveal variant="fade" delay={0}>
-            <h2
-              id="trade-data-heading"
-              className="font-display font-bold text-white text-lg md:text-xl tracking-wide mb-3"
-            >
-              Trade &amp; Conservation Data
-            </h2>
-            <p className="text-cream/75 text-sm leading-relaxed max-w-3xl">
-              Figures below are drawn from the client-supplied 18 November 2024
-              press report and labelled as press estimates. They indicate scale
-              and direction, not audited AATMA statistics.
-            </p>
-          </Reveal>
-
-          <TradeDataSection />
-        </div>
+      <section className="relative pb-20 md:pb-28">
+        <div className="max-w-7xl mx-auto px-6"><TradeDataSection /></div>
       </section>
       <ResearchFindings />
     </PageLayout>
