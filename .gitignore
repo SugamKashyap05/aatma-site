@@ -64,17 +64,14 @@ scripts/.opt*.log
 
 # Ad-hoc verification scratch. These are throwaway probes and captured
 # screenshots/JSON reports, not project code — keep them out of the repo.
+# Nothing under scripts/ with a .cjs or .json extension is tracked; the
+# committed scripts are all .mjs.
 /.kanban-scratch/
 /_verify*.mjs
 /_verify*.json
 /_verify*.txt
-/dom-inspect*.cjs
-/dom-inspection*.json
-/diag-*.cjs
-/final-check.cjs
-/verify-home*.cjs
-/verify-home*.json
-/smoke-test-*.json
+/scripts/*.cjs
+/scripts/*.json
 /scripts/smoke-screenshots/
 /scripts/verify-press-news.mjs
 /docs/_scratch_*.md
