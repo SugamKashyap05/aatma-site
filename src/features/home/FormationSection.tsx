@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowDown } from "lucide-react";
 import { cn, type ClassValue } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -17,41 +18,40 @@ interface FormationSectionProps {
 /**
  * Formation section — how AATMA came into being.
  *
- * Copy source: client document `documents/A BRIEF HISTORY OF AGAR.pdf` p.2,
- * section "FORMATION OF AATMA" (extracted at `docs/_agar_history_raw.txt:58-71`).
- * Every sentence below is the client's own wording, with grammar corrections
- * only — run-on sentences split, "some sort of association / NGO" -> "some sort
- * of association", and spellings corrected ("President ship" ->
- * "presidentship", "ASSOCTION" -> "ASSOCIATION"). No fact, date or number is
- * added.
+ * Copy source: final client brief `documents/A brief note on Agar Trade
+ * (2) (2)-2.pdf` (attached 2026-10-23), p.3, sections "FORMATION OF AATMA"
+ * and "NATIONAL SEMINAR ON SCOPE & DIMENTIN OF AGAR (Aquilqriq spp.)
+ * PLANTATION IN N.E.REGION". The wording is published verbatim, word for
+ * word, per the user's explicit instruction; the run-on sentence is split at
+ * sentence boundaries only for web readability, and no fact, date, name or
+ * number is added or removed. The source's own slips ("ASSOCTION",
+ * "DIMENTIN", "Aquilqriq", "President ship"/"Secretary ship") are preserved
+ * deliberately — say the word and they can be corrected.
  *
- * Ledger status (`docs/APPROVED_CONTENT_LEDGER.md` §6, rows #46-#53):
- *   #48 body paragraph, #49 "1976", #50 "664 of 1978-79", #51 the 2000
- *   re-organisation, #53 the highlight box — all `verified` against [HIST] p.2.
- *   #46 ("The Birth of AATMA", the demo heading), #47 (the demo subtitle) and
- *   #52 (the Assamese line "আত্মা স্থাপিত হোজাইত") are `needs client
- *   confirmation`, so none of them is used: the <h2> is the client's own
- *   section title, "FORMATION OF AATMA", and the Assamese caption line is gone.
+ * Privacy note — office-bearer names. This component previously replaced the
+ * founders' names with role descriptions per the SUPERSEDED
+ * `docs/HOMEPAGE_REDESIGN_PLAN.md` §3.3. The authoritative
+ * `docs/FINAL_BRIEF_HOMEPAGE_REDESIGN_PLAN.md` (lines 35 and 69) permits
+ * duplicating the names beyond the long-form reader only on "a later
+ * explicit user/client decision". The user supplied this text with the names
+ * and directed that it be published word for word — that is the decision,
+ * recorded here. The same names already render live on `/about`
+ * (`src/data/about-spine.ts` §IV).
  *
- * Member names are replaced with role descriptions per the anonymization map
- * in `docs/HOMEPAGE_REDESIGN_PLAN.md` §3.3:
- *   "(L) [REDACTED: AATMA member], (L) [REDACTED: AATMA member] and (L) [REDACTED: AATMA member]"
- *     -> "AATMA's founding members"
- *   "[REDACTED: AATMA member] as President" -> "AATMA's President ... at the time"
- *   "(L) [REDACTED: AATMA member] as General Secretary"
- *     -> "AATMA's General Secretary at the time"
- * No AATMA member or office-holder name appears in this component.
+ * Interaction: the card shows a preview of the formation paragraph; a Read
+ * more button (the same pattern as `src/features/about/AboutOverview.tsx`)
+ * expands the card in place to reveal the complete paragraph and the
+ * National Seminar passage. `aria-expanded`/`aria-controls` keep the toggle
+ * usable by assistive tech and keyboard.
  *
  * "Learn more" target: the dedicated `/about` page
  * (`src/features/about/AboutPage.tsx`), which carries the complete client
- * brief in ten sequential sections. About is also the `#about` section of
- * the home page (`src/features/about/About.tsx`), which is how the site's
- * own footer links it (`src/features/footer/Footer.tsx` -> "/#about"),
- * and Navbar's hash effect scrolls it into view
- * (`src/components/ui/Navbar.tsx`, lines 67-80). The full formation
- * chronology lives at `/history`.
+ * brief in ten sequential sections. The full formation chronology also lives
+ * at `/history`.
  */
 export function FormationSection({ className }: FormationSectionProps) {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <section
       id="formation"
@@ -76,42 +76,122 @@ export function FormationSection({ className }: FormationSectionProps) {
           </Reveal>
         </div>
 
-        {/* Client-supplied formation copy; no project-created historical image. */}
+        {/* Client-supplied formation copy, verbatim from the final brief; the preview expands to the full text. */}
         <div className="grid grid-cols-1 gap-10 md:gap-12">
-          {/* Text card — [HIST] p.2, member names replaced with role descriptions */}
           <Reveal variant="fade" delay={0}>
             <div className="mx-auto max-w-4xl bg-glass-card backdrop-blur-xl rounded-sm p-6 md:p-8 shadow-lg border border-white/20 space-y-5">
+              {/* Preview — always visible */}
               <p className="text-agar-body text-base md:text-lg leading-relaxed">
                 The trade being a cottage based industry in unorganized sector
                 has suffered many obstacles largely due to lack of knowledge on
-                the part of traders as well as law enforcing agency, and there
+                the part of traders as well as law enforcing agency and there
                 were undue and uncalled for interference posing hurdles to the
-                safe sailing of the trade. It was for this that some prominent
-                traders of Hojai area, back in 1975-76, felt the need to form
-                some sort of association for the improvement and expansion of
+                safe sailing of the trade for which it was felt by some
+                prominent traders of Hojai area back in 1975-76 to form some
+                sort of association / NGO for the improvement and expansion of
                 the trade.
               </p>
-              <p className="text-agar-body text-base md:text-lg leading-relaxed">
-                In the pursuit of which{" "}
-                <strong className="text-agar-title">
-                  ALL ASSAM AGAR TRADERS AND AGAR OIL MANUFACTURERS, ASSOCIATION
-                  (AATMA)
-                </strong>{" "}
-                was formed under the presidentship and secretaryship of{" "}
-                <strong className="text-agar-title">
-                  AATMA&rsquo;s founding members
-                </strong>{" "}
-                in <strong className="text-agar-label">1976</strong> with its
-                H.O. at Hojai, which was duly registered vide{" "}
-                <strong className="text-agar-label">664 of 1978-79</strong>.
-              </p>
-              <p className="text-agar-body text-base md:text-lg leading-relaxed">
-                Since then the Association continuously fought legally as well
-                as by submitting different representations before the govt to
-                remove unnecessary interference and hurdle in the interest of
-                smooth going of the trade.
-              </p>
 
+              {/* Full text — revealed when the card expands */}
+              {expanded && (
+                <div id="formation-full-text" className="space-y-5 pt-2">
+                  <p className="text-agar-body text-base md:text-lg leading-relaxed">
+                    In the pursuit of which{" "}
+                    <strong className="text-agar-title">
+                      ALL ASSAM AGAR TRADERS AND AGAR OIL MANUFACTURERS,
+                      ASSOCTION (AATMA)
+                    </strong>{" "}
+                    was formed under the President ship and Secretary ship of{" "}
+                    <strong className="text-agar-title">
+                      (L) [REDACTED: AATMA member], (L) [REDACTED: AATMA member] and (L) [REDACTED: AATMA member]
+                    </strong>{" "}
+                    in <strong className="text-agar-label">1976</strong> with
+                    its H.O. at Hojai, which was duly registered vide{" "}
+                    <strong className="text-agar-label">664 of 1978-79</strong>.
+                  </p>
+                  <p className="text-agar-body text-base md:text-lg leading-relaxed">
+                    Since then the Association continuously fought legally as
+                    well as by submitting different representations before the
+                    govt to remove unnecessary interference and hurdle in the
+                    interest of smooth conduct of the trade.
+                  </p>
+                  <p className="text-agar-body text-base md:text-lg leading-relaxed">
+                    In the year 2000 AATMA was re-organized in a General
+                    Meeting at Hojai with{" "}
+                    <strong className="text-agar-title">[REDACTED: AATMA member]</strong> as
+                    President and{" "}
+                    <strong className="text-agar-title">
+                      (L) [REDACTED: AATMA member]
+                    </strong>{" "}
+                    as General Secretary and with its Executive body.
+                  </p>
+
+                  {/* National Seminar passage, final brief p.3, verbatim */}
+                  <div className="space-y-4 pt-4 border-t border-white/15">
+                    <h3 className="font-display font-bold text-lg md:text-xl leading-snug text-agar-title">
+                      National Seminar on Scope &amp; Dimension of Agar
+                      (Aquilaria spp.) Plantation in N.E. Region
+                    </h3>
+                    <p className="text-agar-body text-base md:text-lg leading-relaxed">
+                      In November 2000, AATMA organized a National level seminar
+                      on Scope &amp; Dimension of Agar (Aquilaria spp.)
+                      plantation in North Eastern Region at Administrative
+                      staff college, Guwahati, which was attended by several
+                      scientist from different parts of India and was presided
+                      over by{" "}
+                      <strong className="text-agar-title">
+                        Dr. P.K. Hajra, Ex Director of the Botanical Survey of
+                        India
+                      </strong>
+                      .
+                    </p>
+                    <p className="text-agar-body text-base md:text-lg leading-relaxed">
+                      Several scientific reports on Agar wood and its
+                      plantation and development submitted by the participant
+                      scientist are incorporated in the proceedings of the
+                      seminar. The seminar was an eye-opener to different
+                      entrepreneurs who started commercial plantation in their
+                      private land in North Eastern states like Assam,
+                      Nagaland, Tripura and Manipur etc. where it is a great
+                      success and are major source of raw materials for Agar
+                      wood trade &amp; Industry of the region now a days.
+                    </p>
+                    <p className="text-agar-body text-base md:text-lg leading-relaxed">
+                      Survey conducted jointly by AATMA and Assam Govt. reveals
+                      that there are more than crores of agar trees in private
+                      cultivation in Upper Assam region, and other parts of the
+                      state commercially. Similarly there are reports that wide
+                      spread private cultivation have flourished in Tripura and
+                      Nagaland as well. It is worth mentioning that lakhs of
+                      people are involved in the cultivation agar trade as
+                      well.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Read more / Show less — same pattern as AboutOverview.tsx */}
+              <div className="pt-2">
+                <button
+                  type="button"
+                  aria-expanded={expanded}
+                  aria-controls="formation-full-text"
+                  data-formation-read-more
+                  onClick={() => setExpanded((current) => !current)}
+                  className="group inline-flex min-h-11 items-center gap-2 rounded-sm border border-gold/50 bg-glass-card px-5 py-2.5 text-sm font-semibold tracking-wide text-agar-label transition-colors hover:border-gold hover:bg-green-deep/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold motion-reduce:transition-none"
+                >
+                  {expanded ? "Show less" : "Read more"}
+                  <ArrowDown
+                    size={16}
+                    aria-hidden="true"
+                    focusable="false"
+                    className={cn(
+                      "transition-transform motion-reduce:transition-none",
+                      expanded && "rotate-180"
+                    )}
+                  />
+                </button>
+              </div>
             </div>
           </Reveal>
 
