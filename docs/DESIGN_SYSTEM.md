@@ -218,13 +218,14 @@ rather than rebuilding the recipe.
 
 | Surface | Rule |
 |---|---|
-| Header | Fixed top, transparent over hero → `bg-green-deep/90 backdrop-blur` once scrolled. Two zones: 6 home-section links (left) + 5 page routes (right) + logo. Home-section links are hidden on non-home routes. |
+| Header | Fixed evergreen `glass-nav`, 64px (`h-16`); AATMA logo at left, compact `Sections` and `Pages` triggers at right. |
+| Dropdowns | AATMA-styled Radix `NavigationMenu`; home sections and page routes stay grouped in separate popovers instead of a full-screen link list. |
+| Mobile navigation | Keep the same two triggers; panels are viewport-bounded, scrollable, and use a two-column link grid. Do not restore the full-screen overlay. |
+| Navigation data | Read destinations from `NAV_HOME_SECTIONS` and `NAV_PAGE_LINKS` in `src/data/navigation.ts`; do not duplicate labels or invent placeholder routes. |
 | Section nav | Sticky scroll-spy sidebar on `/policy` (`PolicyNav`) and `/research` (`ResearchNav`) |
-| Mobile navigation | Hamburger → slide-out drawer at `z-[60]` (above navbar `z-50`), `justify-start pt-20`, `overflow-y-auto` |
-| Zone labels | `text-white/60` minimum — `text-white/40` fails WCAG AA on `green-deep` |
+| Menu links | Minimum 44px target height; cream foreground, gold-light active/focus emphasis, and visible keyboard focus. |
 
-**Contrast requirement:** any text on `green-deep` must reach 4.5:1. Verified
-values: `text-white/60` ≈ 5.9:1 ✅ · `text-white/40` ≈ 3.3:1 ❌
+**Contrast requirement:** any text on `green-deep` must reach 4.5:1. Verify the final composited popover surface, not just the base token.
 
 ---
 

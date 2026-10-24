@@ -114,7 +114,7 @@
 | `letter-to-hcm-2023` | Not directly in ledger | ⚠️ Unsupported |
 | `policy-wbi-rules-2022` | CLIENT_MATERIAL_RESEARCH.md §4a | ✅ Match |
 | `policy-tof-rules-2022` | CLIENT_MATERIAL_RESEARCH.md §4b | ✅ Match |
-| `research-history-of-agar` | Not directly in ledger | ⚠️ Unsupported |
+| `research-history-of-agar` | Withdrawn from public Resource documents per client direction (2026-10-24) | N/A — no longer published |
 | `form-xvii-registration` | CLIENT_MATERIAL_RESEARCH.md §4a | ✅ Match |
 | `cites-form-xxv-lpc` | CLIENT_MATERIAL_RESEARCH.md §4a | ✅ Match |
 

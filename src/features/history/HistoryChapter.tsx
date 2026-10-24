@@ -91,7 +91,11 @@ export function HistoryChapterSection({
               <img
                 src={image.src}
                 alt={image.alt}
-                className="h-56 w-full object-cover md:h-64 lg:h-72"
+                className={
+                  image.fit === "contain"
+                    ? "aspect-square w-full bg-white object-contain"
+                    : "h-56 w-full object-cover md:h-64 lg:h-72"
+                }
                 loading="lazy"
                 decoding="async"
               />

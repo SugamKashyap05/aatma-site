@@ -28,7 +28,7 @@ GitHub Pages (static files from dist/)
         ├── brand/         (client-supplied AATMA logo)
         ├── books/         (three client publications, scanned page images, and cover art)
         ├── client-images/ (client-supplied agarwood photographs)
-        ├── history/       (illustrations and the original Sanchi Paat scan)
+        ├── history/       (chapter images, trade-route maps, AATMA seal, and Sanchi Paat scans)
         ├── research/      (SVG illustrations)
         └── press/         (download assets)
 ```
@@ -61,6 +61,7 @@ statically hosted site.
 | 3D / WebGL | Three.js | 0.186 |
 | Icons | Lucide React | 1.48 |
 | Class utilities | clsx + tailwind-merge (via `cn`) | 2.1 / 3.7 |
+| Navigation primitive | Radix UI `NavigationMenu` (`radix-ui`) | 1.8.1 |
 | Linting | Oxlint | 1.81 |
 | Backend | **None** | — |
 | Database | **None** | — |
@@ -92,7 +93,7 @@ statically hosted site.
 - `public/books/` — the three client publications, scanned AGAR page images, the abstracts page scans, and the local proceedings PDF.
 - `public/brand/` — the client-supplied logo used in site branding and social previews.
 - `public/client-images/` — client-supplied agarwood photographs.
-- `public/history/` — hero banner, section illustrations, and the original Sanchi Paat scan.
+- `public/history/` — chapter images, responsive trade-route maps, the AATMA seal, and the original Sanchi Paat scan.
 - `public/research/` — SVG illustrations.
 - `public/press/` — downloadable assets.
 - `public/404.html` — SPA deep-link recovery.
@@ -125,7 +126,7 @@ statically hosted site.
                                        │
                               ┌────────▼────────┐
                               │   PageLayout    │  ← shared shell
-                              │  Navbar · Hero  │
+                              │ ImmersiveNavbar · Hero │
                               │  AmbientMotion  │
                               │     Footer      │
                               └─────────────────┘
@@ -143,12 +144,12 @@ statically hosted site.
 2. Router matches the path against `basename` + route table.
 3. If the route is lazy and not yet loaded, `Suspense` renders the fallback.
 4. Route component renders, wrapping content in `PageLayout`.
-5. `ScrollManager` restores scroll position or scrolls to a hash target.
+5. `ScrollManager` resets route scroll; `ImmersiveNavbar` handles home-section hashes after the target is rendered.
 
 ### Anchor navigation (home sections)
 1. Link targets `/#<sectionId>`.
-2. Router navigates to `/`; `ScrollManager` reads the hash.
-3. Element with that `id` is scrolled into view, offset by the fixed navbar via `scroll-mt`.
+2. Router navigates to `/`; `ScrollManager` preserves the hash and `ImmersiveNavbar` waits for the target section in the DOM.
+3. The target element is scrolled into view with reduced-motion-aware behavior.
 
 ### Deep-link recovery (GitHub Pages 404)
 1. A request for `/aatma-site/history` reaches Pages, which has no such file.
@@ -171,7 +172,7 @@ aatma-site/
 ├── documents/                  ← Client-supplied source documents (5 files)
 ├── public/                     ← Static assets, copied verbatim to dist/
 │   ├── books/                  ← Book text, chapter images, covers
-│   ├── history/                ← 9 history-page images
+│   ├── history/                ← History chapter images, trade-route maps, AATMA seal, and Sanchi Paat scans
 │   ├── research/               ← 3 research-page SVG illustrations
 │   ├── press/                  ← Press download assets
 │   ├── 404.html                ← SPA deep-link recovery
@@ -183,9 +184,11 @@ aatma-site/
 │   ├── main.tsx                ← Entry point
 │   ├── index.css               ← Tailwind import + @theme tokens
 │   ├── assets/hero/            ← Generated hero manifest + variants
-│   ├── components/ui/          ← Shared primitives (13 files)
+│   ├── components/ui/          ← Shared primitives
 │   │   ├── PageLayout.tsx      ← Route shell: navbar + hero + footer
-│   │   ├── Navbar.tsx          ← Two-zone responsive navigation
+│   │   ├── ImmersiveNavbar.tsx ← Compact shared navigation header
+│   │   ├── navigation-menu.tsx ← AATMA-styled Radix NavigationMenu wrappers
+│   │   ├── Navbar.tsx          ← routeUrl deploy-base helper + retained component
 │   │   ├── reveal.tsx          ← Scroll-reveal wrapper
 │   │   ├── bento-grid.tsx / bento-card.tsx
 │   │   ├── button.tsx / badge.tsx
@@ -198,6 +201,7 @@ aatma-site/
 │   │   └── DeviceContext.tsx   ← Device tier provider
 │   ├── data/
 │   │   ├── content.ts          ← AATMA identity + MILESTONES
+│   │   ├── navigation.ts       ← Shared home-section and page destinations
 │   │   └── books.ts            ← Book + Chapter types and BOOKS array
 │   ├── features/               ← One folder per page/section
 │   │   ├── home/ hero/ about/ agarStory/ milestones/
