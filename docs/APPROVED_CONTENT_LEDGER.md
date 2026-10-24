@@ -587,3 +587,22 @@ agar trade history" section. Findings and fixes:
    render without a date chip; the Far East discovery timeline entry was
    removed at the same direction (its full text remains in the Import era
    chapter, so nothing is lost). 26 timeline entries total.
+
+## 2026-10-24 — client-provenance wording removed from all public copy
+
+Client decision (verbatim): "remove all findings that contain the name
+'client.' … People are not unaware; they see that the information is
+published by Hindustan, Janik Dalim Jagran, or other outlets. We have
+nothing to hide."
+
+Applied site-wide: every visitor-visible "client" / "client-supplied" /
+"client-verified" label is gone — agarwood photo note, books subtitle,
+history intro, news provenance block and empty state, BookCard claims
+summary, provenance badges (now "Association document" / "Verified NDF
+study"), all eight chart source labels, seven research source notes,
+policy guidance copy, resources description, and three history-chapter
+alt texts. Genuine third-party citations (Hindustan Times, The Assam
+Tribune, Dainik Jugasankha, Assam Gazette, WBI Rules, MoEF&CC/BSI NDF
+study) are retained. Internal provenance type keys
+(`client-publication`, `client-supplied-document`, etc.) and code
+comments keep their names — they are not visitor-visible.

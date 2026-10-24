@@ -49,7 +49,7 @@ export function ClientAgarwoodPhotos() {
             Agarwood photographs
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-cream/75">
-            Photographs supplied by the association; captions are the client&rsquo;s own labels for these images.
+            Photographs supplied by the association; captions are the association&rsquo;s own labels for these images.
           </p>
         </div>
       </Reveal>

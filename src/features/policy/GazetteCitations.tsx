@@ -89,7 +89,7 @@ export function GazetteCitations() {
               Gazette <span className="text-gold-light">Citations</span>
             </h2>
             <p className="text-white/70 text-base md:text-lg max-w-3xl">
-              Client-supplied Gazette notifications are listed with their legal citations.
+              Gazette notifications are listed with their legal citations.
             </p>
           </div>
         </Reveal>

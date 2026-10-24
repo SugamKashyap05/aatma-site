@@ -27,14 +27,14 @@ const PROVENANCE_META: Record<PublicationProvenance, ProvenanceMeta> = {
     className: "border-white/30 bg-white/10 text-white",
   },
   "client-supplied-document": {
-    label: "Client-supplied document",
-    description: "A source document supplied by the client.",
+    label: "Association document",
+    description: "A source document supplied by the association.",
     Icon: FileText,
     className: "border-white/30 bg-white/10 text-white",
   },
   "client-verified-study": {
-    label: "Client-verified NDF study",
-    description: "Findings reproduced from the client-supplied NDF study; the client confirms the figures are verified by its organization.",
+    label: "Verified NDF study",
+    description: "Findings reproduced from the NDF study; the figures are confirmed verified by the association.",
     Icon: Microscope,
     className: "border-gold/50 bg-gold/15 text-white",
   },

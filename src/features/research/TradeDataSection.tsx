@@ -47,11 +47,10 @@ export function TradeDataSection() {
 
       <Reveal variant="up" delay={60}>
         <p className="text-cream/75 text-sm leading-relaxed mb-10 max-w-3xl">
-          This section reproduces figures from the client-supplied summary of
+          This section reproduces figures from the summary of
           the MoEF&amp;CC-commissioned Non-Detriment Findings study, prepared by
           the Botanical Survey of India and submitted in February 2024. The
-          client confirms the PDF figures are to be used as verified by the
-          organization.
+          figures are confirmed verified by the association.
         </p>
       </Reveal>
 

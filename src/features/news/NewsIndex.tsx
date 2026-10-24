@@ -166,7 +166,7 @@ export function NewsIndex() {
           ) : (
             <div className="text-center py-16">
               <p className="text-cream/50 text-base">
-                No client-supplied clipping matches this filter yet.
+                No newspaper clipping matches this filter yet.
               </p>
             </div>
           )}

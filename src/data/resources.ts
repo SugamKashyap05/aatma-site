@@ -68,7 +68,7 @@ export const RESOURCE_CATEGORIES: ResourceCategory[] = [
     id: "research-papers",
     label: "Research Papers",
     description:
-      "AATMA's field survey material and reference notes on the agarwood trade.",
+      "Field-survey records and research summaries on the agarwood trade.",
   },
   {
     id: "registration-forms",
@@ -169,8 +169,8 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
 
   // ── Press Notes (additional client-supplied) ───────────────────────────────
   {
-    id: "atsa-press-release-2008",
-    title: "ATSA Press Release — 21 February 2008",
+    id: "aatma-press-release-2008",
+    title: "AATMA Press Release — 21 February 2008",
     category: "press-notes",
     docType: "press",
     date: "2008-02-21",
@@ -178,10 +178,10 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
     fileSize: "—",
     tags: ["press-release", "cites", "2008"],
     description:
-      "Press release from the Assam Agarbatti Traders and Agarbatti Oil Producers Association (ATSA) regarding CITES regulations, the 2005 rules, endangered species, and sandalwood.",
-    source: "ATSA press release, 21 February 2008",
+      "Press release from the All Assam Agar Traders & Agaroil Manufacturers' Association (AATMA) regarding CITES regulations, the 2005 rules, endangered species, and sandalwood.",
+    source: "AATMA press release, 21 February 2008",
     available: true,
-    downloadPath: "resources/atsa-press-release-2008-02-21.jpeg",
+    downloadPath: "resources/aatma-press-release-2008-02-21.jpeg",
   },
 
   // ── Policy Documents (additional client-supplied) ─────────────────────────
@@ -247,21 +247,7 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
     available: true,
     downloadPath: "research/distillation-survey-annexure.jpeg",
   },
-  {
-    id: "research-history-of-agar",
-    title: "A Brief History of Agar & the Agar Trade (Privacy-Edited Copy)",
-    category: "research-papers",
-    docType: "research",
-    fileType: "PDF",
-    fileSize: "57.8 KB",
-    pageCount: 4,
-    tags: ["history", "trade", "reference"],
-    description:
-      "Privacy-edited text copy of AATMA's reference note; full names of AATMA office-bearers are withheld in this public copy.",
-    source: "AATMA reference note (undated; public copy privacy-edited)",
-    available: true,
-    downloadPath: "resources/brief-history-of-agar.pdf",
-  },
+
   {
     id: "research-agar-ndf-summary-2024",
     title: "Summary of Non-Detriment Findings of Agar Trees (Aquilaria malaccensis)",
@@ -271,8 +257,8 @@ export const RESOURCE_DOCUMENTS: ResourceDocument[] = [
     fileSize: "297.4 KB",
     pageCount: 3,
     tags: ["NDF", "agarwood", "population", "trade", "2024"],
-    description: "Client-supplied summary of the MoEF&CC-commissioned Non-Detriment Findings study prepared by the Botanical Survey of India. Includes population estimates, proposed export quotas, product valuations and trade findings.",
-    source: "MoEF&CC-commissioned study; Botanical Survey of India report submitted February 2024. Client confirms the PDF figures are to be used as verified by the organization.",
+    description: "Summary of the MoEF&CC-commissioned Non-Detriment Findings study prepared by the Botanical Survey of India. Includes population estimates, proposed export quotas, product valuations and trade findings.",
+    source: "MoEF&CC-commissioned study; Botanical Survey of India report submitted February 2024. The figures are confirmed verified by the association.",
     available: true,
     downloadPath: "resources/agar-ndf-summary-2024.pdf",
   },

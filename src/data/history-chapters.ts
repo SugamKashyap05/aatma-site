@@ -26,6 +26,7 @@ export interface HistoryChapterImage {
   src: string;
   alt: string;
   caption: string;
+  fit?: "cover" | "contain";
 }
 
 export interface HistoryHighlight {
@@ -120,9 +121,10 @@ export const HISTORY_CHAPTERS: HistoryChapter[] = [
       "The trade being a cottage based industry in unorganized sector has suffered many obstacles largely due to lack of knowledge on the part of traders as well as law enforcing agency and there were undue and uncalled for interference posing hurdles to the safe sailing of the trade for which it was felt by some prominent traders of Hojai area back in 1975-76 to form some sort of association / NGO for the improvement and expansion of the trade in the pursuit of which ALL ASSAM AGAR TRADERS AND AGAR OIL MANUFACTURERS, ASSOCTION (AATMA) was formed under the President ship and Secretary ship of (L) Hazi Anfar Ali, (L) Hazi Samsul Islam and (L) Binay Kumar Paul in 1976 with its H.O. at Hojai which was duly registered vide 664 of 1978-79. Since then the Association continuously fought legally as well as by submitting different representations before the govt to remove unnecessary interference and hurdle in the interest of smooth conduct of the trade. In the year 2000 AATMA was re-organized in a General Meeting at Hojai with Ataur Rahman as President and (L) Jamal Uddin Choudhury as General Secretary and with its Executive body.",
     ],
     image: {
-      src: assetUrl("client-images/aatma-tree-plantation.jpg"),
-      alt: "AATMA tree plantation photographed by the association.",
-      caption: "AATMA tree plantation — the association's own planting programme.",
+      src: assetUrl("history/aatma-seal.jpg"),
+      alt: "AATMA seal with a tree emblem, the association's name, and ‘ESTD. 1976.’",
+      caption: "Aatma Seal",
+      fit: "contain",
     },
     highlights: [
       { label: "Founded", value: "1976, Hojai" },

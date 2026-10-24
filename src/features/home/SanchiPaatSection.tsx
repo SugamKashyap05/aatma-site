@@ -69,6 +69,9 @@ export function SanchiPaatSection({ className }: { className?: ClassValue }) {
                             <span className="block">
                               Courtesy: Sri Sri Narowa Balisatra Parichalana Samiti, P.O. Balisatra, Dist. Nagaon, Assam.
                             </span>
+                            <span className="block">
+                              Photograph of the original Sanchiputhi, taken in the year 2000.
+                            </span>
                           </figcaption>
                         </figure>
                       </div>

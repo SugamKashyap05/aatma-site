@@ -55,7 +55,7 @@ export function BookCard({ book, onRead, onDownload, isDownloading }: BookCardPr
         {claims.length > 0 && (
           <details className="mb-4 rounded-sm border border-gold/25 bg-gold/[0.06] px-3 py-2">
             <summary className="cursor-pointer text-gold-light text-xs font-semibold tracking-wide">
-              {claims.length} claim{claims.length === 1 ? "" : "s"} pending a client source
+              {claims.length} claim{claims.length === 1 ? "" : "s"} pending a source
             </summary>
             <ul className="mt-2 space-y-1 list-disc list-inside text-white/75 text-xs leading-relaxed">
               {claims.map((claim) => (

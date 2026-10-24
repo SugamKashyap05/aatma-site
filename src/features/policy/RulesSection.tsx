@@ -161,7 +161,7 @@ export function RulesSection() {
           <Reveal variant="fade" delay={200}>
             <div className="mt-10">
               <h3 className="font-display font-bold text-lg md:text-xl text-white mb-6">
-                Client-supplied advocacy milestones
+                Advocacy milestones
               </h3>
               <div className="relative">
                 <div

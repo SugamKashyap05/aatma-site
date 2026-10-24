@@ -2,7 +2,7 @@ import { CHART_COLORS, ChartFrame, buildAriaSummary } from "./ChartFrame";
 
 /**
  * CH-02 — Assam vs Tripura tree count (comparative bar)
- * Route: /research · Source: client NDF summary, February 2024
+ * Route: /research · Source: NDF study summary, February 2024
  *
  * Both state figures and the Assam share are reproduced from the NDF summary.
  */
@@ -39,7 +39,7 @@ export function AssamVsTripuraTrees() {
       source={{
         publication: "MoEF&CC-commissioned NDF study (Botanical Survey of India)",
         date: "February 2024",
-        provenanceLabel: "Client-verified NDF study",
+        provenanceLabel: "Verified NDF study",
       }}
       note="Figures count agarwood trees cultivated agar trees, as stated in the NDF summary."
     >

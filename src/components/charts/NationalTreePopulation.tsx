@@ -20,7 +20,7 @@ const STATES = [
 const SOURCE = {
   publication: "MoEF&CC-commissioned NDF study (Botanical Survey of India)",
   date: "February 2024",
-  provenanceLabel: "Client-verified NDF study",
+  provenanceLabel: "Verified NDF study",
 };
 const ariaLabel = buildAriaSummary(
   "NDF estimate of cultivated agar tree population by state, in lakh",
@@ -34,7 +34,7 @@ export function NationalTreePopulation() {
       subtitle="Trees over 2 years old and over 10 cm girth at breast height (GBH). Population and percentage columns are reproduced as stated in the NDF summary."
       ariaLabel={ariaLabel}
       source={SOURCE}
-      note="The total is printed as 1,398.9 lakh (139.89 million; 13.989 crore) in the client document. Figures and shares are presented as published and confirmed for use by the client's organization."
+      note="The total is printed as 1,398.9 lakh (139.89 million; 13.989 crore) in the source document. Figures and shares are presented as published and confirmed for use by the association."
     >
       <div className="overflow-x-auto">
         <table className="w-full min-w-[34rem] text-left text-sm">

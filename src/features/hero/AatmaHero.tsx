@@ -51,15 +51,12 @@ export function AatmaHero() {
               className="pointer-events-none absolute inset-0 bg-gradient-to-t from-green-deep/35 via-transparent to-transparent"
             />
           </div>
-          <figcaption className="mt-3 border-l border-gold/60 pl-3 text-xs leading-relaxed text-cream/65">
-            Photograph showing rows of trees and a grassy path
-          </figcaption>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent"
+          />
         </figure>
       </div>
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent"
-      />
     </section>
   );
 }

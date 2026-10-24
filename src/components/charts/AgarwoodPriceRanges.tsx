@@ -1,5 +1,5 @@
 import { ChartFrame, buildAriaSummary } from "./ChartFrame";
-const SOURCE={publication:"MoEF&CC-commissioned NDF study (Botanical Survey of India)",date:"February 2024",provenanceLabel:"Client-verified NDF study"};
+const SOURCE={publication:"MoEF&CC-commissioned NDF study (Botanical Survey of India)",date:"February 2024",provenanceLabel:"Verified NDF study"};
 const LOCAL=[{product:"Chips",unit:"per kg",low:"₹10,000",high:"₹3,00,000"},{product:"Agar oil",unit:"per tola",low:"₹6,000",high:"₹17,500"},{product:"Sem (highest-quality agarwood)",unit:"per kg",low:"₹2,00,000",high:"Several crores"},{product:"Boya oil",unit:"per tola",low:"₹1,000",high:"₹1,500"},{product:"Bangtang",unit:"per kg",low:"₹1,500",high:"₹3,500"},{product:"Chap Bangtang",unit:"per kg",low:"₹30,000",high:"₹50,000"}];
 const INTERNATIONAL=[{product:"Agarwood",unit:"per kg",low:"US$100",high:"US$100,000"},{product:"Oud oil",unit:"per litre",low:"Not stated",high:"US$80,000"}];
 const ariaLabel=buildAriaSummary("NDF valuation ranges for agarwood products",[...LOCAL,...INTERNATIONAL].map(x=>({label:x.product,value:`${x.low} to ${x.high} ${x.unit}`})));

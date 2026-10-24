@@ -47,7 +47,7 @@ export function PolicyPage() {
           Policy &amp; <span className="text-gold-light">Legal Framework</span>
         </>
       }
-      subtitle="A summary of client-supplied material and cited Assam Gazette notifications, from the 2000 rules to the 2022 framework."
+      subtitle="A summary of the Assam Wood Based Industries rules and cited Gazette notifications, from the 2000 rules to the 2022 framework."
       heroPaddingBottom="pb-12"
     >
       {/* Hero cards */}
@@ -90,7 +90,7 @@ export function PolicyPage() {
                       2000 vs 2022 <span className="text-gold-light">Comparison</span>
                     </h2>
                     <p className="text-white/70 text-base md:text-lg max-w-3xl">
-                      Client-supplied material compares the Assam Wood Based Industries Rules 2000
+                      This section compares the Assam Wood Based Industries Rules 2000
                       and 2022. The table distinguishes source statements from editorial trend labels.
                     </p>
                   </div>

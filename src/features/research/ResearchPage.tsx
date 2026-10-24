@@ -20,14 +20,14 @@ const RESEARCH_CARDS: ResearchCard[] = [
     icon: <Microscope className="w-6 h-6" strokeWidth={1.5} />,
     title: "National seminar on agar plantation",
     provenance: "client-publication",
-    body: "AATMA's national seminar on the scope and dimension of agar (Aquilaria spp.) plantation in the North Eastern Region was held at the Assam Administrative Staff College, Guwahati, in November 2000. The client-supplied February 2001 proceedings scan is available in the Books route.",
+    body: "AATMA's national seminar on the scope and dimension of agar (Aquilaria spp.) plantation in the North Eastern Region was held at the Assam Administrative Staff College, Guwahati, in November 2000. The February 2001 proceedings scan is available in the Books route.",
     colSpan: 2,
   },
   {
     icon: <TreePine className="w-6 h-6" strokeWidth={1.5} />,
     title: "Cultivation & market data",
     provenance: "client-verified-study",
-    body: "Tree population, district estimates, export quotas, trade records, and product valuations reproduced from the client-supplied summary of the MoEF&CC-commissioned NDF study prepared by the Botanical Survey of India (February 2024). The client has confirmed these PDF figures are to be used as verified by the organization.",
+    body: "Tree population, district estimates, export quotas, trade records, and product valuations reproduced from the MoEF&CC-commissioned NDF study summary prepared by the Botanical Survey of India (February 2024). These PDF figures are confirmed verified by the association.",
   },
   {
     icon: <FileText className="w-6 h-6" strokeWidth={1.5} />,
@@ -38,9 +38,9 @@ const RESEARCH_CARDS: ResearchCard[] = [
 ];
 
 /**
- * Research page — dedicated route for client-supplied research material.
- * Presents the client-supplied MoEF&CC / BSI NDF summary and its figures,
- * confirmed by the client as verified for publication, plus client publications
+ * Research page — dedicated route for association research material.
+ * Presents the MoEF&CC / BSI NDF summary and its figures,
+ * confirmed as verified for publication, plus association publications
  * and policy documents. Newspaper estimates are not used as data sources.
  */
 export function ResearchPage() {
@@ -49,7 +49,7 @@ export function ResearchPage() {
       badge="Research & Publications"
       badgeIcon={<BookOpen size={14} />}
       title={<>Research &amp; <span className="text-gold-light">Knowledge</span></>}
-      subtitle="Client-supplied publications, documents, and findings from the MoEF&CC-commissioned Non-Detriment Findings study prepared by the Botanical Survey of India."
+      subtitle="Publications, documents, and findings from the MoEF&CC-commissioned Non-Detriment Findings study prepared by the Botanical Survey of India."
       heroPaddingBottom="pb-12"
     >
       <section className="relative pb-16 overflow-hidden" aria-label="Research publications overview">

@@ -60,7 +60,7 @@ export function BooksPage() {
           AATMA <span className="text-gold-light">Library</span>
         </>
       }
-      subtitle="Client-supplied publications are reproduced here with their provenance stated."
+      subtitle="Publications are reproduced here with their provenance stated."
     >
       <div className="py-20 md:py-28">
         <BookLibrary

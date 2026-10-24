@@ -67,9 +67,8 @@ export function HistoryPage() {
       <div className="mx-auto max-w-7xl px-6">
         <Reveal variant="fade" delay={0}>
           <p className="max-w-prose text-base leading-relaxed text-white/75 md:text-lg">
-            This is the association&rsquo;s own account, transcribed from the
-            client-supplied document <em>A Brief History of Agar</em> and kept in
-            the client&rsquo;s wording. Eight chapters, in the document&rsquo;s own
+            This is the association&rsquo;s own account, transcribed from the association&rsquo;s own document <em>A Brief History of Agar</em> and kept in
+            its original wording. Eight chapters, in the document&rsquo;s own
             order.
           </p>
         </Reveal>

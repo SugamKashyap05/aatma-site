@@ -1,5 +1,5 @@
 import { ChartFrame, buildAriaSummary } from "./ChartFrame";
-const SOURCE = { publication: "MoEF&CC-commissioned NDF study (Botanical Survey of India)", date: "February 2024", provenanceLabel: "Client-verified NDF study" };
+const SOURCE = { publication: "MoEF&CC-commissioned NDF study (Botanical Survey of India)", date: "February 2024", provenanceLabel: "Verified NDF study" };
 const DATA = [{ label: "Global agarwood market estimate", value: "$32 billion" }, { label: "Projected market by 2029", value: "$64 billion" }];
 const ariaLabel = buildAriaSummary("NDF-reported global agarwood market estimate and projection", DATA);
 export function GlobalMarketGrowth() {

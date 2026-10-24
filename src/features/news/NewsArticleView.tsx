@@ -35,7 +35,7 @@ export function NewsArticleView() {
     if (!article) return;
 
     const title = `${article.headline} — ${AATMA.shortName}`;
-    const description = `${article.outlet}, ${article.date} — a client-supplied newspaper clipping summarized by ${AATMA.shortName}. ${article.excerpt}`;
+    const description = `${article.outlet}, ${article.date} — a newspaper clipping summarized by ${AATMA.shortName}. ${article.excerpt}`;
 
     document.title = title;
 
@@ -136,11 +136,11 @@ export function NewsArticleView() {
             <div className="glass-surface mb-10 rounded-sm border border-gold/25 p-4 md:p-5">
               <p className="text-white/70 text-xs md:text-sm leading-relaxed">
                 <span className="text-gold-light font-semibold uppercase tracking-[0.12em] text-[11px]">
-                  Client-supplied clipping
+                  Newspaper clipping
                 </span>
                 <br />
                 The text below is a checked summary of claims in a
-                client-supplied newspaper clipping, not the complete article.
+                newspaper clipping, not the complete article.
                 The outlet and publication date are shown above; the clipping
                 scan and an online-archive link are not displayed on this page.
               </p>

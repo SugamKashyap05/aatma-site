@@ -5,7 +5,7 @@ import { UnitCapacityCategories } from "@/components/charts/UnitCapacityCategori
 /**
  * Regulatory Framework Data — /policy
  *
- * Mounts quota figures from the client NDF summary and unit categories from
+ * Mounts quota figures from the NDF summary and unit categories from
  * Rule 2 of the notified 2022 Rules. Newspaper estimates are excluded.
  */
 export function PolicyDataSection() {
@@ -35,7 +35,7 @@ export function PolicyDataSection() {
 
       <Reveal variant="up" delay={60}>
         <p className="text-cream/75 text-sm leading-relaxed mb-10 max-w-3xl">
-          The unit-capacity thresholds are read from Rule 2 of the WBI Gazette (No. 20, eCF No. 237152, 12 January 2023). The proposed state-wise export quotas are reproduced from the client-supplied MoEF&amp;CC-commissioned NDF summary prepared by BSI (February 2024).
+          The unit-capacity thresholds are read from Rule 2 of the WBI Gazette (No. 20, eCF No. 237152, 12 January 2023). The proposed state-wise export quotas are reproduced from the MoEF&amp;CC-commissioned NDF summary prepared by BSI (February 2024).
         </p>
       </Reveal>
 

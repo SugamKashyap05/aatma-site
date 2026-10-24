@@ -198,7 +198,7 @@ function TrendBadge({ trend }: { trend: ComparisonRow["trend"] }) {
     return (
       <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.5 rounded-full">
         <Check className="w-3 h-3" />
-        Client-source characterization
+        Source characterization
       </span>
     );
   }
@@ -355,7 +355,7 @@ export function ComparisonTable() {
               <strong className="text-white/70">Doc 3:</strong> AATMA to HCM — Memorandum to Chief Minister of Assam
             </li>
             <li className="pt-2 text-cream/75 italic">
-              Trend labels describe the client-supplied source's characterization; they are not an independent legal assessment.
+              Trend labels describe the source's characterization; they are not an independent legal assessment.
             </li>
           </ul>
         </div>
