@@ -1,4 +1,4 @@
-import { cn, assetUrl, type ClassValue } from "@/lib/utils";
+import { cn, type ClassValue } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
 import { Stagger } from "@/components/ui/reveal";
 import {
@@ -18,7 +18,10 @@ import {
  *
  * Each item carries a terracotta left border (the Assam visual-identity
  * accent introduced alongside this section) to set the tone apart from the
- * celebratory gold-bordered achievement sections above it.
+ * celebratory gold-bordered achievement sections above it. The AIDC card no
+ * longer carries the workshop hall photograph — the client asked for it to
+ * be removed from this card and from the /about section X (2026-10-25). The
+ * workshop photographs stay in the /press gallery.
  *
  * Source: the latest client brief, "A brief note on Agar Trade (2)" §10
  * ("Ongoing Challenges & The Way Forward"), carries the high-license-fee,
@@ -52,9 +55,6 @@ const CHALLENGES: Challenge[] = [
     icon: CalendarDays,
     title: "January 2023 — AIDC Workshop",
     body: "AATMA participated in a one-day stakeholders' workshop organized by the Assam Industrial Development Corporation Limited, in the presence of Honorable Minister of Forest, Minister of Agriculture and Minister of Industry.",
-    image: assetUrl("events/aidc-workshop-hall.jpg"),
-    imageAlt:
-      "The hall at the AIDC stakeholders' workshop, showing the stage and the event backdrop",
   },
 ];
 

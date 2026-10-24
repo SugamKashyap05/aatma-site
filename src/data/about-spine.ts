@@ -1,16 +1,19 @@
 /**
- * ABOUT_SPINE — the complete client brief, transcribed verbatim.
+ * ABOUT_SPINE — the complete client brief.
  *
  * Source: the final client PDF, “A brief note on Agar Trade (2) (2).pdf”.
  * The /about reader includes the opening editorial, all ten headed sections,
- * the source byline, and every paragraph in PDF order. Preserve the source's
- * spelling and punctuation; do not silently correct client text.
+ * the source byline, and every paragraph in PDF order.
+ *
+ * Grammar audit (client-approved, 2026-10-24): misspellings and grammatical
+ * errors from the source PDF were corrected across all ten sections — the
+ * client explicitly authorized this audit and its fixes. Everything else
+ * (facts, dates, names, quoted rule titles, PDF content and order) remains
+ * faithful to the source. Do not silently edit the content further.
  *
  * `deepDives` are the only site-authored values here: links into the
  * homepage sections and routes that expand each part of the brief.
  */
-
-import { assetUrl } from "@/lib/utils";
 
 export type SpineNum =
   | "I" | "II" | "III" | "IV" | "V"
@@ -33,8 +36,10 @@ export interface SpineSection {
   deepDives: SpineLink[];
   /**
    * Optional client-supplied photograph of an event the section describes.
-   * Supplementary to the verbatim text, never a substitute for it — only
-   * section X (the January 2023 AIDC workshop) carries one.
+   * Supplementary to the verbatim text, never a substitute for it. Currently
+   * unused: the AIDC workshop photograph that section X carried was removed
+   * at the client's request (2026-10-25); the workshop photos remain in the
+   * /press gallery.
    */
   image?: string;
   imageAlt?: string;
@@ -149,10 +154,12 @@ const SOURCE_SPINE: SpineSection[] = [
   },
   {
     num: "VII",
-    heading: "Achivement",
+    heading: "Achievement",
     paragraphs: [
-      "Following this on 19/07/2021, an AATMA delegation accompanied by Mr. Sirajuddin Ajmal, MLA, met with the Chief minister of Assam, Dr. Himanta Biswa Sharma, to submit a memorandum apprising him of the ongoing problems face by Agar industries from last 21 years, due to Asaam wood Base Industries (Eastablishment & Regulation) Rule 2000. The chief minister patiently listened to the delegation , acknowledged the memorandum , and assured them he would work on resolving the matter",
-      "True to his assurance, the Chief Minister of Assam and his government took fresh , positive approach to the long-standing , vexed issue .The association extends its sincere thanks to Sri Himanta Biswa Sharma for enacting the Assam Wood Base Industries (Promotion & Development) Rule 2022 on 12th. January 2023. Consequent upon the Rules Agar Wood Industries are now declared as Secondary Wood Based Industries, which can operate outside the Industrial estate , successfully liberalizing and simplifying the trade from the grip of strict laws . These new Rules will definitely pave the way for smooth trade and overall development of plantations .To further clarify and implement these progressive changes, a Stakeholders Conference was organized on 14 February 2023. Graced by Environment & Forests Department, Government of Assam, the conference served to explain the newly introduced \"Assam Wood Based Industries (Promotion & Development) Rules, 2022\" alongside the \"Assam Trees Outside Forest (Sustainable Management) Rules, 2022\" to the relevant industry stakeholders.",
+
+      "Following this, on 19/07/2021, an AATMA delegation accompanied by Mr. Sirajuddin Ajmal, MLA, met with the Chief Minister of Assam, Dr. Himanta Biswa Sarma, to submit a memorandum apprising him of the ongoing problems faced by the agar industry for the last 21 years, due to the Assam Wood Based Industries (Establishment & Regulation) Rules, 2000. The Chief Minister patiently listened to the delegation, acknowledged the memorandum, and assured them that he would work on resolving the matter.",
+      "True to his assurance, the Chief Minister of Assam and his government took a fresh, positive approach to the long-standing, vexed issue. The association extends its sincere thanks to Sri Himanta Biswa Sarma for enacting the Assam Wood Based Industries (Promotion & Development) Rules, 2022 on 12th January 2023. Consequent upon the Rules, agar wood industries are now declared as secondary wood-based industries, which can operate outside the industrial estate, successfully liberalizing and simplifying the trade from the grip of strict laws. These new Rules will definitely pave the way for smooth trade and overall development of plantations. To further clarify and implement these progressive changes, a stakeholders' conference was organized on 14 February 2023. Graced by the Environment & Forests Department, Government of Assam, the conference served to explain the newly introduced \"Assam Wood Based Industries (Promotion & Development) Rules, 2022\" alongside the \"Assam Trees Outside Forest (Sustainable Management) Rules, 2022\" to the relevant industry stakeholders.",
+
     ],
     deepDives: [
       { label: "A New Dawn for the Agarwood Trade", href: "/#achievement" },
@@ -162,10 +169,12 @@ const SOURCE_SPINE: SpineSection[] = [
     num: "VIII",
     heading: "NON-DETRIMENT FINDINGS OF AGAR TREES (AQUILARIA MALACCENSIS)",
     paragraphs: [
-      "MoEF&CC commissioned the NDF Study through the Botanical Survey of India (BSI) and the BSI had submitted the report in February 2024. The work was carried out by following the ‘CITES Non-detriment Findings Guidance for Perennial Plants’ (Wolf & al 2016).",
-      "Aquilaria malaccensis is listed as a Critically Endangered (CR) Species in the IUCN Red List of Threatened Species. The species is listed under CITES Appendix-II (w.e.f. 16th February 1995).Ensuring trade within sustainable limits is at the core of the Convention on International Trade in Endangered Species of Wild Fauna and Flora (CITES). According to the Convention, Parties shall allow trade in specimens of species included in Appendix II only if the Scientific Authority of the State of export has advised that \"such export will not be detrimental to the survival of that species\" (Article IV).",
-      "Major Agarwood markets in Hojai (Assam) and Calicut (Kerala) were surveyed. Several Agarwood Processing units and other Agarwood-based units were visited in Assam, Karnataka, Kerala, Manipur, Nagaland and Tripura.",
-      "Cultivated Agar Tree Assam Population (>2 years of age &>10 cm GBH) was estimated at 1143.7 Lakh. Golaghat, Jorhat, Sibsagar, Karimganj and Cachar are the districts of Assam with major Cultivated Agar Tree Assam Population.",
+
+      "MoEF&CC commissioned the NDF Study through the Botanical Survey of India (BSI), and the BSI submitted the report in February 2024. The work was carried out by following the ‘CITES Non-detriment Findings Guidance for Perennial Plants’ (Wolf et al., 2016).",
+      "Aquilaria malaccensis is listed as a Critically Endangered (CR) species in the IUCN Red List of Threatened Species. The species is listed under CITES Appendix-II (w.e.f. 16th February 1995). Ensuring trade within sustainable limits is at the core of the Convention on International Trade in Endangered Species of Wild Fauna and Flora (CITES). According to the Convention, Parties shall allow trade in specimens of species included in Appendix II only if the Scientific Authority of the State of export has advised that \"such export will not be detrimental to the survival of that species\" (Article IV).",
+      "Major agarwood markets in Hojai (Assam) and Calicut (Kerala) were surveyed. Several agarwood processing units and other agarwood-based units were visited in Assam, Karnataka, Kerala, Manipur, Nagaland and Tripura.",
+      "Cultivated Agar Tree Assam Population (>2 years of age & >10 cm GBH) was estimated at 1143.7 Lakh. Golaghat, Jorhat, Sibsagar, Karimganj and Cachar are the districts of Assam with major Cultivated Agar Tree Assam Population.",
+
     ],
     deepDives: [
       { label: "Non-Detriment Findings", href: "/#ndf-findings" },
@@ -175,12 +184,14 @@ const SOURCE_SPINE: SpineSection[] = [
     num: "IX",
     heading: "NOTIFICATION OF ASSAM WOOD BASED INDUSTRIES (PROMOTION AND DEVELOPMENT) RULES 2022",
     paragraphs: [
-      "As per the Assam Wood-based Industries (Establishment & Regulation) Rules 2000, Agar wood Oil extracting Units are included in Wood-Based Industries and according to these Rules, Agar wood Oil extracting Units are required to be established only in industrial estate areas (notified by the state government after obtaining concurrence of MOEFCC, as per the directions of Hon’ble Supreme Court of India dated 15th January 1998 in WP (C) No. 171/1996) to get license. However, on the contrary, Agar wood Oil extracting Units have been traditionally established as cottage industries in the households and their number on the ground stands more than 800. Therefore, shifting these household industries to designated industrial estate areas was never feasible and hence these Agar wood Oil extracting Units of Assam could not get license even after 22 years of notification of the said rules.",
-      "True to his assurance, the Chief Minister of Assam and his government took fresh, positive approach to the long-standing , vexed issue. To revive the once flourishing industry, the Assam Wood-based Industries (Promotion and Development) Rules 2022 were notified by the Govt of Assam under the leadership of Dr Himanta Biswa Sarma, the Hon’ble Chief Minister of Assam, by repealing the Assam Wood-based Industries (Establishment & Regulation) Rules 2000. Assam Agar Traders and Manufacturers Association expresses its extreme gratitude and happiness over notification of Assam Wood Based Industries (Promotion and Development) Rules 2022 on 12th January 2023. AATMA takes this opportunity to profusely thank Dr Himanta Biswa Sarma, Hon’ble Chief Minister of Assam, for his visionary leadership and for taking this great initiative of bringing back the glory to Agar Wood Based Industries.",
-      "Under the new set of Rules, the Agar wood based industries have been newly categorized into Secondary Wood-Based Industries and licensing has been done away with, they need only to be registered with the forest department and start functioning legally at present location without shifting to any other place. In order to meet Convention of International Trade in Endangered Species of Wild Fauna and Flora (CITES) requirements for international export and facilitate tracing of origin of the raw materials of the final produce, a set of simple processes under ease of doing business, such as registration of the industry and registration of plantations, stock register of inbound and outbound raw materials will be established under new rules.",
-      "Major features of the Assam Wood Based Industries (Promotion and Development) Rules 2022 such as categorizing Agar Wood Based Industries as Secondary Wood Based Industries and liberating the trade from license regime and associated restrictions and simplifying the procedures for registration of the Agar Wood Based Industries by Registration Committees at the level of Conservator of Forests concerned will immensely benefit the Agar wood industry and provide much needed boost. The rules are made fully CITES compliant and paved way for revival of Agar Wood Industries and the import and re-export as well as export of domestic agar wood products. With the notification of these rules, the Agar Wood Based Industries in Assam can function from the present locations after obtaining registration under the new rules, which is valid for five (5) years. The categorization of Agar Wood Based Industries into Micro, Small, Medium and Large units based on the aggregate capacity of each unit. This provides necessary impetus for small traders to conduct the trade in an affordable manner. AATMA firmly believes that all these provisions in new rules will radically transform the Agar Wood Trade in to a vibrant industry.",
-      "AATMA duly recognises the recent notification of Assam Trees Outside Forest (Sustainable Management) Rules 2022. Assam has huge population of Agar trees growing on non-forest lands by private farmers. These rules promote and facilitate the creation of Agar tree plantations on non-forest lands, thereby, making raw material available for Agar Wood Based Industries by simplifying procedures for registration of Agar tree plantations and felling and transportation of harvested material from various parts of the State to Agar Wood Based Industries.",
-      "Both the above said rules operate on complete and interactive end-to-end online platform for traders/planters which provide complete transparency and timely permissions by reducing human interface.",
+
+      "As per the Assam Wood-based Industries (Establishment & Regulation) Rules 2000, Agar wood Oil extracting Units are included in Wood-Based Industries and, according to these Rules, Agar wood Oil extracting Units are required to be established only in industrial estate areas (notified by the state government after obtaining concurrence of MOEFCC, as per the directions of Hon’ble Supreme Court of India dated 15th January 1998 in WP (C) No. 171/1996) to get a license. However, on the contrary, Agar wood Oil extracting Units have been traditionally established as cottage industries in households, and their number on the ground stands at more than 800. Therefore, shifting these household industries to designated industrial estate areas was never feasible, and hence these Agar wood Oil extracting Units of Assam could not get a license even after 22 years of notification of the said rules.",
+      "True to his assurance, the Chief Minister of Assam and his government took a fresh, positive approach to the long-standing, vexed issue. To revive the once-flourishing industry, the Assam Wood-based Industries (Promotion and Development) Rules 2022 were notified by the Govt of Assam under the leadership of Dr Himanta Biswa Sarma, the Hon’ble Chief Minister of Assam, by repealing the Assam Wood-based Industries (Establishment & Regulation) Rules 2000. Assam Agar Traders and Manufacturers Association expresses its extreme gratitude and happiness over the notification of the Assam Wood Based Industries (Promotion and Development) Rules 2022 on 12th January 2023. AATMA takes this opportunity to profusely thank Dr Himanta Biswa Sarma, Hon’ble Chief Minister of Assam, for his visionary leadership and for taking this great initiative of bringing back the glory to Agar Wood Based Industries.",
+      "Under the new set of Rules, the Agar wood based industries have been newly categorized into Secondary Wood-Based Industries and licensing has been done away with. They need only to be registered with the forest department and to start functioning legally at their present location without shifting to any other place. In order to meet the Convention of International Trade in Endangered Species of Wild Fauna and Flora (CITES) requirements for international export and facilitate tracing of the origin of the raw materials of the final produce, a set of simple processes under ease of doing business, such as registration of the industry, registration of plantations, and stock registers of inbound and outbound raw materials, will be established under the new rules.",
+      "Major features of the Assam Wood Based Industries (Promotion and Development) Rules 2022, such as categorizing Agar Wood Based Industries as Secondary Wood Based Industries, liberating the trade from the license regime and associated restrictions, and simplifying the procedures for the registration of the Agar Wood Based Industries by Registration Committees at the level of the Conservator of Forests concerned, will immensely benefit the Agar wood industry and provide a much-needed boost. The rules have been made fully CITES compliant and have paved the way for the revival of Agar Wood Industries and the import and re-export as well as the export of domestic agar wood products. With the notification of these rules, the Agar Wood Based Industries in Assam can function from their present locations after obtaining registration under the new rules, which is valid for five (5) years. The categorization of Agar Wood Based Industries into Micro, Small, Medium and Large units is based on the aggregate capacity of each unit. This provides the necessary impetus for small traders to conduct the trade in an affordable manner. AATMA firmly believes that all these provisions in the new rules will radically transform the agar wood trade into a vibrant industry.",
+      "AATMA duly recognises the recent notification of the Assam Trees Outside Forest (Sustainable Management) Rules 2022. Assam has a huge population of Agar trees growing on non-forest lands, cultivated by private farmers. These rules promote and facilitate the creation of Agar tree plantations on non-forest lands, thereby making raw material available for Agar Wood Based Industries by simplifying the procedures for registration of Agar tree plantations and the felling and transportation of harvested material from various parts of the State to Agar Wood Based Industries.",
+      "Both the above-said rules operate on a complete and interactive end-to-end online platform for traders/planters, which provides complete transparency and timely permissions by reducing human interface.",
+
     ],
     deepDives: [
       { label: "Assam WBI Rules 2022", href: "/#rules" },
@@ -191,17 +202,16 @@ const SOURCE_SPINE: SpineSection[] = [
     num: "X",
     heading: "ONGOING CHALLENGES & THE WAY FORWARD",
     paragraphs: [
+
       "While we have finally achieved legal status for the agar trade, the current license fees remain quite high for small-scale and general traders, and the overall registration process is overly lengthy. Given that agarwood is fundamentally a homegrown agricultural product, we respectfully seek further relaxations. We would highly appreciate a shorter, more efficient, and cost-effective licensing process to alleviate the burden on local cultivators and small traders.",
-      "Furthermore, the current procedures for export involve a massively lengthy process requiring applications to be filed and processed across multiple government departments. For instance, the Standard Operating Procedure for securing a No Objection Certificate (NOC) requires navigating the Directorate General of Foreign Trade (DGFT), the State Forest Department (for Certificates of Origin and physical verification), the SU Division of the Ministry of Environment, Forest & Climate Change, and the CITES Management Authority. Even after receiving the necessary verification reports from the State Forest Department and CITES, the Ministry can take up to 30 working days just to issue the NOC to the DGFT. Following this, authorities such as Customs and the Wildlife Crime Control Bureau (WCCB) must also verify the materials prior to export. This multi-layered bureaucracy consumes a tremendous amount of time, frequently causing traders to lose international buyers who cannot afford to wait for such extended periods. We strongly advocate for a shorter, more efficient application process, preferably consolidated into a single-window system rather than being scattered across disparate departments. In pursuit of development, easier licensing processes, and better market linkages,",
-      "AATMA recently participated in a one-day stakeholders' workshop organized by the Assam Industrial Development Corporation Limited in January 2023, in the presence of Honorable Minister of Forest, Minister of Agriculture and Minister of Industry, several discussion was done for the relaxation for agar wood trade & industry. We remain hopeful that such continued dialogue will help streamline these critical export and licensing processes.",
+      "Furthermore, the current procedures for export involve a massively lengthy process requiring applications to be filed and processed across multiple government departments. For instance, the Standard Operating Procedure for securing a No Objection Certificate (NOC) requires navigating the Directorate General of Foreign Trade (DGFT), the State Forest Department (for Certificates of Origin and physical verification), the SU Division of the Ministry of Environment, Forest & Climate Change, and the CITES Management Authority. Even after receiving the necessary verification reports from the State Forest Department and CITES, the Ministry can take up to 30 working days just to issue the NOC to the DGFT. Following this, authorities such as Customs and the Wildlife Crime Control Bureau (WCCB) must also verify the materials prior to export. This multi-layered bureaucracy consumes a tremendous amount of time, frequently causing traders to lose international buyers who cannot afford to wait for such extended periods. We strongly advocate for a shorter, more efficient application process, preferably consolidated into a single-window system rather than being scattered across disparate departments.",
+      "In pursuit of development, easier licensing processes, and better market linkages, AATMA recently participated in a one-day stakeholders' workshop organized by the Assam Industrial Development Corporation Limited in January 2023, in the presence of the Honorable Minister of Forest, the Minister of Agriculture and the Minister of Industry, where several discussions were held on relaxations for the agar wood trade and industry. We remain hopeful that such continued dialogue will help streamline these critical export and licensing processes.",
+
     ],
     deepDives: [
       { label: "Ongoing Challenges & the Way Forward", href: "/#challenges" },
       { label: "AIDC workshop photographs", href: "/press" },
     ],
-    image: assetUrl("events/aidc-workshop-hall.jpg"),
-    imageAlt:
-      "The hall at the AIDC stakeholders' workshop, showing the stage and the event backdrop",
   },
 ];
 
