@@ -178,7 +178,7 @@ export const DEFAULT_EVENTS: TimelineEvent[] = [
     era: "modern",
   },
   {
-    year: "14 Jan 2023",
+    year: "14 Feb 2023",
     title: "Stakeholders Conference",
     description:
       "A Stakeholders Conference was organized to explain the Assam Wood Based Industries (Promotion & Development) Rules, 2022 and the Assam Trees Outside Forest (Sustainable Management) Rules, 2022 to relevant industry stakeholders, in the presence of the Environment & Forests Department, Government of Assam.",

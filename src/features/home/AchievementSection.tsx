@@ -3,7 +3,7 @@ import { Reveal } from "@/components/ui/reveal";
 
 /**
  * AchievementSection — summarizes the 2021 CM meeting, notification of the
- * 2022 WBI Rules in January 2023, and the January 2023 Stakeholders Conference.
+ * 2022 WBI Rules in January 2023, and the February 2023 Stakeholders Conference.
  *
  * The final client brief supports more than 800 cottage industries on the
  * ground and describes 22 years of struggle. The 22-year phrase is sourced
@@ -32,9 +32,9 @@ const EVENTS = [
     body: "The Assam Wood Based Industries (Promotion & Development) Rules, 2022 were notified. The old licensing regime was done away with — units need only register with the forest department and can function legally at their present location.",
   },
   {
-    date: "January 14, 2023",
+    date: "February 14, 2023",
     title: "Stakeholders Conference",
-    body: "A Stakeholders Conference was organized on 14 January 2023 to explain the Assam Wood Based Industries (Promotion & Development) Rules, 2022 and the Assam Trees Outside Forest (Sustainable Management) Rules, 2022 to relevant industry stakeholders, in the presence of the Environment & Forests Department, Government of Assam.",
+    body: "A Stakeholders Conference was organized on 14 February 2023 to explain the Assam Wood Based Industries (Promotion & Development) Rules, 2022 and the Assam Trees Outside Forest (Sustainable Management) Rules, 2022 to relevant industry stakeholders, in the presence of the Environment & Forests Department, Government of Assam.",
   },
 ] as const;
 
