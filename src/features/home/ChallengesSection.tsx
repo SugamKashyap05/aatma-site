@@ -13,7 +13,7 @@ import {
  *
  * Three challenges currently facing Assam's agarwood trade: license fees that
  * price out small traders, the single-window system AATMA advocates in place
- * of multi-layered bureaucracy, and the August 26, 2026 AIDC stakeholders'
+ * of multi-layered bureaucracy, and the January 2023 AIDC stakeholders'
  * workshop where the industry put its case to government.
  *
  * Each item carries a terracotta left border (the Assam visual-identity
@@ -22,8 +22,9 @@ import {
  *
  * Source: the latest client brief, "A brief note on Agar Trade (2)" §10
  * ("Ongoing Challenges & The Way Forward"), carries the high-license-fee,
- * single-window and 26 August 2026 AIDC workshop wording directly. The
- * canonical Phase 1 ledger supersedes the old `exclude` row for the
+ * single-window and AIDC workshop wording directly; the brief dates the
+ * workshop 26.08.2026, and the client corrected it to January 2023
+ * (2026-10-24). The canonical Phase 1 ledger supersedes the old `exclude`
  * NOC/30-working-day claim; that claim is not rendered here.
  */
 
@@ -49,9 +50,9 @@ const CHALLENGES: Challenge[] = [
   },
   {
     icon: CalendarDays,
-    title: "August 26, 2026 — AIDC Workshop",
+    title: "January 2023 — AIDC Workshop",
     body: "AATMA participated in a one-day stakeholders' workshop organized by the Assam Industrial Development Corporation Limited, in the presence of Honorable Minister of Forest, Minister of Agriculture and Minister of Industry.",
-    image: assetUrl("events/aidc-workshop-2026-hall.jpg"),
+    image: assetUrl("events/aidc-workshop-hall.jpg"),
     imageAlt:
       "The hall at the AIDC stakeholders' workshop, showing the stage and the event backdrop",
   },

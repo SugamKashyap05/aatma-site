@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { assetUrl, cn } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
-import { Calendar, MapPin, Radio } from "lucide-react";
+import { ArrowDown, Calendar, MapPin, Radio } from "lucide-react";
 
 // ─── Transcript Loading ──────────────────────────────────────────────────────
 // Transcripts are pre-sanitized by scripts/sanitize-transcripts.mjs into docs/web/.
@@ -84,6 +84,7 @@ const LANGUAGES: { key: LanguageKey; label: string }[] = [
 
 export function PressMeetSection({ className }: { className?: string }) {
   const [activeTab, setActiveTab] = useState<LanguageKey>("english");
+  const [transcriptOpen, setTranscriptOpen] = useState(false);
 
   const blocks = useMemo(
     () => parseTranscript(TRANSCRIPTS[activeTab]),
@@ -109,48 +110,87 @@ export function PressMeetSection({ className }: { className?: string }) {
           </div>
         </Reveal>
 
-        {/* Transcript tabs */}
+        {/* Transcript — one collapsed card behind a "Read transcription"
+            toggle (the same Read more pattern as FormationSection.tsx) so the
+            video stays the focus of the section; the full text is one click
+            away instead of filling the page beneath the clip. */}
         <Reveal variant="up" delay={100}>
-          <div className="mb-8">
-            <div className="flex gap-2 mb-6">
-              {LANGUAGES.map((lang) => (
-                <button
-                  key={lang.key}
-                  type="button"
-                  aria-pressed={activeTab === lang.key}
-                  onClick={() => setActiveTab(lang.key)}
+          <div className="glass-surface rounded-sm p-6">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+              <div>
+                <h3 className="font-display font-bold text-white text-lg">
+                  Transcript
+                </h3>
+                <p className="mt-1.5 text-cream/75 text-sm leading-relaxed max-w-2xl">
+                  The full remarks delivered at the press meet, in the
+                  speakers&rsquo; own words — available in Assamese, English,
+                  and Hindi.
+                </p>
+              </div>
+              <button
+                type="button"
+                aria-expanded={transcriptOpen}
+                aria-controls="press-meet-transcript-body"
+                data-transcript-toggle
+                onClick={() => setTranscriptOpen((current) => !current)}
+                className="group inline-flex min-h-11 items-center gap-2 rounded-sm border border-gold/50 bg-glass-card px-5 py-2.5 text-sm font-semibold tracking-wide text-gold-light transition-colors hover:border-gold hover:bg-green-deep/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light motion-reduce:transition-none shrink-0"
+              >
+                {transcriptOpen ? "Show less" : "Read transcription"}
+                <ArrowDown
+                  size={16}
+                  aria-hidden="true"
+                  focusable="false"
                   className={cn(
-                    "px-4 py-2 min-h-[44px] text-sm font-medium rounded-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light",
-                    activeTab === lang.key
-                      ? "bg-gold text-green-deep"
-                      : "bg-glass-surface-subtle text-cream/90 hover:text-cream"
+                    "transition-transform motion-reduce:transition-none",
+                    transcriptOpen && "rotate-180"
                   )}
-                >
-                  {lang.label}
-                </button>
-              ))}
+                />
+              </button>
             </div>
 
-            <div className="space-y-4">
-              {blocks.map((block, i) => (
-                <div
-                  key={i}
-                  className="glass-surface rounded-sm p-4"
-                >
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-gold-light font-semibold text-sm">
-                      {block.speaker}
-                    </span>
-                    <span className="text-cream/75 text-xs">
-                      {block.timestamp}
-                    </span>
-                  </div>
-                  <p className="text-white/80 text-sm leading-relaxed">
-                    {block.content}
-                  </p>
+            {transcriptOpen && (
+              <div id="press-meet-transcript-body" className="mt-6">
+                <div className="flex gap-2 mb-6">
+                  {LANGUAGES.map((lang) => (
+                    <button
+                      key={lang.key}
+                      type="button"
+                      aria-pressed={activeTab === lang.key}
+                      onClick={() => setActiveTab(lang.key)}
+                      className={cn(
+                        "px-4 py-2 min-h-[44px] text-sm font-medium rounded-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light",
+                        activeTab === lang.key
+                          ? "bg-gold text-green-deep"
+                          : "bg-glass-surface-subtle text-cream/90 hover:text-cream"
+                      )}
+                    >
+                      {lang.label}
+                    </button>
+                  ))}
                 </div>
-              ))}
-            </div>
+
+                <div className="space-y-4">
+                  {blocks.map((block, i) => (
+                    <div
+                      key={i}
+                      className="glass-surface rounded-sm p-4"
+                    >
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="text-gold-light font-semibold text-sm">
+                          {block.speaker}
+                        </span>
+                        <span className="text-cream/75 text-xs">
+                          {block.timestamp}
+                        </span>
+                      </div>
+                      <p className="text-white/80 text-sm leading-relaxed">
+                        {block.content}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </Reveal>
 

@@ -84,7 +84,7 @@ The user-approved homepage redesign is planned in `docs/FINAL_BRIEF_HOMEPAGE_RED
 | ID-031 | IUCN CR and CITES Appendix II effective 16 February 1995 | Verified | [BRIEF2] §8 | Retain |
 | ID-032 | Tree population `1143.7 Lakh` and five districts | Verified | [BRIEF2] §8 | Retain |
 | ID-033 | High license fees, registration process, NOC/DGFT/30-working-day wording, single-window advocacy | Verified | [BRIEF2] §10 | Retain as client-authored concerns |
-| ID-034 | 26 August 2026 AIDC workshop | Verified | [BRIEF2] §10 | Retain |
+| ID-034 | AIDC stakeholders' workshop — January 2023 (brief states 26.08.2026) | Verified with client correction | [BRIEF2] §10 states 26.08.2026; the client corrected the date to January 2023 on 2026-10-24 | Retain the corrected January 2023 date on all surfaces; the /about source paragraph carries the corrected date in place of "on 26.08.2026" |
 | ID-035 | Institutional office-address text visible on supplied publication/media artwork | Client-supplied artifact text; not a site-authored contact block | The client-supplied proceedings cover (p.1) and supplied press-meet banner display an institutional office-address line; current visible instances are inherent in the `/books` cover and `/press` media frame. See `docs/ACTIVE_ASSET_PROVENANCE_REGISTER.md`. | Do not create a separate Contact section or repeat/normalize the address as site-authored copy; preserve the source artifact only under the existing client-material decision. |
 | ID-036 | Achievement summary name “Dr. Himanta Biswa Sarma” | Verified with a source spelling discrepancy | [BRIEF2-PDF-FINAL] §9, [PRESS], and [HCM] use “Sarma”; [BRIEF2-PDF-FINAL] §VII and [HIST] p.4 use “Sharma” | Homepage summary follows §9/[PRESS]/[HCM]; the full reader preserves the source text verbatim. |
 
@@ -129,7 +129,7 @@ The old ledger's `exclude` / `needs confirmation` conclusions below are correcte
 - **High license fees and overly lengthy registration** — Verified, [BRIEF2] §10.
 - **NOC process through DGFT, State Forest Department, MoEFCC/CITES and up to 30 working days** — Verified, [BRIEF2] §10.
 - **Single-window system advocacy and buyer-loss wording** — Verified, [BRIEF2] §10.
-- **26 August 2026 AIDC workshop and participating ministers** — Verified, [BRIEF2] §10.
+- **AIDC workshop and participating ministers** — Verified, [BRIEF2] §10; the brief dates it 26.08.2026, corrected to January 2023 by the client (2026-10-24).
 - **Species list** — Verified, [BRIEF2] §1.
 - **IUCN Critically Endangered listing** — Verified, [BRIEF2] §8.
 - **NDF figures, BSI study, CITES date and district list** — Verified, [BRIEF2] §8.

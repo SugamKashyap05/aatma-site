@@ -93,8 +93,8 @@ export function HistoryPage() {
         <Reveal variant="up" delay={120}>
           <p className="mb-8 max-w-3xl text-base leading-relaxed text-white/75 md:text-lg">
             The dated records behind the chapters above — from early oil
-            extraction in Sylhet to AATMA&rsquo;s participation in the 2026 AIDC
-            workshop. Select any entry to read its detail.
+            extraction in Sylhet to AATMA&rsquo;s participation in the January
+            2023 AIDC workshop. Select any entry to read its detail.
           </p>
         </Reveal>
         <InteractiveTimeline />

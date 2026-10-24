@@ -230,21 +230,21 @@ export const DEFAULT_EVENTS: TimelineEvent[] = [
     era: "modern",
   },
   {
+    year: "Jan 2023",
+    title: "AIDC Stakeholders’ Workshop",
+    description:
+      "AATMA participated in a one-day stakeholders’ workshop organized by the Assam Industrial Development Corporation Limited, in the presence of the Forest, Agriculture, and Industry Ministers. Discussions covered relaxations for the agarwood trade and industry.",
+    era: "modern",
+    image: assetUrl("events/aidc-workshop-hall.jpg"),
+    imageAlt:
+      "The hall at the AIDC stakeholders' workshop, showing the stage and the event backdrop",
+  },
+  {
     year: "14 Feb 2023",
     title: "Stakeholders Conference",
     description:
       "A Stakeholders Conference was organized to explain the Assam Wood Based Industries (Promotion & Development) Rules, 2022 and the Assam Trees Outside Forest (Sustainable Management) Rules, 2022 to relevant industry stakeholders, in the presence of the Environment & Forests Department, Government of Assam.",
     era: "modern",
-  },
-  {
-    year: "26 Aug 2026",
-    title: "AIDC Stakeholders’ Workshop",
-    description:
-      "AATMA participated in a one-day stakeholders’ workshop organized by the Assam Industrial Development Corporation Limited, in the presence of the Forest, Agriculture, and Industry Ministers. Discussions covered relaxations for the agarwood trade and industry.",
-    era: "modern",
-    image: assetUrl("events/aidc-workshop-2026-hall.jpg"),
-    imageAlt:
-      "The hall at the AIDC stakeholders' workshop, showing the stage and the event backdrop",
   },
 ];
 

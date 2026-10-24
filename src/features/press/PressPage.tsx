@@ -130,7 +130,7 @@ export function PressPage() {
         </div>
       </div>
 
-      {/* AIDC stakeholders' workshop — 26 August 2026.
+      {/* AIDC stakeholders' workshop — January 2023.
           Given its own block rather than folded into the events grid above:
           these are 3:4 portrait frames, and that grid renders a fixed
           192px-tall landscape strip which would crop the stage and backdrop
@@ -148,7 +148,7 @@ export function PressPage() {
           </Reveal>
           <p className="mb-8 max-w-3xl text-sm md:text-base leading-relaxed text-cream/70">
             AATMA participated in a one-day stakeholders&rsquo; workshop organised
-            by the {AIDC_WORKSHOP.organiser} on {AIDC_WORKSHOP.date},{" "}
+            by the {AIDC_WORKSHOP.organiser} in {AIDC_WORKSHOP.date},{" "}
             {AIDC_WORKSHOP.attendeeNote}. Discussions covered relaxations for the
             agarwood trade and industry.
           </p>

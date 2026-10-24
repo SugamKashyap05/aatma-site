@@ -47,9 +47,14 @@ export const EVENT_PHOTOS: EventPhoto[] = [
 ];
 
 /**
- * Photographs of the one-day stakeholders' workshop AATMA attended on
- * 26 August 2026, organised by the Assam Industrial Development Corporation
+ * Photographs of the one-day stakeholders' workshop AATMA attended in
+ * January 2023, organised by the Assam Industrial Development Corporation
  * Limited. Client-supplied images of the event.
+ *
+ * Date note: the brief states "on 26.08.2026"; the client corrected the
+ * workshop date to January 2023 (2026-10-24), and every visible surface now
+ * carries the corrected date. See the workshop rows in
+ * docs/APPROVED_CONTENT_LEDGER.md.
  *
  * Kept separate from `EVENT_PHOTOS` because these are 3:4 portrait frames:
  * the shared gallery renders a fixed 192px-tall landscape strip, which would
@@ -64,29 +69,30 @@ export interface WorkshopPhoto {
 
 export const AIDC_WORKSHOP_PHOTOS: WorkshopPhoto[] = [
   {
-    id: "aidc-workshop-2026-hall",
-    src: assetUrl("events/aidc-workshop-2026-hall.jpg"),
+    id: "aidc-workshop-hall",
+    src: assetUrl("events/aidc-workshop-hall.jpg"),
     alt: "The hall at the AIDC stakeholders' workshop, showing the stage and the event backdrop",
     caption:
       "The workshop hall. The backdrop names the Assam Wood Based Industries (Promotion & Development) Rules, 2022 and the Assam Trees Outside Forest (Sustainable Management) Rules, 2022.",
   },
   {
-    id: "aidc-workshop-2026-podium",
-    src: assetUrl("events/aidc-workshop-2026-podium.jpg"),
+    id: "aidc-workshop-podium",
+    src: assetUrl("events/aidc-workshop-podium.jpg"),
     alt: "A speaker addressing the AIDC stakeholders' workshop from the podium",
     caption: "A speaker addressing the workshop from the podium.",
   },
   {
-    id: "aidc-workshop-2026-speaker",
-    src: assetUrl("events/aidc-workshop-2026-speaker.jpg"),
+    id: "aidc-workshop-speaker",
+    src: assetUrl("events/aidc-workshop-speaker.jpg"),
     alt: "A speaker at the podium during the AIDC stakeholders' workshop, with a guest seated on stage",
     caption: "A speaker at the podium, with a guest seated on stage.",
   },
 ];
 
-/** The AIDC stakeholders' workshop — date and organiser, as the client brief states. */
+/** The AIDC stakeholders' workshop — date and organiser. The brief states
+ *  "26.08.2026"; the client corrected the date to January 2023 (2026-10-24). */
 export const AIDC_WORKSHOP = {
-  date: "26 August 2026",
+  date: "January 2023",
   organiser: "Assam Industrial Development Corporation Limited",
   attendeeNote:
     "in the presence of the Minister of Forest, the Minister of Agriculture and the Minister of Industry",
