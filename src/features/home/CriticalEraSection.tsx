@@ -60,7 +60,7 @@ export function CriticalEraSection({ className }: { className?: ClassValue }) {
             Critical Era · 2000–2016
           </span>
           <h2 className="mb-6 font-display text-3xl font-bold text-agar-title md:text-5xl">
-            The Critical Era
+            The Critical Era of Agar Trade
           </h2>
           <p className="mx-auto max-w-3xl text-base leading-relaxed text-agar-body md:text-lg">
             In the year 2000 the Govt. of Assam notified the Assam Wood Based

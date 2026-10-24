@@ -120,7 +120,7 @@ regulators, researchers, and trade partners.
 **Acceptance criteria:**
 - [ ] `/` renders the current content composition: `AatmaHero`, About, Sanchi Paat, Agar Story, Formation, Critical Era, Achievement, NDF Findings, Rules, Challenges, Press teaser, Latest News teaser, Message from the President, and Footer.
 - [ ] “Message from the President” is the final homepage section, renders above the footer, and carries the client's message text verbatim with the President's byline.
-- [ ] The Critical Era cards render in chronological order (2000, 2005, 2011, 2016).
+- [ ] The Critical Era cards render in chronological order (2000, 2005, 2010, 2011, 2016).
 - [ ] Navbar section links resolve to the current rendered homepage section IDs; route links resolve to implemented pages.
 - [ ] Anchor scrolling works with `scroll-mt` offset under the fixed navbar.
 - [ ] Parallax hero does not animate when `prefers-reduced-motion` is set.
