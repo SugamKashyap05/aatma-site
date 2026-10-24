@@ -5,9 +5,11 @@ import { Reveal } from "@/components/ui/reveal";
  * PresidentMessage — the President's message to the association.
  *
  * The client replaced the brief's opening editorial with this message and
- * asked for it to close the homepage, above the footer, under this heading.
+ * asked for it to close the homepage, above the footer, under this tag.
  * The wording is verbatim from the client's message. The four paragraph
  * breaks fall on the message's own sentence boundaries and change no wording.
+ * The section's own h2 ("Message from the President") was removed at the
+ * client's request (2026-10-24); only the "From the President" tag remains.
  */
 
 const MESSAGE_PARAGRAPHS = [
@@ -38,12 +40,9 @@ export function PresidentMessage({ className }: { className?: ClassValue }) {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         <Reveal variant="fade" delay={0} className="mb-14 text-center">
-          <span className="mb-4 inline-block rounded-sm border border-white/20 bg-glass-card px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.25em] text-agar-label backdrop-blur-xl">
+          <span className="inline-block rounded-sm border border-white/20 bg-glass-card px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.25em] text-agar-label backdrop-blur-xl">
             From the President
           </span>
-          <h2 className="font-display text-3xl font-bold text-agar-title md:text-5xl">
-            Message from the President
-          </h2>
         </Reveal>
 
         <Reveal variant="up" delay={100}>
