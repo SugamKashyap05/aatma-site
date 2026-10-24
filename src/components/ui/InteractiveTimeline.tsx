@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { assetUrl, cn } from "@/lib/utils";
 import { useDevice } from "@/context/DeviceContext";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, BookOpen } from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -49,8 +49,19 @@ export const DEFAULT_ERAS: Era[] = [
 //   - "2017" → "24.8.2016" (delegation meeting was 24 Aug 2016 per [HIST] p.4)
 //   - Hojai distillation is undated; the client source says "Meanwhile," not "Following years."
 // Privacy: full member names removed per client instruction (ledger C3).
+// Events restored from the final brief on 2026-10-24: the Ancient Roots sanchi
+// paat record, Naharani/upper Assam distillation, the late-60s NEFA & Bhutan
+// mahal leases, the 2007 North East Aromatics writ petition, the 2010
+// escalation, the 20 Dec 2011 MoEF meeting, and the 2005–2016 memorandums.
 
 export const DEFAULT_EVENTS: TimelineEvent[] = [
+  {
+    year: "Ancient",
+    title: "Sanchi Paat — the scripture bark",
+    description:
+      "The agar tree, or Sanchi plant, is one of the precious gifts of nature and deeply associated with the culture of Assam and North Eastern India since ancient times. Its bark, sanchi paat, was used for writing scripture — the renown Vaishnab saints of Assam Srimanta Sankar Dev, Madhav Deb and Damudar Deb wrote on Sanchipat, and the people of upper Assam planted the Sanchi plant in their homesteads as part of ritual.",
+    era: "ancient",
+  },
   {
     year: "1905–06",
     title: "Sylhet Agar Oil Extraction",
@@ -73,10 +84,24 @@ export const DEFAULT_EVENTS: TimelineEvent[] = [
     era: "early-trade",
   },
   {
+    year: "Date not stated",
+    title: "Naharani & upper Assam distillation",
+    description:
+      "A few years later, the agar trade and distillery business also began in Naharani and other parts of Jorhat and Sibsagar districts of upper Assam, utilizing agar wood harvested from the homegrown trees of their own homesteads.",
+    era: "early-trade",
+  },
+  {
+    year: "Late 1960s – 1970",
+    title: "NEFA & Bhutan mahal leases",
+    description:
+      "In the late 60s, a group of enthusiastic people of Hojai took leases of agar mahals in NEFA and Bhutan, collected agar from there and brought it to Hojai. The Govt. of Assam used to lease agarwood mahals for a fixed period, which continued till 1970 — by which time the agar trade had developed as a cottage industry in the unorganized sector.",
+    era: "early-trade",
+  },
+  {
     year: "1970–1980s",
     title: "Manipur Supply",
     description:
-      "Entrepreneurs of Hojai and Silchar collected agarwood from the mahaldars of Manipur State under Forest Transit Pass, then processed and distilled it for oil at Hojai and Silchar.",
+      "Entrepreneurs of Hojai and Silchar collected agarwood from the mahaldars of Manipur State under Forest Transit Pass, then processed and distilled it for oil at Hojai and Silchar. The products were subsequently taken to Bombay (Mumbai) under Lieu T.P. issued by the Forest Deptt. of Assam for sale.",
     era: "early-trade",
   },
   {
@@ -97,7 +122,7 @@ export const DEFAULT_EVENTS: TimelineEvent[] = [
     year: "Date not stated",
     title: "Far East Discovery and Imports",
     description:
-      "The client history describes a sudden change in the trade with the discovery of abundant agarwood in Malaysia, Indonesia, Thailand, and Cambodia. Prominent Hojai business houses began importing agarwood from those countries under the Government of India's Exim Policy, paying heavy import duties. Imported raw agarwood was re-exported as finished products after processing.",
+      "The client history describes a sudden change in the trade with the discovery of abundant agarwood in Malaysia, Indonesia, Thailand, and Cambodia. Prominent Hojai business houses began importing agarwood from those countries under the Government of India's Exim Policy, paying heavy import duties. Imported raw agarwood was re-exported as finished products after processing. Local forest authorities used to issue a Legal Procurement Certificate (LPC) of the products to be re-exported that are derived from the imported materials, to comply with the CITES provisions.",
     era: "undated",
   },
   {
@@ -147,6 +172,34 @@ export const DEFAULT_EVENTS: TimelineEvent[] = [
     title: "Central Empowered Committee",
     description:
       "The Central Empowered Committee agreed to certain changes and recommended incorporating Agarwood industries in Secondary Wood Based Industry.",
+    era: "critical",
+  },
+  {
+    year: "2007",
+    title: "North East Aromatics writ petition",
+    description:
+      "After the Govt. of Assam included agar wood processing units under the Assam Wood Based Industry Rule 2000, M/s North East Aromatics of Hojai — a prominent importing and exporting firm, with AATMA's backing — filed Writ Petition (W.P.(c) No. 6284/2007) in the Gauhati High Court against the State's Forest Department. The then Forest Minister personally urged the petitioners to withdraw on a firm assurance of amicable resolution; trusting the promise, they withdrew the legal proceeding.",
+    era: "critical",
+  },
+  {
+    year: "2010",
+    title: "The trade targeted",
+    description:
+      "From 2010, the then Forest Minister issued strict instructions explicitly targeting the trade: alerts were coordinated across the Guwahati Airport authorities, the Assam Police, the Assam Forest Department and the Maharashtra Forest Department. Assam agar traders were detained even in hotels in Maharashtra, and agar dealers based in Mumbai were harassed, leading to numerous unlawful seizures of cultivated agar wood.",
+    era: "critical",
+  },
+  {
+    year: "20 Dec 2011",
+    title: "MoEF meeting, New Delhi",
+    description:
+      "On official invitation, AATMA participated in the meeting on 'Conservation of Agarwood in India' convened by the Ministry of Environment and Forests at Paryavaran Bhawan, New Delhi, chaired by the Additional Director General (Wildlife). AATMA President Shri A. Rahman briefed the central authorities, who categorically clarified that regulating Assam's local wood-based units is strictly a State matter, not a Central restriction.",
+    era: "critical",
+  },
+  {
+    year: "2005–2016",
+    title: "Two decades of memorandums",
+    description:
+      "Disheartened but persistent, AATMA's office bearers continued through 2005–2016 to meet successive Chief Ministers, Forest Ministers and forest department authorities, submitting memorandums to exclude the agar industry from the 2000 Rules and bring it under 'Secondary Wood Based Industry', as the Central High Power Committee had approved. The Assam Ministry never approved the recommendation in cabinet.",
     era: "critical",
   },
   {
@@ -539,6 +592,76 @@ function MobileTimeline({
   );
 }
 
+// ─── Read Mode — the whole timeline as a sequential list ─────────────────────
+
+/**
+ * Renders every event, grouped by era, as a plain readable list — the same
+ * records as the interactive view, but with nothing hidden behind a click.
+ * Requested by the client (2026-10-24) for readers who want the complete
+ * record at once rather than one entry at a time.
+ */
+function ReadModeList({
+  events,
+  eras,
+}: {
+  events: TimelineEvent[];
+  eras: Era[];
+}) {
+  const grouped = useMemo(() => groupEventsByEra(events, eras), [events, eras]);
+
+  return (
+    <div className="mx-auto max-w-3xl space-y-10">
+      {eras.map((era) => {
+        const eraEvents = grouped.get(era.id) || [];
+        if (eraEvents.length === 0) return null;
+
+        return (
+          <section key={era.id}>
+            <div className="mb-4 flex items-baseline gap-3">
+              <h3 className="font-display text-sm font-bold uppercase tracking-[0.22em] text-gold-light">
+                {era.label}
+              </h3>
+              <span className="text-[11px] text-agar-body">{era.range}</span>
+            </div>
+            <ol className="space-y-4 border-l border-white/15 pl-6">
+              {eraEvents.map(({ event, index }) => (
+                <li key={index} className="relative">
+                  <span
+                    aria-hidden="true"
+                    className="absolute -left-[31px] top-4 w-2.5 h-2.5 rounded-full bg-agar-icon"
+                  />
+                  <div className="rounded-lg border border-white/15 bg-glass-card p-4 backdrop-blur-xl md:p-5">
+                    <div className="mb-1 flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+                      <span className="text-sm font-bold text-agar-label">
+                        {event.year}
+                      </span>
+                      <h4 className="font-semibold text-agar-title">
+                        {event.title}
+                      </h4>
+                    </div>
+                    <p className="text-sm leading-relaxed text-agar-body">
+                      {event.description}
+                    </p>
+                    {event.image && (
+                      <img
+                        src={event.image}
+                        alt={event.imageAlt ?? event.title}
+                        className="mt-3 w-40 aspect-[3/4] rounded-md border border-white/10 object-cover"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+        );
+      })}
+    </div>
+  );
+}
+
 // ─── Main Component ──────────────────────────────────────────────────────────
 
 export interface InteractiveTimelineProps {
@@ -555,6 +678,9 @@ export function InteractiveTimeline({
   const { tier } = useDevice();
   const isMobile = tier === "mobile";
   const [rawActiveIndex, setActiveIndex] = useState(0);
+  // Read mode: the full record as a sequential list, for readers who do not
+  // want to step through entries one at a time.
+  const [readMode, setReadMode] = useState(false);
 
   // Clamp during render rather than in an effect. `events` is a prop, so a
   // caller can swap in a shorter list and leave the selection pointing past the
@@ -603,7 +729,23 @@ export function InteractiveTimeline({
         ))}
       </div>
 
-      {isMobile ? (
+      {/* Read-mode toggle — the same records, readable end to end */}
+      <div className="mb-6 flex justify-center">
+        <button
+          type="button"
+          aria-pressed={readMode}
+          data-timeline-read-mode
+          onClick={() => setReadMode((current) => !current)}
+          className="inline-flex min-h-11 items-center gap-2 rounded-sm border border-gold/50 bg-glass-card px-5 py-2.5 text-sm font-semibold tracking-wide text-agar-label transition-colors hover:border-gold hover:bg-green-deep/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold motion-reduce:transition-none"
+        >
+          <BookOpen size={16} aria-hidden="true" focusable="false" />
+          {readMode ? "Interactive view" : "Read mode"}
+        </button>
+      </div>
+
+      {readMode ? (
+        <ReadModeList events={events} eras={eras} />
+      ) : isMobile ? (
         <MobileTimeline
           events={events}
           eras={eras}
@@ -620,9 +762,11 @@ export function InteractiveTimeline({
       )}
 
       {/* Keyboard hint */}
-      <p className="text-center text-agar-body text-[10px] mt-4">
-        Use arrow keys to navigate, Home/End to jump to start/end
-      </p>
+      {!readMode && (
+        <p className="text-center text-agar-body text-[10px] mt-4">
+          Use arrow keys to navigate, Home/End to jump to start/end
+        </p>
+      )}
     </div>
   );
 }

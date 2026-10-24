@@ -1,20 +1,25 @@
 import { assetUrl } from "@/lib/utils";
+import { CRITICAL_ERA_CARDS } from "./critical-era";
 
 /**
  * HISTORY_CHAPTERS — /history
  *
  * Source: `documents/A BRIEF HISTORY OF AGAR.pdf` (client-supplied, 12 Oct 2026),
  * read in full; extraction in `docs/_agar_history_raw.txt`, cleaned summary in
- * `docs/AGAR_HISTORY_SOURCE.md`.
+ * `docs/AGAR_HISTORY_SOURCE.md`, cross-checked against the final client brief
+ * `A brief note on Agar Trade` (p.3–p.6).
  *
  * The client's own document has eight headed sections. Each chapter below keeps
  * that heading and the client's wording verbatim, including slips such as
- * "Thiland" and "Occtober" — these are the client's text and are not silently
- * corrected.
+ * "Thiland" — these are the client's text and are not silently corrected.
  *
- * Office-bearer names stay redacted exactly as in the redacted client copy
- * (ledger C3). The live /about reader publishes the same names from the client
- * brief; that inconsistency is tracked separately, not resolved here.
+ * Office-bearer names were restored from the client brief on 2026-10-23 after
+ * the client caught the redaction on the live page; they publish here, on the
+ * homepage, and in the /about reader alike.
+ *
+ * The critical-era chapter mirrors the homepage Critical Era section: it reads
+ * the same `CRITICAL_ERA_CARDS` paragraphs (the complete brief text with the
+ * client-approved spelling corrections), so the two surfaces can never drift.
  */
 
 export interface HistoryChapterImage {
@@ -94,7 +99,7 @@ export const HISTORY_CHAPTERS: HistoryChapter[] = [
     kicker: "The Import Era",
     heading: "Far East discovery and the import era",
     paragraphs: [
-      "For a short while from 1970 to 1980 trade of agar in Assam survived somehow with the agar from the state of Manipur but it came to a standstill since 1982. However, there happened a sudden change in the trade which started with the discovery of Agar wood abumdantly in the far Eastern countries like Malaysia, Indonesia, Thiland, Combodia etc. Some prominent business houses of Hojai Assam started importing agar wood from those countries as per Exim Policy of Govt. of India after paying heavy import duties. It is pertinent to mention that in Hojai, Assam has good number of skilled agar processing workers as well as for Agar oil distilleries and the employment was as good as 5000 people. The raw agar wood so imported were re-exported after processing in their factory as finished products.",
+      "For a short while from 1970 to 1980 trade of agar in Assam survived somehow with the agar from the state of Manipur but it came to a standstill since 1982. However, there happened a sudden change in the trade which started with the discovery of Agar wood abumdantly in the far Eastern countries like Malaysia, Indonesia, Thiland, Combodia etc. Some prominent business houses of Hojai Assam started importing agar wood from those countries as per Exim Policy of Govt. of India after paying heavy import duties. It is pertinent to mention that in Hojai, Assam has good number of skilled agar processing workers as well as for Agar oil distilleries and the employment was as good as 5000 people. The raw agar wood so imported were re-exported after processing in their factory as finished products. Local forest authorities used to issue ‘Legal Procurement Certificate (LPC)’ of the products to be re-exported that are derived from the imported materials to comply with the CITES provisions.",
     ],
     image: {
       src: assetUrl("client-images/nature/forest-1.jpeg"),
@@ -146,18 +151,12 @@ export const HISTORY_CHAPTERS: HistoryChapter[] = [
   {
     id: "critical-era",
     num: "7",
-    kicker: "2001–2016",
-    heading: "The critical era of agar trade, 2001–2016",
-    paragraphs: [
-      "In the year 2000 the Govt. of Assam framed Rules as “Assam Wood Based Industries (Establishment and Regulation) Rules, 2000” classifying agar oil extracting unit as wood based industries, these rules plunged Agar growers and traders into a period of deep uncertainties to the industry and the trade.",
-      "Consequently, on June 26, 2000, representative of the All Assam Agar Traders and Agaroil Manufactures` Association (AATMA) met with the then Chief Minister of Assam. They submitted a Memorandum urging Government to exclude agar oil extraction units from the purview of the these Rules, arguing that traders sourced their raw materials from private cultivations (patta land or homesteads) and through legal Import from abroad. The memorandum further requested that the agar wood industry be officially declared an agro-based industry. However, no concrete action was taken at the time, leaving the agar oil extraction industry without its hard earn much-needed official recognition.",
-      "However, in 2001 the AATMA submitted fresh representation and memorandum before the Government of Assam, urging the exclusion of Agar oil extracting units from the purview of “Assam Wood Based Industries (Establishment and Regulation) Rules, 2000. This matter was vigorously pursued multiple times. Consequently, In December 2003, at the request of the then Forest Minister, AATMA sponsored and participated in “The Workshop on Agar Plantation and the Rule of Joint Forest Management Committees of Assam,” which was held in Rabindra Bhavan on 6th and 7th January 2004.",
-      "Until that point, Agar processing units were not govern by the aforementioned Rules. Instead, these units continued to survive by the import of agar wood from abroad until 2005. This arrangement required verification of consignments by the concerned Divisional Forest Officer (DFO) at the time of both import and re-export to ensure compliance with CITES regulations. Unfortunately October 2005 the then DFO of Hojai, Shri Siv Kumar, IFS denied the verification. This action, which was unlawful and arbitrarily, was allegedly based on the verbal instruction from the then Forest Minister of Assam. As a result, around Seven Processing Units to suffered massive financial losses because they were unable to re-export their raw and processed Agar wood. This caused severe damage to the local industry and a significant loss of foreign exchange earning. Finding no alternative, several prominent business houses shifted their operations (industry) to neighboring state like Meghalaya, as well as Overseas. Consequently, the prospects of a highly viable industry were severely crippled and strangled within Assam.",
-      "As per CCF(T) letter No. FGT39/WBI/Amand/SecondaryWBI/06 dt. 01.03.2006, the Central Empowered Committee agreed to certain changes in Assam Wood Based Industries (Establishment and Regulation) Rules, 2000 and recommended to incorporate the Agarwood industries in Secondary Wood Based Industry which could be set up outside designated Industrial Area. But unfortunately the Assam Cabinet did not approve the recommendation. Thus all efforts of AATMA to streamline the trade did not succeed due to the deaf ear and negligence of the then Govt. of Assam.",
-      "The office bearers of AATMA although disheartened with the negative approach of the Govt of Assam did not sit idly and during the period 2005-2016 continued to meet the then Chief Minister / Forest Minister as well as concerned forest deptt. authorities and submitted memorandums for excluding agar industry from the purview of the above said Rules - 2000. As stated above the Forest Deptt. submitted several recommendations proposing to bring Agar industries under the “Secondary Wood Based Industry” as approved by the Central High Power Committee. These efforts did not yield desired result as yet and Agar Industry did not receive any due recognition.",
-      "Because the agar industry was never officially legalized or exempted under these rigid rules—largely due to the persistent unwillingness of the then Forest Minister up until 2016—the everyday reality for those on the ground became a nightmare. Routine transportation of agar wood, even when legally harvested from private cultivated lands, was treated as a criminal act. Business personnel and local cultivators faced relentless harassment from both legal authority and forest department officials. This hostile environment led to numerous unjustified seizures of cultivated agar wood, causing immense financial distress and systemic disruption for the traders and farmers struggling to keep this traditional industry alive.",
-      "On Augast 24, 2016, an AATMA delegation met with then Forest Minister Smt. Pramila Rani Brahma, at the Hojai Forest circuit House. The delegation submitted a memorandum to apprise her the challenges the industry faced due to the aforesaid Rule 2000. She took a keen interest in the matter, and at her behest, a proposal was submitted to the Government to classify the Agar wood Industry as a “Secondary Wood Based Industry” by excluding it from “Assam Wood Based Industries (Establishment and Regulation) Rules, 2000”. Subsequently, under the initiative of Smt. Pramila Rani Brahma, the Assam Forest Department organized a National Conference on “Agarwood & Oil Industries: prospect & Possibilities”. The conference was held on Occtober 28, 2016, at NEDFi House in Guwahati.",
-    ],
+    kicker: "2000–2016",
+    heading: "The critical era of agar trade, 2000–2016",
+    // Same brief text as the homepage Critical Era section — the complete
+    // passage, client-approved spelling corrections included — so the two
+    // surfaces cannot drift. See the file header.
+    paragraphs: CRITICAL_ERA_CARDS.flatMap((card) => card.detailParagraphs),
     image: {
       src: assetUrl("events/national-conference.jpg"),
       alt: "National Conference on Agarwood & Oil Industries, 28 October 2016, NEDFi House, Guwahati.",
@@ -167,6 +166,8 @@ export const HISTORY_CHAPTERS: HistoryChapter[] = [
       { label: "DFO Hojai denies verification", value: "October 2005" },
       { label: "Processing units ruined", value: "around seven" },
       { label: "CCF(T) recommendation rejected by Cabinet", value: "01.03.2006" },
+      { label: "Writ petition by M/s North East Aromatics", value: "W.P.(c) 6284/2007" },
+      { label: "Centre clarifies it is a State matter", value: "20 Dec 2011" },
       { label: "Forest Minister's intervention", value: "24 August 2016" },
     ],
   },
@@ -177,7 +178,7 @@ export const HISTORY_CHAPTERS: HistoryChapter[] = [
     heading: "Achievement — the 2022 Rules",
     paragraphs: [
       "Following this on 19/07/2021, an AATMA delegation accompanied by Mr. Sirajuddin Ajmal, MLA, met with the Chief minister Assam, Shri Himanta Biswa Sharma, to submit a memorandum apprising him of the ongoing problems face by Agar industries from last 21 years, due to Asaam wood Base Industries (Eastablishment & Regulation) Rule 2000. The chief minister patiently listened to the delegation, acknowledged the memorandum, and assured them he would work on resolving the matter.",
-      "True to his assurance, the Chief Minister of Assam and his government took fresh, positive approach to the long-standing, vexed issue. The association extends its sincere thanks to Sri Himanta Biswa Sharma for enacting the Assam Wood Base Industries (Promotion & Development) Rule 2022 on 12th January 2023. Consequent upon the Rules Agar Wood Industries are now declared as Secondary Wood Based Industries, which can operate outside the Industrial estate, successfully liberalizing and simplifying the trade from the grip of strict laws. These new Rules will definitely pave the way for smooth trade and overall development of plantations.",
+      "True to his assurance, the Chief Minister of Assam and his government took fresh, positive approach to the long-standing, vexed issue. The association extends its sincere thanks to Sri Himanta Biswa Sharma for enacting the Assam Wood Base Industries (Promotion & Development) Rule 2022 on 12th January 2023. Consequent upon the Rules Agar Wood Industries are now declared as Secondary Wood Based Industries, which can operate outside the Industrial estate, successfully liberalizing and simplifying the trade from the grip of strict laws. These new Rules will definitely pave the way for smooth trade and overall development of plantations. To further clarify and implement these progressive changes, a Stakeholders Conference was organized on 14 February 2023. Graced by Environment & Forests Department, Government of Assam, the conference served to explain the newly introduced \"Assam Wood Based Industries (Promotion & Development) Rules, 2022\" alongside the \"Assam Trees Outside Forest (Sustainable Management) Rules, 2022\" to the relevant industry stakeholders.",
     ],
     image: {
       src: assetUrl("events/aatma-meeting-1.jpg"),

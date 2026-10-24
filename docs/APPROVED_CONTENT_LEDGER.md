@@ -280,10 +280,10 @@ The homepage About pilot offers a sourced introduction and an in-place, connecte
 | 120 | "A sudden change came with the discovery of agarwood abundantly in the Far East — Malaysia, Indonesia, Thailand, Cambodia…" | Far East | [HIST] p.1 | `verified` | — |
 | 121 | "Hojai had a good number of skilled agar processing workers and agar oil distilleries; employment was as high as 5,000 people." | 5,000 employed | [HIST] p.1 — "the employment was as good as 5000 people" | `verified` | — |
 | 122 | "ALL ASSAM AGAR TRADERS AND AGAR OIL MANUFACTURERS ASSOCIATION (AATMA) was formed in 1976 with its Head Office at Hojai. Duly registered vide 664 of 1978-79." | 1976 formation | [HIST] p.2 | `verified` | — |
-| 123 | "(L) [REDACTED: AATMA member] — Founding President | Founding President | [HIST] p.2 — "(L) [REDACTED: AATMA member]" | `verified` | **Privacy concern:** Client instruction says do NOT publish full member names. See contradictions section. |
-| 124 | "(L) [REDACTED: AATMA member] — Founding Secretary | Founding Secretary | [HIST] p.2 — "(L) [REDACTED: AATMA member]" | `verified` | **Privacy concern:** same as above. |
-| 125 | "(L) [REDACTED: AATMA member] — Office Bearer | Office Bearer | [HIST] p.2 — "(L) [REDACTED: AATMA member]" | `verified` | **Privacy concern:** same as above. |
-| 126 | "AATMA was re-organised in a General Meeting at Hojai. Shri [REDACTED: AATMA member] became President and (L) [REDACTED: AATMA member] became General Secretary…" | 2000 re-org | [HIST] p.2 — "[REDACTED: AATMA member] as President and (L) [REDACTED: AATMA member] as General Secretary" | `verified` | **Privacy concern:** full names. |
+| 123 | "(L) Hazi Anfar Ali — founding office-bearer (President ship)" | Founding office-bearer | [BRIEF2] p.3 — "(L) Hazi Anfar Ali" | `verified` | Name restored 2026-10-23 after the client caught the live redaction; the earlier `[REDACTED: AATMA member]` row is superseded. |
+| 124 | "(L) Hazi Samsul Islam — founding office-bearer" | Founding office-bearer | [BRIEF2] p.3 — "(L) Hazi Samsul Islam" | `verified` | Restored 2026-10-23, as above. |
+| 125 | "(L) Binay Kumar Paul — founding office-bearer" | Founding office-bearer | [BRIEF2] p.3 — "(L) Binay Kumar Paul" | `verified` | Restored 2026-10-23, as above. |
+| 126 | "AATMA was re-organised in a General Meeting at Hojai with Ataur Rahman as President and (L) Jamal Uddin Choudhury as General Secretary…" | 2000 re-org | [BRIEF2] p.3 — "with Ataur Rahman as President and (L) Jamal Uddin Choudhury as General Secretary" | `verified` | Names restored 2026-10-23; the earlier privacy concern is superseded by the client's direction to publish the brief word for word. |
 | 127 | "AATMA organised a National level seminar… at Administrative Staff College, Guwahati. Presided over by Dr. P.K. Hajra…" | 2000 seminar | [HIST] p.2 | `verified` | — |
 | 128 | "The seminar was an eye-opener — entrepreneurs started commercial plantation in private land across Assam, Nagaland, Tripura, and Manipur…" | Seminar impact | [HIST] p.2 — "The seminar was an eye-opener to different entrepreneurs who started commercial plantation in their private land in North Eastern states like Assam, Nagaland, Tripura and Manipur etc." | `verified` | — |
 | 129 | "A joint survey by AATMA and Assam Govt revealed more than crores of agar trees…" | Survey | [HIST] p.2 — "Survey conducted jointly by AATMA and Assam Govt. reveals that there are more than crores of agar trees in private cultivation in Upper Assam region" | `verified` | — |
@@ -545,3 +545,39 @@ The following claims have **no client source found in any primary or secondary c
 ## Source-of-record correction — 23 October 2026
 
 The client clarified that the newspaper estimate previously used in the research audit was not supplied by the client and must not be cited as a source for site findings. For research and quota figures, the client-supplied `Agar NDF Note 2024.pdf` is now the source of record; the client confirms the figures in that PDF are verified by its organization. This correction supersedes earlier statements in this document that treated the 18 November 2024 newspaper article as client-supplied or as corroboration. Newspaper clippings may still be displayed as archival content, but their untranscribed images are not data-source citations.
+
+## /history page audit — 24 October 2026
+
+The client reported missing lines in three chapters and a sparse "A century of
+agar trade history" section. Findings and fixes:
+
+1. **Import era chapter** — the brief's closing sentences were absent; restored
+   verbatim: "Local forest authorities used to issue 'Legal Procurement
+   Certificate (LPC)' of the products to be re-exported that are derived from
+   the imported materials to comply with the CITES provisions." [BRIEF2] §3.
+2. **Critical era chapter** — was a trimmed 8-paragraph summary missing the
+   2006 Rules inclusion, the M/s North East Aromatics writ petition
+   (W.P.(c) No. 6284/2007), the 2010 escalation (multi-agency alerts,
+   Maharashtra detentions, Mumbai dealers), the 20 Dec 2011 MoEF meeting at
+   Paryavaran Bhawan, and "led by Humayun Chaudhury". Now reads the same
+   `CRITICAL_ERA_CARDS` paragraphs as the homepage Critical Era section
+   (`src/data/critical-era.ts`), so the two surfaces cannot drift; span label
+   changed 2001–2016 → 2000–2016 to match the homepage and the brief's body.
+3. **Achievement chapter** — the brief's Stakeholders Conference sentences
+   (14 February 2023) were absent; restored verbatim. The earlier 14 January
+   mis-dating is reverted everywhere.
+4. **Century timeline** — the client saw "date not stated" entries and thin
+   content. Added seven sourced records (`InteractiveTimeline.tsx`): Ancient
+   Roots (sanchi paat), Naharani/upper Assam distillation, late-60s NEFA &
+   Bhutan mahal leases, the 2007 writ petition, the 2010 escalation, the
+   20 Dec 2011 MoEF meeting, and the 2005–2016 memorandums; the Manipur Supply
+   and Far East entries gained their brief trailing sentences (Bombay (Mumbai) Lieu
+   T.P. sale; CITES LPC). 27 entries total. Three entries genuinely carry no
+   stated date in any client document (Hojai distillation, Naharani, Far East
+   discovery) and are labelled "Date not stated" rather than invented.
+5. **Read mode** — the timeline now offers a "Read mode" toggle
+   (`aria-pressed`, same records) so the complete record can be read end to
+   end instead of one entry at a time.
+6. **Density chart** (`TimelineEventDensity.tsx`) — counts re-derived from the
+   27 events (ancient 1, early-trade 6, formation 1, growth 1, critical 14,
+   modern 3, undated 1); the stale "16 events" and zero-bars are replaced.
