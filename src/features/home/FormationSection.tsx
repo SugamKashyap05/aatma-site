@@ -28,15 +28,15 @@ interface FormationSectionProps {
  * "DIMENTIN", "Aquilqriq", "President ship"/"Secretary ship") are preserved
  * deliberately — say the word and they can be corrected.
  *
- * Privacy note — office-bearer names. This component previously replaced the
- * founders' names with role descriptions per the SUPERSEDED
- * `docs/HOMEPAGE_REDESIGN_PLAN.md` §3.3. The authoritative
- * `docs/FINAL_BRIEF_HOMEPAGE_REDESIGN_PLAN.md` (lines 35 and 69) permits
- * duplicating the names beyond the long-form reader only on "a later
- * explicit user/client decision". The user supplied this text with the names
- * and directed that it be published word for word — that is the decision,
- * recorded here. The same names already render live on `/about`
- * (`src/data/about-spine.ts` §IV).
+ * Office-bearer names render verbatim per the user's explicit direction
+ * (2026-10-23): the three founders — (L) Hazi Anfar Ali, (L) Hazi Samsul
+ * Islam, (L) Binay Kumar Paul — and the 2000 re-organization officers —
+ * Ataur Rahman (President), (L) Jamal Uddin Choudhury (General Secretary).
+ * An earlier revision replaced them with role placeholders; the client
+ * caught the redaction on the live page, so the section now copies the
+ * brief exactly. The same names render on `/about`
+ * (`src/data/about-spine.ts` §IV) and `/history`
+ * (`src/data/history-chapters.ts`).
  *
  * Interaction: the card shows a preview of the formation paragraph; a Read
  * more button (the same pattern as `src/features/about/AboutOverview.tsx`)
@@ -103,7 +103,8 @@ export function FormationSection({ className }: FormationSectionProps) {
                     </strong>{" "}
                     was formed under the President ship and Secretary ship of{" "}
                     <strong className="text-agar-title">
-                      (L) [REDACTED: AATMA member], (L) [REDACTED: AATMA member] and (L) [REDACTED: AATMA member]
+                      (L) Hazi Anfar Ali, (L) Hazi Samsul Islam and (L) Binay
+                      Kumar Paul
                     </strong>{" "}
                     in <strong className="text-agar-label">1976</strong> with
                     its H.O. at Hojai, which was duly registered vide{" "}
@@ -118,10 +119,10 @@ export function FormationSection({ className }: FormationSectionProps) {
                   <p className="text-agar-body text-base md:text-lg leading-relaxed">
                     In the year 2000 AATMA was re-organized in a General
                     Meeting at Hojai with{" "}
-                    <strong className="text-agar-title">[REDACTED: AATMA member]</strong> as
+                    <strong className="text-agar-title">Ataur Rahman</strong> as
                     President and{" "}
                     <strong className="text-agar-title">
-                      (L) [REDACTED: AATMA member]
+                      (L) Jamal Uddin Choudhury
                     </strong>{" "}
                     as General Secretary and with its Executive body.
                   </p>

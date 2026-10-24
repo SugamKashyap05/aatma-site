@@ -80,8 +80,8 @@ export const HISTORY_CHAPTERS: HistoryChapter[] = [
     ],
     image: {
       src: assetUrl("history/trade-journey-map.svg"),
-      alt: "Route map of the early agar trade — Sylhet, Barpather, Hojai, Jorhat, Sibsagar, NEFA, Bhutan, Manipur, Silchar and Bombay.",
-      caption: "The early trade moved from Sylhet and Barpather through Hojai to Jorhat, Sibsagar, NEFA, Bhutan, Manipur and Silchar, and on to Bombay.",
+      alt: "Schematic route map with highlighted locations including Tirupura, Barpather, Karbi Angong, Naga Hills, Naharani, Jorhat, Sibsagar, NEFA and Bhutan, and Manipur. Northeast supply flows into Hojai, with separate routes to Mumbai and the Middle East.",
+      caption: "Highlighted regional locations, inbound supply to Hojai, and distinct outbound routes to Mumbai and the Middle East. Schematic, not to scale.",
     },
     highlights: [
       { label: "Earliest recorded extraction", value: "1905–06, Sylhet" },
@@ -112,7 +112,7 @@ export const HISTORY_CHAPTERS: HistoryChapter[] = [
     kicker: "1976",
     heading: "Formation of AATMA",
     paragraphs: [
-      "The trade being a cottage based industry in unorganized sector has suffered many obstacles largely due to lack of knowledge on the part of traders as well as law enforcing agency and there were undue and uncalled for interference posing hurdles to the safe sailing of the trade for which it was felt by some prominent traders of Hojai area back in 1975-76 to form some sort of association / NGO for the improvement and expansion of the trade in the pursuit of which ALL ASSAM AGAR TRADERS AND AGAR OIL MANUFACTURERS, ASSOCTION (AATMA) was formed under the President ship and Secretary ship of (L) [REDACTED: AATMA member], (L) [REDACTED: AATMA member] and (L) [REDACTED: AATMA member] in 1976 with its H.O. at Hojai which was duly registered vide 664 of 1978-79. Since then the Association continuously fought legally as well as by submitting different representations before the govt to remove unnecessary interference and hurdle in the interest of smooth going of the trade. In the year 2000 AATMA was re-organized in a General Meeting at Hojai with [REDACTED: AATMA member] as President and (L) [REDACTED: AATMA member] as General Secretary and with its Executive body.",
+      "The trade being a cottage based industry in unorganized sector has suffered many obstacles largely due to lack of knowledge on the part of traders as well as law enforcing agency and there were undue and uncalled for interference posing hurdles to the safe sailing of the trade for which it was felt by some prominent traders of Hojai area back in 1975-76 to form some sort of association / NGO for the improvement and expansion of the trade in the pursuit of which ALL ASSAM AGAR TRADERS AND AGAR OIL MANUFACTURERS, ASSOCTION (AATMA) was formed under the President ship and Secretary ship of (L) Hazi Anfar Ali, (L) Hazi Samsul Islam and (L) Binay Kumar Paul in 1976 with its H.O. at Hojai which was duly registered vide 664 of 1978-79. Since then the Association continuously fought legally as well as by submitting different representations before the govt to remove unnecessary interference and hurdle in the interest of smooth conduct of the trade. In the year 2000 AATMA was re-organized in a General Meeting at Hojai with Ataur Rahman as President and (L) Jamal Uddin Choudhury as General Secretary and with its Executive body.",
     ],
     image: {
       src: assetUrl("client-images/aatma-tree-plantation.jpg"),
