@@ -11,7 +11,7 @@ const text = async (relativePath) => (await read(relativePath)).toString("utf8")
 
 const sanchi = await text("src/features/home/SanchiPaatSection.tsx");
 assert.match(sanchi, /history\/sanchi-paat-original\.png/, "homepage should use the supplied book scan");
-assert.match(sanchi, /255-year-old/, "book caption should preserve the supplied age attribution");
+assert.match(sanchi, /taken in the year 2000/, "book caption should preserve the supplied photo year note");
 const sanchiBytes = await read("public/history/sanchi-paat-original.png");
 assert.deepEqual([...sanchiBytes.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10], "Sanchi scan should be a PNG");
 

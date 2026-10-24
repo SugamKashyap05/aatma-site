@@ -63,12 +63,6 @@ export function SanchiPaatSection({ className }: { className?: ClassValue }) {
                             decoding="async"
                           />
                           <figcaption className="max-w-full font-sans text-xs leading-relaxed text-charcoal/75 md:text-sm">
-                            <span className="block font-medium">
-                              255-year-old “Sanchiputhi” written on Sanchipat.
-                            </span>
-                            <span className="block">
-                              Courtesy: Sri Sri Narowa Balisatra Parichalana Samiti, P.O. Balisatra, Dist. Nagaon, Assam.
-                            </span>
                             <span className="block">
                               Photograph of the original Sanchiputhi, taken in the year 2000.
                             </span>
