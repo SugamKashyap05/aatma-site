@@ -7,7 +7,12 @@ import { ChevronLeft, ChevronRight, BookOpen } from "lucide-react";
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 export interface TimelineEvent {
-  year: string;
+  /**
+   * Optional. A few entries (Hojai, Naharani distillation) have no date in any
+   * client document; they render without a date chip rather than showing a
+   * "date not stated" placeholder — removed at the client's request (2026-10-25).
+   */
+  year?: string;
   title: string;
   description: string;
   era: string;
@@ -32,7 +37,6 @@ export const DEFAULT_ERAS: Era[] = [
   { id: "growth", label: "Growth", range: "1977–1999" },
   { id: "critical", label: "Critical Era", range: "2000–2022" },
   { id: "modern", label: "Modern", range: "2023–2026" },
-  { id: "undated", label: "Undated source passage", range: "No date stated" },
 ];
 
 // ─── Default Events (client-supplied source documents) ───────────────────────
@@ -53,6 +57,10 @@ export const DEFAULT_ERAS: Era[] = [
 // paat record, Naharani/upper Assam distillation, the late-60s NEFA & Bhutan
 // mahal leases, the 2007 North East Aromatics writ petition, the 2010
 // escalation, the 20 Dec 2011 MoEF meeting, and the 2005–2016 memorandums.
+// Client direction (2026-10-25): drop every "Date not stated" label — undated
+// entries (Hojai, Naharani) simply show no date chip, and the Far East
+// discovery passage was removed from the timeline entirely; its full text
+// remains in the Import era chapter, so nothing is lost.
 
 export const DEFAULT_EVENTS: TimelineEvent[] = [
   {
@@ -77,14 +85,12 @@ export const DEFAULT_EVENTS: TimelineEvent[] = [
     era: "early-trade",
   },
   {
-    year: "Date not stated",
     title: "Hojai Distillation",
     description:
       "Meanwhile, several enthusiastic and visionary people of the Hojai area entered the trade and started small-scale distillation at Hojai.",
     era: "early-trade",
   },
   {
-    year: "Date not stated",
     title: "Naharani & upper Assam distillation",
     description:
       "A few years later, the agar trade and distillery business also began in Naharani and other parts of Jorhat and Sibsagar districts of upper Assam, utilizing agar wood harvested from the homegrown trees of their own homesteads.",
@@ -117,13 +123,6 @@ export const DEFAULT_EVENTS: TimelineEvent[] = [
     description:
       "For a short while from 1970 to 1980, Assam's agar trade survived on agar from Manipur. It came to a standstill in 1982.",
     era: "growth",
-  },
-  {
-    year: "Date not stated",
-    title: "Far East Discovery and Imports",
-    description:
-      "The client history describes a sudden change in the trade with the discovery of abundant agarwood in Malaysia, Indonesia, Thailand, and Cambodia. Prominent Hojai business houses began importing agarwood from those countries under the Government of India's Exim Policy, paying heavy import duties. Imported raw agarwood was re-exported as finished products after processing. Local forest authorities used to issue a Legal Procurement Certificate (LPC) of the products to be re-exported that are derived from the imported materials, to comply with the CITES provisions.",
-    era: "undated",
   },
   {
     year: "2000",
@@ -406,7 +405,7 @@ function DesktopTimeline({
                 data-index={index}
                 role="option"
                 aria-selected={isActive}
-                aria-label={`${event.year}: ${event.title}`}
+                aria-label={event.year ? `${event.year}: ${event.title}` : event.title}
                 onClick={() => onSelect(index)}
                 className={cn(
                   "flex flex-col items-center shrink-0 mx-3 group cursor-pointer transition-all duration-300 snap-center",
@@ -422,15 +421,17 @@ function DesktopTimeline({
                       : "border-white/30 bg-white/10 group-hover:border-agar-icon/60 group-active:border-agar-icon/60 group-hover:bg-agar-icon/20 group-active:bg-agar-icon/20"
                   )}
                 />
-                {/* Year */}
-                <span
-                  className={cn(
-                    "text-sm font-bold tracking-tight transition-colors duration-300 mb-1",
-                    isActive ? "text-agar-label" : "text-agar-label group-hover:text-agar-title group-active:text-agar-title"
-                  )}
-                >
-                  {event.year}
-                </span>
+                {/* Year — absent when the source states no date */}
+                {event.year && (
+                  <span
+                    className={cn(
+                      "text-sm font-bold tracking-tight transition-colors duration-300 mb-1",
+                      isActive ? "text-agar-label" : "text-agar-label group-hover:text-agar-title group-active:text-agar-title"
+                    )}
+                  >
+                    {event.year}
+                  </span>
+                )}
                 {/* Title */}
                 <span
                   className={cn(
@@ -468,7 +469,9 @@ function DesktopTimeline({
                     <span className="text-agar-label text-xs font-bold tracking-widest uppercase px-2 py-0.5 rounded-full border border-gold/20 bg-gold/10">
                       {era?.label || event.era}
                     </span>
-                    <span className="text-agar-label text-sm font-semibold">{event.year}</span>
+                    {event.year && (
+                      <span className="text-agar-label text-sm font-semibold">{event.year}</span>
+                    )}
                   </div>
                   <h3 className="text-agar-title text-lg md:text-xl font-semibold mb-2 font-display">
                     {event.title}
@@ -545,7 +548,7 @@ function MobileTimeline({
                   key={globalIndex}
                   role="listitem"
                   aria-selected={isActive}
-                  aria-label={`${event.year}: ${event.title}`}
+                  aria-label={event.year ? `${event.year}: ${event.title}` : event.title}
                   onClick={() => onSelect(globalIndex)}
                   className="w-full text-left pl-6 pb-6 relative group cursor-pointer transition-all duration-300"
                 >
@@ -565,9 +568,11 @@ function MobileTimeline({
                         : "bg-glass-card border-white/20 group-hover:border-gold/30 group-active:border-gold/30"
                     )}
                   >
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-agar-label text-xs font-bold">{event.year}</span>
-                    </div>
+                    {event.year && (
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-agar-label text-xs font-bold">{event.year}</span>
+                      </div>
+                    )}
                     <h4 className="text-agar-title text-sm font-semibold mb-1">{event.title}</h4>
                     <p className="text-agar-body text-xs leading-relaxed line-clamp-2">
                       {event.description}
@@ -632,9 +637,11 @@ function ReadModeList({
                   />
                   <div className="rounded-lg border border-white/15 bg-glass-card p-4 backdrop-blur-xl md:p-5">
                     <div className="mb-1 flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
-                      <span className="text-sm font-bold text-agar-label">
-                        {event.year}
-                      </span>
+                      {event.year && (
+                        <span className="text-sm font-bold text-agar-label">
+                          {event.year}
+                        </span>
+                      )}
                       <h4 className="font-semibold text-agar-title">
                         {event.title}
                       </h4>

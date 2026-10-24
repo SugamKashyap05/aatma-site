@@ -13,7 +13,8 @@ import {
 } from "lucide-react";
 
 interface Milestone {
-  year: string;
+  /** Optional: the Hojai passage gives no year; it renders without a date chip. */
+  year?: string;
   icon: React.ReactNode;
   title: string;
   description: string;
@@ -28,7 +29,8 @@ interface Milestone {
  *
  * Preserve the source's own wording: the Hojai passage says "Meanwhile" but
  * gives no year, and the Far East import-era passage is undated. Only the
- * trade standstill itself is dated to 1982.
+ * trade standstill itself is dated to 1982. Undated milestones render with no
+ * date chip rather than a placeholder (client direction, 2026-10-25).
  */
 const MILESTONES: Milestone[] = [
   {
@@ -39,7 +41,6 @@ const MILESTONES: Milestone[] = [
       "Agarwood was found abundantly in the forests of the North Eastern region, and people of Sylhet used it for extracting oil.",
   },
   {
-    year: "Date not stated",
     icon: <Droplets className="w-5 h-5" strokeWidth={1.5} />,
     title: "Hojai distillation begins",
     description:
@@ -65,7 +66,7 @@ const MILESTONES: Milestone[] = [
     icon: <Globe className="w-5 h-5" strokeWidth={1.5} />,
     title: "Far East discovery and imports",
     description:
-      "The client history describes a sudden change in the trade with the discovery of abundant agarwood in Malaysia, Indonesia, Thailand, and Cambodia. Prominent Hojai business houses began importing agarwood from those countries under the Government of India's Exim Policy, paying heavy import duties. Imported raw agarwood was re-exported as finished products after processing.",
+      "The association's history describes a sudden change in the trade with the discovery of abundant agarwood in Malaysia, Indonesia, Thailand, and Cambodia. Prominent Hojai business houses began importing agarwood from those countries under the Government of India's Exim Policy, paying heavy import duties. Imported raw agarwood was re-exported as finished products after processing.",
   },
   {
     year: "Nov 2000",
@@ -116,7 +117,7 @@ export function AgarStory({ className }: {
           </Reveal>
           <Reveal variant="fade" delay={200}>
             <p className="text-agar-body text-base md:text-lg max-w-2xl mx-auto">
-              The client history describes agarwood chips (black resinous wood) and agar oil/attar as useful raw materials for perfumery, and agar as a highly commercially useful plant.
+              The association's history describes agarwood chips (black resinous wood) and agar oil/attar as useful raw materials for perfumery, and agar as a highly commercially useful plant.
             </p>
           </Reveal>
         </div>
@@ -131,7 +132,7 @@ export function AgarStory({ className }: {
               />
               <img
                 src={assetUrl("history/trade-journey-map.svg")}
-                alt="Trade-route schematic, not to scale: Sylhet links to Hojai, then Barpather, Naharani, Jorhat and Sibsagar. A return-trade path runs from the eastern corridor back to Hojai. Hojai also links to Karbi Angong, Naga Hills and Bombay; Bombay connects to the Middle East. Dashed lines show reported supply links."
+                alt="Trade-route schematic, not to scale. Highlighted locations are Tirupura, Barpather, Karbi Angong, Naga Hills, Naharani, Jorhat, Sibsagar, NEFA and Bhutan, and Manipur. Northeast supply flows into Hojai; separate routes leave Hojai for Mumbai and the Middle East, with no Mumbai-to-Middle-East connection."
                 className="block w-full h-auto"
                 loading="eager"
                 decoding="async"
@@ -155,7 +156,7 @@ export function AgarStory({ className }: {
               const isEven = index % 2 === 0;
               return (
                 <Reveal
-                  key={milestone.year}
+                  key={milestone.title}
                   variant="fade"
                   delay={100 + index * 80}
                 >
@@ -186,9 +187,11 @@ export function AgarStory({ className }: {
                           <span className="flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 border border-gold/20 text-agar-icon">
                             {milestone.icon}
                           </span>
-                          <span className="text-agar-label text-lg md:text-xl font-bold font-display tracking-tight">
-                            {milestone.year}
-                          </span>
+                          {milestone.year && (
+                            <span className="text-agar-label text-lg md:text-xl font-bold font-display tracking-tight">
+                              {milestone.year}
+                            </span>
+                          )}
                         </div>
 
                         {/* Title */}

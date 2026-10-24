@@ -7,10 +7,10 @@ import { TimelineEventDensity } from "@/components/charts/TimelineEventDensity";
  * Mounts CH-12, the one chart built from the site's own timeline records rather
  * than from press reporting, so it carries no press-estimate badge.
  *
- * The counts were derived by reading the `era:` tag on each of the 27 events in
- * src/components/ui/InteractiveTimeline.tsx. Three entries carry no stated
- * date in the client source and are labelled "Date not stated" rather than
- * invented.
+ * The counts were derived by reading the `era:` tag on each of the 26 events in
+ * src/components/ui/InteractiveTimeline.tsx. Two entries carry no stated
+ * date in the source document and show no date chip rather than a
+ * "date not stated" placeholder.
  *
  * Renders no heading of its own: the /history page supplies the section
  * wrapper, so an h2 here would duplicate it.

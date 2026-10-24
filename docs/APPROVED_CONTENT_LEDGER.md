@@ -579,5 +579,11 @@ agar trade history" section. Findings and fixes:
    (`aria-pressed`, same records) so the complete record can be read end to
    end instead of one entry at a time.
 6. **Density chart** (`TimelineEventDensity.tsx`) — counts re-derived from the
-   27 events (ancient 1, early-trade 6, formation 1, growth 1, critical 14,
-   modern 3, undated 1); the stale "16 events" and zero-bars are replaced.
+   events (now 26: ancient 1, early-trade 6, formation 1, growth 1, critical
+   14, modern 3); the stale "16 events" and zero-bars are replaced.
+7. **No "date not stated" placeholders** — client direction (2026-10-25): if a
+   record has no date, show no date. The timeline's Hojai and Naharani
+   entries, and the AgarStory "Hojai distillation begins" milestone, now
+   render without a date chip; the Far East discovery timeline entry was
+   removed at the same direction (its full text remains in the Import era
+   chapter, so nothing is lost). 26 timeline entries total.

@@ -5,18 +5,15 @@ import { CHART_COLORS, ChartFrame, buildAriaSummary } from "./ChartFrame";
  * Route: /history · Source: the site's own InteractiveTimeline data
  *
  * Counts were derived programmatically from src/components/ui/InteractiveTimeline.tsx
- * by reading the `era:` tag on each of the 27 timeline events, not estimated:
+ * by reading the `era:` tag on each of the 26 timeline events, not estimated:
  *
  *   ancient       1   early-trade   6
  *   formation     1   growth        1
  *   critical     14   modern        3
- *   undated       1
  *
- * Three entries carry no stated date in the client source ("Date not stated"):
- * Hojai and Naharani distillation sit inside Early Trade, and the Far East
- * discovery passage sits under "Undated". The zero-states are shown rather
- * than hidden, because omitting an era would misrepresent the timeline's
- * structure.
+ * Two entries carry no stated date in the client source (Hojai and Naharani
+ * distillation, inside Early Trade). They render without a date chip rather
+ * than with a placeholder — the client asked for no "date not stated" text.
  */
 
 interface EraDensity {
@@ -33,7 +30,6 @@ const ERAS: EraDensity[] = [
   { id: "growth", label: "Growth", range: "1977–1999", count: 1 },
   { id: "critical", label: "Critical Era", range: "2000–2022", count: 14 },
   { id: "modern", label: "Modern", range: "2023–2026", count: 3 },
-  { id: "undated", label: "Undated", range: "No date stated", count: 1 },
 ];
 
 const TOTAL_EVENTS = ERAS.reduce((s, e) => s + e.count, 0);
@@ -60,14 +56,14 @@ export function TimelineEventDensity() {
   return (
     <ChartFrame
       title="Where the timeline's weight sits"
-      subtitle={`${TOTAL_EVENTS} timeline entries across ${ERAS.length} eras — ${peak.count} of them in the ${peak.label}, the period AATMA spent seeking recognition. Three entries carry no stated date in the client source and are labelled as such.`}
+      subtitle={`${TOTAL_EVENTS} timeline entries across ${ERAS.length} eras — ${peak.count} of them in the ${peak.label}, the period AATMA spent seeking recognition.`}
       ariaLabel={ariaLabel}
       source={{
         publication: "AATMA site — Interactive Timeline",
         date: "as published",
         isPressEstimate: false,
       }}
-      note="Counts derived from the timeline's own event records. Three entries carry no stated date in the source ('Date not stated'); they are shown, not hidden, so the archive's gaps stay visible."
+      note="Counts derived from the timeline's own event records. Two entries (Hojai and Naharani distillation) carry no stated date in the source; their cards show no date chip rather than a placeholder."
     >
       <svg
         viewBox={`0 0 ${W} ${H}`}
