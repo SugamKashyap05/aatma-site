@@ -157,3 +157,9 @@ Per the user's decision on 19 October 2026, the original CITES release (IMG-026)
 ## Source-of-record correction — 23 October 2026
 
 The client clarified that the newspaper estimate previously used in the research audit was not supplied by the client and must not be cited as a source for site findings. For research and quota figures, the client-supplied `Agar NDF Note 2024.pdf` is now the source of record; the client confirms the figures in that PDF are verified by its organization. This correction supersedes earlier statements in this document that treated the 18 November 2024 newspaper article as client-supplied or as corroboration. Newspaper clippings may still be displayed as archival content, but their untranscribed images are not data-source citations.
+
+## Resources publication correction — 24 October 2026
+
+- At the client's direction, removed `public/resources/brief-history-of-agar.pdf` from the public asset tree and removed its Resource Center listing. The source `documents/A BRIEF HISTORY OF AGAR.pdf` remains available locally for internal website editing; it is no longer offered as a public download or preview.
+- At the client's current direction, corrected the existing 21 February 2008 Resource Center card's association name from `ATSA` to `AATMA` in its title, description, source label, and download filename. The card remains listed; this supersedes the earlier 19 October 2026 hold on that entry. The supplied scan itself was not altered.
+- No Git-history rewrite or production deployment was performed in this correction.
